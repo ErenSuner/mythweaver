@@ -1,0 +1,101 @@
+{
+  "pointBuy": {
+    "totalPoints": 27,
+    "min": 8,
+    "max": 15,
+    "cost": {
+      "8": 0,
+      "9": 1,
+      "10": 2,
+      "11": 3,
+      "12": 4,
+      "13": 5,
+      "14": 7,
+      "15": 9
+    }
+  },
+  "proficiencyBonusByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 4,
+    "10": 4,
+    "11": 4,
+    "12": 4,
+    "13": 5,
+    "14": 5,
+    "15": 5,
+    "16": 5,
+    "17": 6,
+    "18": 6,
+    "19": 6,
+    "20": 6
+  },
+  "abilityScoreImprovementLevels": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "skills": {
+    "Acrobatics": "Dexterity",
+    "Animal Handling": "Wisdom",
+    "Arcana": "Intelligence",
+    "Athletics": "Strength",
+    "Deception": "Charisma",
+    "History": "Intelligence",
+    "Insight": "Wisdom",
+    "Intimidation": "Charisma",
+    "Investigation": "Intelligence",
+    "Medicine": "Wisdom",
+    "Nature": "Intelligence",
+    "Perception": "Wisdom",
+    "Performance": "Charisma",
+    "Persuasion": "Charisma",
+    "Religion": "Intelligence",
+    "Sleight of Hand": "Dexterity",
+    "Stealth": "Dexterity",
+    "Survival": "Wisdom"
+  },
+  "skillsTr": {
+    "Acrobatics": "Akrobasi",
+    "Animal Handling": "Hayvan Terbiyesi",
+    "Arcana": "Gizli Bilgi",
+    "Athletics": "Atletizm",
+    "Deception": "Aldatma",
+    "History": "Tarih",
+    "Insight": "Sezgi",
+    "Intimidation": "Sindirme",
+    "Investigation": "Araştırma",
+    "Medicine": "Tıp",
+    "Nature": "Doğa",
+    "Perception": "Algılama",
+    "Performance": "Performans",
+    "Persuasion": "İkna",
+    "Religion": "Din",
+    "Sleight of Hand": "El Çabukluğu",
+    "Stealth": "Gizlenme",
+    "Survival": "Hayatta Kalma"
+  },
+  "abilitiesTr": {
+    "Strength": "Güç",
+    "Dexterity": "Çeviklik",
+    "Constitution": "Dayanıklılık",
+    "Intelligence": "Zekâ",
+    "Wisdom": "Bilgelik",
+    "Charisma": "Karizma"
+  },
+  "currencies": [
+    "CP",
+    "SP",
+    "EP",
+    "GP",
+    "PP"
+  ]
+}

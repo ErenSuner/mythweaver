@@ -1,0 +1,1636 @@
+[
+  {
+    "id": "acolyte",
+    "name": "ACOLYTE",
+    "nameTr": "Tapınak Görevlisi",
+    "description": "Hayatını bir tapınakta, belirli bir tanrıya ya da panteon'a hizmet ederek geçirdin. Kutsal ritüeller yaptın, ibadet törenlerini yönettikten, inananları ilahinin huzuruna taşıdın. Zorunlu olarak bir cleric değilsin; kutsal rite'ları icra etmek ilahi güç kanallamakla aynı şey değil.",
+    "skillProficiencies": "Insight, Religion",
+    "languages": "Kendi seçiminle iki dil",
+    "toolProficiencies": "Yok",
+    "equipment": "Kutsal sembol (göreve girişte hediye), dua kitabı veya dua çarkı, 5 tütsü çubuğu, törensel elbise, sıradan kıyafet, 15 gp içeren kemer çantası",
+    "feature": {
+      "name": "Shelter of the Faithful (İnananların Sığınağı)",
+      "description": "Bir acolyte olarak aynı inancı paylaşanların saygısını kazanırsın ve tanrının törenlerini gerçekleştirebilirsin. Sen ve maceracı yoldaşların, tapınak, türbe ya da başka bir dini yapıda ücretsiz iyileştirme ve bakım alabilirsiniz — büyü için gerekli malzeme bileşenlerini kendin sağlaman koşuluyla. Aynı inancı paylaşanlar seni (yalnızca seni) mütevazı bir yaşam standartında destekler.\nAyrıca seçtiğin ilahiye adanmış bir tapınakla bağlantın vardır ve orada bir kalacak yerin olabilir. Bu tapınak, önceki görev yerin ya da yeni bir sığınak olabilir; iyi ilişki içinde olduğun sürece rahiplerden yardım isteyebilirsin — tehlikeli ya da çok pahalı olmadığı sürece."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "İnancımın belirli bir kahramanını putlaştırıyorum ve onun eylemlerini sürekli örnek gösteriyorum."
+      },
+      {
+        "roll": "2",
+        "text": "En azılı düşmanlar arasında bile ortak nokta bulabilirim; herkesle barış için çalışırım."
+      },
+      {
+        "roll": "3",
+        "text": "Her olayda ve eylemde işaretler görürüm. Tanrılar bizimle konuşmaya çalışıyor; yeter ki dinleyelim."
+      },
+      {
+        "roll": "4",
+        "text": "Hiçbir şey iyimser tutumumu sarsamaz."
+      },
+      {
+        "roll": "5",
+        "text": "Neredeyse her durumda kutsal metinlerden alıntılar yaparım (ya da yanlış alıntılarım)."
+      },
+      {
+        "roll": "6",
+        "text": "Diğer dinlere hoşgörülüyüm (ya da hoşgörüsüzüm) ve diğer tanrıların ibadetine saygı gösteriyorum (ya da kınıyorum)."
+      },
+      {
+        "roll": "7",
+        "text": "İnce yiyecekler, içecekler ve üst sınıf yaşamın tadını çıkardım; tapınağımın seçkin çevreleri arasındayım. Kaba yaşam beni geriyor."
+      },
+      {
+        "roll": "8",
+        "text": "Tapınakta o kadar uzun zaman geçirdim ki dışarıdaki insanlarla başa çıkmak konusunda çok az pratik deneyimim var."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Tradition. İbadetin ve fedakarlığın kadim gelenekleri korunmalı ve sürdürülmelidir. (Lawful)"
+      },
+      {
+        "roll": "2",
+        "text": "Charity. Ne pahasına olursa olsun ihtiyacı olanlara yardım etmeye çalışırım. (Good)"
+      },
+      {
+        "roll": "3",
+        "text": "Change. Tanrıların sürekli çalıştığı değişimi dünyaya getirmeye yardım etmeliyiz. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Power. Bir gün inancımın dini hiyerarşisinin en üstüne çıkmayı umuyorum. (Lawful)"
+      },
+      {
+        "roll": "5",
+        "text": "Faith. İlahime güveniyorum; sıkı çalışırsam her şey yoluna girecek. (Lawful)"
+      },
+      {
+        "roll": "6",
+        "text": "Aspiration. Eylemlerimi ilahimin öğretileriyle uyumlu tutarak kendimi onun katında layık kılmak istiyorum. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Çok önce kaybedilen inancımın eski bir kutsal kalıntısını kurtarmak için her şeyi yapardım."
+      },
+      {
+        "roll": "2",
+        "text": "Bir gün beni sapkın ilan eden yozlaşmış tapınak hiyerarşisinden intikam alacağım."
+      },
+      {
+        "roll": "3",
+        "text": "Hayatımı, ebeveynlerim öldüğünde beni himayesine alan rahibin borcum var."
+      },
+      {
+        "roll": "4",
+        "text": "Yaptığım her şey sıradan insanlar için."
+      },
+      {
+        "roll": "5",
+        "text": "Görev yaptığım tapınağı her ne pahasına olursa olsun koruyacağım."
+      },
+      {
+        "roll": "6",
+        "text": "Düşmanlarımın sapkın sayıp yok etmek istediği kutsal bir metni korumaya çalışıyorum."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Başkalarını sert yargılarım; kendimi ise çok daha sert."
+      },
+      {
+        "roll": "2",
+        "text": "Tapınağımın hiyerarşisindeki güç sahiplerine fazlasıyla güveniyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Dindar tavır beni zaman zaman tanrıma körü körüne güvenmeye itiyor."
+      },
+      {
+        "roll": "4",
+        "text": "Düşüncelerimde katıyım."
+      },
+      {
+        "roll": "5",
+        "text": "Yabancılara karşı şüpheciyim ve onlardan hep en kötüyü beklerim."
+      },
+      {
+        "roll": "6",
+        "text": "Bir hedef belirlediğimde, hayatımdaki diğer her şeyin zararına olsa bile ona takıntılı biçimde bağlanıyorum."
+      }
+    ]
+  },
+  {
+    "id": "charlatan",
+    "name": "CHARLATAN",
+    "nameTr": "Düzenbaz",
+    "description": "İnsanlar hakkında her zaman bir anlayışın oldu. Onları birkaç dakikalık sohbetle okuyabilir, kalplerinin derinliklerindeki arzuları ortaya çıkarabilirsin. Bu zararlı bir yetenek; ve onu menfaatin için kullanmaya daha fazla isteklisin. Sıradan mantık, seni çevreleyen insanlara söz konusu olduğunda kıt kaynak gibi görünmektedir.",
+    "skillProficiencies": "Deception, Sleight of Hand",
+    "languages": "Yok",
+    "toolProficiencies": "Disguise kit, Forgery kit",
+    "equipment": "İnce elbiseler, disguise kit, sahte eşyalar (renkli sıvıyla dolu şişeler, işaretli zar, damgalı kağıtlar veya sahte bir dükün mühür yüzüğü), 15 gp içeren kemer çantası",
+    "feature": {
+      "name": "False Identity (Sahte Kimlik)",
+      "description": "Belgeleri, yerleşik tanıdıkları ve o kişiyi temsil etmeni sağlayan kıyafetleri içeren ikinci bir kimlik oluşturdun. Ayrıca, kopya bulmak için daha önce bir örneğini gördüğün ya da taklit etmek istediğin el yazısını bildiğin sürece resmi belgeler ve kişisel mektuplar dahil belgeler sahte yapabilirsin."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Aşka çabuk düşer ve çıkarım; her zaman birileri peşindeyimdir."
+      },
+      {
+        "roll": "2",
+        "text": "Her durum için bir şakam var; özellikle uygunsuz olanlar için."
+      },
+      {
+        "roll": "3",
+        "text": "Yaltaklanma, istediğimi elde etmek için tercih ettiğim numaradır."
+      },
+      {
+        "roll": "4",
+        "text": "Olası bir kazanım için risk almaktan kendimi alamayan doğuştan bir kumarbazım."
+      },
+      {
+        "roll": "5",
+        "text": "İyi bir neden olmasa da neredeyse her şey hakkında yalan söylerim."
+      },
+      {
+        "roll": "6",
+        "text": "Alay ve hakaret benim silahlarımdır."
+      },
+      {
+        "roll": "7",
+        "text": "Üzerimdeki birden fazla kutsal sembolü korur ve herhangi bir anda işe yarayabilecek her ilahiyi çağırırım."
+      },
+      {
+        "roll": "8",
+        "text": "Biraz değeri olabilecek gördüğüm her şeyi cebime atarım."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Independence. Özgür bir ruhum; kimse bana ne yapacağımı söyleyemez. (Chaotic)"
+      },
+      {
+        "roll": "2",
+        "text": "Fairness. Para kaybetmeyi kaldıramayacak insanları asla hedef almam. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Charity. Edindiğim parayı gerçekten ihtiyacı olan insanlara dağıtırım. (Good)"
+      },
+      {
+        "roll": "4",
+        "text": "Creativity. Aynı hilemi asla iki kez yapmam. (Chaotic)"
+      },
+      {
+        "roll": "5",
+        "text": "Friendship. Maddi şeyler gelir geçer; dostluk sonsuza dek sürer. (Good)"
+      },
+      {
+        "roll": "6",
+        "text": "Aspiration. Kendimden bir şeyler yapmaya kararlıyım. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Yanlış kişiyi soydun ve şimdi o kişinin asla yolumu kesmemesini sağlamak için çalışıyorum."
+      },
+      {
+        "roll": "2",
+        "text": "Her şeyimi borçluyum mentoruma; muhtemelen bir yerlerde çürüyen korkunç biri."
+      },
+      {
+        "roll": "3",
+        "text": "Bir yerlerde, hakkında iyi ya da kötü ne düşüneceğimi bilmediğim bir çocuğum var."
+      },
+      {
+        "roll": "4",
+        "text": "Asil bir aileden geldim ve onları soyanların elinden toprak ve unvanımı geri alacağım."
+      },
+      {
+        "roll": "5",
+        "text": "Güçlü biri sevdiğim birini öldürdü. Yakında intikam alacağım."
+      },
+      {
+        "roll": "6",
+        "text": "Hak etmediği birini dolandırdım ve mahvettim. Yaptıklarımın bedelini ödemeye çalışıyorum ama kendimi asla affettirememeyebilirim."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Güzel bir yüze karşı koyamam."
+      },
+      {
+        "roll": "2",
+        "text": "Her zaman borç içindeyim; haksız kazancımı elime geçmeden lüks harcamalara hızla aktarıyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Kimsenin beni kandıramayacağından eminim; başkaları beni kandırır."
+      },
+      {
+        "roll": "4",
+        "text": "Kendi iyiliğim için fazla açgözlüyüm; para söz konusu olduğunda risk almaktan kendimi alamam."
+      },
+      {
+        "roll": "5",
+        "text": "Benden daha güçlü insanları dolandırmaya karşı koyamam."
+      },
+      {
+        "roll": "6",
+        "text": "Kabul etmekten nefret etsem de işler zorlaştığında kendi başımı kurtarırım."
+      }
+    ]
+  },
+  {
+    "id": "criminal",
+    "name": "CRIMINAL",
+    "nameTr": "Suçlu",
+    "description": "Yasaları çiğneme geçmişine sahip deneyimli bir suçlusun. Diğer suçlularla çok zaman geçirdin ve hâlâ onların arasında bağlantıların var. Bu noktaya kadar hayatta kaldın — kural ve düzenlemeleri çiğneyerek.",
+    "skillProficiencies": "Deception, Stealth",
+    "languages": "Yok",
+    "toolProficiencies": "Bir çeşit oyun seti, hırsız aletleri (thieves' tools)",
+    "equipment": "Crowbar (levye), kapüşonlu bir set koyu renk sıradan kıyafet, 15 gp içeren kemer çantası",
+    "feature": {
+      "name": "Criminal Contact (Suç Bağlantısı)",
+      "description": "Diğer suçlulardan oluşan bir ağa bağlantın olarak hareket eden güvenilir bir temasın var. Uzak mesafeler üzerinde bile temaslara mesaj alma ve gönderme yollarını bilirsin; özellikle yerel habercileri, yolsuz kervan ustalarını ve mesajları iletebilecek başıbozuk denizcileri tanırsın."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "İşler ters gittiğinde ne yapacağım için her zaman bir planım olur."
+      },
+      {
+        "roll": "2",
+        "text": "Sakinim; ne olursa olsun. Sesi yükseltmeme ve duygularımın beni kontrol etmesine izin vermem."
+      },
+      {
+        "roll": "3",
+        "text": "Yeni bir yere gittiğimde ilk yaptığım şey değerli her şeyin yerini not etmektir — ya da gizlenebileceği yerleri."
+      },
+      {
+        "roll": "4",
+        "text": "Yeni bir düşman edinmektense yeni bir dost edinmeyi tercih ederim."
+      },
+      {
+        "roll": "5",
+        "text": "Güvenmek için son derece yavaşım. En adil görünenler çoğunlukla en çok saklayacak şeyi olanlardır."
+      },
+      {
+        "roll": "6",
+        "text": "Durumdaki risklere dikkat etmem. Bana asla ihtimalleri söyleme."
+      },
+      {
+        "roll": "7",
+        "text": "Bir şey yapmamı istemenin en iyi yolu bana yapamayacağımı söylemektir."
+      },
+      {
+        "roll": "8",
+        "text": "En küçük hakarette bile patlarım."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Honor. Sektördeki diğerlerinden çalmam. (Lawful)"
+      },
+      {
+        "roll": "2",
+        "text": "Freedom. Zincirler kırılmak içindir; onları dökenler de öyle. (Chaotic)"
+      },
+      {
+        "roll": "3",
+        "text": "Charity. Zenginlerden çalar, yoksullara yardım ederim. (Good)"
+      },
+      {
+        "roll": "4",
+        "text": "Greed. Zengin olmak için her şeyi yapacağım. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "People. Arkadaşlarıma sadığım; herhangi bir ideale değil. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Redemption. Herkeste bir iyilik kıvılcımı vardır. (Good)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Cömert bir hayırsevere olan eski bir borcu ödemeye çalışıyorum."
+      },
+      {
+        "roll": "2",
+        "text": "Yasadışı kazancım ailem için gidiyor."
+      },
+      {
+        "roll": "3",
+        "text": "Benden önemli bir şey alındı ve onu geri çalmayı hedefliyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Yaşamış en büyük hırsız olacağım."
+      },
+      {
+        "roll": "5",
+        "text": "Korkunç bir suç işledim. Kendimi affettirmeyi umuyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Sevdiğim biri benim yaptığım bir hata yüzünden öldü. Bu bir daha olmayacak."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Değerli bir şey gördüğümde onu çalmaktan başka bir şey düşünemem."
+      },
+      {
+        "roll": "2",
+        "text": "Para ve arkadaşlarım arasında bir seçim yapınca genellikle parayı seçerim."
+      },
+      {
+        "roll": "3",
+        "text": "Bir plan varsa onu unuturum. Unutursam, görmezden gelirim."
+      },
+      {
+        "roll": "4",
+        "text": "Yalan söylediğimi belli eden bir alışkanlığım var."
+      },
+      {
+        "roll": "5",
+        "text": "İşler kötüye gittiğinde kaçarım."
+      },
+      {
+        "roll": "6",
+        "text": "İşlediğim bir suç için masum biri hapiste. Benim için sorun değil."
+      }
+    ]
+  },
+  {
+    "id": "entertainer",
+    "name": "ENTERTAINER",
+    "nameTr": "Eğlendirici",
+    "description": "Bir kalabalığın önünde gelişirsin. Onları büyüler, eğlendirir ve hatta ilham verirsin. Şiirlerin dinleyenlerin kalbini sarstırabilir; müziğin insanların ruhunu yükseltir ya da üzüntülerini yakalar. Dansın büyüler, mizahın tam isabet eder. Her ne teknik kullanırsan kullan, sanat senin hayatındır.",
+    "skillProficiencies": "Acrobatics, Performance",
+    "languages": "Yok",
+    "toolProficiencies": "Disguise kit, bir çeşit müzik aleti",
+    "equipment": "Seçtiğin bir müzik aleti, bir hayranın hediyesi (aşk mektubu, saç tutamı ya da hatıra), kostüm ve 15 gp içeren kemer çantası",
+    "feature": {
+      "name": "By Popular Demand (Halk Talebi)",
+      "description": "Bir yerde performans yapacak yer her zaman bulabilirsin; genellikle bir han veya tavernada ama bir sirk, tiyatro ya da bir soylu sarayında da olabilir. Böyle bir yerde her gece performans yaptığın sürece mütevazı ya da konforlu bir standartta ücretsiz konaklama ve yemek alırsın (düzeyi mekanın kalitesine göre). Bunun yanı sıra performansın seni yerel bir figür haline getirir ve seni daha önce gösteri yaptığın bir şehirde tanıdıklarında insanlar sana sempatik davranır."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Neredeyse her durumla ilgili bir hikaye bilirim."
+      },
+      {
+        "roll": "2",
+        "text": "Yeni bir yere gittiğimde yerel söylentileri toplar ve dedikodu yaparım."
+      },
+      {
+        "roll": "3",
+        "text": "Umutsuz bir romantik; hep o 'özel birini' arıyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Kimse bana uzun süre kızmaz; herhangi bir gerilimi dağıtabilirim."
+      },
+      {
+        "roll": "5",
+        "text": "İyi bir hakareti severim; bana yöneltilenleri bile."
+      },
+      {
+        "roll": "6",
+        "text": "Dikkat merkezinde olmazsam sinirlenip bozulurum."
+      },
+      {
+        "roll": "7",
+        "text": "Mükemmelden aşağısına razı olmam."
+      },
+      {
+        "roll": "8",
+        "text": "Bir şarkıdaki tonu değiştirdiğim kadar hızlı ruh halimi ya da fikirlerimi değiştiririm."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Beauty. Performans yaptığımda dünyayı olduğundan daha iyi bir yer yaparım. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Tradition. Geçmişin hikayeleri, efsaneleri ve şarkıları asla unutulmamalı. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Creativity. Dünya yeni fikirlere ve cesur eylemlere ihtiyaç duyuyor. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Greed. Para ve şöhret için bunu yapıyorum. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "People. Performans yaparken insanların yüzündeki gülümsemeyi seviyorum. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Honesty. Sanat ruhtan gelmelidir; kim olduğumuzu ortaya çıkarmalıdır. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Enstrümanım en değerli mülkümdür ve bana sevdiğim birini hatırlatıyor."
+      },
+      {
+        "roll": "2",
+        "text": "Biri değerli enstrümanımı çaldı; bir gün onu geri alacağım."
+      },
+      {
+        "roll": "3",
+        "text": "Ne pahasına olursa olsun ünlü olmak istiyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Eski hikayelerin bir kahramanını putlaştırıyorum ve başarılarımı onunkilerle ölçüyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Nefret ettiğim rakibimden her anlamda üstün olduğumu kanıtlamak için her şeyi yapacağım."
+      },
+      {
+        "roll": "6",
+        "text": "Eski topluluk üyelerimin hepsini her şeyin üstünde tutarım."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Şöhret ve ün kazanmak için her şeyi yaparım."
+      },
+      {
+        "roll": "2",
+        "text": "Güzel bir yüze sucker'ım."
+      },
+      {
+        "roll": "3",
+        "text": "Bir skandal bir daha eve dönmemi engelliyor. Bu tür sorun benimle dolaşıyor gibi."
+      },
+      {
+        "roll": "4",
+        "text": "Bir zamanlar istediğim başım üzerinde olan bir soylunun aleyhine taşlama yaptım. Muhtemelen tekrar yapacağım."
+      },
+      {
+        "roll": "5",
+        "text": "Gerçek duygularımı gizlemekte güçlük çekiyorum. Keskin dilim başımı belaya sokar."
+      },
+      {
+        "roll": "6",
+        "text": "Elimden gelenin en iyisine rağmen arkadaşlarıma karşı güvenilmezim."
+      }
+    ]
+  },
+  {
+    "id": "folk-hero",
+    "name": "FOLK HERO",
+    "nameTr": "Halk Kahramanı",
+    "description": "Alçakgönüllü bir sosyal kökenden geliyorsun; ama seni daha büyük şeyler için seçilmiş. Köyünün halkı zaten seni onların şampiyonu olarak görüyor ve kaderin seni tiranların ve canavarların ortak insanlığı her yerde tehdit ettiği yere karşı durmaya çağırıyor.",
+    "skillProficiencies": "Animal Handling, Survival",
+    "languages": "Yok",
+    "toolProficiencies": "Bir çeşit zanaat aleti (artisan's tools), kara araçları (vehicles — land)",
+    "equipment": "Seçtiğin zanaat aletleri seti, demir tencere, sıradan kıyafetler ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "Rustic Hospitality (Kırsal Misafirperverliği)",
+      "description": "Sıradan insanların arasından geldiğinden onlara kolayca uyum sağlarsın. Halk kahraman olduğunda saklanmak, dinlenmek ya da diğer sıradan insanlar arasında kendine gelmek için bir yer bulabilirsin — kendileri için tehlike olmadığı sürece. Seni hukuki yollarla ya da seni arayan başka biri için kalkan olurlar — hayatlarını tehlikeye atmadan."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "İnsanları sözlerine değil eylemlerine göre yargılarım."
+      },
+      {
+        "roll": "2",
+        "text": "Biri başı belada ise her zaman yardıma hazırım."
+      },
+      {
+        "roll": "3",
+        "text": "Bir şeye karar verdiğimde, ne olursa olsun onu takip ederim."
+      },
+      {
+        "roll": "4",
+        "text": "Güçlü bir adalet duygum var ve her zaman en eşit çözümü bulmaya çalışırım."
+      },
+      {
+        "roll": "5",
+        "text": "Kendi yeteneklerime güveniyorum ve başkalarında güven oluşturmak için yapabileceğimi yapıyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Düşünmek başkaları için. Ben harekete geçmeyi tercih ederim."
+      },
+      {
+        "roll": "7",
+        "text": "Uzun sözcükleri yanlış kullanarak daha akıllı görünmeye çalışırım."
+      },
+      {
+        "roll": "8",
+        "text": "Kolayca sıkılırım. Ne zaman kaderime kavuşacağım?"
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Respect. İnsanlar onurlu ve saygıyla muamele görmeyi hak eder. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Fairness. Hiç kimse kanunun önünde ayrıcalıklı muamele görmemelidir. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Freedom. Tiranlar insanları ezmesine izin verilmemelidir. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Might. Güçlü olursam istediğimi alabilirim. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "Sincerity. Olmadığım biri numarası yapmak anlamsız. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Destiny. Hiçbir şey ve hiç kimse beni daha yüce çağrımdan saptıramaz. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Bir ailem var ama nerede olduklarını bilmiyorum. Onları bir gün bulmayı umuyorum."
+      },
+      {
+        "roll": "2",
+        "text": "Toprağı işledim, toprağı seviyorum ve toprağı koruyacağım."
+      },
+      {
+        "roll": "3",
+        "text": "Gurur verici bir soylu bir zamanlar bana korkunç bir dayak attı ve karşılaştığım her zorbadan intikam alacağım."
+      },
+      {
+        "roll": "4",
+        "text": "Aletlerim geçmiş hayatımın sembolleri ve asla köklerimi unutmamak için onları taşıyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Kendilerini koruyamayanları koruyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Keşke çocukluk aşkım kaderimi takip etmek için benimle gelseydi."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Topraklarıma hükmeden tiran beni görmek için her şeyi durduracak."
+      },
+      {
+        "roll": "2",
+        "text": "Kaderimin önemini aşırı değerlendiriyorum ve başarısızlık riskine karşı kör oluyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Gençken beni tanıyan insanlar utanç verici sırrımı biliyor; bu yüzden eve bir daha gidemem."
+      },
+      {
+        "roll": "4",
+        "text": "Özellikle şehirdeki rezaletler olmak üzere şehrin kötü alışkanlıklarına karşı zayıflığım var."
+      },
+      {
+        "roll": "5",
+        "text": "Gizlice, işlerin toprak üzerinde hükümdar olsaydım daha iyi olacağına inanıyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Müttefiklerime güvenmekte güçlük çekiyorum."
+      }
+    ]
+  },
+  {
+    "id": "guild-artisan",
+    "name": "GUILD ARTISAN",
+    "nameTr": "Lonca Zanaatkârı",
+    "description": "Bir loncanın üyesisin; belirli bir alanda ustalaşmış, diğer zanaatkarlarla yakın ilişki içinde birinin. İyi kurulmuş bir ticaret dünyasının parçasısın; bir feodal toplumun kısıtlamalarından muaf, yetenek ve servetle özgürleşmiş. Bir çırak olarak, loncanın himayesinde bir usta zanaatkârın yanında çalıştın; ta ki kendi başına usta olana kadar.",
+    "skillProficiencies": "Insight, Persuasion",
+    "languages": "Kendi seçiminle bir dil",
+    "toolProficiencies": "Bir çeşit zanaat aleti (artisan's tools)",
+    "equipment": "Seçtiğin bir zanaat aleti seti, loncanızdan bir tanıtım mektubu, seyyah kıyafetler ve 15 gp içeren kemer çantası",
+    "feature": {
+      "name": "Guild Membership (Lonca Üyeliği)",
+      "description": "Saygın ve yerleşik bir lonca üyesi olarak, üyeliğin sağladığı belirli avantajlardan yararlanabilirsin. Lonca üyelerin gerektiğinde konaklama ve yemek sağlar; ayrıca cenazen için masrafları karşılar. Bazı şehir ve kasabalarda lonca binası, meslek arkadaşlarını, potansiyel patronları, müttefikleri veya paralı askerleri tanışabileceğin merkezi bir buluşma yeri sunar.\nLonca, siyasi açıdan da büyük güce sahiptir. Bir suçla suçlanırsan lonca masumiyetin için lobi yapabilir ya da suçun meşrulaştırılabilir olduğunu savunabilir. Lonca iyi dürüste ayaktaysan, güçlü siyasi figürlere erişim sağlayabilirsin — ancak bu bağlantılar lonca kasasına para ya da büyü eşyası bağışını gerektirebilir.\nAylık 5 altın olarak lonca aidatı ödemek zorundasın. Ödemeleri kaçırırsan, loncada iyi niyetin kazanmak için birikmiş borcu ödemek zorunda kalırsın."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Yapılmaya değer her şey doğru yapılmaya değer. Kendime yardım edemem; mükemmeliyetçiyim."
+      },
+      {
+        "roll": "2",
+        "text": "Güzel sanatları takdir edemeyen insanlara yukarıdan bakar bir züppeyim."
+      },
+      {
+        "roll": "3",
+        "text": "Her şeyin nasıl çalıştığını ve insanları ne harekete geçirdiğini her zaman bilmek isterim."
+      },
+      {
+        "roll": "4",
+        "text": "Nükteli sözleri ve her durum için bir atasözü ile dolu zekice bir adamım."
+      },
+      {
+        "roll": "5",
+        "text": "Sıkı çalışma ve adil oyuna bağlılığa sahip olmayan insanlara karşı kabalık ederim."
+      },
+      {
+        "roll": "6",
+        "text": "Mesleğim hakkında uzun uzadıya konuşmayı severim."
+      },
+      {
+        "roll": "7",
+        "text": "Paramı kolayca bırakmam ve mümkün olan en iyi anlaşmayı elde etmek için yorulmadan pazarlık yaparım."
+      },
+      {
+        "roll": "8",
+        "text": "Çalışmalarım için iyi biliniyorum ve bunu takdir ettiğinden emin olmak isterim. Benden daha önce duymayan insanlar olduğunda şaşırırım."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Community. Tüm medeni insanların topluluğun bağlarını güçlendirmesi onların görevidir. (Lawful)"
+      },
+      {
+        "roll": "2",
+        "text": "Generosity. Yeteneklerim dünyaya fayda sağlasın diye bana verildi. (Good)"
+      },
+      {
+        "roll": "3",
+        "text": "Freedom. Herkes kendi geçimini özgürce sürdürebilmelidir. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Greed. Yalnızca para için yapıyorum. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "People. İdeallere değil; önem verdiğim insanlara bağlıyım. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Aspiration. Zanaatımda en iyi olmak için çok çalışırım. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Zanaatımı öğrendiğim atölye benim için dünyanın en önemli yeridir."
+      },
+      {
+        "roll": "2",
+        "text": "Birisi için büyük bir eser yarattım ama onu almaya layık olmadığını gördüm. Hâlâ layık birini arıyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Bugün olduğum kişi olmamı sağladığı için loncama büyük bir borçluyum."
+      },
+      {
+        "roll": "4",
+        "text": "Birinin sevgisini kazanmak için servet peşindeyim."
+      },
+      {
+        "roll": "5",
+        "text": "Bir gün loncama döneceğim ve onların en büyük ustası olduğumu kanıtlayacağım."
+      },
+      {
+        "roll": "6",
+        "text": "İş yerimizi yok eden ve geçimimi mahveden kötü güçlerden intikam alacağım."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Nadir veya paha biçilmez bir şeye elimi atmak için her şeyi yapacağım."
+      },
+      {
+        "roll": "2",
+        "text": "Birinin beni kandırmaya çalıştığını varsaymakta hızlıyım."
+      },
+      {
+        "roll": "3",
+        "text": "Hiç kimse, bir kez lonca kasasından para çaldığımı öğrenmemelidir."
+      },
+      {
+        "roll": "4",
+        "text": "Sahip olduklarımla asla tatmin olmuyorum; her zaman daha fazlasını istiyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Asil bir unvan edinmek için adam öldürürdüm."
+      },
+      {
+        "roll": "6",
+        "text": "İşimi gölgede bırakabilecek herkese karşı korkunç biçimde kıskanç oluyorum. Her gittiğim yerde rakiplerle çevrili olduğumu hissediyorum."
+      }
+    ]
+  },
+  {
+    "id": "hermit",
+    "name": "HERMIT",
+    "nameTr": "Keşiş / Münzevi",
+    "description": "Toplumdan uzakta, yalnız ya da barınaktaki küçük bir toplulukta — belki bir manastırda — yaşadın. Bu inziva zamanı sana sessizlik, yalnızlık ve belki de aradığın cevapları verdi.",
+    "skillProficiencies": "Medicine, Religion",
+    "languages": "Kendi seçiminle bir dil",
+    "toolProficiencies": "Herbalism kit (Şifalı ot takımı)",
+    "equipment": "Çalışma notları ya da dualarla dolu bir parşömen kutusu, kışlık battaniye, sıradan kıyafetler, herbalism kit ve 5 gp",
+    "feature": {
+      "name": "Discovery (Keşif)",
+      "description": "Uzun süren inzivandan elde ettiğin benzersiz ve güçlü bir keşfe erişimin var. Bu keşfin tam niteliği inzivanın doğasına bağlıdır. Evrenle ilgili büyük bir gerçek, dış düzlemlerin güçlü varlıkları ya da doğanın güçleri hakkında bilgi olabilir. Hiç kimsenin görmediği bir site ya da tarihte yeniden yazılabilecek çok uzun süredir unutulmuş bir gerçek olabilir. DM ile birlikte keşfinin ayrıntılarını ve kampanyaya etkisini belirle."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "O kadar uzun süre izole edildim ki, hareketleri ve arasıra olan homurtuları tercih ederek nadiren konuşurum."
+      },
+      {
+        "roll": "2",
+        "text": "Felaket karşısında bile tamamen sakinim."
+      },
+      {
+        "roll": "3",
+        "text": "Topluluğumun lideri her konuda söyleyecek bilge bir söz bulurdu ve ben o bilgeliği paylaşmaya can atıyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Acı çeken herkese derin bir empati duyuyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Görgü kuralları ve sosyal beklentiler konusunda tamamen habersizim."
+      },
+      {
+        "roll": "6",
+        "text": "Başıma gelen her şeyi büyük kozmik bir plana bağlıyorum."
+      },
+      {
+        "roll": "7",
+        "text": "Kendi düşüncelerime ve meditasyonuma çok sık kaybolur ve çevremden kopuyor olabilirim."
+      },
+      {
+        "roll": "8",
+        "text": "Büyük bir felsefi teori üzerinde çalışıyorum ve fikirlerimi paylaşmayı seviyorum."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Greater Good. Hediyelerim kendi yararım için değil, herkesle paylaşılmak üzere. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Logic. Duygular doğruyu ve gerçeği anlama ya da mantıksal düşüncemizi bulutlamamalı. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Free Thinking. Araştırma ve merak ilerlemenin sütunlarıdır. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Power. Yalnızlık ve tefekkür, mistik ya da büyüsel güce giden yollar. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "Live and Let Live. Başkalarının işlerine karışmak yalnızca sorun yaratır. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Self-Knowledge. Kendini bilirsen, bilinecek başka bir şey kalmaz. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Manastırımdaki, tarikatımdaki ya da topluluğumdaki diğer üyelerden daha önemli bir şey yoktur."
+      },
+      {
+        "roll": "2",
+        "text": "Hâlâ beni avlıyor olabilecek kişilerden saklanmak için inzivaya çekildim. Onlarla bir gün yüzleşmem gerekiyor."
+      },
+      {
+        "roll": "3",
+        "text": "İnzivamda aradığım aydınlanmayı hâlâ arıyorum ve bu benden kaçıyor."
+      },
+      {
+        "roll": "4",
+        "text": "Sevemeyeceğim birini sevdiğim için inzivaya girdim."
+      },
+      {
+        "roll": "5",
+        "text": "Keşfim gün yüzüne çıkarsa, dünyayı harabeye çevirebilir."
+      },
+      {
+        "roll": "6",
+        "text": "İnzivam, yalnızca benim yok edebileceğim büyük bir kötülüğe dair büyük içgörü sağladı."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Dünyaya döndüğümden beri zevklerinden fazlasıyla zevk alıyorum."
+      },
+      {
+        "roll": "2",
+        "text": "İzolasyonum ve meditasyonumun bastıramadığı karanlık, kana susamış düşünceler besliyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Düşüncelerimde ve felsefemde dogmatikimdir."
+      },
+      {
+        "roll": "4",
+        "text": "Tartışmaları kazanma ihtiyacımın dostlukların ve uyumun önüne geçmesine izin veriyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Kayıp bir bilgi parçasını ortaya çıkarmak için fazla risk alırım."
+      }
+    ]
+  },
+  {
+    "id": "noble",
+    "name": "NOBLE",
+    "nameTr": "Soylu",
+    "description": "Zenginliği, gücü ve ayrıcalığı anlıyorsun. Asil bir unvan taşıyorsun ve ailen arazi sahibi, vergi topluyor ve önemli bir siyasi etki kullanıyor. Çalışmaya alışkın olmayan şımarık bir aristokrat, asaletten yeni yükselmiş eski bir tüccar, ya da haksız yere büyük bir hak duygusuyla soysuzlaştırılmış bir serseri olabilirsin.",
+    "skillProficiencies": "History, Persuasion",
+    "languages": "Kendi seçiminle bir dil",
+    "toolProficiencies": "Bir çeşit oyun seti",
+    "equipment": "İnce elbiseler, mühür yüzüğü, soy ağacı belgesi ve 25 gp içeren bir kese",
+    "feature": {
+      "name": "Variant Feature: Retainers (Uşaklar)",
+      "description": "Noble background'una sahip karakterin için Position of Privilege yerine bu background özelliğini seçebilirsin. Ailenize sadık üç uşak hizmetinize sunulur. Bu uşaklar katip, haberci ya da majordomo olabilir. Uşaklardan biri bir majordomo olabilir. Uşaklar sıradan insanlar olabilir ve senin için rutin görevler yapabilir; ancak seninle savaşmaz, tehlikeli alanlara girmez (tüneller gibi) ve sıkça tehlikeye atıldıklarında ya da kötü muamele gördüklerinde ayrılır."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Benim yaltaklanmam konuştuğum herkesi dünyanın en muhteşem ve önemli insanı gibi hissettirir."
+      },
+      {
+        "roll": "2",
+        "text": "Sıradan halk nezaket ve cömertliğim için beni seviyor."
+      },
+      {
+        "roll": "3",
+        "text": "Kibar tavrıma bakarak yıkanmamış kalabalıklardan bir adım üstte olduğumdan kimsenin şüphesi yoktur."
+      },
+      {
+        "roll": "4",
+        "text": "En iyi görünmek ve son modayı takip etmek için büyük çaba harcıyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Ellerimi kirletmekten hoşlanmıyorum; uygunsuz konaklama koşullarında yakalanmak istemiyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Soyluluk doğumuma rağmen kendimi diğer insanların üzerinde tutmuyorum. Hepimizin aynı kanı var."
+      },
+      {
+        "roll": "7",
+        "text": "Bir kez kaybedilen iyiliğim, sonsuza dek kaybolur."
+      },
+      {
+        "roll": "8",
+        "text": "Bana bir zarar verirsen, seni ezecek, ününü mahvedecek ve tarlalarını tuzlayacağım."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Respect. Saygı konumum nedeniyle bana borçlu; ancak her istasyondaki insanlar onurla muamele görmeyi hak ediyor. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Responsibility. Üstümdekilerin otoritesine saygı duymak benim görevimdir; aşağımdakiler de bana saygı duymalı. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Independence. Ailenin gözetimi olmadan kendi başıma idare edebildiğimi kanıtlamalıyım. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Power. Daha fazla güç elde edebilirsem kimse bana ne yapacağımı söyleyemez. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "Family. Kan, sudan kalındır. (Any)"
+      },
+      {
+        "roll": "6",
+        "text": "Noble Obligation. İnsanların bakımı ve korunması benim görevimdir. (Good)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Ailenin onayını kazanmak için her zorluğu göze alırım."
+      },
+      {
+        "roll": "2",
+        "text": "Başka bir soylu aileyle evimin ittifakı her ne pahasına olursa olsun sürdürülmelidir."
+      },
+      {
+        "roll": "3",
+        "text": "Ailenin diğer üyelerinden daha önemli bir şey yoktur."
+      },
+      {
+        "roll": "4",
+        "text": "Ailemi seven bir ailenin varisine aşığım."
+      },
+      {
+        "roll": "5",
+        "text": "Efendime olan sadakatim sarsılmazdır."
+      },
+      {
+        "roll": "6",
+        "text": "Sıradan halk beni bir halk kahramanı olarak görmeli."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Gizlice herkesin benden aşağı olduğuna inanıyorum."
+      },
+      {
+        "roll": "2",
+        "text": "Aileyi sonsuza dek mahvedebilecek gerçekten skandal bir sırrı saklıyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Bana yöneltilen her sözcükte örtülü hakareti ve tehdidi çok sık duyuyorum ve öfkeye çabuk geçiyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Bedensel zevklere aşırı iştah duyuyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Dünya aslında benim etrafımda dönüyor."
+      },
+      {
+        "roll": "6",
+        "text": "Söz ve eylemlerimle ailem için çoğunlukla utanç yaratıyorum."
+      }
+    ]
+  },
+  {
+    "id": "outlander",
+    "name": "OUTLANDER",
+    "nameTr": "Yabancı / Vahşi",
+    "description": "Medeniyetten uzak yaban topraklarında büyüdün. Kasabanın konforlarını ve teknolojisini hiç görmeden hayatta kaldın. Dağlarca büyük sürülerin göçüne tanık oldun, herhangi bir şehirli kavrayamayacağı kadar aşırı havalarla baş ettin ve mülden milyonlarca yıl uzakta tek düşünen varlık olmanın yalnızlığından zevk aldın.",
+    "skillProficiencies": "Athletics, Survival",
+    "languages": "Kendi seçiminle bir dil",
+    "toolProficiencies": "Bir çeşit müzik aleti",
+    "equipment": "Asa, av tuzağı, bir hayvan trofesi, seyyah kıyafetleri ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "Wanderer (Gezgin)",
+      "description": "Haritalar ve coğrafya konusunda mükemmel bir hafızan var ve her zaman arazinin, yerleşim alanlarının ve çevrenizdeki diğer özelliklerin genel düzenini hatırlayabilirsin. Ayrıca her gün kendin ve beş kişiye kadar başka biri için arazi yeterli meyve, küçük av eti, su ve benzeri şeyler sunduğu sürece yiyecek ve temiz su bulabilirsin."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Beni evden uzaklaştıran bir gezginlik arzusuyla yönlendiriyorum."
+      },
+      {
+        "roll": "2",
+        "text": "Arkadaşlarımı henüz doğmuş yavru köpek gibi izliyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Klanıma yaklaşan bir ork sürüsünü uyarmak için yirmi beş mil koştum. Bunu yine yapardım."
+      },
+      {
+        "roll": "4",
+        "text": "Doğayı gözlemleyerek çizilmiş her durum için bir dersim var."
+      },
+      {
+        "roll": "5",
+        "text": "Zengin ya da iyi huylu insanlara güvenmiyorum. Para ve görgü, aç bir boz ayıdan seni kurtarmaz."
+      },
+      {
+        "roll": "6",
+        "text": "Her zaman bir şeyler alıp onları sahipsizce oynarım ve zaman zaman onları kırıyorum."
+      },
+      {
+        "roll": "7",
+        "text": "İnsanlardan çok hayvanların yanında çok daha rahat hissediyorum."
+      },
+      {
+        "roll": "8",
+        "text": "Aslında kurtlar tarafından büyütüldüm."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Change. Hayat mevsimler gibi; sürekli değişiyor ve biz de değişmeliyiz. (Chaotic)"
+      },
+      {
+        "roll": "2",
+        "text": "Greater Good. Tüm kabile için en fazla mutluluğu sağlamak her bireyin sorumluluğudur. (Good)"
+      },
+      {
+        "roll": "3",
+        "text": "Honor. Kendimi rezil edersem, tüm klanımı rezil ederim. (Lawful)"
+      },
+      {
+        "roll": "4",
+        "text": "Might. En güçlüler hükmetmek için doğdu. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "Nature. Doğal dünya, medeniyetin tüm yapılarından daha önemli. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Glory. Kendim ve klanim için savaşta şöhret kazanmalıyım. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Ailem, klanim veya kabilem onlardan uzak olsam da hayatımdaki en önemli şey."
+      },
+      {
+        "roll": "2",
+        "text": "Evimin bozulmamış vahşi doğasına yönelik bir zarar benim için bir yaradır."
+      },
+      {
+        "roll": "3",
+        "text": "Anavatanımı yok eden kötü adamların üzerine korkunç bir öfke indireceğim."
+      },
+      {
+        "roll": "4",
+        "text": "Kabilenin son üyesiyim ve isimlerinin efsanelere girmesini sağlamak benim görevim."
+      },
+      {
+        "roll": "5",
+        "text": "Yaklaşan bir felakete ilişkin korkunç vizyonlar görüyor ve onu ne pahasına olursa olsun önlemek istiyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Kabileye çocuk sağlamak benim görevim."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Bira, şarap ve diğer uyuşturuculara aşırı düşkünüm."
+      },
+      {
+        "roll": "2",
+        "text": "Sonuna kadar yaşanan bir hayatta ihtiyat için yer yoktur."
+      },
+      {
+        "roll": "3",
+        "text": "Aldığım her hakareti hatırlıyor ve beni daha önce haksız yere yaralayan herkese karşı sessiz bir kırgınlık besliyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Diğer ırkların, kabilelerin ve toplumların üyelerine güvenmekte yavaşım."
+      },
+      {
+        "roll": "5",
+        "text": "Şiddet neredeyse her zorluğa benim cevabım."
+      },
+      {
+        "roll": "6",
+        "text": "Kendilerini kurtaramayanları kurtarmamı bekleme. Güçlünün hayatta kaldığı doğanın yasasıdır."
+      }
+    ]
+  },
+  {
+    "id": "sage",
+    "name": "SAGE",
+    "nameTr": "Bilge",
+    "description": "Yıllarını çoğul evrenin bilgisini öğrenerek geçirdin. Yazmaları incelediner, parşömenler üzerinde çalıştın ve seni ilgilendiren konularda en büyük uzmanlara kulak verdin. Çalışmaların, inceleme alanlarında seni usta haline getirdi.",
+    "skillProficiencies": "Arcana, History",
+    "languages": "Kendi seçiminle iki dil",
+    "toolProficiencies": "Yok",
+    "equipment": "Siyah mürekkep şişesi, bir kalem, küçük bir bıçak, cevapsız soru içeren ölü bir meslektaşın mektubu, sıradan kıyafetler ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "Researcher (Araştırmacı)",
+      "description": "Bir bilgi parçasını öğrenmeye veya hatırlamaya çalışırken, eğer o bilgiye sahip değilsen, genellikle nereden ve kimden öğrenebileceğini bilirsin. Genellikle bu bilgi bir kütüphaneden, yazma atölyesinden, üniversiteden, bilge ya da başka öğrenmiş bir kişi veya varlıktan gelir. DM, aradığın bilginin ulaşılması zor gizli bir yerde olduğuna ya da basitçe bulunamayacağına karar verebilir. Çok evrenin en derin sırlarını ortaya çıkarmak bir macera ya da hatta tüm bir kampanya gerektirebilir."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Büyük erüdisyon izlenimi veren çok heceli sözcükler kullanırım."
+      },
+      {
+        "roll": "2",
+        "text": "Dünyanın en büyük kütüphanelerindeki her kitabı okudum ya da okuduğumu iddia etmeyi severim."
+      },
+      {
+        "roll": "3",
+        "text": "Benden daha akıllı olmayan insanlara yardım etmeye alışkınım; her şeyi sabırla açıklarım."
+      },
+      {
+        "roll": "4",
+        "text": "Güzel bir gizem kadar sevdiğim bir şey yoktur."
+      },
+      {
+        "roll": "5",
+        "text": "Kendi kararımı vermeden önce her tartışmanın her tarafını dinlemeye hazırım."
+      },
+      {
+        "roll": "6",
+        "text": "Aptallarla konuşurken yavaş yavaş konuşurum; bu neredeyse herkesi kapsıyor."
+      },
+      {
+        "roll": "7",
+        "text": "Sosyal ortamlarda korkunç derecede tuhafım."
+      },
+      {
+        "roll": "8",
+        "text": "İnsanların her zaman sırlarımı çalmaya çalıştığına inanıyorum."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Knowledge. Güç ve kendini geliştirme yolu bilgiden geçiyor. (Neutral)"
+      },
+      {
+        "roll": "2",
+        "text": "Beauty. Güzel olan, bizi gerçek olana doğru yönlendirir. (Good)"
+      },
+      {
+        "roll": "3",
+        "text": "Logic. Duygular mantıksal düşüncemizi bulutlamamalı. (Lawful)"
+      },
+      {
+        "roll": "4",
+        "text": "No Limits. Tüm varoluşta bulunan sonsuz olasılığı ketlemek için hiçbir şey olmamalı. (Chaotic)"
+      },
+      {
+        "roll": "5",
+        "text": "Power. Bilgi, güç ve egemenliğe giden yoldur. (Evil)"
+      },
+      {
+        "roll": "6",
+        "text": "Self-Improvement. Bir çalışma hayatının amacı kendini geliştirmektir. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Öğrencilerimi korumak benim görevimdir."
+      },
+      {
+        "roll": "2",
+        "text": "Yanlış ellere geçmemesi gereken korkunç sırları tutan eski bir metnim var."
+      },
+      {
+        "roll": "3",
+        "text": "Bir kütüphaneyi, üniversiteyi, yazma atölyesini veya manastırı korumak için çalışıyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Hayatımın çalışması, belirli bir bilgi alanıyla ilgili bir tomes serisidir."
+      },
+      {
+        "roll": "5",
+        "text": "Belirli bir sorunun cevabını aramak için tüm ömrümü harcadım."
+      },
+      {
+        "roll": "6",
+        "text": "Bilgi için ruhumı sattım. Büyük işler yapıp onu geri kazanmayı umuyorum."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Bilgi vaadi karşısında kolayca dikkatimi kaybederim."
+      },
+      {
+        "roll": "2",
+        "text": "Çoğu insan bir iblis gördüğünde bağırır ve kaçar. Ben durur ve anatomisini not alırım."
+      },
+      {
+        "roll": "3",
+        "text": "Kadim bir gizemi çözmek bir medeniyetin bedelini ödemek için yeterli değer taşıyor."
+      },
+      {
+        "roll": "4",
+        "text": "Karmaşık çözümler lehine bariz çözümleri gözden kaçırıyorum."
+      },
+      {
+        "roll": "5",
+        "text": "Sözcüklerimi gerçekten düşünmeden konuşuyor, kaçınılmaz olarak başkalarını incitiyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Hayatımı ya da başka birinin hayatını kurtarmak bile olsa bir sırrı saklayamam."
+      }
+    ]
+  },
+  {
+    "id": "sailor",
+    "name": "SAILOR",
+    "nameTr": "Denizci",
+    "description": "Yıllarca denizde bir gemide seyir yaptın. Bu süre içinde, derin denizin fırtınalarıyla, seni ve gemini batırmak isteyenlerle ve ufkun uzak çizgisiyle yüzleştin. Göz attığın ilk aşkın uzak ufuktur; ama artık elini başka bir şeye denemek zamanı geldi.",
+    "skillProficiencies": "Athletics, Perception",
+    "languages": "Yok",
+    "toolProficiencies": "Navigator's tools (Navigasyon araçları), su araçları (vehicles — water)",
+    "equipment": "Belaying pin (gemi sapanı / cop), 50 feet ipek halat, şanslı muska (tavşan ayağı ya da ortasında delik küçük taş) veya rastgele bir hatıra, sıradan kıyafetler ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "Variant Feature: Bad Reputation (Kötü İtibar)",
+      "description": "Denizci background'una sahip karakterin için Ship's Passage yerine bu özelliği seçebilirsin. Nereye gidersen git, itibarın nedeniyle insanlar senden korkar. Medeni bir yerleşim yerinde, taverna faturasını ödemeyi reddetmek ya da yerel bir dükkanda kapıları kırmak gibi küçük suçlardan ceza görmeden kurtulabilirsin; çoğu insan faaliyetini yetkililere bildirmeyecektir."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Arkadaşlarım ne olursa olsun bana güvenebilir."
+      },
+      {
+        "roll": "2",
+        "text": "İş bittiğinde sert oynayabilmek için sıkı çalışırım."
+      },
+      {
+        "roll": "3",
+        "text": "Yeni limanlara yelken açmayı ve bir kupa bira üzerinde yeni arkadaşlar edinmeyi severim."
+      },
+      {
+        "roll": "4",
+        "text": "İyi bir hikaye uğruna gerçeği esnetirim."
+      },
+      {
+        "roll": "5",
+        "text": "Benim için bir meyhane kavgası yeni bir şehirde tanışmanın güzel bir yolu."
+      },
+      {
+        "roll": "6",
+        "text": "Dost canlısı bir bahsi asla geçemem."
+      },
+      {
+        "roll": "7",
+        "text": "Dilim otyugh yuvasından daha pis."
+      },
+      {
+        "roll": "8",
+        "text": "Başka birini ikna etmeyi başarabilirsem işi iyi yapılmış sayarım."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Respect. Bir gemiyi bir arada tutan şey kaptan ve mürettebat arasındaki karşılıklı saygıdır. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Fairness. Hepimiz çalışıyoruz, dolayısıyla hepimiz ödülü paylaşmalıyız. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Freedom. Deniz özgürlüktür; herhangi bir yere gitme ve her şeyi yapma özgürlüğü. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Mastery. Ben bir avcıyım; denizdeki diğer gemiler benim avımdır. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "People. Ideallere değil, gemi arkadaşlarıma bağlıyım. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Aspiration. Bir gün kendi gemime sahip olacak ve kendi kaderimi çizeceğim. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Her şeyden önce kaptanıma sadığım."
+      },
+      {
+        "roll": "2",
+        "text": "Gemi en önemli şey; gemi arkadaşları ve kaptanlar gelir geçer."
+      },
+      {
+        "roll": "3",
+        "text": "İlk gemimi her zaman hatırlayacağım."
+      },
+      {
+        "roll": "4",
+        "text": "Bir liman kentinde gözleriyle beni neredeyse denizden çalan bir sevgilim var."
+      },
+      {
+        "roll": "5",
+        "text": "Kardan payımı payımdan soyundu ve onu geri almak istiyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Acımasız korsanlar kaptanımı ve gemi arkadaşlarımı öldürdü, gemiyi yağmaladı ve ölmek üzere terk etti. İntikam benimdir."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Yanlış olduğunu düşünsem bile emirleri takip ederim."
+      },
+      {
+        "roll": "2",
+        "text": "Fazladan iş yapmaktan kaçınmak için her şeyi söylerim."
+      },
+      {
+        "roll": "3",
+        "text": "Cesaret bozulduğunda asla geri adım atmam, durum ne kadar tehlikeli olursa olsun."
+      },
+      {
+        "roll": "4",
+        "text": "İçmeye başladığımda durmak benim için zordur."
+      },
+      {
+        "roll": "5",
+        "text": "Karşılaştığım bol madeni parayı ve diğer hediyeleri cebime atmaktan kendimi alamam."
+      },
+      {
+        "roll": "6",
+        "text": "Gururum muhtemelen yıkımıma yol açacak."
+      }
+    ]
+  },
+  {
+    "id": "soldier",
+    "name": "SOLDIER",
+    "nameTr": "Asker",
+    "description": "Savaş, hatırlayabildiğin kadar hayatının bir parçası olmuştur. Bir gençken eğitildin, silahların ve zırhların kullanımını inceledi, temel hayatta kalma tekniklerini öğrendin. Bir ulusal ordunun, paralı asker birliğinin ya da son bir savaşta öne çıkan yerel milisisin parçası olabilirsin.",
+    "skillProficiencies": "Athletics, Intimidation",
+    "languages": "Yok",
+    "toolProficiencies": "Bir çeşit oyun seti, kara araçları (vehicles — land)",
+    "equipment": "Askeri rütbe nişanı, düşmandan alınan bir ganimet (hançer, kırık bıçak veya sancak parçası), zar veya kart destesi, sıradan kıyafetler ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "Military Rank (Askeri Rütbe)",
+      "description": "Asker olarak görev yaparken bir askeri rütben var. Eski askeri örgütünüzdeki askerler hâlâ otorite ve etkine saygı duyuyor; senden daha düşük rütbedeyse sana boyun eğiyorlar. Rütbeni diğer askerler üzerinde etki uygulamak ve geçici kullanım için basit ekipman veya atlar edinmek için kullanabilirsin. Ayrıca genellikle rütbenin tanındığı dostane askeri konaklama ve kalelere erişim sağlayabilirsin."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Her zaman kibar ve saygılıyım."
+      },
+      {
+        "roll": "2",
+        "text": "Savaş anılarından rahatsızlık duyuyorum. Şiddet görüntülerini zihnimden atamıyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Çok fazla arkadaş kaybettim ve yenilerini edinmek için yavaşım."
+      },
+      {
+        "roll": "4",
+        "text": "Neredeyse her muharebe durumuna uygun ilham verici ve uyarıcı askeri deneyim hikayeleriyle"
+      },
+      {
+        "roll": "5",
+        "text": "Bir cehennem iti görmezden geliyorum."
+      },
+      {
+        "roll": "6",
+        "text": "Güçlü olmaktan ve şeyleri kırmaktan hoşlanıyorum."
+      },
+      {
+        "roll": "7",
+        "text": "Kaba bir mizahım var."
+      },
+      {
+        "roll": "8",
+        "text": "Sorunları doğrudan ele alıyorum. Basit ve doğrudan bir çözüm, başarıya giden en iyi yoldur."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Greater Good. Görevimiz başkalarının savunması için hayatlarımızı ortaya koymak. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Responsibility. Sadece otorite yapmalıyım ve haklı otoriteye itaat etmeliyim. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Independence. İnsanlar körü körüne emirleri takip ettiğinde bir tür tiranlığı kucaklıyorlar. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Might. Hayatta olduğu gibi savaşta da daha güçlü olan kazanır. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "Live and Let Live. İdealler, öldürmeye ya da savaşmaya değmez. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Nation. Şehrim, ulusum ya da halkım benim için tek önemli şey. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Hizmet ettiğim insanlar için hâlâ hayatımı ortaya koyardım."
+      },
+      {
+        "roll": "2",
+        "text": "Savaş alanında biri hayatımı kurtardı. O günden bu yana asla bir arkadaşı geride bırakmadım."
+      },
+      {
+        "roll": "3",
+        "text": "Şerefim hayatımdır."
+      },
+      {
+        "roll": "4",
+        "text": "Birliğimin yaşadığı ezici yenilgiyi ya da buna neden olan düşmanları asla unutamam."
+      },
+      {
+        "roll": "5",
+        "text": "Yanımda savaşanlar ölmeye değer."
+      },
+      {
+        "roll": "6",
+        "text": "Kendileri için savaşamayanlara karşı savaşıyorum."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Savaşta karşılaştığımız acımasız düşman hâlâ beni titretiyor."
+      },
+      {
+        "roll": "2",
+        "text": "Kanıtlanmış savaşçı olmayan herkese çok az saygı duyuyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Savaşta pek çok hayatı kaybettiren korkunç bir hata yaptım ve bu sırrı her ne pahasına olursa olsun gizli tutmak istiyorum."
+      },
+      {
+        "roll": "4",
+        "text": "Düşmanlarıma karşı olan nefretim kör ve mantıksız."
+      },
+      {
+        "roll": "5",
+        "text": "Kanun acı verse de kanuna uyarım."
+      },
+      {
+        "roll": "6",
+        "text": "Yanıldığımda bunu kabul etmek yerine zırhımı yemek tercih ederim."
+      }
+    ]
+  },
+  {
+    "id": "urchin",
+    "name": "URCHIN",
+    "nameTr": "Sokak Çocuğu",
+    "description": "Sokaklarda yetim ve yoksul olarak büyüdün. Seni izleyecek ya da seni besleyecek kimse yoktu; bu yüzden kendi başına geçinmeyi öğrendin. Yiyecek için amansızca savaştın ve seni çalabilecek başka çaresiz ruhları sürekli gözetledin. Çatılar üstünde ve arka sokaklarda yaşadın, elemanlara maruz kaldın ve ilaç ya da iyileşme avantajı olmadan hastalıkla boğuştun. Tüm ihtimallere rağmen hayatta kaldın; kurnazlık, güç, hız veya bunların bir kombinasyonu sayesinde.",
+    "skillProficiencies": "Sleight of Hand, Stealth",
+    "languages": "Yok",
+    "toolProficiencies": "Disguise kit, Thieves' tools (hırsız aletleri)",
+    "equipment": "Küçük bir bıçak, büyüdüğün şehrin haritası, ebeveynlerini hatırlatmak için bir madalyon, sıradan kıyafetler ve 10 gp içeren kemer çantası",
+    "feature": {
+      "name": "City Secrets (Şehir Sırları)",
+      "description": "Şehirlerin gizli desenlerini ve akışını bilirsin; başkalarının kaçırabileceği kentsel yayılma içindeki geçitleri bulabilirsin. Savaş dışındayken sen (ve beraber götürdüklerin) şehir içindeki herhangi iki yer arasında normal hızınızın iki katı hızla seyahat edebilirsiniz."
+    },
+    "personalityTraits": [
+      {
+        "roll": "1",
+        "text": "Ceplerimde yiyecek parçaları ve küçük eşyalar saklarım."
+      },
+      {
+        "roll": "2",
+        "text": "Çok sayıda soru sorarım."
+      },
+      {
+        "roll": "3",
+        "text": "Başka kimsenin giremeyeceği küçük yerlere sığınmayı severim."
+      },
+      {
+        "roll": "4",
+        "text": "Sahip olduğum her şeyi sarmalanmış bir bohça içinde sarmıştım, sırtıma yaslanarak uyurum."
+      },
+      {
+        "roll": "5",
+        "text": "Domuz gibi yerim ve kötü tavırlarım var."
+      },
+      {
+        "roll": "6",
+        "text": "Bana iyi davranan herkes gizli kötü niyet taşıyor."
+      },
+      {
+        "roll": "7",
+        "text": "Yıkanmayı sevmiyorum."
+      },
+      {
+        "roll": "8",
+        "text": "İnsanların ima ettiği ya da gizlediği şeyleri doğrudan söylerim."
+      }
+    ],
+    "ideals": [
+      {
+        "roll": "1",
+        "text": "Respect. Zengin ya da yoksul, tüm insanlar saygıyı hak eder. (Good)"
+      },
+      {
+        "roll": "2",
+        "text": "Community. Hiç kimse bunu yapmayacak diye birbirimize bakmak zorundayız. (Lawful)"
+      },
+      {
+        "roll": "3",
+        "text": "Change. Alçak yükseltilir ve yüce ile kudretli aşağıya çekilir. Değişim doğanın bir parçasıdır. (Chaotic)"
+      },
+      {
+        "roll": "4",
+        "text": "Retribution. Zenginlerin, hayat ve ölümün sokaklarda nasıl olduğunu gösterilmesi gerekiyor. (Evil)"
+      },
+      {
+        "roll": "5",
+        "text": "People. Bana yardım eden insanlara yardım ederim; hayatı devam ettiren bu. (Neutral)"
+      },
+      {
+        "roll": "6",
+        "text": "Aspiration. Daha iyi bir hayata layık olduğumu kanıtlayacağım. (Any)"
+      }
+    ],
+    "bonds": [
+      {
+        "roll": "1",
+        "text": "Kasabam ya da şehrim benim evim ve onu savunmak için savaşacağım."
+      },
+      {
+        "roll": "2",
+        "text": "Başkalarının benim katlanmak zorunda kaldığım şeyleri yaşamaması için bir yetimhaneye destek oluyorum."
+      },
+      {
+        "roll": "3",
+        "text": "Hayatımı sokaklarda yaşamayı öğreten başka bir sokak çocuğuna borcum var."
+      },
+      {
+        "roll": "4",
+        "text": "Bana acıyan kişiye asla ödeyemeyeceğim bir borçluyum."
+      },
+      {
+        "roll": "5",
+        "text": "Yoksulluk hayatımdan önemli bir kişiyi soyarak zengin oldum ve bunun için arananım."
+      },
+      {
+        "roll": "6",
+        "text": "Başka hiç kimse benim geçirdiğim zorlukları yaşamamalı."
+      }
+    ],
+    "flaws": [
+      {
+        "roll": "1",
+        "text": "Sayıca üstün olunca dövüşten kaçarım."
+      },
+      {
+        "roll": "2",
+        "text": "Para bana çok büyük görünüyor ve biraz daha fazlası için neredeyse her şeyi yaparım."
+      },
+      {
+        "roll": "3",
+        "text": "Kendimden başka kimseye hiçbir zaman tamamen güvenmeyeceğim."
+      },
+      {
+        "roll": "4",
+        "text": "Birini uyurken öldürmeyi; sonra dürüstçe dövüşmeyi tercih ederim."
+      },
+      {
+        "roll": "5",
+        "text": "Daha çok ihtiyacım varsa çalmak değildir."
+      },
+      {
+        "roll": "6",
+        "text": "Kendilerini koruyamayanlar hak ettiklerini alır."
+      }
+    ]
+  }
+]

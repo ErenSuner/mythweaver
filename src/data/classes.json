@@ -1,0 +1,2513 @@
+[
+  {
+    "id": "barbarian",
+    "name": "BARBARIAN",
+    "nameTr": "Barbar",
+    "description": "Barbar; ilkel içgüdülerin, doğanın ham gücünün ve savaş çılgınlığının temsilcisidir. Sihir kullanmaz; gücünü bedeninden ve öfkesinden alır. D&D'nin en basit ve en doğrudan sınıflarından biridir; yeni oyuncular için iyi bir başlangıç noktasıdır.",
+    "hitDie": 12,
+    "primaryAbility": "Strength (Güç) — saldırı ve hasar rollerinde kullanılır.",
+    "savingThrows": [
+      "Strength",
+      "Constitution"
+    ],
+    "armor": "Hafif (light) ve orta (medium) zırh, kalkan (shield).",
+    "weapons": "Basit (simple) ve savaş (martial) silahlar — tüm standart silah çeşitleri.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Animal Handling, Athletics, Intimidation, Nature, Perception, Survival'dan ikisini seç.",
+      "raw": "Animal Handling, Athletics, Intimidation, Nature, Perception, Survival'dan ikisini seç."
+    },
+    "startingEquipment": "(a) bir büyük balta ya da (b) herhangi bir savaş yakın dövüş silahı; (a) iki el baltası ya da (b) herhangi bir basit silah; bir kaşif çantası (explorer's pack) ve dört cirit (javelin).",
+    "hpText": "**1. seviye HP:** 12 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d12 (veya 7) + Constitution modifier eklenir.\n**Örnek:** Constitution 16 ise modifier +3'tür. 1. seviye HP = 12 + 3 = 15. 2. seviyede 1d12 atarsın veya 7 alırsın; 7 + 3 = 10 HP daha eklersin; toplam 25 HP.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Rage (Öfke)",
+          "level": 1,
+          "description": "Barbarın en temel özelliği. Her turda bir Bonus Action harcayarak Rage'e girersin. Rage 1 dakika (10 tur) sürer ve şu anda bitirilmediği sürece devam eder:\n- **Strength check ve Strength saving throw'larda Advantage** kazanırsın.\n- **Strength ile yapılan melee (yakın dövüş) saldırılarında bonus hasar** kazanırsın. Bu bonus seviyene göre değişir:\n|**Barbar Seviyesi**|**Rage Hasar Bonusu**|\n|---|---|\n|**1–8**|+2|\n|**9–15**|+3|\n|**16–20**|+4|\n- **Bludgeoning, piercing ve slashing hasar türlerine Resistance** kazanırsın (yani bu hasar türlerinden aldığın hasar yarıya iner — zırh takıp takmadığından bağımsız olarak).\n**Kısıtlamalar:** Rage sırasında büyü cast edemezsin ve concentration gerektiren bir büyüyü sürdüremezsin. Rage; bilinç kaybedersen, tur sonunda düşman saldırmamışsan veya hasar almamışsan, ya da Bonus Action ile kendi isteğinle bitirirsen sona erer.\n**Rage Kullanım Sayısı:** Seviyene göre sınırlıdır. Tükendikten sonra Long Rest yapman gerekir.\n|**Seviye**|**Rage Sayısı**|\n|---|---|\n|**1–2**|2|\n|**3–5**|3|\n|**6–11**|4|\n|**12–16**|5|\n|**17–19**|6|\n|**20**|Sınırsız|\n**Önemli terim — Bonus Action:** Her turda bir tane Action hakkın ve bir tane Bonus Action hakkın vardır. Bazı özellikler ve büyüler Bonus Action kullanır. Rage'e girmek bir Bonus Action gerektirir; yani aynı turda hem Rage'e girip hem de saldırabilirsin — saldırı Action'ınla yapılır, Rage Bonus Action'ınla."
+        },
+        {
+          "name": "Unarmored Defense (Zırhsız Savunma)",
+          "level": 1,
+          "description": "Zırh giymediğin sürece AC (Armor Class) hesaplaman farklıdır. Normalde AC = zırhın değeri. Ancak Barbarian olarak:\nAC = 10 + Dexterity modifier + Constitution modifier\nBu kalkanla birlikte kullanılabilir (+2 bonus). Örnek: Dex +2, Con +3 ise AC = 10 + 2 + 3 = 15. Kalkanla 17 olur."
+        }
+      ],
+      "2": [
+        {
+          "name": "Reckless Attack (Pervasız Saldırı)",
+          "level": 2,
+          "description": "Turunda ilk saldırını yaparken Reckless Attack kullanmayı seçebilirsin. Bunu yaparsan:\n- **O tur tüm Strength bazlı melee saldırı atışlarında Advantage** kazanırsın.\n- **Ancak bir sonraki tura kadar sana yapılan tüm saldırı atışları da Advantage ile yapılır** — yani kendini açmış olursun.\n**Advantage nedir?** İki d20 atıp yükseği kullanmak. Disadvantage ise iki d20 atıp düşüğü kullanmak. İkisi aynı anda varsa birbirini iptal eder."
+        },
+        {
+          "name": "Danger Sense (Tehlike Sezgisi)",
+          "level": 2,
+          "description": "Görebildiğin tuzaklar, büyüler ve tehlikeler için Dexterity saving throw'larda Advantage kazanırsın. Bu özellik ancak körleşmemiş (not blinded), sağırlığa uğramamış (not deafened) ve etkisizleştirilmemiş (not incapacitated) olduğunda çalışır."
+        }
+      ],
+      "3": [
+        {
+          "name": "Primal Path (İlkel Yol)",
+          "level": 3,
+          "description": "3. seviyede bir Subclass seçersin. Bu seçim 3., 6., 10. ve 14. seviyelerde ek özellikler kazandırır. Subclass seçenekleri bu bölümün altında detaylandırılmıştır."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Her bu seviyede ya tek bir ability score'u 2 puan artırırsın, ya da iki farklı ability score'u 1'er puan artırırsın. Herhangi bir ability score 20'nin üzerine çıkamaz (bu yolla)."
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack (Ekstra Saldırı)",
+          "level": 5,
+          "description": "Attack action aldığında tek saldırı yerine iki saldırı yaparsın. Bu D&D'de önemli bir dönüm noktasıdır; hasar verme gücün bu seviyede büyük ölçüde artar."
+        },
+        {
+          "name": "Fast Movement (Hızlı Hareket)",
+          "level": 5,
+          "description": "Ağır zırh (heavy armor) giymediğin sürece hareket hızın 10 feet artar. Çoğu barbar zırhsız oynayacağından bu genellikle aktif kalır."
+        }
+      ],
+      "7": [
+        {
+          "name": "Feral Instinct (Vahşi İçgüdü)",
+          "level": 7,
+          "description": "Initiative (girişim) atışlarında Advantage kazanırsın. **Initiative nedir?** Savaş başladığında herkes d20 atarak sırasını belirler; yüksek initiative sıranda daha önce hareket etmeni sağlar.\nAyrıca eğer sürpriz (surprised) konumdaysan, o turda Rage'e girersen sürpriz durumunu görmezden gelirsin ve normal eylemlerini yapabilirsin."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Her bu seviyede ya tek bir ability score'u 2 puan artırırsın, ya da iki farklı ability score'u 1'er puan artırırsın. Herhangi bir ability score 20'nin üzerine çıkamaz (bu yolla)."
+        }
+      ],
+      "9": [
+        {
+          "name": "Brutal Critical (Kaba Kritik)",
+          "level": 9,
+          "description": "Melee saldırıyla Critical Hit (doğal 20) vururken ekstra hasar zarı atarsın:\n- 9. seviye: 1 ekstra hasar zarı\n- 13. seviye: 2 ekstra hasar zarı\n- 17. seviye: 3 ekstra hasar zarı\n**Critical Hit nedir?** Attack roll'da doğal 20 gelirse otomatik isabet; tüm hasar zarları iki kez atılır ve modifier eklenir. Brutal Critical bu miktara ek olarak ekstra zarlar ekler."
+        }
+      ],
+      "11": [
+        {
+          "name": "Relentless Rage (Amansız Öfke)",
+          "level": 11,
+          "description": "Rage sırasındayken 0 HP'ye düşersen ve anında ölmezsen, Constitution saving throw atarsın. Başarılıysan 1 HP ile ayakta kalırsın. İlk kullanımda DC 10'dur; her ek kullanımda DC 5 artar. Short veya Long Rest sonrası sıfırlanır."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Her bu seviyede ya tek bir ability score'u 2 puan artırırsın, ya da iki farklı ability score'u 1'er puan artırırsın. Herhangi bir ability score 20'nin üzerine çıkamaz (bu yolla)."
+        }
+      ],
+      "13": [
+        {
+          "name": "Brutal Critical (Kaba Kritik)",
+          "level": 13,
+          "description": "Melee saldırıyla Critical Hit (doğal 20) vururken ekstra hasar zarı atarsın:\n- 9. seviye: 1 ekstra hasar zarı\n- 13. seviye: 2 ekstra hasar zarı\n- 17. seviye: 3 ekstra hasar zarı\n**Critical Hit nedir?** Attack roll'da doğal 20 gelirse otomatik isabet; tüm hasar zarları iki kez atılır ve modifier eklenir. Brutal Critical bu miktara ek olarak ekstra zarlar ekler."
+        }
+      ],
+      "15": [
+        {
+          "name": "Persistent Rage (Kalıcı Öfke)",
+          "level": 15,
+          "description": "Artık Rage yalnızca bilinç kaybedersen ya da kendin bitirirsen sona erer. Saldırmaman ya da hasar almaman artık Rage'i bitirmez."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Her bu seviyede ya tek bir ability score'u 2 puan artırırsın, ya da iki farklı ability score'u 1'er puan artırırsın. Herhangi bir ability score 20'nin üzerine çıkamaz (bu yolla)."
+        }
+      ],
+      "17": [
+        {
+          "name": "Brutal Critical (Kaba Kritik)",
+          "level": 17,
+          "description": "Melee saldırıyla Critical Hit (doğal 20) vururken ekstra hasar zarı atarsın:\n- 9. seviye: 1 ekstra hasar zarı\n- 13. seviye: 2 ekstra hasar zarı\n- 17. seviye: 3 ekstra hasar zarı\n**Critical Hit nedir?** Attack roll'da doğal 20 gelirse otomatik isabet; tüm hasar zarları iki kez atılır ve modifier eklenir. Brutal Critical bu miktara ek olarak ekstra zarlar ekler."
+        }
+      ],
+      "18": [
+        {
+          "name": "Indomitable Might (Yenilmez Güç)",
+          "level": 18,
+          "description": "Strength check atışında toplam sonuç Strength score'undan düşükse, Strength score'unu kullanırsın. Örnek: Strength 20 ise ve zardan 8 + 4 = 12 çıktıysa, 20 kullanırsın."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Her bu seviyede ya tek bir ability score'u 2 puan artırırsın, ya da iki farklı ability score'u 1'er puan artırırsın. Herhangi bir ability score 20'nin üzerine çıkamaz (bu yolla)."
+        }
+      ],
+      "20": [
+        {
+          "name": "Primal Champion (İlkel Şampiyon)",
+          "level": 20,
+          "description": "Strength ve Constitution ability score'ların 4'er puan artar. Bu skorlar için maksimum değer 24 olur (normalde 20 olan üst sınır bu özellik için geçerli değildir)."
+        }
+      ]
+    },
+    "isCaster": false,
+    "spellcastingAbility": null,
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "path-of-the-berserker",
+        "name": "Path of the Berserker",
+        "nameTr": "Yıldırım Savaşçı Yolu",
+        "description": "En saldırgan ve hasar odaklı yol. Daha fazla çılgınlık, daha fazla öfke.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Frenzy (Delilik)",
+              "level": 3,
+              "description": "Rage'e girdiğinde Frenzy moduna geçmeyi seçebilirsin. Frenzy aktifken her turda (ilk saldırı turunu sayma) bir adet tek melee silah saldırısını Bonus Action olarak yapabilirsin. Ancak Rage bittiğinde bir seviye Exhaustion (tükenme) kazanırsın.\n**Exhaustion nedir?** D&D'de 1-6 arası seviyeli bir tükenme durumu. Her seviye farklı ceza getirir: 1. seviye tüm check'lerde Disadvantage, 2. seviye hız yarıya iner, 3. seviye saldırı ve saving throw'larda Disadvantage, 4. seviye max HP yarıya iner, 5. seviye hız 0 olur, 6. seviye ölüm. Long Rest ile bir seviye azalır."
+            }
+          ],
+          "6": [
+            {
+              "name": "Mindless Rage (Akılsız Öfke)",
+              "level": 6,
+              "description": "Rage sırasında Charmed veya Frightened olmazsın. Bu durumlardan birindeyken Rage'e girersen etki askıya alınır."
+            }
+          ],
+          "10": [
+            {
+              "name": "Intimidating Presence (Yıldırıcı Varlık)",
+              "level": 10,
+              "description": "Action harcayarak 30 feet içindeki, seni görebilen ya da duyabilen bir yaratığı Frightened yapmaya çalışırsın. Hedef Wisdom saving throw atar (DC = 8 + proficiency bonus + Charisma modifier). Başarısız olursa tur sonuna kadar Frightened olur. Sonraki turlarda aynı yaratığa karşı süreyi uzatmak için Action harcayabilirsin; ancak etkiden bağışık olursa 24 saat boyunca tekrar kullanamazsın.\n**Frightened nedir?** Korku durumunda olan bir yaratık, korku kaynağını görebildiği sürece saldırı ve ability check'lerde Disadvantage alır; ayrıca korkuya doğru iradeyle hareket edemez."
+            }
+          ],
+          "14": [
+            {
+              "name": "Retaliation (Misilleme)",
+              "level": 14,
+              "description": "5 feet içindeki bir yaratık sana hasar verdiğinde, Reaction harcayarak o yaratığa melee saldırısı yapabilirsin. **Reaction nedir?** Her tur 1 tane Reaction hakkın vardır. Bu, sıran olmadığında belirli bir tetikleyici olduğunda kullanabileceğin anlık bir eylemdir. Tur başında yenilenir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "path-of-the-totem-warrior",
+        "name": "Path of the Totem Warrior",
+        "nameTr": "Totem Savaşçısı Yolu",
+        "description": "Ruhani bir yol; savaş gücünü hayvan totemi aracılığıyla alırsın. Her seviyede farklı totem hayvanı seçebilirsin. Üç seçenek vardır: Bear (Ayı), Eagle (Kartal), Wolf (Kurt).",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Spirit Seeker",
+              "level": 3,
+              "description": "Beast sense ve speak with animals büyülerini ritual olarak cast edebilirsin.\n**Ritual casting nedir?** Bazı büyülerin 'ritual' etiketi vardır. Bu büyüleri normal şekilde (slot harcayarak) cast edebilirsin; ya da 10 dakika ekstra süre harcayarak slot kullanmadan cast edebilirsin. Ritual cast süresince gürültülü ortam yoksa genellikle sorun çıkmaz."
+            },
+            {
+              "name": "Totem Spirit",
+              "level": 3,
+              "description": "- **Bear (Ayı):** Rage sırasında psychic hariç tüm hasar türlerine Resistance kazanırsın.\n- **Eagle (Kartal):** Rage sırasında ve ağır zırh giymemişken, sana yapılan opportunity attack'lere Disadvantage verilir; Dash'i Bonus Action olarak kullanabilirsin.\n- **Wolf (Kurt):** Rage sırasında, 5 feet içindeki düşmana olan melee saldırılarında müttefikleriniz Advantage kazanır.\n**Opportunity Attack nedir?** Yakın dövüş menzilindeki (5 feet) bir düşman senin etki alanından çıkmaya çalışırsa, 1 Reaction harcayarak o düşmana melee saldırısı yapabilirsin."
+            }
+          ],
+          "6": [
+            {
+              "name": "Aspect of the Beast",
+              "level": 6,
+              "description": "- **Bear:** Taşıma kapasiten (carrying capacity) iki katına çıkar; push, pull, lift ve break Strength check'lerinde Advantage kazanırsın.\n- **Eagle:** 1 mil mesafeye kadar keskin görürsün; dim light (loş ışık) sana Disadvantage vermez.\n- **Wolf:** Hızla hareket eden diğer yaratıkları izleyebilirsin; normal hızda hareket ederken gizlice (stealth ile) ilerleyebilirsin."
+            }
+          ],
+          "10": [
+            {
+              "name": "Spirit Walker",
+              "level": 10,
+              "description": "Commune with nature büyüsünü ritual olarak cast edebilirsin."
+            }
+          ],
+          "14": [
+            {
+              "name": "Totemic Attunement",
+              "level": 14,
+              "description": "- **Bear:** 5 feet içindeki seni görebilen ya da duyabilen düşman yaratıklar, senden başka hedefe yapılan saldırı atışlarında Disadvantage alır.\n- **Eagle:** Rage sırasında mevcut yürüme hızına eşit uçuş (fly) hızı kazanırsın; ancak turunu havada bitirirsen ve başka hiçbir şey seni havada tutmuyorsa düşersin.\n- **Wolf:** Rage sırasında Bonus Action harcayarak Large veya daha küçük bir yaratığı Prone (yere yıkılmış) durumuna düşürebilirsin — melee saldırıyla vurduğunda.\n**Prone nedir?** Yerde yatan bir yaratık. Prone yaratık hareket ederek kalkabilir (hareket puanının yarısını harcanır). Prone'a yapılan melee saldırıları Advantage ile, ranged (menzilli) saldırılar Disadvantage ile yapılır."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "bard",
+    "name": "BARD",
+    "nameTr": "Bard / Ozan",
+    "description": "Bard; müzik, kelimeler ve büyüyü harmanlayan çok yönlü bir sınıftır. Müttefiklerini ilham verir, düşmanlarını manipüle eder, büyü kullanır ve neredeyse her konuda yardımcı olabilir. Yeni başlayanlar için büyü sistemini anlamak biraz zaman alabilir; ancak bir kez kavrandığında son derece zevkli bir sınıftır.",
+    "hitDie": 8,
+    "primaryAbility": "Charisma (Karizma) — tüm büyülerin temeli bu stat'tır.",
+    "savingThrows": [
+      "Dexterity",
+      "Charisma"
+    ],
+    "armor": "Hafif (light) zırh.",
+    "weapons": "Basit silahlar, el arbalet (hand crossbow), uzun kılıç (longsword), pala (rapier), kısa kılıç (shortsword).",
+    "tools": "Üç adet müzik aleti (musical instrument) — kendi seçiminle.",
+    "skillChoices": {
+      "count": 3,
+      "options": "Herhangi üç skill.",
+      "raw": "Herhangi üç skill."
+    },
+    "startingEquipment": "(a) pala, (b) uzun kılıç ya da (c) herhangi basit silah; (a) diplomat çantası ya da (b) eğlendirici çantası; (a) lut ya da (b) başka bir müzik aleti; deri zırh (leather armor) ve hançer.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Bardic Inspiration",
+          "level": 1,
+          "description": "Bu bard'ın en temel ve en önemli özelliğidir. Bonus Action harcayarak 60 feet içindeki, seni duyabilen bir müttefikine bir Bardic Inspiration zarı verirsin.\nBu zar; 10 dakika içinde bir saldırı atışı, ability check veya saving throw'a eklenebilir. Zar kullanılmadan önce atış sonucu belli olabilir; yani müttefikin zarı atayıp sonucu gördükten sonra Inspiration zarını ekleyip eklemeyeceğine karar verebilir.\nBir yaratık aynı anda yalnızca bir Bardic Inspiration zarı taşıyabilir.\nKullanım sayısı = Charisma modifier (minimum 1). Long Rest sonrası yenilenir.\nZar seviyene göre değişir:\n|**Seviye**|**Bardic Inspiration Zarı**|\n|---|---|\n|**1–4**|d6|\n|**5–9**|d8|\n|**10–14**|d10|\n|**15–20**|d12|"
+        }
+      ],
+      "2": [
+        {
+          "name": "Jack of All Trades",
+          "level": 2,
+          "description": "Proficiency bonusu eklemediğin tüm ability check'lere, proficiency bonusunun yarısını (aşağı yuvarlanarak) eklersin. Örnek: Proficiency +2 ise, eğitimli olmadığın bir skill kontrolünde +1 eklersin. Bu son derece güçlü bir özellik; bardı neredeyse her konuda yardımcı kılar."
+        },
+        {
+          "name": "Song of Rest",
+          "level": 2,
+          "description": "Short Rest sırasında müzik çalar ya da öykü anlatırsan, dinleyen ve hit dice harcayan müttefikler ekstra HP kazanır.\n|**Seviye**|**Song of Rest Bonusu**|\n|---|---|\n|**2–8**|1d6|\n|**9–12**|1d8|\n|**13–16**|1d10|\n|**17–20**|1d12|\n**Short Rest nedir?** En az 1 saat süren kısa dinlenme. Hit Dice harcayarak HP kazanabilir, bazı sınıf yetenekleri yenilenir."
+        }
+      ],
+      "3": [
+        {
+          "name": "Bard College",
+          "level": 3,
+          "description": "Subclass seçimi. College of Lore veya College of Valor'u seçersin. Bu seçim 3., 6. ve 14. seviyelerde özellik kazandırır."
+        },
+        {
+          "name": "Expertise",
+          "level": 3,
+          "description": "Proficiency sahibi olduğun iki skill'i seç. O skill check'lerinde proficiency bonusu iki katıyla eklenir. (Örnek: Proficiency +2 ise seçtiğin skill'lere +4 eklersin.) 10. seviyede iki skill daha seçersin."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Ability score'larını artırma fırsatı."
+        }
+      ],
+      "5": [
+        {
+          "name": "Font of Inspiration",
+          "level": 5,
+          "description": "Bardic Inspiration kullanımları Long Rest yerine Short Rest sonrasında da yenilenir. Bu büyük bir fark yaratır; çok daha sık inspiration verebilirsin."
+        }
+      ],
+      "6": [
+        {
+          "name": "Countercharm",
+          "level": 6,
+          "description": "Action harcayarak bir performans başlatırsın. Bir sonraki turuna kadar 30 feet içindeki, seni duyabilen müttefikler Frightened ve Charmed olmaya karşı saving throw'larda Advantage kazanır. Etkisizleşirilirsen (incapacitated) ya da susturulursan (silenced) biter."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Ability score'larını artırma fırsatı."
+        }
+      ],
+      "10": [
+        {
+          "name": "Magical Secrets",
+          "level": 10,
+          "description": "Herhangi bir sınıfın listesinden (Bard listesi dahil) ikişer büyü seçersin ve onlar bard büyün sayılır. Bu son derece güçlü bir özellik; Bard listesinde olmayan çok güçlü büyülere erişebilirsin. Seçilen büyüler Spells Known sayına dahildir."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Ability score'larını artırma fırsatı."
+        }
+      ],
+      "14": [
+        {
+          "name": "Magical Secrets",
+          "level": 14,
+          "description": "Herhangi bir sınıfın listesinden (Bard listesi dahil) ikişer büyü seçersin ve onlar bard büyün sayılır. Bu son derece güçlü bir özellik; Bard listesinde olmayan çok güçlü büyülere erişebilirsin. Seçilen büyüler Spells Known sayına dahildir."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Ability score'larını artırma fırsatı."
+        }
+      ],
+      "18": [
+        {
+          "name": "Magical Secrets",
+          "level": 18,
+          "description": "Herhangi bir sınıfın listesinden (Bard listesi dahil) ikişer büyü seçersin ve onlar bard büyün sayılır. Bu son derece güçlü bir özellik; Bard listesinde olmayan çok güçlü büyülere erişebilirsin. Seçilen büyüler Spells Known sayına dahildir."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Ability score'larını artırma fırsatı."
+        }
+      ],
+      "20": [
+        {
+          "name": "Superior Inspiration",
+          "level": 20,
+          "description": "Initiative atışında Bardic Inspiration'ın kalmamışsa, bir tane geri kazanırsın."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Charisma",
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "college-of-lore",
+        "name": "College of Lore",
+        "nameTr": "Bilgi Koleji",
+        "description": "Büyü, sosyal beceri ve bilgiye odaklı yol. Daha fazla spell ve düşmanı zayıflatma yetenekleri.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Bonus Proficiencies",
+              "level": 3,
+              "description": "3 adet skill proficiency daha seçersin (bu büyük bir avantajdır; diğer sınıflar bu kadar skill alamaz)."
+            },
+            {
+              "name": "Cutting Words (Keskin Sözler)",
+              "level": 3,
+              "description": "60 feet içindeki seni duyabilen bir yaratık saldırı atışı, ability check veya hasar atışı yaparken Reaction + bir Bardic Inspiration zarı harcayarak o atıştan zar sonucu kadar çıkarırsın. Bu kararı zar atıldıktan sonra, sonuç açıklanmadan önce alabilirsin. Yaratık seni duyamıyorsa veya charm'a immune ise çalışmaz."
+            }
+          ],
+          "6": [
+            {
+              "name": "Additional Magical Secrets",
+              "level": 6,
+              "description": "Herhangi bir sınıftan 2 büyü daha öğrenirsin. Diğer sınıflarda bu özellik 10. seviyede gelir; College of Lore 6. seviyede erken erişim sağlar."
+            }
+          ],
+          "14": [
+            {
+              "name": "Peerless Skill",
+              "level": 14,
+              "description": "Ability check yaparken bir Bardic Inspiration zarı harcayabilirsin; o zarı kendi atışına eklersin. Önceden değil, zar atıldıktan sonra kullanabilirsin."
+            }
+          ]
+        }
+      },
+      {
+        "id": "college-of-valor",
+        "name": "College of Valor",
+        "nameTr": "Kahramanlık Koleji",
+        "description": "Dövüşçü-bard hibrit yolu. Orta zırh ve daha fazla savaş kabiliyeti.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Bonus Proficiencies",
+              "level": 3,
+              "description": "Medium armor (orta zırh), shield (kalkan) ve martial weapon (savaş silahı) proficiency kazanırsın."
+            },
+            {
+              "name": "Combat Inspiration",
+              "level": 3,
+              "description": "Bardic Inspiration zarı alan müttefik, saldırı hasar atışına veya AC'ye (savunma class'ına) Bardic Inspiration zarını ekleyebilir. Hasar eklemek için saldırı sonrası ama hasar öncesi kullanılır; AC eklemek için atakçı saldırı atışını gördükten sonra reaction ile kullanılır."
+            }
+          ],
+          "6": [
+            {
+              "name": "Extra Attack",
+              "level": 6,
+              "description": "Attack action ile iki saldırı yapabilirsin."
+            }
+          ],
+          "14": [
+            {
+              "name": "Battle Magic",
+              "level": 14,
+              "description": "Action harcayarak bard büyüsü cast ettiğinde, Bonus Action olarak bir melee silah saldırısı yapabilirsin."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "cleric",
+    "name": "CLERIC",
+    "nameTr": "Rahip / İlahi Savaşçı",
+    "description": "Cleric; tanrısından güç alan, hem büyü kullanan hem de dövüşebilen çok yönlü bir sınıftır. Grubun iyileştiricisi ve desteğidir; ancak doğru domain seçimiyle güçlü bir saldırgan da olabilir. Büyü sistemi Druid'e çok benzer: her gün listeden hazırlık yaparsın.",
+    "hitDie": 8,
+    "primaryAbility": "Wisdom (Bilgelik) — tüm büyülerin temeli.",
+    "savingThrows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "armor": "Hafif (light) ve orta (medium) zırh, kalkan (shield). Bazı domain'ler ağır (heavy) zırh verir.",
+    "weapons": "Tüm basit (simple) silahlar.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "History, Insight, Medicine, Persuasion, Religion'dan ikisini seç.",
+      "raw": "History, Insight, Medicine, Persuasion, Religion'dan ikisini seç."
+    },
+    "startingEquipment": "(a) gürzü (mace) veya (b) savaş çekici (warhammer, eğer proficiency varsa); (a) zırhlı üst giysi (scale mail), (b) deri zırh ya da (c) halka zırh (chain mail, proficiency varsa); (a) el arbalet + 20 ok ya da (b) herhangi basit silah; (a) rahip çantası veya (b) kaşif çantası; bir kalkan ve kutsal sembol.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Divine Domain (İlahi Alan)",
+          "level": 1,
+          "description": "1. seviyede bir Divine Domain (domain / alan) seçersin. Bu seçim tüm cleric oyununu şekillendirir: savaş stilinden büyü listesine kadar her şeyi etkiler. Domain büyüleri her seviyede otomatik hazır gelir ve hazırlanacak büyü sayına dahil değildir.\nSeçenekler şunlardır: Knowledge, Life, Light, Nature, Tempest, Trickery, War."
+        }
+      ],
+      "2": [
+        {
+          "name": "Channel Divinity",
+          "level": 2,
+          "description": "Tanrınla doğrudan bağlantı kurarak ilahi enerji kanallamak için Channel Divinity kullanırsın. İlk başta 2 kullanımın vardır: Turn Undead ve domain'e özgü bir etki.\nKullanım sayısı:\n|**Seviye**|**Kullanım**|\n|---|---|\n|**2–5**|1 / rest|\n|**6–17**|2 / rest|\n|**18–20**|3 / rest|"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "5": [
+        {
+          "name": "Destroy Undead",
+          "level": 5,
+          "description": "Turn Undead kullanıldığında, belirli Challenge Rating (CR) değerinin altındaki undead yaratıklar sadece Turned olmakla kalmaz; anında yok edilir.\n|**Cleric Seviyesi**|**Yok Edilen Max CR**|\n|---|---|\n|**5**|CR 1/2|\n|**8**|CR 1|\n|**11**|CR 2|\n|**14**|CR 3|\n|**17**|CR 4|\n**CR (Challenge Rating) nedir?** Yaratıkların ne kadar tehlikeli olduğunu ölçen bir sayı. CR 1/2 = zayıf, CR 10+ = çok güçlü."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "10": [
+        {
+          "name": "Divine Intervention (İlahi Müdahale)",
+          "level": 10,
+          "description": "Action harcayarak tanrını yardıma çağırırsın. d100 (percentile zar) at; sonuç cleric seviyene eşit veya altındaysa tanrı yardım eder. Yardımın niteliğini DM belirler. Bu özelliği 7 gün boyunca tekrar kullanamazsın (eğer başarısız olursa); başarılı olursa 7 gün beklemelisin. 20. seviyede otomatik başarılı olur."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "20": [
+        {
+          "name": "Divine Intervention Improvement",
+          "level": 20,
+          "description": "20. seviyede Divine Intervention artık otomatik başarılı olur: tanrına yardım için yalvardığında zar atmana gerek kalmaz, çağrın her zaman kabul edilir (yine de kullandıktan sonra 7 gün beklersin)."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Wisdom",
+    "subclassLevel": 1,
+    "subclasses": [
+      {
+        "id": "knowledge-domain",
+        "name": "Knowledge Domain",
+        "nameTr": "Bilgi Alanı",
+        "description": "Bilgi, hafıza ve zekâya odaklanır. Araştırmacı, dedektif veya bilge cleric için idealdir.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|command, identify|\n|**3.**|augury, suggestion|\n|**5.**|nondetection, speak with dead|\n|**7.**|arcane eye, confusion|\n|**9.**|legend lore, scrying|\n**Blessings of Knowledge — 1. Seviye:** İki dil öğrenirsin. Arcana, History, Nature ve Religion'dan ikisinde Expertise kazanırsın (proficiency bonus iki katlanır).\n**Channel Divinity: Knowledge of the Ages — 2. Seviye:** Action ile 10 dakika boyunca bir skill veya tool'da proficiency kazanırsın.\n**Channel Divinity: Read Thoughts — 6. Seviye:** Action ile 60 feet içindeki bir yaratığın yüzeysel düşüncelerini okuyabilirsin; başarısız Wisdom saving throw ile 1 dakika boyunca suggestion büyüsünü slot harcamadan uygulayabilirsin.\n**Potent Spellcasting — 8. Seviye:** Cleric cantrip hasarına Wisdom modifier'ı eklenir.\n**Visions of the Past — 17. Seviye:** Tuttuğun bir nesnenin ya da bulunduğun bölgenin geçmişine dair vizyon görebilirsin (meditasyon gerektirir).",
+        "levelFeatures": {}
+      },
+      {
+        "id": "life-domain",
+        "name": "Life Domain",
+        "nameTr": "Yaşam Alanı",
+        "description": "İyileştirme ve hayat enerjisine odaklanır. En güçlü healer sınıf kombinasyonudur.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|bless, cure wounds|\n|**3.**|lesser restoration, spiritual weapon|\n|**5.**|beacon of hope, revivify|\n|**7.**|death ward, guardian of faith|\n|**9.**|mass cure wounds, raise dead|\n**Bonus Proficiency — 1. Seviye:** Heavy armor proficiency kazanırsın.\n**Disciple of Life — 1. Seviye:** 1. seviye veya üzeri iyileştirme büyüsü cast ettiğinde, hedef 2 + büyü seviyesi kadar ekstra HP kazanır.\n**Channel Divinity: Preserve Life — 2. Seviye:** Action ile kutsal sembolünü kullanarak 30 feet içindeki yaratıklar arasında cleric seviyenin 5 katı kadar HP dağıtırsın (her yaratık max HP'sinin yarısından fazlasını bu şekilde alamaz). Undead ve construct üzerinde çalışmaz.\n**Blessed Healer — 6. Seviye:** Başka birine iyileştirme büyüsü cast ettiğinde, kendin de 2 + büyü seviyesi kadar HP kazanırsın.\n**Divine Strike — 8. Seviye:** Silah saldırısı yaptığında turda bir kez ekstra 1d8 radiant hasar ekleyebilirsin. 14. seviyede 2d8 olur.\n**Supreme Healing — 17. Seviye:** İyileştirme büyüsü için zar atman gerektiğinde, zar atmak yerine maksimum değeri kullanırsın.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "light-domain",
+        "name": "Light Domain",
+        "nameTr": "Işık Alanı",
+        "description": "Işık, ateş ve gerçeğe odaklanır. Saldırgan ve karanlığı temizleyen bir cleric için. **Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|burning hands, faerie fire|\n|**3.**|flaming sphere, scorching ray|\n|**5.**|daylight, fireball|\n|**7.**|guardian of faith, wall of fire|\n|**9.**|flame strike, scrying|\n**Bonus Cantrip — 1. Seviye:** 'Light' cantrip'ini kazanırsın (eğer zaten bilmiyorsan).\n**Warding Flare — 1. Seviye:** 30 feet içindeki seni görebilen bir yaratık sana saldırdığında, Reaction harcayarak o saldırı atışına Disadvantage verirsin. Wisdom modifier kadar kullanım (min. 1); Long Rest ile yenilenir. Kör yaratıklara karşı çalışmaz.\n**Channel Divinity: Radiance of the Dawn — 2. Seviye:** Action ile 30 feet içindeki tüm sihirsel karanlığı dağıtır ve düşman yaratıklara hasar verirsin. Constitution saving throw (DC = spell save DC'n); başarısız olursa 2d10 + cleric seviyesi radiant hasar, başarılıysa yarısı.\n**Improved Flare — 6. Seviye:** Warding Flare artık bir müttefikine saldırı yapan yaratıklara karşı da kullanılabilir.\n**Potent Spellcasting — 8. Seviye:** Cleric cantrip hasarına Wisdom modifier eklenir.\n**Corona of Light — 17. Seviye:** Action ile 1 dakika boyunca bir ışık alanı yayarsın. 60 feet içinde parlak ışık, 30 feet ötesinde loş ışık (dim light). Düşmanlar ateş ve radiant hasara karşı saving throw'larında Disadvantage alır.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "nature-domain",
+        "name": "Nature Domain",
+        "nameTr": "Doğa Alanı",
+        "description": "Doğa, hayvanlar ve bitkilerle bağlantı. Nature cleric hem dövüşür hem büyü kullanır.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|animal friendship, speak with animals|\n|**3.**|barkskin, spike growth|\n|**5.**|plant growth, wind wall|\n|**7.**|dominate beast, grasping vine|\n|**9.**|insect plague, tree stride|\n**Acolyte of Nature — 1. Seviye:** Bir druid cantrip öğrenirsin. Ayrıca Animal Handling, Nature veya Survival'dan birinde proficiency kazanırsın.\n**Bonus Proficiency — 1. Seviye:** Heavy armor proficiency.\n**Channel Divinity: Charm Animals and Plants — 2. Seviye:** 30 feet içindeki hayvan ve bitki yaratıkları Wisdom saving throw'a zorlar; başarısız olanlar 1 dakika veya hasar alana kadar Charmed olur.\n**Dampen Elements — 6. Seviye:** 30 feet içindeki bir yaratık acid, cold, fire, lightning veya thunder hasarı aldığında Reaction ile o hasara Resistance verebilirsin.\n**Divine Strike — 8. Seviye:** Silah saldırısında turda bir kez ekstra 1d8 cold, fire veya lightning hasar (seçim yaparsın). 14. seviyede 2d8 olur.\n**Master of Nature — 17. Seviye:** Charm Animals and Plants ile büyülenmiş yaratıklara bonus action ile sesli komut verebilirsin.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "tempest-domain",
+        "name": "Tempest Domain",
+        "nameTr": "Fırtına Alanı",
+        "description": "Fırtına, şimşek ve denizin gücü. Saldırgan ve ağır zırhlı bir savaşan cleric.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|fog cloud, thunderwave|\n|**3.**|gust of wind, shatter|\n|**5.**|call lightning, sleet storm|\n|**7.**|control water, ice storm|\n|**9.**|destructive wave, insect plague|\n**Bonus Proficiencies — 1. Seviye:** Martial weapon ve heavy armor proficiency.\n**Wrath of the Storm — 1. Seviye:** 5 feet içindeki seni görebilen bir yaratık sana saldırınca, Reaction harcayarak ona lightning veya thunder hasarı verirsin (2d8; Dex saving throw yarısına iner). Wisdom modifier kadar kullanım (min. 1); Long Rest ile yenilenir.\n**Channel Divinity: Destructive Wrath — 2. Seviye:** Lightning veya thunder hasarı zarladığında, Channel Divinity harcayarak zar atmak yerine maksimum hasarı seçersin.\n**Thunderbolt Strike — 6. Seviye:** Lightning hasarı vurduğunda Large veya daha küçük bir yaratığı 10 feet itmek için kullanılabilir.\n**Divine Strike — 8. Seviye:** Turda bir kez ekstra 1d8 thunder hasar. 14. seviyede 2d8.\n**Stormborn — 17. Seviye:** Kapalı alan ve yeraltında değilsen, yürüme hızına eşit uçuş hızı kazanırsın.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "trickery-domain",
+        "name": "Trickery Domain",
+        "nameTr": "Hile Alanı",
+        "description": "Aldatma, gizlilik ve kurnazlık. Rogue-cleric hibrit oyun stili.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|charm person, disguise self|\n|**3.**|mirror image, pass without trace|\n|**5.**|blink, dispel magic|\n|**7.**|dimension door, polymorph|\n|**9.**|dominate person, modify memory|\n**Blessing of the Trickster — 1. Seviye:** Action ile dokunduğun bir müttefike (kendin değil) 1 saat boyunca Stealth check'lerinde Advantage ver.\n**Channel Divinity: Invoke Duplicity — 2. Seviye:** Action ile 30 feet içinde mükemmel ilüzyon kopyan yaratırsın (1 dakika). Kopyana doğru büyü cast edebilirsin; kopyana 5 feet yakın hem sen hem o iseniz saldırı atışlarında Advantage kazanırsın.\n**Channel Divinity: Cloak of Shadows — 6. Seviye:** Action ile gözden kaybolursun (invisible); bir sonraki turuna kadar veya saldırı/büyü cast edene kadar.\n**Divine Strike — 8. Seviye:** Turda bir kez ekstra 1d8 poison hasar. 14. seviyede 2d8.\n**Improved Duplicity — 17. Seviye:** Invoke Duplicity ile 4 kopya yaratırsın ve bonus action ile her birini 30 feete kadar hareket ettirebilirsin.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "war-domain",
+        "name": "War Domain",
+        "nameTr": "Savaş Alanı",
+        "description": "Savaş ve kahramanlık. En çok saldırı ve dövüşe odaklanan cleric yolu.\n**Domain Büyüleri:**\n|**Cleric Seviyesi**|**Büyüler**|\n|---|---|\n|**1.**|divine favor, shield of faith|\n|**3.**|magic weapon, spiritual weapon|\n|**5.**|crusader's mantle, spirit guardians|\n|**7.**|freedom of movement, stoneskin|\n|**9.**|flame strike, hold monster|\n**Bonus Proficiencies — 1. Seviye:** Martial weapon ve heavy armor proficiency.\n**War Priest — 1. Seviye:** Attack action aldığında, Bonus Action olarak bir silah saldırısı yapabilirsin. Wisdom modifier kadar kullanım (min. 1); Long Rest ile yenilenir.\n**Channel Divinity: Guided Strike — 2. Seviye:** Saldırı atışında, atışı gördükten sonra Channel Divinity harcayarak +10 bonus ekleyebilirsin.\n**Channel Divinity: War God's Blessing — 6. Seviye:** 30 feet içinde saldırı atışı yapan bir müttefike Reaction ile +10 saldırı bonus verebilirsin.\n**Divine Strike — 8. Seviye:** Turda bir kez ekstra 1d8 hasar (silahın hasar türüyle aynı). 14. seviyede 2d8.\n**Avatar of Battle — 17. Seviye:** Sihirsel olmayan silahlardan gelen bludgeoning, piercing ve slashing hasara Resistance kazanırsın.",
+        "levelFeatures": {}
+      }
+    ],
+    "otherSections": [
+      {
+        "name": "Yenileme: Short veya Long Rest sonrası yenilenir.",
+        "description": ""
+      },
+      {
+        "name": "Channel Divinity: Turn Undead",
+        "description": "Action harcayarak kutsal sembolünü gösterirsin. 30 feet içinde seni görebilen veya duyabilen her undead (ölümsüz) yaratık Wisdom saving throw atar. Başarısız olanlar 1 dakika boyunca Turned (püskürtülmüş) olur.\n**Turned nedir?** Turned olan yaratık senden kaçmaya çalışır; 30 feetten uzaklaştıktan sonra ya da engellenmeden ayrılamazsa, aksiyon harcayamaz (Dash hariç). Eğer kaçacak yer yoksa Dodge (savunma) eylemini kullanabilir. Seni görebiliyorsa sana yaklaşamaz."
+      }
+    ]
+  },
+  {
+    "id": "druid",
+    "name": "DRUID",
+    "nameTr": "Druid / Doğa Rahibi",
+    "description": "Druid; doğanın gücünden ilham alan, hayvan formuna dönüşebilen ve güçlü büyüler kullanan bir sınıftır. Büyü sistemi Cleric ile çok benzerdir (prepare sistemi); ancak bunun yanında Wild Shape (Vahşi Şekil) denilen tamamen benzersiz bir özelliğe sahiptir. Yeni oyuncular için biraz karmaşık olabilir; ancak Wild Shape'i kavradıktan sonra son derece zevkli ve çok yönlü bir sınıftır.",
+    "hitDie": 8,
+    "primaryAbility": "Wisdom (Bilgelik) — tüm büyülerin temeli.",
+    "savingThrows": [
+      "Intelligence",
+      "Wisdom"
+    ],
+    "armor": "Hafif (light) ve orta (medium) zırh, kalkan (shield) — metal zırh ve metal kalkan giymez (druid tercihi, kural değil, ancak PHB bunu belirtir).",
+    "weapons": "Gürz (clubs), hançer (daggers), dart, cirit (javelins), gürzler (maces), quarterstaff, kama (scimitars), orak (sickles), mızrak (spears). Basil ve doğal silahlar.",
+    "tools": "Otçuluk kiti (herbalism kit).",
+    "skillChoices": {
+      "count": 2,
+      "options": "Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, Survival'dan ikisini seç.",
+      "raw": "Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, Survival'dan ikisini seç."
+    },
+    "startingEquipment": "(a) tahta kalkan ya da (b) herhangi basit silah; (a) kama ya da (b) herhangi basit melee silah; deri zırh, kaşif çantası ve druidik focus.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Druidic (Druid Dili)",
+          "level": 1,
+          "description": "Druid'lerin gizli dili Druidic'i bilirsin. Bu dilde konuşabilir ve gizli mesajlar bırakabilirsin: mesajı bilenler otomatik fark eder, bilmeyenler ise ancak Wisdom (Perception) DC 15 ile varlığını sezer — içeriğini yine de okuyamaz."
+        },
+        {
+          "name": "Spellcasting (Büyücülük)",
+          "level": 1,
+          "description": "1. seviyeden itibaren doğa büyüsü kullanırsın. Büyü yeteneğin **Wisdom**. Her Long Rest'te büyü listenden hazırlayacağın büyüleri seçersin (hazırlanabilir sayı = Wisdom modifier + druid seviyen). Cantrip'ler slot harcamaz ve her zaman kullanılabilir; seviyeli büyüler ise **spell slot** harcar ve dinlenmede yenilenir. Druid, bilinen tüm büyü listesinden hazırlayabilen bir hazır-büyü kullanıcısıdır."
+        }
+      ],
+      "2": [
+        {
+          "name": "Wild Shape (Vahşi Şekil)",
+          "level": 2,
+          "description": "Druid'in en ikonik özelliği. Action harcayarak daha önce gördüğün bir hayvanın formuna dönüşürsün.\n**Kaç kere kullanabilirsin?** Short veya Long Rest başına 2 kez. Kullanım sayısı 2'de sabitlenmiştir (20. seviyede sınırsız olur).\n**Ne kadar sürer?** Druid seviyenin yarısı kadar saat (aşağı yuvarlanır). Örn: 4. seviye druid = 2 saat. İstersen Bonus Action ile normal forma dönebilirsin."
+        },
+        {
+          "name": "Druid Circle",
+          "level": 2,
+          "description": "2. seviyede bir Druid Circle seçersin. Bu seçim 2., 6., 10. ve 14. seviyelerde özellik kazandırır."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "18": [
+        {
+          "name": "Timeless Body",
+          "level": 18,
+          "description": "Her 10 yılda yalnızca 1 yaş alırsın. Druidler son derece uzun ömürlüdür."
+        },
+        {
+          "name": "Beast Spells",
+          "level": 18,
+          "description": "Wild Shape formundayken druid büyülerini cast edebilirsin. Material component hariç tüm bileşenler kullanılabilir."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Ability score artırma fırsatı."
+        }
+      ],
+      "20": [
+        {
+          "name": "Archdruid",
+          "level": 20,
+          "description": "Wild Shape kullanım sayısı sınırsız hale gelir."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Wisdom",
+    "subclassLevel": 2,
+    "subclasses": [
+      {
+        "id": "circle-of-the-land",
+        "name": "Circle of the Land",
+        "nameTr": "Kara Çemberi",
+        "description": "Büyüye odaklanan mistik yol. Doğanın kadim bilgeliğini taşır.\n**Bonus Cantrip — 2. Seviye:** İki druid cantrip biliyorsun; bu özellik listene bir cantrip daha ekler.\n**Natural Recovery — 2. Seviye:** Short Rest sırasında meditasyon yaparak harcanan spell slot'larını kısmen geri kazanabilirsin. Kazanılacak toplam slot seviyesi druid seviyenin yarısına (yukarı yuvarlanır) kadar olabilir ve 6. seviye veya üzeri slot'lar bu şekilde geri kazanılamaz. Bu özellik Long Rest'e kadar tekrar kullanılamaz.\n**Circle Spells — 3. Seviye:** Başlatıldığın arazinin türüne bağlı büyüler kazanırsın. Bu büyüler otomatik hazır gelir ve hazırlama sayısına dahil değildir. Aşağıdaki arazi türlerinden birini seçersin: Arktik:\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|hold person, spike growth|\n|**5.**|sleet storm, slow|\n|**7.**|freedom of movement, ice storm|\n|**9.**|commune with nature, cone of cold|\nKıyı (Coast):\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|mirror image, misty step|\n|**5.**|water breathing, water walk|\n|**7.**|control water, freedom of movement|\n|**9.**|conjure elemental, scrying|\nÇöl (Desert):\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|blur, silence|\n|**5.**|create food and water, protection from energy|\n|---|---|\n|**7.**|blight, hallucinatory terrain|\n|**9.**|insect plague, wall of stone|\n**Orman (Forest):**\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|barkskin, spider climb|\n|**5.**|call lightning, plant growth|\n|**7.**|divination, freedom of movement|\n|**9.**|commune with nature, tree stride|\n**Mera (Grassland):**\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|invisibility, pass without trace|\n|**5.**|daylight, haste|\n|**7.**|divination, freedom of movement|\n|**9.**|dream, insect plague|\n**Dağ (Mountain):**\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|spider climb, spike growth|\n|**5.**|lightning bolt, meld into stone|\n|**7.**|stone shape, stoneskin|\n|**9.**|passwall, wall of stone|\n**Bataklık (Swamp):**\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|darkness, Melf's acid arrow|\n|**5.**|water walk, stinking cloud|\n|**7.**|freedom of movement, locate creature|\n|**9.**|insect plague, scrying|\n**Yeraltı (Underdark):**\n|**Druid Seviyesi**|**Circle Büyüleri**|\n|---|---|\n|**3.**|spider climb, web|\n|**5.**|gaseous form, stinking cloud|\n|**7.**|greater invisibility, stone shape|\n|**9.**|cloudkill, insect plague|\n**Land's Stride — 6. Seviye:** Sihirsel olmayan zorlu arazide (difficult terrain) ekstra hareket harcamazsın. Sihirsel bitkilerden geçerken de hasar almadan geçebilirsin.\n**Nature's Ward — 10. Seviye:** Elementallerin ve feylerin büyüsüne karşı immune'sin; ayrıca zehir ve hastalığa karşı immune'sin.\n**Nature's Sanctuary — 14. Seviye:** Hayvanlar ve bitkiler sana saldırmadan önce Wisdom saving throw atar; başarısız olurlarsa saldırı yapamaz ve 24 saat boyunca bağışıklık kazanırlar.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "circle-of-the-moon",
+        "name": "Circle of the Moon",
+        "nameTr": "Ay Çemberi",
+        "description": "Wild Shape güçlerine odaklanan yol. Çok daha güçlü formlara dönüşebilirsin.\n**Combat Wild Shape — 2. Seviye:** Wild Shape'i Bonus Action olarak kullanabilirsin (normalde Action gerekir). Ayrıca Wild Shape formundayken Bonus Action harcayarak 1 spell slot (1d8 HP / seviye) kullanarak HP kazanabilirsin.\n**Circle Forms — 2. Seviye:** Dönüşebileceğin maksimum CR değeri çok daha yüksektir:\n|**Druid Seviyesi**|**Maksimum CR**|\n|---|---|\n|**2.**|CR 1|\n|**4.**|CR 2|\n|**6.**|CR 3 (ve artarak devam eder: seviye / 3)|\n|**20.**|CR 6|\n**Primal Strike — 6. Seviye:** Wild Shape formundaki saldırıların sihirsel olmayan hasar direncini aşar (yani saldırıların sihirsel sayılır).\n**Elemental Wild Shape — 10. Seviye:** 2 Wild Shape kullanımı harcayarak bir hava, toprak, ateş veya su elementaline dönüşebilirsin.\n**Thousand Forms — 14. Seviye:** Alter self büyüsünü isteğe bağlı olarak (at will) cast edebilirsin.",
+        "levelFeatures": {}
+      }
+    ],
+    "otherSections": [
+      {
+        "name": "Wild Shape Sınırlamaları",
+        "description": "|**Druid Seviyesi**|**Maksimum Hayvan CR ve Kısıtlamalar**|\n|---|---|\n|**2.**|Max CR 1/4 — Uçamaz, Yüzemez|\n|**4.**|Max CR 1/2 — Uçamaz|\n|**8.**|Max CR 1 — Kısıtlama yok|\n**CR (Challenge Rating):** Hayvanın ne kadar güçlü olduğunu belirleyen sayı. CR 1/4 = küçük/orta hayvan (kurt, akbaba); CR 1/2 = crocodile (timsah); CR 1 = giant eagle (dev kartal) vb.\n**Gördüğün hayvan:** Bir hayvanı gerçekten görmüş ya da tanımış olman gerekir. Hayali veya tanımadığın bir forma dönemezsin."
+      },
+      {
+        "name": "Wild Shape Sırasında Ne Olur?",
+        "description": "- Oyun istatistiklerin (stats) seçtiğin hayvanınkiyle değişir; ancak Alignment, kişilik, Intelligence, Wisdom ve Charisma değerlerin korunur.\n- Kendi skill ve saving throw proficiency'lerin korunur. Hayvanın aynı proficiency'leri varsa ikisinden yüksek olanı kullanırsın.\n- Hayvan formundaki HP'n ayrıdır; normal formdaki HP'nden bağımsız takip edilir. Hayvan formu HP'si bitince normal formuna dönersin ve kalan fazla hasar normal HP'ne geçer.\n- Büyü cast edemezsin (concentration büyülerin devam edebilir). Konuşamazsın; ellerini (pençe sayılmaz) gerektiren aksiyonlar kısıtlanır.\n- Zırhın ya yere düşer ya da forma kaynaşır; ekipmanın hayvan formunda işlevini yitirebilir.\n- Legendary veya lair action'ları olan hayvanların özel güçlerini kullanamazsın."
+      }
+    ]
+  },
+  {
+    "id": "fighter",
+    "name": "FIGHTER",
+    "nameTr": "Dövüşçü / Savaşçı",
+    "description": "Fighter; silahlar, zırhlar ve dövüş teknikleri konusunda D&D'nin en uzman sınıfıdır. Büyü kullanmaz (Eldritch Knight subclass'ı hariç) ve oyun mekaniklerini öğrenmek açısından yeni başlayanlar için en erişilebilir sınıflardan biridir. Aynı zamanda ilerleyen seviyelerde oldukça güçlüdür.",
+    "hitDie": 10,
+    "primaryAbility": "Strength veya Dexterity — dövüş stiline göre seçilir.",
+    "savingThrows": [
+      "Strength",
+      "Constitution"
+    ],
+    "armor": "Tüm zırh türleri ve kalkan — D&D'de tam zırh erişimi olan az sınıftan biri.",
+    "weapons": "Tüm basit ve savaş (martial) silahlar.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, Survival'dan ikisini seç.",
+      "raw": "Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, Survival'dan ikisini seç."
+    },
+    "startingEquipment": "(a) halka zırh (chain mail) veya (b) deri zırh + uzun yay + 20 ok; (a) savaş silahı + kalkan ya da (b) iki savaş silahı; (a) hafif arbalet + 20 bolt ya da (b) iki el baltası; (a) zindan macerası çantası ya da (b) kaşif çantası.",
+    "hpText": "**1. seviye:** 10 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d10 (veya 6) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Fighting Style (Dövüş Stili)",
+          "level": 1,
+          "description": "Uzmanlaşmak istediğin dövüş stilini seç. Bir stili birden fazla seçemezsin. Seçenekler:\n- **Archery (Okçuluk):** Menzilli silah saldırı atışlarına +2 bonus.\n- **Defense (Savunma):** Zırh giyerken AC'ye +1 bonus.\n- **Dueling (Düello):** Tek elde tutulan melee silahla (diğer elde silah yokken) hasar atışlarına +2 bonus.\n- **Great Weapon Fighting (İki El Savaşı):** İki elle tutulması gereken silahla saldırı yaparken hasar zarında 1 veya 2 gelirse zarı yeniden at, yeni sonucu kullan.\n- **Protection (Koruma):** Kalkan taşırken, 5 feet içindeki bir müttefikine saldıran düşmana Reaction ile Disadvantage uygularsın.\n- **Two-Weapon Fighting (Çift Silah):** İkinci saldırıda (off-hand) ability modifier'ı hasara eklersin — normalde eklenmez."
+        },
+        {
+          "name": "Second Wind (İkinci Rüzgar)",
+          "level": 1,
+          "description": "Bonus Action harcayarak 1d10 + fighter seviyesi kadar HP kazanırsın. Short veya Long Rest sonrası yenilenir.\n**Önemli:** Bu özellik Magic veya büyü değildir; tamamen fiziksel bir dayanıklılık patlamasıdır. Zırh giyip taşıyor olman fark etmez."
+        }
+      ],
+      "2": [
+        {
+          "name": "Action Surge (Eylem Patlaması)",
+          "level": 2,
+          "description": "Turunda normal eylemlerine ek olarak bir Action daha alırsın (ekstra Bonus Action değil). Bu, aynı turda iki kez Attack action yapmanı sağlar; Extra Attack ile birleştiğinde 5. seviyede tek turda 4 saldırı yapabilirsin.\n**Kullanım sayısı:** Short veya Long Rest başına 1 kez. 17. seviyede 2 kez kullanılabilir hale gelir, ancak aynı turda yalnızca 1 kez kullanılabilir."
+        }
+      ],
+      "3": [
+        {
+          "name": "Martial Archetype (Savaş Arketipi)",
+          "level": 3,
+          "description": "3. seviyede bir subclass seçersin. Bu seçim 3., 7., 10., 15. ve 18. seviyelerde özellik kazandırır."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack (Ekstra Saldırı)",
+          "level": 5,
+          "description": "Attack action aldığında yapabileceğin saldırı sayısı artar:\n|**Fighter Seviyesi**|**Saldırı Sayısı**|\n|---|---|\n|5.|2 saldırı|\n|11.|3 saldırı|\n|20.|4 saldırı|\n4 saldırı yapabilen tek standart sınıf Fighter'dır. Bu onu son seviyelerde hasar açısından son derece güçlü kılar."
+        }
+      ],
+      "6": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 6,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "9": [
+        {
+          "name": "Indomitable (Yenilmez)",
+          "level": 9,
+          "description": "Bir saving throw attıktan sonra, başarısız olursan zarı yeniden atabilirsin. Yeni sonucu kullanmak zorundasın. Short veya Long Rest sonrası yenilenir.\n|**Seviye**|**Kullanım**|\n|---|---|\n|9.|1 kez|\n|13.|2 kez|\n|17.|3 kez|"
+        }
+      ],
+      "11": [
+        {
+          "name": "Extra Attack (Ekstra Saldırı)",
+          "level": 11,
+          "description": "Attack action aldığında yapabileceğin saldırı sayısı artar:\n|**Fighter Seviyesi**|**Saldırı Sayısı**|\n|---|---|\n|5.|2 saldırı|\n|11.|3 saldırı|\n|20.|4 saldırı|\n4 saldırı yapabilen tek standart sınıf Fighter'dır. Bu onu son seviyelerde hasar açısından son derece güçlü kılar."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "13": [
+        {
+          "name": "Indomitable (Yenilmez)",
+          "level": 13,
+          "description": "Bir saving throw attıktan sonra, başarısız olursan zarı yeniden atabilirsin. Yeni sonucu kullanmak zorundasın. Short veya Long Rest sonrası yenilenir.\n|**Seviye**|**Kullanım**|\n|---|---|\n|9.|1 kez|\n|13.|2 kez|\n|17.|3 kez|"
+        }
+      ],
+      "14": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 14,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "17": [
+        {
+          "name": "Indomitable (Yenilmez)",
+          "level": 17,
+          "description": "Bir saving throw attıktan sonra, başarısız olursan zarı yeniden atabilirsin. Yeni sonucu kullanmak zorundasın. Short veya Long Rest sonrası yenilenir.\n|**Seviye**|**Kullanım**|\n|---|---|\n|9.|1 kez|\n|13.|2 kez|\n|17.|3 kez|"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Fighter, D&D'de en fazla Ability Score Improvement alan sınıftır (toplamda 7 kez). Bu da ability score'larını ya da feat'leri diğer sınıflara kıyasla çok daha hızlı artırmanı sağlar."
+        }
+      ],
+      "20": [
+        {
+          "name": "Extra Attack (Ekstra Saldırı)",
+          "level": 20,
+          "description": "Attack action aldığında yapabileceğin saldırı sayısı artar:\n|**Fighter Seviyesi**|**Saldırı Sayısı**|\n|---|---|\n|5.|2 saldırı|\n|11.|3 saldırı|\n|20.|4 saldırı|\n4 saldırı yapabilen tek standart sınıf Fighter'dır. Bu onu son seviyelerde hasar açısından son derece güçlü kılar."
+        }
+      ]
+    },
+    "isCaster": false,
+    "spellcastingAbility": null,
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "champion",
+        "name": "Champion",
+        "nameTr": "Şampiyon",
+        "description": "En sade ve anlaşılır Fighter subclass'ı. Ham fiziksel güce odaklanır; büyü yoktur, karmaşık mekanik yoktur. Yeni başlayanlar için idealdir.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Improved Critical",
+              "level": 3,
+              "description": "Silah saldırılarında 19 veya 20 attığında Critical Hit (tam isabet) gerçekleşir.\n**Critical Hit nedir?** Attack roll'da doğal 20 (veya bazı özelliklerde 19) gelirse otomatik isabet; tüm hasar zarları iki kez atılır ve modifier eklenir. Örn: Normal 1d8+3 hasar yerine 2d8+3 hasar alır hedef."
+            }
+          ],
+          "7": [
+            {
+              "name": "Remarkable Athlete",
+              "level": 7,
+              "description": "Proficiency eklemediğin Strength, Dexterity veya Constitution check'lerine, proficiency bonusunun yarısını (yukarı yuvarlanır) eklersin. Ayrıca koşarak uzun atlama mesafen Strength modifier kadar artar."
+            }
+          ],
+          "10": [
+            {
+              "name": "Additional Fighting Style",
+              "level": 10,
+              "description": "1. seviyedeki Fighting Style listesinden bir seçenek daha kazanırsın."
+            }
+          ],
+          "15": [
+            {
+              "name": "Superior Critical",
+              "level": 15,
+              "description": "Artık 18, 19 veya 20 attığında Critical Hit gerçekleşir."
+            }
+          ],
+          "18": [
+            {
+              "name": "Survivor",
+              "level": 18,
+              "description": "Her turun başında, eğer max HP'nın yarısından az HP'n varsa ve 0 HP üzerindeysen, 5 + Constitution modifier kadar HP kazanırsın. Bu özellik HP'ni max yarısının üzerine çıkarmaz."
+            }
+          ]
+        }
+      },
+      {
+        "id": "battle-master",
+        "name": "Battle Master",
+        "nameTr": "Savaş Ustası",
+        "description": "Taktik ve savaş manevralarına odaklanan yol. Superiority Dice adı verilen özel zarlarla güçlü dövüş teknikleri uygularsın. Daha karmaşık ama çok güçlüdür.\n**Manevraların Listesi (Kısaca):**\n- **Commander's Strike:** Action'ının bir saldırısını feragat et; Bonus Action ile müttefikine hemen saldırı yaptırt ve superiority zarını hasara ekle.\n- **Disarming Attack:** Vurduğunda superiority zarını hasara ekle; hedef Strength save atar yoksa elindeki nesneyi düşürür.\n- **Distracting Strike:** Vurduğunda superiority zarını hasara ekle; bir sonraki tura kadar bu hedefe karşı müttefiklerinin saldırılarına Advantage.\n- **Evasive Footwork:** Hareket ederken superiority zarını at; o turu boyunca sonucu AC'ne ekle.\n- **Feinting Attack:** Bonus Action ile aldatma yaparsın; bir sonraki saldırıya Advantage + superiority zarı hasara eklenir.\n- **Goading Attack:** Vurduğunda superiority zarını hasara ekle; hedef Wisdom save atar yoksa tur sonuna kadar senden başka hedefe Disadvantage ile saldırır.\n- **Lunging Attack:** Melee erişimini 5 feet artırırsın ve superiority zarını hasara eklersin.\n- **Maneuvering Attack:** Müttefikini güvenli biçimde hareket ettirirsin; superiority zarını hasara eklersin.\n- **Menacing Attack:** Vurduğunda superiority zarını hasara ekle; hedef Wisdom save atar yoksa tur sonuna kadar Frightened olur.\n- **Parry:** Melee saldırı aldığında Reaction ile superiority zarı + Dexterity modifier kadar hasarı azaltırsın.\n- **Precision Attack:** Saldırı atışını yaptıktan sonra (hasar öncesi) superiority zarını saldırı atışına eklersin.\n- **Pushing Attack:** Vurduğunda superiority zarını hasara ekle; Large veya küçük hedef Strength save atar yoksa 15 feet geriye itilir.\n- **Rally:** Bonus Action ile superiority zarı + Charisma modifier kadar geçici HP ver.\n- **Riposte:** Sana melee saldırısı ıskalayan düşmana Reaction ile karşı saldırı yap; superiority zarını hasara ekle.\n- **Sweeping Attack:** Vurduğunda 5 feet içindeki başka bir hedefe de superiority zarı kadar hasar ver (aynı saldırı atışı kullanılır).\n- **Trip Attack:** Vurduğunda superiority zarını hasara ekle; Large veya küçük hedef Strength save atar yoksa Prone (yere yıkılır).",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Combat Superiority",
+              "level": 3,
+              "description": "Superiority Dice adı verilen özel zarlar kazanırsın. Bu zarlar kullanıldığında harcanır; Short veya Long Rest sonrası yenilenir.\n|**Seviye**|**Superiority Dice**|**Manevra Sayısı**|\n|---|---|---|\n|3.|4 zar (d8)|3 manevra|\n|7.|5 zar (d8)|5 manevra|\n|10.|5 zar (d10)|7 manevra|\n|15.|6 zar (d10)|9 manevra|\n|18.|6 zar (d12)|9 manevra|\n**Maneuver Save DC:** 8 + Proficiency Bonus + Strength veya Dexterity modifier (seçim senin). Her saldırıda yalnızca 1 manevra kullanılabilir."
+            },
+            {
+              "name": "Student of War",
+              "level": 3,
+              "description": "Bir tür artisan tool'unda proficiency kazanırsın."
+            }
+          ],
+          "7": [
+            {
+              "name": "Know Your Enemy",
+              "level": 7,
+              "description": "En az 1 dakika dışarıdan bir yaratığı gözlemledikten sonra DM, iki özellik hakkında karşılaştırmalı bilgi verir (senden üstün mü, eşit mi, aşağı mı)."
+            }
+          ],
+          "10": [
+            {
+              "name": "Improved Combat Superiority",
+              "level": 10,
+              "description": "10. seviyede superiority zarların d10 olur; 18. seviyede d12 olur."
+            }
+          ],
+          "15": [
+            {
+              "name": "Relentless",
+              "level": 15,
+              "description": "Initiative atışında superiority zarın kalmamışsa, 1 tane geri kazanırsın."
+            }
+          ],
+          "18": [
+            {
+              "name": "Improved Combat Superiority",
+              "level": 18,
+              "description": "10. seviyede superiority zarların d10 olur; 18. seviyede d12 olur."
+            }
+          ]
+        }
+      },
+      {
+        "id": "eldritch-knight",
+        "name": "Eldritch Knight",
+        "nameTr": "Büyücü Şövalye",
+        "description": "Dövüş gücünü sınırlı büyü kullanımıyla harmanlayan yol. Büyülerin çoğu Abjuration ve Evocation okullarından seçilir. Spellcasting ability olarak Intelligence kullanır.\n**Cantrip Nedir?**\nCantrip, spell slot harcamadan istediğin kadar kullanabileceğin 0. seviye büyüdür. Sonsuz kullanım hakkın vardır; her turda, her gün sınırsız atabilirsin. Büyük çoğunluğu Action harcayarak kullanılır (bazıları farklı olabilir, her zaman büyünün açıklamasını oku). Slotlu büyülerden farkı: slotlu büyüler sınırlı sayıda kullanılabilir ve Long Rest ile yenilenir; cantrip'ler ise hiçbir şeye gerek kalmadan sınırsız kullanılır. Bazı cantrip'ler 5., 11. ve 17. seviyelerde otomatik güçlenir.\n**Spell Slot Nedir?**\nSpell slot, büyü atabilmek için harcadığın 'yakıt'tır. Her slot bir seviyeye aittir (1.–9. seviye). Bir büyü cast etmek için en az o büyünün gerektirdiği seviyede slot harcaman gerekir. Daha yüksek seviye slot kullanırsan büyü genellikle daha güçlü olur. Slot'lar Long Rest sonrası tamamen yenilenir. Yani sabah uyandığında tüm slot'ların geri gelir. Ranger ve Paladin için Short Rest ile yenilme yoktur.\n**Eldritch Knight Büyü Tablosu:**\n|**Seviye**|**Cantrip**|**Spell Bilinen**|**1. Slot**|**2. Slot**|**3. Slot**|**4. Slot**|\n|---|---|---|---|---|---|---|\n|3.|2|3|2|—|—|—|\n|4.|2|4|3|—|—|—|\n|5–6.|2|4|3|—|—|—|\n|7.|2|5|4|2|—|—|\n|8–9.|2|6|4|2|—|—|\n|10.|3|7|4|3|—|—|\n|11–12.|3|8|4|3|—|—|\n|13.|3|9|4|3|2|—|\n|14–15.|3|10|4|3|2|—|\n|16.|3|11|4|3|3|—|\n|17.|3|11|4|3|3|—|\n|18.|3|11|4|3|3|—|\n|19.|3|12|4|3|3|1|\n|20.<br>3<br>13<br>4<br>3<br>3<br>1|\n|---|\n**Önemli:** Seçtiğin büyülerin büyük çoğunluğu Abjuration veya Evocation okulu olmalıdır. 8., 14. ve 20. seviyelerde herhangi bir okuldan büyü seçebilirsin. Büyüler Long Rest sonrası yenilenir.\n**Spellcasting Ability: Intelligence —** Spell save DC = 8 + Prof. Bonus + Int modifier. Spell attack modifier = Prof. Bonus + Int modifier.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Weapon Bond (Silah Bağı)",
+              "level": 3,
+              "description": "1 saatlik ritual ile bir silaha bağlanırsın. Aynı anda en fazla 2 silaha bağlanabilirsin. Bu silahı Bonus Action ile ellerine çağırabilirsin (aynı düzlemdeyse anında gelir). Bağlı silah senden ayrılamaz — disarm edilemez, düşürülse bile çağırabilirsin."
+            }
+          ],
+          "7": [
+            {
+              "name": "War Magic",
+              "level": 7,
+              "description": "Action harcayarak bir cantrip cast ettiğinde, Bonus Action ile bir silah saldırısı yapabilirsin."
+            }
+          ],
+          "10": [
+            {
+              "name": "Eldritch Strike",
+              "level": 10,
+              "description": "Silah saldırısıyla vurduğunda, hedef bir sonraki tura kadar cast edeceğin büyülere karşı saving throw'larında Disadvantage alır."
+            }
+          ],
+          "15": [
+            {
+              "name": "Arcane Charge",
+              "level": 15,
+              "description": "Action Surge kullandığında, önce veya sonra görülebilir boş bir alana 30 feet ışınlanabilirsin."
+            }
+          ],
+          "18": [
+            {
+              "name": "Improved War Magic",
+              "level": 18,
+              "description": "War Magic artık cantrip yerine herhangi bir spell cast ettiğinde çalışır; cast ettiğinde Bonus Action ile silah saldırısı yapabilirsin."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "monk",
+    "name": "MONK",
+    "nameTr": "Keşiş / Rahip",
+    "description": "Monk; zırh ve silah olmadan, bedenini ve gizemli Ki enerjisini kullanarak dövüşen benzersiz bir sınıftır. Hız, hassasiyet ve disiplin üzerine kurulu; büyü kullanmaz (Way of the Four Elements subclass'ı hariç sınırlı büyü kullanır) ama Ki sistemi sayesinde çeşitli savaş içi ve dışı yeteneklere sahiptir.",
+    "hitDie": 8,
+    "primaryAbility": "Dexterity ve Wisdom.",
+    "savingThrows": [
+      "Strength",
+      "Dexterity"
+    ],
+    "armor": "Hiç. Monk zırh ve kalkan giymez (giyer ama yeteneklerinin büyük kısmı çalışmaz).",
+    "weapons": "Basit silahlar ve kısa kılıç (shortsword).",
+    "tools": "Artisan tool türlerinden biri veya bir müzik aleti.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Acrobatics, Athletics, History, Insight, Religion, Stealth'dan ikisini seç.",
+      "raw": "Acrobatics, Athletics, History, Insight, Religion, Stealth'dan ikisini seç."
+    },
+    "startingEquipment": "(a) kısa kılıç ya da (b) herhangi basit silah; (a) zindan macerası çantası ya da (b) kaşif çantası; 10 adet dart.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier. **Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Unarmored Defense",
+          "level": 1,
+          "description": "Zırh ve kalkan taşımıyorken AC = 10 + Dexterity modifier + Wisdom modifier.\n**Örnek:** Dex +3, Wis +2 ise AC = 10 + 3 + 2 = 15. Bu, çoğu hafif zırh değeriyle rekabet eder veya onu geçer."
+        },
+        {
+          "name": "Martial Arts",
+          "level": 1,
+          "description": "Zırh ve kalkan taşımıyorken, unarmed strike (yumruk, tekme) veya monk silahlarıyla dövüşürken şu avantajları kazanırsın:\n- **Dexterity kullanımı:** Unarmed strike ve monk silahlarının saldırı ve hasar atışlarında Strength yerine Dexterity kullanabilirsin.\n- **Hasar zarı:** Unarmed strike hasar zarın Martial Arts tablosundaki değere yükselir (örn: 1. seviye 1d4, 5. seviye 1d6).\n- **Bonus Action saldırısı:** Attack action ile unarmed strike veya monk silahı kullandığında, Bonus Action olarak bir unarmed strike daha yapabilirsin."
+        }
+      ],
+      "2": [
+        {
+          "name": "Ki",
+          "level": 2,
+          "description": "Ki point'leri kazanırsın. Başlangıçta üç ki yeteneği gelir; sonraki seviyelerde eklenir:"
+        },
+        {
+          "name": "Flurry of Blows",
+          "level": 2,
+          "description": "Attack action aldıktan hemen sonra 1 ki point harcayarak Bonus Action ile 2 adet unarmed strike yaparsın. Bu, turda toplamda 3–4 vuruş yapmanı sağlar."
+        },
+        {
+          "name": "Patient Defense",
+          "level": 2,
+          "description": "1 ki point harcayarak Bonus Action ile Dodge action alırsın.\n**Dodge nedir?** Dodge alındığında tüm saldırı atışları sana Disadvantage ile yapılır. Dex saving throw'larda ise Advantage kazanırsın. Bir sonraki turuna kadar sürer."
+        },
+        {
+          "name": "Step of the Wind",
+          "level": 2,
+          "description": "1 ki point harcayarak Bonus Action ile Disengage veya Dash action alırsın ve jump mesafeni ikiye katlanır.\n**Disengage nedir?** Bu action alındığında o tur hareket etmen opportunity attack tetiklemez. Dash ise hareket mesafeni ikiye katlar."
+        },
+        {
+          "name": "Unarmored Movement",
+          "level": 2,
+          "description": "Zırh ve kalkan taşımıyorken hareket hızın tabloya göre artar (2. seviyede +10 ft, ilerleyen seviyelerde daha fazla). 9. seviyede dikey yüzeyler ve su yüzeyinde hareket edebilirsin (o tur hareketi biterken düşmez)."
+        }
+      ],
+      "3": [
+        {
+          "name": "Monastic Tradition (Manastır Geleneği)",
+          "level": 3,
+          "description": "Subclass seçimi. 3., 6., 11. ve 17. seviyelerde özellik kazandırır."
+        },
+        {
+          "name": "Deflect Missiles",
+          "level": 3,
+          "description": "Menzilli silah saldırısıyla vurulduğunda Reaction harcayarak aldığın hasarı 1d10 + Dexterity modifier + monk seviyesi kadar azaltırsın. Hasar 0'a inerse mermiyi yakalamış sayılırsın; 1 ki point harcayarak aynı Reaction içinde onu hedefe fırlatabilirsin (30 feet, unarmed strike olarak)."
+        }
+      ],
+      "4": [
+        {
+          "name": "Slow Fall",
+          "level": 4,
+          "description": "Düşerken Reaction harcayarak monk seviyenin 5 katı kadar düşme hasarını azaltırsın."
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "level": 5,
+          "description": "Attack action aldığında 2 saldırı yaparsın. Flurry of Blows ile birleştiğinde bir turda 4 vuruş mümkündür."
+        },
+        {
+          "name": "Stunning Strike",
+          "level": 5,
+          "description": "Bir yaratığı melee silahla vurduğunda, 1 ki point harcayarak onu Stunned yapmaya çalışırsın. Constitution saving throw atar; başarısız olursa tur sonuna kadar Stunned olur.\n**Stunned nedir?** Stunned durumundaki yaratık hareket edemez, konuşamaz, action alamaz. Saving throw'larda otomatik başarısız olur ve yapılan saldırılar Advantage ile gelir."
+        }
+      ],
+      "6": [
+        {
+          "name": "Ki-Empowered Strikes",
+          "level": 6,
+          "description": "Unarmed strike'larının hasar türü sihirsel sayılır; dolayısıyla dirençli veya immune yaratıklara karşı da tam hasar vurursun."
+        }
+      ],
+      "7": [
+        {
+          "name": "Evasion",
+          "level": 7,
+          "description": "Dex saving throw gerektiren ve başarılıysa yarı hasar veren bir etkiye maruz kalırsan, başarılıysan hiç hasar almazsın; başarısız olsan bile yalnızca yarı hasar alırsın."
+        },
+        {
+          "name": "Stillness of Mind",
+          "level": 7,
+          "description": "Action harcayarak üzerindeki Charmed veya Frightened durumunu kendi isteğinle sonlandırabilirsin."
+        }
+      ],
+      "10": [
+        {
+          "name": "Purity of Body",
+          "level": 10,
+          "description": "Hastalıklara ve zehirlere karşı immune'sin."
+        }
+      ],
+      "13": [
+        {
+          "name": "Tongue of the Sun and Moon",
+          "level": 13,
+          "description": "Bir dil konuşabilen her yaratıkla iletişim kurabilirsin; tercüman gerekmez."
+        }
+      ],
+      "14": [
+        {
+          "name": "Diamond Soul",
+          "level": 14,
+          "description": "Tüm saving throw'larda proficiency kazanırsın. Ayrıca bir saving throw'u başarısız geçirirsen 1 ki point harcayarak zarı yeniden atabilirsin."
+        }
+      ],
+      "15": [
+        {
+          "name": "Timeless Body",
+          "level": 15,
+          "description": "Artık büyüsel olarak yaşlanmazsın (doğal yaşlılıktan ölebilirsin ama). Yiyeceğe ve suya ihtiyacın kalmaz."
+        }
+      ],
+      "18": [
+        {
+          "name": "Empty Body",
+          "level": 18,
+          "description": "4 ki point harcayarak 1 dakika Invisible (görünmez) olursun; bu süre boyunca tüm hasar türlerine Resistance kazanırsın (force hariç). Ayrıca 8 ki point harcayarak Astral Projection büyüsünü material component olmadan cast edebilirsin."
+        }
+      ],
+      "20": [
+        {
+          "name": "Perfect Self",
+          "level": 20,
+          "description": "Initiative atışında ki point'in kalmamışsa, 4 ki point geri kazanırsın."
+        }
+      ]
+    },
+    "isCaster": false,
+    "spellcastingAbility": null,
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "way-of-the-open-hand",
+        "name": "Way of the Open Hand",
+        "nameTr": "Açık El Yolu",
+        "description": "Dövüş teknikleri ve bedenin fiziksel gücüne odaklanan en saf monk yolu. Büyü yoktur, saf dövüş sanatı vardır.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Open Hand Technique",
+              "level": 3,
+              "description": "Flurry of Blows ile vurduğun hedeflere aşağıdaki etkilerden birini uygulayabilirsin:\n- Dexterity saving throw yoksa Prone (yere yıkılır).\n- Strength saving throw yoksa 15 feet geriye itilir.\n- Tur sonuna kadar Reaction alamaz."
+            }
+          ],
+          "6": [
+            {
+              "name": "Wholeness of Body",
+              "level": 6,
+              "description": "Action harcayarak monk seviyenin 3 katı kadar HP kazanırsın. Long Rest başına 1 kez."
+            }
+          ],
+          "11": [
+            {
+              "name": "Tranquility",
+              "level": 11,
+              "description": "Long Rest sonrası Sanctuary büyüsünün etkisine girersin (bir sonraki Long Rest'e kadar sürer, erken biter eğer saldırırsan)."
+            }
+          ],
+          "17": [
+            {
+              "name": "Quivering Palm",
+              "level": 17,
+              "description": "3 ki point harcayarak vurduğun hedefe titreşimler yerleştirirsin. Monk seviyenle aynı gün sayısı boyunca aktif kalır. Bonus Action ile tetikleyebilirsin; hedef Constitution save atar, başarısız olursa 10d10 necrotic hasar alır ve ölür; başarılıysa 10d10 alır. Yalnızca bir yaratık bu etkide olabilir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "way-of-shadow",
+        "name": "Way of Shadow",
+        "nameTr": "Gölge Yolu",
+        "description": "Gizlilik, aldatma ve gölgede hareket eden ninja-tarzı monk yolu.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Shadow Arts",
+              "level": 3,
+              "description": "2 ki point harcayarak Darkness, Darkvision, Pass Without Trace veya Silence büyülerini material component olmadan cast edebilirsin."
+            }
+          ],
+          "6": [
+            {
+              "name": "Shadow Step",
+              "level": 6,
+              "description": "Bonus Action ile loş ışık (dim light) veya tam karanlıktaki bir noktadan 60 feet içindeki başka bir karanlık/loş alana ışınlanırsın; o tur içindeki ilk melee saldırına Advantage kazanırsın."
+            }
+          ],
+          "11": [
+            {
+              "name": "Cloak of Shadows",
+              "level": 11,
+              "description": "Loş ışık veya tam karanlıktayken Action harcayarak Invisible olursun. Saldırı yaptığında veya büyü cast ettiğinde biter."
+            }
+          ],
+          "17": [
+            {
+              "name": "Opportunist",
+              "level": 17,
+              "description": "5 feet içindeki yaratık, senden başka biri tarafından vurulduğunda Reaction ile o yaratığa melee saldırısı yapabilirsin."
+            }
+          ]
+        }
+      },
+      {
+        "id": "way-of-the-four-elements",
+        "name": "Way of the Four Elements",
+        "nameTr": "Dört Element Yolu",
+        "description": "Ateş, su, hava ve toprak elementlerinin gücüyle savaşan sınırlı büyü kullanan monk yolu. Ki point'lerini büyü cast etmek için harcarsın.\n**Önemli:** Bu yol cantrip veya spell slot kullanmaz; tüm büyüler ki point harcar. Bu büyüler Concentration gerektirmez ve material component gerekmez.\n**Temel Disiplinler (Kısaca):**\n- **Elemental Attunement:** Ücretsiz; küçük elemental efektler (mum söndürme, su ısıtma vb.).\n- **Sweeping Cinder Strike (2 ki):** Burning hands büyüsünü cast et.\n- **Fangs of the Fire Snake (1 ki):** Tur boyunca unarmed erişimini 10 feet artır ve ateş hasarı versin.\n- **Fist of Four Thunders (2 ki):** Thunderwave büyüsünü cast et.\n- **Fist of Unbroken Air (2 ki):** 30 feet içindeki hedefe 3d10 bludgeoning + itme.\n- **Rush of the Gale Spirits (2 ki):** Gust of wind büyüsünü cast et.\n- **Shape the Flowing River (1 ki):** 120 feet içindeki su/buz alanını şekillendir.\n- **Clench of the North Wind (3 ki, 6. sev.):** Hold person büyüsünü cast et.\n- **Gong of the Summit (3 ki, 6. sev.):** Shatter büyüsünü cast et.\n- **Flames of the Phoenix (4 ki, 11. sev.):** Fireball büyüsünü cast et.\n- **Mist Stance (4 ki, 11. sev.):** Gaseous form büyüsünü cast et (kendin hedef).\n- **Ride the Wind (4 ki, 11. sev.):** Fly büyüsünü cast et (kendin hedef).\n- **Breath of Winter (6 ki, 17. sev.):** Cone of cold büyüsünü cast et.\n- **Eternal Mountain Defense (5 ki, 17. sev.):** Stoneskin büyüsünü cast et (kendin hedef).\n- **River of Hungry Flame (5 ki, 17. sev.):** Wall of fire büyüsünü cast et.\n- **Wave of Rolling Earth (6 ki, 17. sev.):** Wall of stone büyüsünü cast et.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Disciple of the Elements",
+              "level": 3,
+              "description": "Elemental Attunement disiplinini ve 1 adet daha elemental disiplin öğrenirsin. 6., 11. ve 17. seviyelerde ek disiplin kazanırsın; her seferinde öğrendiğin bir disiplini değiştirebilirsin.\nHer disiplin kullanımı ki point harcar; büyü etkisini artırmak için ek ki point eklenir. 5. seviyeden sonra, ek ki point ekleyerek disiplin büyüsünü daha yüksek seviyede cast edebilirsin."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "paladin",
+    "name": "PALADIN",
+    "nameTr": "Paladin / Kutsal Savaşçı",
+    "description": "Paladin; ilahi büyü kullanan, hem güçlü dövüşen hem de destekleyici yeteneklere sahip olan çok yönlü bir sınıftır. Spellcasting için Charisma kullanır. Lay on Hands ile iyileştirme, Divine Smite ile güçlü anlık hasar ve Aura of Protection ile grubuna katkı — bunların hepsi bir arada. Yeni başlayanlar için başlangıçta biraz karmaşık olabilir ama öğrendikten sonra son derece tatmin edici bir sınıftır.",
+    "hitDie": 10,
+    "primaryAbility": "Strength ve Charisma — dövüş için Strength, büyü için Charisma.",
+    "savingThrows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "armor": "Tüm zırh türleri ve kalkan.",
+    "weapons": "Tüm basit ve savaş silahları.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Athletics, Insight, Intimidation, Medicine, Persuasion, Religion'dan ikisini seç.",
+      "raw": "Athletics, Insight, Intimidation, Medicine, Persuasion, Religion'dan ikisini seç."
+    },
+    "startingEquipment": "(a) savaş silahı + kalkan ya da (b) iki savaş silahı; (a) 5 cirit ya da (b) herhangi basit melee silah; (a) kutsal görev çantası ya da (b) kaşif çantası; zincir zırh (chain mail) ve kutsal sembol.",
+    "hpText": "**1. seviye:** 10 + Constitution modifier. **Sonraki seviyeler:** Her seviyede 1d10 (veya 6) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Divine Sense (İlahi Sezi)",
+          "level": 1,
+          "description": "Action harcayarak 60 feet içindeki gizli olmayan (total cover arkasında değil) herhangi bir celestial (göksel), fiend (iblis) veya undead'i hissedebilirsin; konumunu ve türünü öğrenirsin. Ayrıca kötü yapılmış veya takdis edilmiş yerleri hissedebilirsin. Bir sonraki turuna kadar sürer.\n**Kullanım:** 1 + Charisma modifier. Long Rest ile yenilenir."
+        },
+        {
+          "name": "Lay on Hands (El Koyma ile Şifa)",
+          "level": 1,
+          "description": "Kutsal bir şifa havuzun vardır. Bu havuzdan istediğin kombinasyonda HP dağıtabilir ya da hastalık/zehri 5 HP karşılığında temizleyebilirsin.\n**Havuz büyüklüğü:** Paladin seviyenin 5 katı kadar HP (örn: 1. seviye = 5 HP havuzu, 5. seviye = 25 HP havuzu). Long Rest ile yenilenir.\nUndead ve construct üzerinde çalışmaz. Her kullanım bir Action gerektirir."
+        }
+      ],
+      "2": [
+        {
+          "name": "Fighting Style",
+          "level": 2,
+          "description": "Dövüş stilini seçersin: Defense (+1 AC zırhlıyken), Dueling (+2 hasar tek elde), Great Weapon Fighting (1-2 gelen hasar zarını yeniden at) veya Protection (kalkanla müttefike Disadvantage ver)."
+        },
+        {
+          "name": "Divine Smite (İlahi Darbe)",
+          "level": 2,
+          "description": "Melee silahla vurduğunda, bir spell slot harcayarak ekstra radiant hasar ekleyebilirsin. Bu kararı vururken verirsin; ıskalayan saldırıda harcamazsın.\n**Hasar hesabı:** 2d8 (1. seviye slot için) + slot seviyesi başına 1d8 ekstra. Hedef undead veya fiend ise 1d8 daha ekstra. Maksimum 5d8 (5. seviye slot, normal hedef), 6d8 (undead/fiend).\n|**Slot Seviyesi**|**Radiant Hasar**|\n|---|---|\n|1.|2d8 (normal) / 3d8 (undead)|\n|2.|3d8 / 4d8|\n|3.|4d8 / 5d8|\n|4.|5d8 / 6d8|\n|5.|5d8 / 6d8 (maksimum)|\n**Önemli:** Divine Smite, büyü değildir — slot harcar ama büyü efekti sayılmaz. Dolayısıyla Counterspell ile engellenemez."
+        }
+      ],
+      "3": [
+        {
+          "name": "Divine Health",
+          "level": 3,
+          "description": "Hastalıklara karşı immune'sin."
+        },
+        {
+          "name": "Sacred Oath (Kutsal Yemin)",
+          "level": 3,
+          "description": "Subclass seçimi. Bu seçim Oath Spells (yemin büyüleri), Channel Divinity seçenekleri ve 7., 15., 20. seviye özelliklerini belirler.\nOath büyüleri otomatik hazır gelir, hazırlama sayısına dahil değildir ve paladin spell listesinde olmasa bile paladin büyüleri sayılır."
+        },
+        {
+          "name": "Channel Divinity",
+          "level": 3,
+          "description": "Yemine özgü iki Channel Divinity seçeneğine sahip olursun. Short veya Long Rest sonrası yenilenir; başlangıçta 1 kullanım, 6. seviyeden sonra 2 kullanım."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "level": 5,
+          "description": "Attack action aldığında 2 saldırı yaparsın."
+        }
+      ],
+      "6": [
+        {
+          "name": "Aura of Protection (Koruma Aurası)",
+          "level": 6,
+          "description": "Paladin'in en güçlü özelliklerinden biri. Sen ve 10 feet içindeki bilinçli müttefikler saving throw'lara Charisma modifier'ı ekler (minimum +1).\n**Örnek:** Charisma modifier +4 ise tüm yakınlarındaki müttefikler her saving throw'a +4 ekler. Bu grup için devasa bir avantajdır.\n18. seviyede bu auranın menzili 30 feet olur."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "10": [
+        {
+          "name": "Aura of Courage (Cesaret Aurası)",
+          "level": 10,
+          "description": "Sen ve 10 feet içindeki bilinçli müttefikler Frightened durumuna giremez. 18. seviyede menzil 30 feet olur."
+        }
+      ],
+      "11": [
+        {
+          "name": "Improved Divine Smite",
+          "level": 11,
+          "description": "Melee silahla her vurduğunda, slot harcamadan otomatik olarak 1d8 ekstra radiant hasar eklersin. Bu, Divine Smite ile birleşebilir."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "14": [
+        {
+          "name": "Cleansing Touch",
+          "level": 14,
+          "description": "Action harcayarak dokunduğun gönüllü bir yaratık üzerindeki aktif bir büyü etkisini sonlandırabilirsin. Charisma modifier kadar kullanım; Long Rest ile yenilenir."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "20": [
+        {
+          "name": "Sacred Oath Capstone (Yemin Doruğu)",
+          "level": 20,
+          "description": "20. seviyede Sacred Oath'unun (yemininin) en güçlü özelliğini kazanırsın. Bu doruk özelliği seçtiğin yemine göre değişir — örnek: Oath of Devotion → Holy Nimbus, Oath of the Ancients → Elder Champion, Oath of Vengeance → Avenging Angel. Genellikle Action ile 1 dakika boyunca etkinleşir ve günde bir Long Rest sonrası tekrar kullanılabilir."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Charisma",
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "oath-of-devotion",
+        "name": "Oath of Devotion",
+        "nameTr": "Adanmışlık Yemini",
+        "description": "Klasik şövalye arketipi; adalet, dürüstlük ve erdem. Koruyucu ve savaşan bir paladin.\n**Tenets (Prensipler):** Dürüstlük — asla yalan söyleme. Cesaret — korku bilmez. Merhamet — zayıfları koru. Onur — başkalarına adil davran. Görev — sorumlulukların senden önce gelir.\n**Oath Büyüleri:**\n|**Paladin Seviyesi**|**Büyüler**|\n|---|---|\n|3.|protection from evil and good, sanctuary|\n|5.|lesser restoration, zone of truth|\n|9.|beacon of hope, dispel magic|\n|13.|freedom of movement, guardian of faith|\n|17.|commune, flame strike|",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Channel Divinity: Sacred Weapon",
+              "level": 3,
+              "description": "Action ile tuttuğun silahı kutsal enerjiyle doldurursun (1 dakika). Charisma modifier'ı saldırı atışlarına eklersin (min. +1). Silah ışık saçar (20 ft parlak, 10 ft dim). Sihirli değilse sihirsel sayılır. Elden bırakırsan veya bilincini yitirirsen biter."
+            },
+            {
+              "name": "Channel Divinity: Turn the Unholy",
+              "level": 3,
+              "description": "Action ile kutsal sembolünü gösterirsin; 30 feet içindeki fiend ve undead Wisdom save atar. Başarısız olanlar 1 dakika veya hasar alana kadar Turned olur."
+            }
+          ],
+          "7": [
+            {
+              "name": "Aura of Devotion",
+              "level": 7,
+              "description": "Sen ve 10 feet içindeki bilinçli müttefikler bilinçliyken Charmed olamaz. 18. seviyede menzil 30 feet."
+            }
+          ],
+          "15": [
+            {
+              "name": "Purity of Spirit",
+              "level": 15,
+              "description": "Protection from evil and good büyüsünün etkisi sürekli aktif kalır."
+            }
+          ],
+          "20": [
+            {
+              "name": "Holy Nimbus",
+              "level": 20,
+              "description": "Action ile 1 dakika boyunca güneş ışığı yayarsın. 30 feet yarıçap parlak ışık, 30 feet ötesi loş. Fiend veya undead aura içinde tur başladığında 10 radiant hasar alır. Tur boyunca fiend/undead büyülerine karşı saving throw'larda Advantage. Long Rest sonrası yenilenir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "oath-of-the-ancients",
+        "name": "Oath of the Ancients",
+        "nameTr": "Kadim Yemin",
+        "description": "Doğayı ve ışığı koruyan, fey-benzeri paladin. Druid'in koruyuculuğuyla paladin gücünü birleştirir.\n**Oath Büyüleri:**\n|**Paladin Seviyesi**|**Büyüler**|\n|---|---|\n|3.|ensnaring strike, speak with animals|\n|5.|moonbeam, misty step|\n|9.|plant growth, protection from energy|\n|13.|ice storm, stoneskin|\n|17.|commune with nature, tree stride|",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Channel Divinity: Nature's Wrath",
+              "level": 3,
+              "description": "Action ile spektral sarmaşıklar fışkırtırsın; 10 feet içindeki gördüğün bir yaratık Strength veya Dexterity save atar (seçim hedefin). Başarısız olursa Restrained (hareketi engellendi) olur; her turunda kurtarma atışu yapar.\n**Restrained nedir?** Restrained durumundaki yaratık hareket edemez. Saldırı atışları Disadvantage ile yapılır. Dex saving throw'larında Disadvantage alır."
+            },
+            {
+              "name": "Channel Divinity: Turn the Faithless",
+              "level": 3,
+              "description": "Action ile 30 feet içindeki fey ve fiend'lara hitap eden kelimeler söylersin; Wisdom save atarlar, başarısız olurlarsa 1 dakika veya hasar alana kadar Turned olur. Formu gizleniyorsa gerçek formu açığa çıkar."
+            }
+          ],
+          "7": [
+            {
+              "name": "Aura of Warding",
+              "level": 7,
+              "description": "Sen ve 10 feet içindeki müttefikler büyülerden aldığı hasara Resistance kazanır. 18. seviyede menzil 30 feet."
+            }
+          ],
+          "15": [
+            {
+              "name": "Undying Sentinel",
+              "level": 15,
+              "description": "0 HP'ye düştüğünde ve anında ölmediğinde, 1 HP ile kalabilirsin. Long Rest başına 1 kez. Ayrıca artık büyüsel olarak yaşlanmazsın."
+            }
+          ],
+          "20": [
+            {
+              "name": "Elder Champion",
+              "level": 20,
+              "description": "Action ile 1 dakika boyunca doğanın varlığına bürünürsün. Her tur başında 10 HP kazanırsın; paladin büyülerini cast ederken ayrıca Bonus Action olarak 1 silah saldırısı yapabilirsin; 10 feet içindeki düşmanlar paladin büyülerine ve Channel Divinity'ne karşı saving throw'larında Disadvantage alır. Long Rest sonrası yenilenir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "oath-of-vengeance",
+        "name": "Oath of Vengeance",
+        "nameTr": "İntikam Yemini",
+        "description": "Kötüleri acımasızca avlayan, adaleti zorla uygulayan karanlık paladin. Saldırı ve kontrol odaklı.\n**Oath Büyüleri:**\n|**Paladin Seviyesi**|**Büyüler**|\n|---|---|\n|3.|bane, hunter's mark|\n|5.|hold person, misty step|\n|9.|haste, protection from energy|\n|13.|banishment, dimension door|\n|17.|hold monster, scrying|",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Channel Divinity: Abjure Enemy",
+              "level": 3,
+              "description": "Action ile kutsal sembolünü gösterirsin; 60 feet içinde gördüğün bir yaratık Wisdom save atar. Fiend ve undead Disadvantage ile atar. Başarısız olursa 1 dakika veya hasar alana kadar Frightened olur, hızı 0'a iner."
+            },
+            {
+              "name": "Channel Divinity: Vow of Enmity",
+              "level": 3,
+              "description": "Bonus Action ile 10 feet içindeki bir yaratığa enmity yemini edersin. 1 dakika boyunca o yaratığa yapılan saldırı atışlarında Advantage kazanırsın."
+            }
+          ],
+          "7": [
+            {
+              "name": "Relentless Avenger",
+              "level": 7,
+              "description": "Opportunity attack vurduğunda, Bonus Action ve hareketin yok olmadan hemen o saldırının ardından hareketinin yarısı kadar (fırsatçı saldırı tetiklemeden) yaklaşabilirsin."
+            }
+          ],
+          "15": [
+            {
+              "name": "Soul of Vengeance",
+              "level": 15,
+              "description": "Vow of Enmity hedefin sana saldırı yaptığında, Reaction ile o hedefe melee saldırısı yapabilirsin."
+            }
+          ],
+          "20": [
+            {
+              "name": "Avenging Angel",
+              "level": 20,
+              "description": "Action ile 1 saat boyunca melek formuna bürünürsün. 60 ft uçuş hızı kazanırsın; 30 feet içinde aura yayarsın — ilk giren ya da başlayanlar Wisdom save atar, başarısız olursa 1 dakika Frightened olur, saldırı atışları onlara Advantage ile gelir. Long Rest sonrası yenilenir."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "ranger",
+    "name": "RANGER",
+    "nameTr": "Kaşif / Avcı",
+    "description": "Ranger; doğayı, izleri ve vahşi alanı yuvası olarak benimsemiş bir savaşçıdır. Hem dövüş becerileri hem de Druid'e benzer büyüler (Wisdom bazlı) kullanır. Belirli düşman türlerine ve arazilere karşı uzmanlaştırılabilir. Orta seviye güçtedir; ama özellikle izleme, hayatta kalma ve keşif açısından gruba eşsiz katkı sağlar.",
+    "hitDie": 10,
+    "primaryAbility": "Dexterity ve Wisdom.",
+    "savingThrows": [
+      "Strength",
+      "Dexterity"
+    ],
+    "armor": "Hafif ve orta zırh, kalkan.",
+    "weapons": "Tüm basit ve savaş silahları.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 3,
+      "options": "Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, Survival'dan üçünü seç.",
+      "raw": "Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, Survival'dan üçünü seç."
+    },
+    "startingEquipment": "(a) zırhlı üst giysi ya da (b) deri zırh; (a) iki kısa kılıç ya da (b) iki basit melee silah; (a) zindan çantası ya da (b) kaşif çantası; uzun yay ve 20 ok.",
+    "hpText": "**1. seviye:** 10 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d10 (veya 6) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Favored Enemy (Tercihli Düşman)",
+          "level": 1,
+          "description": "Belirli bir düşman türüne karşı uzmanlaşırsın. Seç: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, undead veya iki ırk (örn: gnolls ve orcs).\n- Seçtiğin düşman türünü takip etmek için Wisdom (Survival) check'lerine ve onlar hakkında Intelligence check'lerine Advantage.\n- O türün konuştuğu bir dili öğrenirsin."
+        },
+        {
+          "name": "Natural Explorer (Doğal Kaşif)",
+          "level": 1,
+          "description": "Belirli bir arazi türü seçersin: arctic, coast, desert, forest, grassland, mountain, swamp, Underdark. O arazide:\n- Intelligence ve Wisdom check'lerinde proficiency bonus iki katıyla eklenir (proficient olduğun skiller için).\n- Difficult terrain grubunun yavaşlamasına neden olmaz.\n- Sihirsel olmayan yollarla kaybolmazsınız.\n- Başka aktivite yaparken de uyanık kalırsın.\n- Yalnız seyahat ederken normal hızda gizlice ilerleyebilirsin.\n- İzleme ederken iz bırakanların boyutunu ve tam sayısını öğrenirsin.\n- Yiyecek ararken normalde bulduğunun iki katını bulursun.\n6. seviyede bir arazi türü daha, 10. seviyede bir tane daha."
+        }
+      ],
+      "2": [
+        {
+          "name": "Fighting Style",
+          "level": 2,
+          "description": "Dövüş stilini seçersin: Archery (+2 ranged saldırı), Defense (+1 AC zırhlıyken), Dueling (+2 hasar tek elde) veya Two-Weapon Fighting (off-hand hasara ability modifier ekle)."
+        },
+        {
+          "name": "Spellcasting",
+          "level": 2,
+          "description": "Büyü kullanmaya başlarsın. Sistem yukarıda açıklanmıştır."
+        }
+      ],
+      "3": [
+        {
+          "name": "Ranger Archetype (Ranger Arketipi)",
+          "level": 3,
+          "description": "Subclass seçimi. 3., 7., 11. ve 15. seviyelerde özellik kazandırır."
+        },
+        {
+          "name": "Primeval Awareness",
+          "level": 3,
+          "description": "Action harcayarak 1 dakika boyunca spell slot harcayabilirsin: harcadığın slot'un seviyesi başına 1 mil (veya favored terrain'deysen 6 mil) yarıçapta şu yaratık türlerini hissedebilirsin: aberrations, celestials, dragons, elementals, fey, fiends, undead. Sayılarını ya da konumlarını değil, sadece varlıklarını hissedebilirsin."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "level": 5,
+          "description": "Attack action aldığında 2 saldırı yaparsın."
+        }
+      ],
+      "6": [
+        {
+          "name": "6. seviyede bir favored enemy türü ve bir dil daha. 14. seviyede buna ek 'Vanish' özelliği gelir.",
+          "level": 6,
+          "description": ""
+        },
+        {
+          "name": "Favored Enemy Improvement",
+          "level": 6,
+          "description": "Bir favored enemy ve dil seçimi daha. Ayrıca Natural Explorer arazi seçimi de eklenebilir."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Standart ability score artırma fırsatları."
+        },
+        {
+          "name": "Land's Stride",
+          "level": 8,
+          "description": "Sihirsel olmayan difficult terrain seni yavaşlatmaz. Ayrıca sihirsel olmayan bitkilerden geçerken hasar almadan ve yavaşlamadan geçebilirsin. Sihirsel hareket engellerine karşı saving throw'larda Advantage."
+        }
+      ],
+      "10": [
+        {
+          "name": "Hide in Plain Sight",
+          "level": 10,
+          "description": "Doğal maddeler (çamur, kir, bitki, is) kullanarak kendini kamufle edebilirsin. 1 dakika hazırlık gerektirir; kurtulduktan sonra en az kendi boyunda ve genişliğinde sabit bir yüzeye yaslanabilirsen Stealth check'e +10 bonus. Hareket ettiğinde veya aksiyon aldığında kamufle bozulur."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "14": [
+        {
+          "name": "Vanish",
+          "level": 14,
+          "description": "Bonus Action ile Hide (Gizlen) action'ı alabilirsin. Ayrıca sihirsel olmayan araçlarla izlenemezsin (ama seçersen iz bırakabilirsin)."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "18": [
+        {
+          "name": "Feral Senses",
+          "level": 18,
+          "description": "Göremediğin (invisible, karanlık vb.) yaratıklara saldırırken görememen Disadvantage vermez. Ayrıca 30 feet içindeki Invisible ama senden gizlenmeyen yaratıkların konumunu fark edersin."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Standart ability score artırma fırsatları."
+        }
+      ],
+      "20": [
+        {
+          "name": "Foe Slayer",
+          "level": 20,
+          "description": "Her turunda favored enemy türünden birine yapılan bir saldırı atışı veya hasar atışına Wisdom modifier'ını ekleyebilirsin. Bu kararı atıştan önce veya sonra verebilirsin."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Wisdom",
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "hunter",
+        "name": "Hunter",
+        "nameTr": "Avcı",
+        "description": "Güçlü düşmanlara karşı savaş tekniklerine odaklanan klasik Ranger yolu. Her seviyede seçenek listesinden bir özellik kazanırsın.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Hunter's Prey",
+              "level": 3,
+              "description": "- **Colossus Slayer:** Yaralı bir hedefe (max HP'sinden düşük) turda bir kez ekstra 1d8 hasar.\n- **Giant Killer:** Large veya daha büyük bir yaratık ıskaladığında veya vurduğunda, Reaction ile o yaratığa saldırı yapabilirsin.\n- **Horde Breaker:** Attack action'ının bir saldırısından sonra, 5 feet içindeki farklı bir hedefe aynı silahla ücretsiz ekstra saldırı."
+            }
+          ],
+          "7": [
+            {
+              "name": "Defensive Tactics",
+              "level": 7,
+              "description": "- **Escape the Horde:** Sana yapılan opportunity attack'ler Disadvantage ile gelir.\n- **Multiattack Defense:** Bir yaratık sana isabet ettiğinde, o turun geri kalanında o yaratığın saldırılarına +4 AC.\n- **Steel Will:** Frightened'a karşı saving throw'larda Advantage."
+            }
+          ],
+          "11": [
+            {
+              "name": "Multiattack",
+              "level": 11,
+              "description": "- **Volley:** Action ile menzilli silahla menzil içindeki tüm hedefe ayrı ayrı saldırı yaparsın (her biri için ayrı atış).\n- **Whirlwind Attack:** Action ile 5 feet içindeki tüm hedefe melee saldırı yaparsın (her biri için ayrı atış)."
+            }
+          ],
+          "15": [
+            {
+              "name": "Superior Hunter's Defense",
+              "level": 15,
+              "description": "- **Evasion:** Başarılı Dex save = hasar yok; başarısız = yarı hasar. (Monk ile aynı özellik.)\n- **Stand Against the Tide:** Düşman saldırısı ıskaladığında, Reaction ile o saldırının aynı düşmanın seçtiğin başka bir hedefe tekrarlanmasını sağlarsın.\n- **Uncanny Dodge:** Saldıran yaratık görülebilir durumdaysa, Reaction ile o saldırının hasarını yarıya indir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "beast-master",
+        "name": "Beast Master",
+        "nameTr": "Canavar Ustası",
+        "description": "Bir hayvan yoldaşla birlikte savaşan Ranger yolu. Hayvan yoldaşın savaşa katılır, gelişir ve güçlenir.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Ranger's Companion",
+              "level": 3,
+              "description": "Medium veya daha küçük, CR 1/4 veya altında bir hayvan yoldaş seçersin (sasha, mastiff, panther gibi). Proficiency bonusu hayvanın AC, saldırı ve hasar atışlarına eklenir. Max HP = normal maksimum veya ranger seviyenin 4 katı (hangisi yüksekse).\nHayvanın Initiative'i senin Initiative'inde çalışır. Komut vermezsen Dodge action alır. Action harcayarak sözel komut verebilirsin. Extra Attack kazandıktan sonra, hayvanı Attack action'ı al diye komut ettiğinde kendin de bir saldırı yapabilirsin.\nHayvanın favored terrain'de normal hızda gizlice hareket edebilirsin.\n**Hayvan ölürse:** 8 saat ritüel ile CR 1/4 veya altında yeni bir hayvan bağlayabilirsin."
+            }
+          ],
+          "7": [
+            {
+              "name": "Exceptional Training",
+              "level": 7,
+              "description": "Hayvanını komut ettiğinde Bonus Action yeterlidir (Action gerekmez); hayvan Dash, Disengage, Dodge veya Help action alabilir."
+            }
+          ],
+          "11": [
+            {
+              "name": "Bestial Fury",
+              "level": 11,
+              "description": "Hayvanın Attack action aldığında 2 saldırı yapabilir."
+            }
+          ],
+          "15": [
+            {
+              "name": "Share Spells",
+              "level": 15,
+              "description": "Kendini hedef aldığın bir büyüyü cast ettiğinde, 30 feet içindeki hayvan yoldaşını da büyünün etkisine dahil edebilirsin."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "rogue",
+    "name": "ROGUE",
+    "nameTr": "Haydut / Kurnaz",
+    "description": "Rogue; gizlilik, hile ve hassas anlık hasar üzerine kurulu bir sınıftır. Büyü kullanmaz (Arcane Trickster subclass'ı hariç sınırlı büyü öğrenir). Sneak Attack sistemi sayesinde doğru koşullarda tek bir saldırıda devasa hasar verebilir. Skill sayısının fazlalığı ve Expertise özelliği onu sosyal ve keşif senaryolarında da çok değerli kılar.",
+    "hitDie": 8,
+    "primaryAbility": "Dexterity — saldırı, savunma ve gizlilik.",
+    "savingThrows": [
+      "Dexterity",
+      "Intelligence"
+    ],
+    "armor": "Hafif (light) zırh.",
+    "weapons": "Basit silahlar, el arbalet (hand crossbow), uzun kılıç (longsword), pala (rapier), kısa kılıç (shortsword).",
+    "tools": "Hırsız aletleri (thieves' tools).",
+    "skillChoices": {
+      "count": 4,
+      "options": "Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, Stealth'dan dördünü seç — çok fazla skill!",
+      "raw": "Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, Stealth'dan dördünü seç — çok fazla skill!"
+    },
+    "startingEquipment": "(a) pala ya da (b) kısa kılıç; (a) kısa yay + 20 ok ya da (b) kısa kılıç; (a) hırsız çantası, (b) zindan çantası ya da (c) kaşif çantası; deri zırh, iki hançer ve hırsız aletleri.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Expertise",
+          "level": 1,
+          "description": "Sahip olduğun iki skill proficiency'sini ya da bir skill + thieves' tools proficiency'sini seç. Seçtiğin kontrollere proficiency bonusu iki katıyla eklenir.\n**Örnek:** Proficiency +2 ise seçtiğin skill'lere +4 eklersin. 6. seviyede iki skill daha seçersin."
+        },
+        {
+          "name": "Thieves' Cant",
+          "level": 1,
+          "description": "Hırsızlar jargonunu ve gizli işaretlerini bilirsin. Hırsızlarla gizli mesajlaşabilir, tehlikeli bölgeleri veya korunan alanları tespit edebilirsin. Bu dili anlayan biriyle iletişim kurarsın."
+        }
+      ],
+      "2": [
+        {
+          "name": "Cunning Action",
+          "level": 2,
+          "description": "Bonus Action harcayarak şu action'lardan birini alabilirsin: Dash, Disengage veya Hide.\n**Bu neden önemli?** Rogue normalde Action harcamadan kaçamazken, Cunning Action sayesinde aynı turda hem saldırıp hem güvenli bir yere gizlenebilir ya da uzaklaşabilir. Bu, rogue'u son derece hareketli ve hayatta kalan bir sınıf yapar."
+        }
+      ],
+      "3": [
+        {
+          "name": "Roguish Archetype",
+          "level": 3,
+          "description": "Subclass seçimi. 3., 9., 13. ve 17. seviyelerde özellik kazandırır."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "5": [
+        {
+          "name": "Uncanny Dodge",
+          "level": 5,
+          "description": "Seni görebilen bir saldırgan sana saldırı yaptığında, Reaction harcayarak o saldırının hasarını yarıya indirirsin. Slot, ki veya kaynak harcamaz; her saldırıya karşı kullanılabilir (Reaction'ın yenilendiği koşulda)."
+        }
+      ],
+      "7": [
+        {
+          "name": "Evasion",
+          "level": 7,
+          "description": "Dex saving throw gerektiren ve başarılıysa yarı hasar veren bir etkiye maruz kalırsan: başarılıysan hiç hasar almazsın, başarısız olsan bile yalnızca yarı hasar alırsın."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "10": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 10,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "11": [
+        {
+          "name": "Reliable Talent",
+          "level": 11,
+          "description": "Proficiency eklediğin herhangi bir ability check için d20 atışında 9 veya daha düşük bir sonuç gelirse, onu 10 olarak kabul edersin. Bu, eğitimli olduğun alanlarda asla kötü şans yaşamayacağın anlamına gelir."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "14": [
+        {
+          "name": "Blindsense",
+          "level": 14,
+          "description": "Duyabildiğin sürece 10 feet içindeki gizlenmiş veya invisible yaratıkların yerini bilirsin."
+        }
+      ],
+      "15": [
+        {
+          "name": "Slippery Mind",
+          "level": 15,
+          "description": "Wisdom saving throw'larda proficiency kazanırsın."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "18": [
+        {
+          "name": "Elusive",
+          "level": 18,
+          "description": "Etkisizleştirilmemiş (not incapacitated) olduğun sürece, sana yapılan saldırı atışları Advantage ile yapılamaz."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Rogue toplamda 6 kez ASI alır — Fighter'dan sonra en fazlası."
+        }
+      ],
+      "20": [
+        {
+          "name": "Stroke of Luck",
+          "level": 20,
+          "description": "Bir saldırı ıskaladığında onu isabet saydırabilirsin; ya da bir ability check için d20 sonucu yerine 20 kullanabilirsin. Short veya Long Rest başına 1 kez."
+        }
+      ]
+    },
+    "isCaster": false,
+    "spellcastingAbility": null,
+    "subclassLevel": 3,
+    "subclasses": [
+      {
+        "id": "thief",
+        "name": "Thief",
+        "nameTr": "Hırsız",
+        "description": "En yalın ve hız odaklı rogue yolu. Kurnazlık, çabukluk ve sızma becerisi ön plana çıkar.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Fast Hands",
+              "level": 3,
+              "description": "Cunning Action'ın verdiği Bonus Action ile ek olarak şunları yapabilirsin: Sleight of Hand (el çabukluğu) check, thieves' tools kullanımı (kilit açma, tuzak bozma) veya Use an Object action."
+            },
+            {
+              "name": "Second-Story Work",
+              "level": 3,
+              "description": "Tırmanmak için ekstra hareket harcamazsın. Koşarken uzun atlama mesafene Dexterity modifier kadar feet eklenir."
+            }
+          ],
+          "9": [
+            {
+              "name": "Supreme Sneak",
+              "level": 9,
+              "description": "Turda yarım hızından fazla hareket etmediğin sürece Stealth check'lerinde Advantage kazanırsın."
+            }
+          ],
+          "13": [
+            {
+              "name": "Use Magic Device",
+              "level": 13,
+              "description": "Sınıf, ırk veya seviye gereksinimine bakmaksızın tüm sihirli eşyaları kullanabilirsin."
+            }
+          ],
+          "17": [
+            {
+              "name": "Thief's Reflexes",
+              "level": 17,
+              "description": "İlk savaş turunda, normal inisiyatifinde ve inisiyatifin eksi 10'da olmak üzere iki tur alırsın. Sürpriz konumundaysan bu özellik çalışmaz."
+            }
+          ]
+        }
+      },
+      {
+        "id": "assassin",
+        "name": "Assassin",
+        "nameTr": "Suikastçı",
+        "description": "Sürpriz saldırı ve kimlik değiştirme üzerine uzmanlaşmış yol. İlk turda olağanüstü hasar verir.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Bonus Proficiencies",
+              "level": 3,
+              "description": "Disguise kit ve poisoner's kit proficiency kazanırsın."
+            },
+            {
+              "name": "Assassinate",
+              "level": 3,
+              "description": "Savaşta henüz tur almamış (surprised veya initiative almamış) bir yaratığa karşı saldırı atışlarında Advantage kazanırsın. Ayrıca surprised (sürprizlenmiş) bir hedefe vurduğun her isabet otomatik Critical Hit sayılır.\n**Surprised nedir?** Savaş başladığında, bazı yaratıklar savaşı fark etmemiş olabilir. Bu yaratıklar ilk turda hareket edemez ve action alamaz; sadece savunma pozisyonunda bekler."
+            }
+          ],
+          "9": [
+            {
+              "name": "Infiltration Expertise",
+              "level": 9,
+              "description": "7 gün + 25 gp harcayarak başka biri adına sahte kimlik oluşturabilirsin. Yakalanmadan bu kimliği kullanabilirsin."
+            }
+          ],
+          "13": [
+            {
+              "name": "Impostor",
+              "level": 13,
+              "description": "En az 3 saat inceledikten sonra bir kişinin konuşma, yazı ve davranış biçimini mükemmel taklit edebilirsin. Bu kılıkta yapılan Charisma (Deception) check'lerinde Advantage."
+            }
+          ],
+          "17": [
+            {
+              "name": "Death Strike",
+              "level": 17,
+              "description": "Surprised bir hedefe isabet edersen, hedef Constitution saving throw atar (DC = 8 + Dex modifier + Prof. Bonus). Başarısız olursa hasarı iki katı alır."
+            }
+          ]
+        }
+      },
+      {
+        "id": "arcane-trickster",
+        "name": "Arcane Trickster",
+        "nameTr": "Büyülü Düzenbaz",
+        "description": "Sihri hileyle harmanlayan yol. Enchantment ve Illusion okulundan büyüler öğrenir; Intelligence bazlı caster'dır.\n**Cantrip Nedir?**\nCantrip, spell slot harcamadan istediğin kadar kullanabileceğin 0. seviye büyüdür. Sonsuz kullanım hakkın vardır; her turda, her gün sınırsız atabilirsin. Büyük çoğunluğu Action harcayarak kullanılır. Slotlu büyülerden farkı: slotlu büyüler sınırlı sayıda kullanılabilir ve Long Rest ile yenilenir; cantrip'ler ise hiçbir şeye gerek kalmadan sınırsız kullanılır. Bazı cantrip'ler 5., 11. ve 17. seviyelerde otomatik güçlenir.\n**Spell Slot Nedir?**\nSpell slot, büyü atabilmek için harcadığın 'yakıt'tır. Her slot bir seviyeye aittir (1.–9. seviye). Bir büyü cast etmek için en az o büyünün gerektirdiği seviyede slot harcaman gerekir. Daha yüksek seviye slot kullanırsan büyü genellikle daha güçlü olur. Slot'lar Long Rest sonrası tamamen yenilenir — Warlock hariç, o Short Rest ile de yenilenir.\n**Arcane Trickster Spell Tablosu:**\n|**Seviye**|**Cantrip**|**Spell Bilinen**|**1. Slot**|**2. Slot**|**3. Slot**|\n|---|---|---|---|---|---|\n|3.|3|3|2|—|—|\n|4.|3|4|3|—|—|\n|5.|3|4|3|—|—|\n|6.|3|4|3|—|—|\n|7.|3|5|4|2|—|\n|8.|3|6|4|2|—|\n|9.|3|6|4|2|—|\n|10.|4|7|4|3|—|\n|11.|4|8|4|3|—|\n|12.|4|8|4|3|—|\n|13.|4|9|4|3|2|\n|14.|4|10|4|3|2|\n|15.|4|10|4|3|2|\n|16.|4|11|4|3|3|\n|17.|4|11|4|3|3|\n|---|---|---|---|---|---|\n|18.|4|11|4|3|3|\n|19.|4|12|4|3|3|\n|20.|4|13|4|3|3|\n**Spell seçimi:** Enchantment ve Illusion okulundan seçmek zorundasın; 8., 14. ve 20. seviyelerdeki öğrenimler herhangi bir okuldan olabilir. Spellcasting ability: Intelligence.\nSpell save DC = 8 + Prof. Bonus + Intelligence modifier.",
+        "levelFeatures": {
+          "3": [
+            {
+              "name": "Mage Hand Legerdemain",
+              "level": 3,
+              "description": "Mage Hand cantrip'ini cast ettiğinde eli görünmez yapabilirsin. Bu elle şunları yapabilirsin: yaratıkların üzerindeki ya da içindeki kaplar/kılıflar arasında nesne taşıma, kilit açma veya tuzak bozma (thieves' tools ile) uzaktan. Bunlar Sleight of Hand check'iyle, Perception check'iyle yarışır. Cunning Action ile ek olarak eli kontrol edebilirsin."
+            }
+          ],
+          "9": [
+            {
+              "name": "Magical Ambush",
+              "level": 9,
+              "description": "Gizlenmiş (hidden) durumdayken bir yaratığa büyü cast ettiğinde, o büyüye karşı yapılan saving throw'larda hedef Disadvantage alır."
+            }
+          ],
+          "13": [
+            {
+              "name": "Versatile Trickster",
+              "level": 13,
+              "description": "Bonus Action ile Mage Hand elini kullanarak turunda saldırıya Advantage kazanabilirsin; el 5 feet içindeyse ve hedef elle aynı konumdaysa."
+            }
+          ],
+          "17": [
+            {
+              "name": "Spell Thief",
+              "level": 17,
+              "description": "Seni etkileyen bir büyüye karşı Reaction harcayarak o büyüyü çalabilirsin: saldırıcı spellcasting ability modifier'ı ile DC'ne eşit ya da üzeri Int save atar; başarısız olursa büyünün etkisini iptal eder ve sen 8 saat boyunca o büyüyü kendi spell slot'unla kullanabilirsin. Long Rest sonrası yenilenir."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": []
+  },
+  {
+    "id": "sorcerer",
+    "name": "SORCERER",
+    "nameTr": "Büyücü / Doğuştan Kaynağı",
+    "description": "Sorcerer; büyüsel gücünü eğitim ya da kitaptan değil, doğuştan gelen bir kandan veya gizemli bir kökenden alan spellcaster'dır. Wizard kadar çok büyü bilmez ama Metamagic ve Sorcery Points sistemiyle büyülerini son derece esnek ve güçlü biçimde kullanabilir. Charisma bazlıdır; Spells Known sistemiyle çalışır.",
+    "hitDie": 6,
+    "primaryAbility": "Charisma — tüm büyüler için.",
+    "savingThrows": [
+      "Constitution",
+      "Charisma"
+    ],
+    "armor": "Yok — zırh giyilirse büyü cast edilemez.",
+    "weapons": "Hançer, dart, sapan, quarterstaff, hafif arbalet.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Arcana, Deception, Insight, Intimidation, Persuasion, Religion'dan ikisini seç.",
+      "raw": "Arcana, Deception, Insight, Intimidation, Persuasion, Religion'dan ikisini seç."
+    },
+    "startingEquipment": "(a) hafif arbalet + 20 bolt ya da (b) herhangi basit silah; (a) component kesesi ya da (b) arcane focus; (a) zindan çantası ya da (b) kaşif çantası; iki hançer.",
+    "hpText": "**1. seviye:** 6 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d6 (veya 4) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Sorcerous Origin (Büyüsel Köken)",
+          "level": 1,
+          "description": "Büyüsel gücünün kaynağını seçersin: Draconic Bloodline veya Wild Magic. 1., 6., 14. ve 18. seviyelerde özellik kazandırır."
+        }
+      ],
+      "2": [
+        {
+          "name": "Font of Magic (Büyü Kaynağı)",
+          "level": 2,
+          "description": "Sorcery Points adı verilen özel bir kaynak kazanırsın. Bu points ile ek spell slot yaratabilir veya Metamagic güçlendirmeleri satın alabilirsin. Sorcery Points sayısı = sorcerer seviyenle eşittir. Long Rest sonrası yenilenir."
+        }
+      ],
+      "3": [
+        {
+          "name": "Metamagic",
+          "level": 3,
+          "description": "Sorcerer'ın en ayırt edici özelliği. Büyülerini bükebilirsin. 3. seviyede iki Metamagic seçeneği kazanırsın; 10. ve 17. seviyede birer tane daha. Her cast'te yalnızca 1 Metamagic opsiyonu kullanılabilir (Empowered Spell hariç — bu başkasıyla birleşebilir)."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "20": [
+        {
+          "name": "Sorcerous Restoration",
+          "level": 20,
+          "description": "Short Rest bitirdiğinde 4 harcanan sorcery point geri kazanırsın."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Charisma",
+    "subclassLevel": 1,
+    "subclasses": [
+      {
+        "id": "draconic-bloodline",
+        "name": "Draconic Bloodline",
+        "nameTr": "Ejderha Soylu",
+        "description": "Ejderha kanı taşıyan bir büyücü. Güç, dayanıklılık ve ejderha temalı özelliklere sahip olur.",
+        "levelFeatures": {
+          "1": [
+            {
+              "name": "Dragon Ancestor",
+              "level": 1,
+              "description": "10 ejderha türünden birini seçersin (Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White). Bu seçim hasarla ilgili özelliklerini belirler. Draconic dili konuşur, okur ve yazarsın; ejderhayla Charisma check'lerinde proficiency bonus ikiye katlanır."
+            },
+            {
+              "name": "Draconic Resilience",
+              "level": 1,
+              "description": "Max HP her seviyede 1 ekstra artar. Zırh giymediğinde AC = 13 + Dexterity modifier (Barbarian'ın Unarmored Defense'ine benzer ama sabit 13 tabanıyla)."
+            }
+          ],
+          "6": [
+            {
+              "name": "Elemental Affinity",
+              "level": 6,
+              "description": "Ejderha atasının hasar türünde hasar veren bir büyü cast ettiğinde, Charisma modifier'ı ekstra olarak hasara eklersin. Ayrıca 1 sorcery point harcayarak 1 saat boyunca o hasar türüne Resistance kazanırsın."
+            }
+          ],
+          "14": [
+            {
+              "name": "Dragon Wings",
+              "level": 14,
+              "description": "Bonus Action ile sırtından ejderha kanatları çıkarırsın; mevcut yürüme hızına eşit uçuş hızı kazanırsın. Bonus Action ile geri çekebilirsin. Uyumayan zırh giyiliyorsa kanatlar açılamayabilir."
+            }
+          ],
+          "18": [
+            {
+              "name": "Draconic Presence",
+              "level": 18,
+              "description": "5 sorcery point harcayarak 1 dakika (Concentration) ejderha aurası yayarsın (60 feet). Tüm düşman yaratıklar Wisdom save atar: başarısız olursa seçimine göre Charmed veya Frightened olurlar."
+            }
+          ]
+        }
+      },
+      {
+        "id": "wild-magic",
+        "name": "Wild Magic",
+        "nameTr": "Vahşi Büyü",
+        "description": "Kontrol edilemeyen kaotik büyü gücüne sahip yol. Beklenmedik ve bazen eğlenceli, bazen tehlikeli yan etkiler üretir.",
+        "levelFeatures": {
+          "1": [
+            {
+              "name": "Wild Magic Surge",
+              "level": 1,
+              "description": "1. seviye veya üzeri bir büyü cast ettiğinde, DM senden d20 atmana isteyebilir. 1 gelirse Wild Magic Surge gerçekleşir: d100 atılır ve tabloda rastgele bir etki tetiklenir (büyü tekrarı, polymorph, ışınlanma, hasar gibi çeşitli efektler)."
+            },
+            {
+              "name": "Tides of Chaos",
+              "level": 1,
+              "description": "Herhangi bir saldırı atışı, ability check veya saving throw için Advantage kazanırsın. Long Rest öncesinde 1 kez kullanılabilir. Ayrıca kullandıktan sonra bir sonraki yüksek seviye büyü cast ettiğinde DM Wild Magic Surge tetikleyebilir; bu tetikleme olursa Tides of Chaos kullanım hakkın geri gelir."
+            }
+          ],
+          "6": [
+            {
+              "name": "Bend Luck",
+              "level": 6,
+              "description": "2 sorcery point harcayarak, gördüğün bir yaratığın saldırı atışı, ability check veya saving throw'una 1d4 ekler veya çıkarırsın. Zarı gördükten sonra ama etkiler oluşmadan önce kullanabilirsin."
+            }
+          ],
+          "14": [
+            {
+              "name": "Controlled Chaos",
+              "level": 14,
+              "description": "Wild Magic Surge tetiklendiğinde d100 iki kez atıp istediğin sonucu seçebilirsin."
+            }
+          ],
+          "18": [
+            {
+              "name": "Spell Bombardment",
+              "level": 18,
+              "description": "Hasar zarlarından herhangi biri maksimum değer gösterirse, o zarı bir kez daha at ve ekle. Tur başına 1 kez."
+            }
+          ]
+        }
+      }
+    ],
+    "otherSections": [
+      {
+        "name": "Flexible Casting — Sorcery Points Nasıl Kullanılır?",
+        "description": "Sorcery Points ile iki yönde dönüşüm yapabilirsin:  1) SLOT → POINT: Bonus Action ile bir spell slot'u harcayarak sorcery point kazanırsın. 1. slot = 2 point, 2. = 3, 3. = 5, 4. = 6, 5. = 7. 2) POINT → SLOT: Bonus Action ile sorcery point harcayarak slot üretirsin. 1. slot = 2 point, 2. = 3, 3. = 5, 4. = 6, 5. = 7. 5. seviyenin üzerinde slot üretemezsin."
+      },
+      {
+        "name": "Metamagic Seçenekleri:",
+        "description": "- **Careful Spell (1 point):** Büyünün saving throw'unu zorunlu kılan etkisinden, Charisma modifier kadar (min. 1) yaratığı koru — bunlar otomatik başarılı sayılır.\n- **Distant Spell (1 point):** 5 feet veya daha fazla menzilli büyünün menzilini iki katına çıkar. Touch menzilli büyünün menzilini 30 feet yapar.\n- **Empowered Spell (1 point):** Hasar zarladığında, Charisma modifier kadar zarı yeniden at (min. 1). Başka Metamagic ile birlikte kullanılabilir.\n- **Extended Spell (1 point):** 1 dakika veya daha uzun süreli büyünün süresini iki katına çıkar (max 24 saat).\n- **Heightened Spell (3 point):** Büyünün saving throw hedeflerinden biri, ilk atmaya Disadvantage ile atar.\n- **Quickened Spell (2 point):** 1 Action gerektiren büyüyü Bonus Action olarak cast edersin. Bu özellik son derece güçlüdür; hem Action hem Bonus Action ile büyü atmanı sağlar.\n- **Subtle Spell (1 point):** Büyüyü somatic (jest) ve verbal (sözel) component olmadan cast edersin — sessiz ve hareketsiz büyü kullanımı.\n- **Twinned Spell (1 point / cantrip veya spell seviyesi kadar):** Tek bir yaratığı hedef alan büyü ile ikinci bir yaratığı da aynı büyüyle hedef alırsın."
+      }
+    ]
+  },
+  {
+    "id": "warlock",
+    "name": "WARLOCK",
+    "nameTr": "Büyü Paktçısı",
+    "description": "Warlock; güçlü ve esrarengiz bir varlıkla yapılan bir pakt sayesinde büyüsel güç kazanmış bir sınıftır. Diğer büyücülerden tamamen farklı bir büyü sistemine sahiptir: az sayıda spell slot'u vardır ama bunlar Short Rest ile yenilenir. Eldritch Blast cantrip'i temel saldırısıdır; Eldritch Invocations ile özelleştirilebilir. Charisma bazlı, Spells Known sistemiyle çalışır.",
+    "hitDie": 8,
+    "primaryAbility": "Charisma.",
+    "savingThrows": [
+      "Wisdom",
+      "Charisma"
+    ],
+    "armor": "Hafif (light) zırh.",
+    "weapons": "Tüm basit silahlar.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Arcana, Deception, History, Intimidation, Investigation, Nature, Religion'dan ikisini seç.",
+      "raw": "Arcana, Deception, History, Intimidation, Investigation, Nature, Religion'dan ikisini seç."
+    },
+    "startingEquipment": "(a) hafif arbalet + 20 bolt ya da (b) herhangi basit silah; (a) component kesesi ya da (b) arcane focus; (a) bilgin çantası ya da (b) zindan çantası; deri zırh, herhangi basit silah ve iki hançer.",
+    "hpText": "**1. seviye:** 8 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d8 (veya 5) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Otherworldly Patron (Dünyaötesi Patron)",
+          "level": 1,
+          "description": "Pakt kurduğun varlık türünü seçersin: The Archfey, The Fiend veya The Great Old One. Her patron genişletilmiş büyü listesi, Channel Divinity benzeri özellikler ve patron temalı güçler kazandırır. 1., 6., 10. ve 14. seviyelerde özellik gelir."
+        },
+        {
+          "name": "Pact Magic",
+          "level": 1,
+          "description": "Warlock'un temel büyü sistemi yukarıda ayrıntılı açıklanmıştır."
+        }
+      ],
+      "2": [
+        {
+          "name": "Eldritch Invocations (Esrarlı Çağrılar)",
+          "level": 2,
+          "description": "Warlock'un en esnek özelliği. Her invocation kalıcı bir pasif yetenek ya da kaynak gerektirmeyen bir büyü erişimi sağlar. 2. seviyede 2 invocation kazanırsın; seviye ilerledikçe sayı artar ve öğrenilen invocationları değiştirebilirsin.\n|**Seviye**|**İnvocation Sayısı**|\n|---|---|\n|2.|2|\n|5.|3|\n|7.|4|\n|9.|5|\n|12.|6|\n|15.|7|\n|18.|8|"
+        }
+      ],
+      "3": [
+        {
+          "name": "Pact Boon (Pakt Armağanı)",
+          "level": 3,
+          "description": "Patronundan üç seçenekten birini alırsın:\n- **Pact of the Chain:** Find familiar büyüsünü ritual olarak öğrenirsin. Familiar'ın normal biçimlerinin yanı sıra imp, pseudodragon, quasit veya sprite formlarından biri olabilir. Attack action'ından bir saldırıyı feragat ederek familiar'ın saldırmasını sağlayabilirsin.\n- **Pact of the Blade:** Bonus Action ile herhangi bir silah formunda pakt silahı yaratırsın. Bu silahla proficiency'n var ve sihirsel sayılır. Thirsting Blade invocationıyla 5. seviyede Extra Attack gibi iki kez kullanabilirsin.\n- **Pact of the Tome:** 'Book of Shadows' adlı grimuar alırsın. Herhangi bir sınıfın listesinden 3 cantrip seçer ve bunları istediğin zaman kullanırsın; cantrip sayına dahil değildir."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "11": [
+        {
+          "name": "Mystic Arcanum",
+          "level": 11,
+          "description": "Her seviyede warlock büyü listesinden bir üst seviye büyü seçersin (6., 7., 8., 9. sırayla). Bu büyüyü spell slot harcamadan günde bir kez cast edebilirsin. Long Rest ile yenilenir."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "13": [
+        {
+          "name": "Mystic Arcanum",
+          "level": 13,
+          "description": "Her seviyede warlock büyü listesinden bir üst seviye büyü seçersin (6., 7., 8., 9. sırayla). Bu büyüyü spell slot harcamadan günde bir kez cast edebilirsin. Long Rest ile yenilenir."
+        }
+      ],
+      "15": [
+        {
+          "name": "Mystic Arcanum",
+          "level": 15,
+          "description": "Her seviyede warlock büyü listesinden bir üst seviye büyü seçersin (6., 7., 8., 9. sırayla). Bu büyüyü spell slot harcamadan günde bir kez cast edebilirsin. Long Rest ile yenilenir."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "17": [
+        {
+          "name": "Mystic Arcanum",
+          "level": 17,
+          "description": "Her seviyede warlock büyü listesinden bir üst seviye büyü seçersin (6., 7., 8., 9. sırayla). Bu büyüyü spell slot harcamadan günde bir kez cast edebilirsin. Long Rest ile yenilenir."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "20": [
+        {
+          "name": "Eldritch Master",
+          "level": 20,
+          "description": "1 dakika patronuna yalvararak tüm Pact Magic slot'larını geri kazanabilirsin. Long Rest başına 1 kez."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Charisma",
+    "subclassLevel": 1,
+    "subclasses": [
+      {
+        "id": "the-archfey",
+        "name": "The Archfey",
+        "nameTr": "Peri Lordu",
+        "description": "Güzellik, aldatma ve feyin esrarengiz gücüne odaklanan patron. Büyüleme ve korkutma üzerine yoğunlaşır. **Genişletilmiş Büyüler:** faerie fire, sleep / calm emotions, phantasmal force / blink, plant growth / dominate beast, greater invisibility / dominate person, seeming.\n**Fey Presence — 1. Seviye:** Action ile 10 feet kare içindeki yaratıkları Wisdom save'e zorla: başarısız olursa 1 turluğuna Charmed veya Frightened olurlar. Short ya da Long Rest sonrası yenilenir.\n**Misty Escape — 6. Seviye:** Hasar aldığında Reaction ile invisible olur ve 60 feet ışınlanırsın; sonraki turunda saldırı ya da büyü cast edene kadar invisible kalırsın. Short ya da Long Rest başına 1 kez.\n**Beguiling Defenses — 10. Seviye:** Charm büyülerine immune'sin. Sana charm uygulamaya çalışan yaratığa ise kendi etkisini 1 dakika gönderebilirsin.\n**Dark Delirium — 14. Seviye:** Action ile 60 feet içindeki bir yaratığı illüzyon alemine çekebilirsin (Wisdom save). Başarısız olursa 1 dakika yalnızca seni ve kendisini görebilir; hayaletleri takip eder. Concentration gerektirir.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "the-fiend",
+        "name": "The Fiend",
+        "nameTr": "Şeytan Patonu",
+        "description": "Cehennem enerjisine erişen, hasar ve dayanıklılık odaklı patron. Gruba en çok hasar katkısı sağlayan Warlock yoludur.\n**Genişletilmiş Büyüler:** burning hands, command / blindness/deafness, scorching ray / fireball, stinking cloud / fire shield, wall of fire / flame strike, hallow.\n**Dark One's Blessing — 1. Seviye:** Düşman bir yaratığı sıfır HP'ye indirdiğinde, Charisma modifier + warlock seviyesi kadar geçici HP kazanırsın (min. 1).\n**Dark One's Own Luck — 6. Seviye:** Ability check veya saving throw attığında d10 atıp sonuca ekleyebilirsin. Short ya da Long Rest başına 1 kez.\n**Fiendish Resilience — 10. Seviye:** Short ya da Long Rest sonrası 1 hasar türü seçersin; o hasar türüne Resistance kazanırsın (sihirli silahlardan gelen hasar hariç).\n**Hurl Through Hell — 14. Seviye:** Saldırıyla vurduğunda yaratığı Cehennem'e gönderebilirsin; bir sonraki turunda geri döner ve 10d10 psychic hasar alır. Long Rest başına 1 kez.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "the-great-old-one",
+        "name": "The Great Old One",
+        "nameTr": "Kadim Varlık",
+        "description": "Gerçekliğin ötesindeki anlaşılmaz ve tanrısal bir varlıktan güç alan yol. Telepath ve zihin kontrolü odaklıdır.\n**Genişletilmiş Büyüler:** dissonant whispers, Tasha's hideous laughter / detect thoughts, phantasmal force / clairvoyance, sending / dominate beast, Evard's black tentacles / dominate person, telekinesis.\n**Awakened Mind — 1. Seviye:** Bir dil konuşabilen herhangi bir yaratıkla 30 feet içinde telepati kurabilirsin; ortak bir dil gerekmez.\n**Entropic Ward — 6. Seviye:** Saldırı atışı yapan düşmana Reaction ile Disadvantage verebilirsin. Iskaladıysa bir sonraki attack roll'unda Advantage kazanırsın. Short ya da Long Rest başına 1 kez.\n**Thought Shield — 10. Seviye:** Düşüncelerini okuyamazlar; psychic hasara Resistance'ın var ve sana psychic hasar veren yaratık aynı miktarı alır.\n**Create Thrall — 14. Seviye:** Etkisizleştirilmiş bir insanoide dokunarak onun zihnini patronunla bağlarsın; yaratık sana charmed olur ve seninle telepati kurabilirsiniz.",
+        "levelFeatures": {}
+      }
+    ],
+    "otherSections": [
+      {
+        "name": "Önemli invocation örnekleri:",
+        "description": "- **Agonizing Blast (önk: Eldritch Blast cantrip):** Eldritch Blast hasarına Charisma modifier eklenir. Neredeyse her Warlock alır.\n- **Armor of Shadows:** Mage armor büyüsünü slot harcamadan istediğin zaman cast edebilirsin.\n- **Beast Speech:** Speak with animals büyüsünü istediğin zaman slot harcamadan cast edebilirsin.\n- **Beguiling Influence:** Deception ve Persuasion skill'lerinde proficiency kazanırsın.\n- **Devil's Sight:** Büyüsel dahil tüm karanlığı 120 feet görürsün.\n- **Eldritch Sight:** Detect magic büyüsünü slot harcamadan istediğin zaman cast edebilirsin.\n- **Eldritch Spear (önk: Eldritch Blast cantrip):** Eldritch Blast'ın menzili 300 feet olur.\n- **Eyes of the Rune Keeper:** Tüm yazıları okuyabilirsin.\n- **Fiendish Vigor:** False life büyüsünü slot harcamadan ve 1. seviye olarak istediğin zaman cast edebilirsin.\n- **Mask of Many Faces:** Disguise self büyüsünü slot harcamadan istediğin zaman cast edebilirsin.\n- **Misty Visions:** Silent image büyüsünü slot harcamadan istediğin zaman cast edebilirsin.\n- **One with Shadows (önk: 5. seviye):** Dim light veya karanlıktayken Action ile invisible olabilirsin; hareket edene ya da action alana kadar sürer.\n- **Repelling Blast (önk: Eldritch Blast cantrip):** Eldritch Blast ile vurduğunda hedefi 10 feet geriye itebilirsin.\n- **Thirsting Blade (önk: 5. seviye, Pact of the Blade):** Pact Blade ile attack action aldığında iki saldırı yapabilirsin.\n- **Mystic Arcanum (11., 13., 15., 17. seviye):** 6., 7., 8. ve 9. seviye büyü spell slot harcamadan günde 1 kez cast edebilirsin."
+      }
+    ]
+  },
+  {
+    "id": "wizard",
+    "name": "WIZARD",
+    "nameTr": "Büyücü / Büyü Üstadı",
+    "description": "Wizard; büyüyü yoğun çalışma ve ezberleme yoluyla öğrenen, D&D'nin en kapsamlı büyü listesine sahip olan sınıftır. Intelligence bazlıdır. Diğer caster'lardan farkı: büyü kitabı (spellbook) taşır ve macerada buldukları büyüleri kopyalayabilir. Prepare sistemiyle her gün farklı büyü seçebilir; bu onu son derece esnek kılar. Fiziksel olarak kırılgandır.",
+    "hitDie": 6,
+    "primaryAbility": "Intelligence.",
+    "savingThrows": [
+      "Intelligence",
+      "Wisdom"
+    ],
+    "armor": "Yok.",
+    "weapons": "Hançer, dart, sapan, quarterstaff, hafif arbalet.",
+    "tools": "Yok.",
+    "skillChoices": {
+      "count": 2,
+      "options": "Arcana, History, Insight, Investigation, Medicine, Religion'dan ikisini seç.",
+      "raw": "Arcana, History, Insight, Investigation, Medicine, Religion'dan ikisini seç."
+    },
+    "startingEquipment": "(a) quarterstaff ya da (b) hançer; (a) component kesesi ya da (b) arcane focus; (a) bilgin çantası ya da (b) kaşif çantası; spellbook (büyü kitabı).",
+    "hpText": "**1. seviye:** 6 + Constitution modifier.\n**Sonraki seviyeler:** Her seviyede 1d6 (veya 4) + Constitution modifier.",
+    "levelFeatures": {
+      "1": [
+        {
+          "name": "Arcane Recovery (Büyüsel Toparlanma)",
+          "level": 1,
+          "description": "Günde 1 kez, Short Rest sırasında harcanan spell slot'ları geri kazanırsın. Toplamda geri kazanılan slot seviyeleri toplamı, wizard seviyenin yarısı (yukarı yuvarlanır) kadar olabilir. 6. seviye veya üzeri slot'lar bu yolla geri kazanılamaz.\n**Örnek:** 4. seviye wizard = 2 seviyeye kadar slot. İki 1. seviye slot veya bir 2. seviye slot."
+        }
+      ],
+      "2": [
+        {
+          "name": "Arcane Tradition (Büyüsel Gelenek)",
+          "level": 2,
+          "description": "Subclass seçimi. 8 büyü okulundan biri seçilir. 2., 6., 10. ve 14. seviyelerde özellik kazandırır."
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "18": [
+        {
+          "name": "Spell Mastery",
+          "level": 18,
+          "description": "Spellbook'undaki bir 1. seviye ve bir 2. seviye büyüyü seçersin. Bu büyüleri en düşük seviye slot'larıyla slot harcamadan cast edebilirsin. Daha yüksek seviyede cast etmek istersen normal slot harcanır. 8 saatlik çalışmayla seçimi değiştirebilirsin."
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Standart ASI fırsatları."
+        }
+      ],
+      "20": [
+        {
+          "name": "Signature Spells",
+          "level": 20,
+          "description": "Spellbook'undaki iki 3. seviye büyüyü seçersin. Bunlar her zaman hazır gelir; her birini Short ya da Long Rest başına bir kez slot harcamadan cast edebilirsin. Daha yüksek seviyede cast etmek istersen slot harcanır."
+        }
+      ]
+    },
+    "isCaster": true,
+    "spellcastingAbility": "Intelligence",
+    "subclassLevel": 2,
+    "subclasses": [
+      {
+        "id": "school-of-abjuration",
+        "name": "School of Abjuration",
+        "nameTr": "Koruma Okulu",
+        "description": "Büyüleri engelleyen, savuşturan ve koruyan büyücü. Destek ve hayatta kalma odaklı.\n**Abjuration Savant — 2.:** Koruma büyülerini kopyalama maliyeti yarıya iner.\n**Arcane Ward — 2.:** Koruma büyüsü cast ettiğinde, 2 × wizard seviyesi + Intelligence modifier kadar HP'li büyüsel bir kalkan yaratırsın. Hasar önce kalkan alır; kalkan 0'a inince aşırısı sana gelir. Koruma büyüsü cast edildiğinde kalkan kaybettiği HP'yi geri kazanır (slot seviyesinin 2 katı kadar). Long Rest'te sıfırlanır.\n**Projected Ward — 6.:** 30 feet içindeki gördüğün yaratık hasar aldığında Reaction ile Arcane Ward'u onun üstüne aktarırsın.\n**Improved Abjuration — 10.:** Koruma büyüsü cast ederken ability check gerekiyorsa (counterspell, dispel magic gibi), proficiency bonus'u o check'e eklersin.\n**Spell Resistance — 14.:** Büyülere karşı saving throw'larda Advantage; büyü hasarına Resistance.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-conjuration",
+        "name": "School of Conjuration",
+        "nameTr": "Çağırma Okulu",
+        "description": "Nesne ve yaratıkları yoktan var eden ya da ışınlayan büyücü.\n**Conjuration Savant — 2.:** Çağırma büyülerini kopyalama maliyeti yarıya iner.\n**Minor Conjuration — 2.:** Action ile 10 feet içinde, gördüğün 3 feet boyutunda max 10 kg'lık bir nesneyi 1 saatliğine somutlaştırırsın.\n**Benign Transposition — 6.:** Action ile 30 feet içinde ışınlanırsın veya razı olan Small/Medium bir yaratıkla yer değiştirirsin. Long Rest veya 1. seviye+ Conjuration büyüsü cast ettikten sonra yenilenir.\n**Focused Conjuration — 10.:** Conjuration büyüsü konzantre ederken hasar alsan da konsantrasyonun bozulmaz.\n**Durable Summons — 14.:** Conjuration büyüsüyle çağırdığın yaratıklar 30 geçici HP ile gelir.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-divination",
+        "name": "School of Divination",
+        "nameTr": "Kehanet Okulu",
+        "description": "Geleceği gören, bilgiye ulaşan büyücü.\n**Divination Savant — 2.:** Kehanet büyülerini kopyalama maliyeti yarıya iner.\n**Portent — 2.:** Her Long Rest sonrası iki d20 at ve sonuçları kaydet. Bu sonuçları, görme mesafendeki herhangi bir yaratığın attack roll, saving throw veya ability check'i yerine kullanabilirsin. Zarı gördükten sonra kullanılır. Her sonuç bir kez kullanılır.\n**Expert Divination — 6.:** 2. seviye veya üzeri Divination büyüsü cast ettiğinde, bir seviye aşağısından bir slot geri kazanırsın (max 5. seviye).\n**The Third Eye — 10.:** Action ile uzun menzilli algı kazanırsın: 60 feet Darkvision, Ethereal Sight (Etherik Düzlem'i görme), büyüsel görünmezleri görme veya tüm dilleri okuma. Short ya da Long Rest başına 1 kez. **Greater Portent — 14.:** Portent ile 2 yerine 3 d20 atarsın.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-enchantment",
+        "name": "School of Enchantment",
+        "nameTr": "Büyüleme Okulu",
+        "description": "Zihinleri etkileyen, charm ve kontrol büyücüsü.\n**Enchantment Savant — 2.:** Büyüleme büyülerini kopyalama maliyeti yarıya iner.\n**Hypnotic Gaze — 2.:** Action ile 5 feet içindeki bir yaratığa büyülü bakış atarsın; Wisdom save atar, başarısız olursa Charmed + incapacitated ve hızı 0 olur. Her turda Action harcayarak sürdürebilirsin. 5 feet uzaklaşırsa, göremezse veya hasar alırsa biter. Long Rest başına 1 kez.\n**Instinctive Charm — 6.:** 30 feet içindeki yaratık sana saldırıda Reaction ile Wisdom save'e zorla; başarısız olursa en yakın başka hedefe yönlenir. Başarılıysa 24 saat bağışıklık. Long Rest başına 1 kez.\n**Split Enchantment — 10.:** Tek bir yaratığı hedef alan Enchantment büyüsü cast ettiğinde ikinci bir hedef daha seçebilirsin.\n**Alter Memories — 14.:** Enchantment büyüsüyle Charmed ettiğin yaratığın büyülendiğini fark etmemesini sağlayabilirsin; ayrıca son birkaç saatini unutturabilirsin.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-evocation",
+        "name": "School of Evocation",
+        "nameTr": "Çıkarma / Hasar Okulu",
+        "description": "Ateş topları, şimşek ve büyük alanlı hasar büyülerinde uzmanlaşan saldırı büyücüsü.\n**Evocation Savant — 2.:** Evokasyon büyülerini kopyalama maliyeti yarıya iner.\n**Sculpt Spells — 2.:** Evokasyon büyüsü cast ederken hedeflediğin yaratık sayısı kadar muaf alan yaratırsın. Muaf yaratıklar büyünün saving throw'unu otomatik başarır ve yarı hasar bile almazlar.\n**Potent Cantrip — 6.:** Hasar veren cantrip'e karşı saving throw başarıyla geçilse bile yaratık yarım hasar alır. **Empowered Evocation — 10.:** Wizard evokasyon büyülerinin hasar atışlarına Intelligence modifier'ı eklenir.\n**Overchannel — 14.:** 5. seviye ve altı hasar veren wizard büyüsü cast ettiğinde, her bir hasar zarını maksimum kabul edebilirsin. İlk kullanımda yan etki yok. Tekrar kullanırsan Long Rest'e kadar her seviyede 2d12 necrotic hasar alırsın (kümülatif artış).",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-illusion",
+        "name": "School of Illusion",
+        "nameTr": "Yanılsama Okulu",
+        "description": "Gerçeklik ve algıyla oynayan, yanıltma ustası büyücü.\n**Illusion Savant — 2.:** Yanılsama büyülerini kopyalama maliyeti yarıya iner.\n**Improved Minor Illusion — 2.:** Minor illusion cantrip'ini öğrenirsin (zaten biliyorsan farklı cantrip). Cast ettiğinde hem ses hem görsel efekt aynı anda üretebilirsin.\n**Malleable Illusions — 6.:** Aktif yanılsama büyüsünün içeriğini Action ile değiştirebilirsin (büyünün normal parametreleri dahilinde).\n**Illusory Self — 10.:** Saldırı atışı sana vurduğunda Reaction ile illüzyon kopyası araya girebilirsin; saldırı otomatik ıskalanır. Short ya da Long Rest başına 1 kez.\n**Illusory Reality — 14.:** 1. seviye+ yanılsama büyüsü cast ettiğinde, içindeki bir nonmajik nesneyi Bonus Action ile 1 dakika gerçek yapabilirsin. Nesne hasar veremez.",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-necromancy",
+        "name": "School of Necromancy",
+        "nameTr": "Ölü Büyücülüğü",
+        "description": "Ölüm enerjisi ve undead kontrolü üzerine uzmanlaşmış büyücü.\n**Necromancy Savant — 2.:** Nekromans büyülerini kopyalama maliyeti yarıya iner.\n**Grim Harvest — 2.:** Büyüyle bir yaratık öldürdüğünde, 2 × büyü seviyesi kadar (Nekromans büyüsüyse 3 ×) HP kazanırsın. Construct ve undead için çalışmaz.\n**Undead Thralls — 6.:** Animate dead büyüsünü listene eklersin (hazırlamasan da kullanabilirsin). Büyüyle ölü dirilttiğinde normal sayının iki katını diriltirsin; yaratılan undead'ler wizard seviyesi kadar HP bonusu alır ve saldırı hasarına proficiency bonusu eklenir.\n**Inured to Undeath — 10.:** Necrotic hasara Resistance; max HP düşürülemesin.\n**Command Undead — 14.:** Action ile 60 feet içindeki undead'e Charisma save yaptır; başarısız olursa ebediyen itaatkârdır (Int 8+ ise Advantage ile tekrar deneyebilir).",
+        "levelFeatures": {}
+      },
+      {
+        "id": "school-of-transmutation",
+        "name": "School of Transmutation",
+        "nameTr": "Dönüşüm Okulu",
+        "description": "Madde ve enerjiyi dönüştüren, şekil ve enerji değiştiren büyücü.\n**Transmutation Savant — 2.:** Dönüşüm büyülerini kopyalama maliyeti yarıya iner.\n**Minor Alchemy — 2.:** Odun, taş, demir, bakır veya gümüş gibi nonmajik bir nesneyi başka bir malzemeye dönüştürebilirsin (1 saat / cubic foot). 10 dakikada maksimum 1 cubic foot.\n**Transmuter's Stone — 6.:** 8 saat çalışarak bir taş yaparsın. Taşı taşıyan kişi şu faydalardan birini alır (taşı yaratırken seçersin): 60 ft Darkvision, +10 hız, Constitution saving throw proficiency,\nacid/cold/fire/lightning/thunder hasar türlerinden birine Resistance. Dönüşüm büyüsü cast edildiğinde faydayı değiştirebilirsin.\n**Shapechanger — 10.:** Polymorph büyüsünü spellbook'una eklersin. Slot harcamadan kendin üzerinde cast edebilirsin; yalnızca CR 1 veya altı hayvan formu. Short ya da Long Rest başına 1 kez.\n**Master Transmuter — 14.:** Action ile taşı yok ederek şu etkilerden birini yaratırsın: Major Transformation (5foot küp nonmagical nesneyi başkasına dönüştür, 10 dakika), Panacea (dokunulan yaratıktaki tüm hastalık, zehir ve curse'ü kaldır + HP'yi doldur), Restore Life (raise dead büyüsü slot ve material component gerektirmeden), Restore Youth (bir yaratığı 3d10 yıl gençleştir, min 13 yaş).",
+        "levelFeatures": {}
+      }
+    ],
+    "otherSections": []
+  }
+]

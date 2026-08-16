@@ -1,0 +1,1667 @@
+[
+ {
+  "page": 1,
+  "name": "ClassLevel",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Background",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "PlayerName",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "CharacterName",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Race ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Alignment",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "XP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Inspiration",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "STR",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ProfBonus",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "AC",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Initiative",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Speed",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "PersonalityTraits ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "STRmod",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Strength",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "DEX",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Ideals",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "DEXmod ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Bonds",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "CON",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "HDTotal",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 12",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 13",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 14",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "CONmod",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 15",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 16",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 17",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "HD",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Flaws",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "INT",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Dexterity",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Constitution",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Intelligence",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Wisdom",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ST Charisma",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Acrobatics",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Animal",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Athletics",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Deception ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "History ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn Name",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn1 AtkBonus",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn1 Damage",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Insight",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Intimidation",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn Name 2",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn2 AtkBonus ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn Name 3",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn3 AtkBonus  ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 11",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 18",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 19",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 20",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 21",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 22",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "INTmod",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn2 Damage ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Investigation ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "WIS",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Arcana",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Perception ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "WISmod",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "CHA",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Nature",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Performance",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Medicine",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Religion",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Stealth ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 23",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 24",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 25",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 26",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 27",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 28",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 29",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 30",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 31",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 32",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 33",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 34",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 35",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 36",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 37",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 38",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 39",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Check Box 40",
+  "type": "/Btn"
+ },
+ {
+  "page": 1,
+  "name": "Persuasion",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "HPMax",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "HPCurrent",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "HPTemp",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Wpn3 Damage ",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "SleightofHand",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "CHamod",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Survival",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "AttacksSpellcasting",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Passive",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "CP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "ProficienciesLang",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "SP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "EP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "GP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "PP",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Equipment",
+  "type": "/Tx"
+ },
+ {
+  "page": 1,
+  "name": "Features and Traits",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "CharacterName 2",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Age",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Height",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Weight",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Eyes",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Skin",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Hair",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Faction Symbol Image",
+  "type": "/Btn"
+ },
+ {
+  "page": 2,
+  "name": "Allies",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "FactionName",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Backstory",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Feat+Traits",
+  "type": "/Tx"
+ },
+ {
+  "page": 2,
+  "name": "Treasure",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spellcasting Class 2",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SpellcastingAbility 2",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SpellSaveDC  2",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SpellAtkBonus 2",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 19",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 19",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1014",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1015",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1016",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1017",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1018",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1019",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1020",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1021",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1022",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 314",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3031",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3032",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3033",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3034",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3035",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3036",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3037",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3038",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3039",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3040",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 321",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 320",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3060",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3061",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3062",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3063",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3064",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3065",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3066",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 315",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3041",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1023",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 251",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 309",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3010",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3011",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3012",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3013",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3014",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3015",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3016",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3017",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3018",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3019",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1024",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1025",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1026",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1027",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1028",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1029",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1030",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1031",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1032",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1033",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 20",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 20",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1034",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1035",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1036",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1037",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1038",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1039",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1040",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1041",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1042",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1043",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1044",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1045",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1046",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 21",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 21",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1047",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1048",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1049",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1050",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1051",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1052",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1053",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1054",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1055",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1056",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1057",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1058",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1059",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 22",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 22",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1060",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1061",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1062",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1063",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1064",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 323",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 322",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3067",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3068",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3069",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3070",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3071",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3072",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3073",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1065",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1066",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1067",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1068",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1069",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1070",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1071",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 317",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1072",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 23",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 23",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1073",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1074",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1075",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1076",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1077",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1078",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1079",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1080",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1081",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 24",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 24",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1082",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1083",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1084",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1085",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1086",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1087",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1088",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1089",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1090",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 25",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 25",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1091",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1092",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1093",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1094",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1095",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1096",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1097",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1098",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 1099",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 26",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 26",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10100",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10101",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10102",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10103",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 316",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3042",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3043",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3044",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3045",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3046",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3047",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3048",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3049",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3050",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3051",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3052",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10104",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 325",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 324",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3074",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3075",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3076",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3077",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10105",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10106",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3078",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "SlotsTotal 27",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "SlotsRemaining 27",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 313",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 310",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3020",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3021",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3022",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3023",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3024",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3025",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3026",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3027",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3028",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3029",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3030",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10107",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10108",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 10109",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 101010",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 101011",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Spells 101012",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 319",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 318",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3053",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3054",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3055",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3056",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3057",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3058",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3059",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 327",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 326",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3079",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3080",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3081",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3082",
+  "type": "/Btn"
+ },
+ {
+  "page": 3,
+  "name": "Spells 101013",
+  "type": "/Tx"
+ },
+ {
+  "page": 3,
+  "name": "Check Box 3083",
+  "type": "/Btn"
+ }
+]

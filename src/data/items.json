@@ -1,0 +1,3220 @@
+{
+ "items": [
+  {
+   "id": "ammunition-arrows-20",
+   "name": "Ammunition — Arrows (20)",
+   "category": "ammunition",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1,
+   "group": "Ammunition"
+  },
+  {
+   "id": "ammunition-blowgun-needles-50",
+   "name": "Ammunition — Blowgun needles (50)",
+   "category": "ammunition",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1,
+   "group": "Ammunition"
+  },
+  {
+   "id": "ammunition-crossbow-bolts-20",
+   "name": "Ammunition — Crossbow bolts (20)",
+   "category": "ammunition",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1.5,
+   "group": "Ammunition"
+  },
+  {
+   "id": "ammunition-sling-bullets-20",
+   "name": "Ammunition — Sling bullets (20)",
+   "category": "ammunition",
+   "cost": {
+    "amount": 4,
+    "unit": "cp"
+   },
+   "costGp": 0.04,
+   "weight": 1.5,
+   "group": "Ammunition"
+  },
+  {
+   "id": "breastplate",
+   "name": "Breastplate",
+   "category": "armor",
+   "cost": {
+    "amount": 400,
+    "unit": "gp"
+   },
+   "costGp": 400,
+   "weight": 20,
+   "armorType": "medium",
+   "acBase": 14,
+   "acDexMax": 2,
+   "strengthReq": null,
+   "stealthDisadvantage": false
+  },
+  {
+   "id": "chain-mail",
+   "name": "Chain mail",
+   "category": "armor",
+   "cost": {
+    "amount": 75,
+    "unit": "gp"
+   },
+   "costGp": 75,
+   "weight": 55,
+   "armorType": "heavy",
+   "acBase": 16,
+   "acDexMax": 0,
+   "strengthReq": 13,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "chain-shirt",
+   "name": "Chain shirt",
+   "category": "armor",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 20,
+   "armorType": "medium",
+   "acBase": 13,
+   "acDexMax": 2,
+   "strengthReq": null,
+   "stealthDisadvantage": false,
+   "description": "Bir zincirin 10 hit point'i vardır. Başarılı bir DC 20 Güç kontrolüyle koparılabilir."
+  },
+  {
+   "id": "half-plate",
+   "name": "Half plate",
+   "category": "armor",
+   "cost": {
+    "amount": 750,
+    "unit": "gp"
+   },
+   "costGp": 750,
+   "weight": 40,
+   "armorType": "medium",
+   "acBase": 15,
+   "acDexMax": 2,
+   "strengthReq": null,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "hide",
+   "name": "Hide",
+   "category": "armor",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 12,
+   "armorType": "medium",
+   "acBase": 12,
+   "acDexMax": 2,
+   "strengthReq": null,
+   "stealthDisadvantage": false
+  },
+  {
+   "id": "leather",
+   "name": "Leather",
+   "category": "armor",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 10,
+   "armorType": "light",
+   "acBase": 11,
+   "acDexMax": null,
+   "strengthReq": null,
+   "stealthDisadvantage": false
+  },
+  {
+   "id": "padded",
+   "name": "Padded",
+   "category": "armor",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 8,
+   "armorType": "light",
+   "acBase": 11,
+   "acDexMax": null,
+   "strengthReq": null,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "plate",
+   "name": "Plate",
+   "category": "armor",
+   "cost": {
+    "amount": 1500,
+    "unit": "gp"
+   },
+   "costGp": 1500,
+   "weight": 65,
+   "armorType": "heavy",
+   "acBase": 18,
+   "acDexMax": 0,
+   "strengthReq": 15,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "ring-mail",
+   "name": "Ring mail",
+   "category": "armor",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 40,
+   "armorType": "heavy",
+   "acBase": 14,
+   "acDexMax": 0,
+   "strengthReq": null,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "scale-mail",
+   "name": "Scale mail",
+   "category": "armor",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 45,
+   "armorType": "medium",
+   "acBase": 14,
+   "acDexMax": 2,
+   "strengthReq": null,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "splint",
+   "name": "Splint",
+   "category": "armor",
+   "cost": {
+    "amount": 200,
+    "unit": "gp"
+   },
+   "costGp": 200,
+   "weight": 60,
+   "armorType": "heavy",
+   "acBase": 17,
+   "acDexMax": 0,
+   "strengthReq": 15,
+   "stealthDisadvantage": true
+  },
+  {
+   "id": "studded-leather",
+   "name": "Studded leather",
+   "category": "armor",
+   "cost": {
+    "amount": 45,
+    "unit": "gp"
+   },
+   "costGp": 45,
+   "weight": 13,
+   "armorType": "light",
+   "acBase": 12,
+   "acDexMax": null,
+   "strengthReq": null,
+   "stealthDisadvantage": false
+  },
+  {
+   "id": "arcane-focus-crystal",
+   "name": "Arcane focus — Crystal",
+   "category": "focus",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 1,
+   "group": "Arcane focus",
+   "description": "Bir orb, kristal, çubuk (rod), özel yapılmış bir asa (staff), değnek benzeri bir odun parçası ya da benzeri özel bir eşya — büyülü enerjiyi kanalize etmek için tasarlanmıştır. Bir sorcerer, warlock ya da wizard bunu büyü odağı (spellcasting focus) olarak kullanabilir."
+  },
+  {
+   "id": "arcane-focus-orb",
+   "name": "Arcane focus — Orb",
+   "category": "focus",
+   "cost": {
+    "amount": 20,
+    "unit": "gp"
+   },
+   "costGp": 20,
+   "weight": 3,
+   "group": "Arcane focus"
+  },
+  {
+   "id": "arcane-focus-rod",
+   "name": "Arcane focus — Rod",
+   "category": "focus",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 2,
+   "group": "Arcane focus"
+  },
+  {
+   "id": "arcane-focus-staff",
+   "name": "Arcane focus — Staff",
+   "category": "focus",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 4,
+   "group": "Arcane focus"
+  },
+  {
+   "id": "arcane-focus-wand",
+   "name": "Arcane focus — Wand",
+   "category": "focus",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 1,
+   "group": "Arcane focus"
+  },
+  {
+   "id": "druidic-focus-sprig-of-mistletoe",
+   "name": "Druidic focus — Sprig of mistletoe",
+   "category": "focus",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": null,
+   "group": "Druidic focus",
+   "description": "Bir ökseotu ya da çobanpüskülü dalı, porsuk (yew) ya da başka özel bir odundan yapılmış değnek/asa, canlı bir ağaçtan çıkarılmış bir asa ya da tüy, kürk, kemik ve kutsal hayvan dişleri içeren bir totem olabilir. Bir druid bunu büyü odağı olarak kullanabilir."
+  },
+  {
+   "id": "druidic-focus-totem",
+   "name": "Druidic focus — Totem",
+   "category": "focus",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": null,
+   "group": "Druidic focus"
+  },
+  {
+   "id": "druidic-focus-wooden-staff",
+   "name": "Druidic focus — Wooden staff",
+   "category": "focus",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 4,
+   "group": "Druidic focus"
+  },
+  {
+   "id": "druidic-focus-yew-wand",
+   "name": "Druidic focus — Yew wand",
+   "category": "focus",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 1,
+   "group": "Druidic focus"
+  },
+  {
+   "id": "holy-symbol-amulet",
+   "name": "Holy symbol — Amulet",
+   "category": "focus",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 1,
+   "group": "Holy symbol",
+   "description": "Bir tanrının ya da panteonun temsili. Bir amulet, bir kalkan üzerinde amblem ya da kutsal bir kalıntı parçası tutan küçük bir kutu olabilir. Bir cleric ya da paladin bunu büyü odağı olarak kullanabilir. Bunu kullanmak için büyücü onu elinde tutmalı, görünür şekilde giymeli ya da bir kalkanda taşımalıdır."
+  },
+  {
+   "id": "holy-symbol-emblem",
+   "name": "Holy symbol — Emblem",
+   "category": "focus",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": null,
+   "group": "Holy symbol"
+  },
+  {
+   "id": "holy-symbol-reliquary",
+   "name": "Holy symbol — Reliquary",
+   "category": "focus",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 2,
+   "group": "Holy symbol"
+  },
+  {
+   "id": "abacus",
+   "name": "Abacus",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 2
+  },
+  {
+   "id": "acid-vial",
+   "name": "Acid (vial)",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 1,
+   "description": "Bir eylem olarak, bu şişenin içindekini 5 fit içindeki bir yaratığa sıçratabilir ya da şişeyi 20 fite kadar fırlatarak çarpma anında parçalayabilirsin. Her iki durumda da, asidi doğaçlama silah olarak değerlendirerek bir yaratığa ya da nesneye menzilli saldırı yap. İsabette hedef **2d6 asit hasarı** alır."
+  },
+  {
+   "id": "alchemists-fire-flask",
+   "name": "Alchemist's fire (flask)",
+   "category": "gear",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 1,
+   "description": "Havayla temas ettiğinde tutuşan yapışkan bir sıvı. Bir eylem olarak, bu şişeyi 20 fite kadar fırlatabilirsin. Doğaçlama silah olarak menzilli saldırı yap. İsabette hedef her turunun başında **1d4 ateş hasarı** alır. Bir yaratık eylemini kullanarak DC 10 Çeviklik kontrolüyle alevleri söndürebilir."
+  },
+  {
+   "id": "alms-box",
+   "name": "Alms box (Sadaka kutusu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "antitoxin-vial",
+   "name": "Antitoxin (vial)",
+   "category": "gear",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": null,
+   "description": "Bu şişeyi içen bir yaratık 1 saat boyunca zehre karşı kurtarma zarlarında avantaj kazanır. Ölülere (undead) ya da yapımlara (constructs) fayda sağlamaz."
+  },
+  {
+   "id": "backpack",
+   "name": "Backpack",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 5
+  },
+  {
+   "id": "ball-bearings-bag-of-1-000",
+   "name": "Ball bearings (bag of 1,000)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 2,
+   "description": "Bir eylem olarak, bu küçük metal topları 10 fit karelik bir alanı kaplayacak şekilde dökebilirsin. Alan boyunca hareket eden bir yaratık DC 10 Çeviklik kurtarma zarında başarılı olmalı yoksa yere yığılır (prone). Yarım hızda hareket eden bir yaratık kurtarma zarı atmak zorunda değildir."
+  },
+  {
+   "id": "barrel",
+   "name": "Barrel",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 70
+  },
+  {
+   "id": "basket",
+   "name": "Basket",
+   "category": "gear",
+   "cost": {
+    "amount": 4,
+    "unit": "sp"
+   },
+   "costGp": 0.4,
+   "weight": 2
+  },
+  {
+   "id": "bedroll",
+   "name": "Bedroll",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 7
+  },
+  {
+   "id": "belaying-pin",
+   "name": "Belaying pin (Gemi sapanı — club sayılır)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 2
+  },
+  {
+   "id": "bell",
+   "name": "Bell",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": null
+  },
+  {
+   "id": "blanket",
+   "name": "Blanket",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 3
+  },
+  {
+   "id": "block-and-tackle",
+   "name": "Block and tackle",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 5,
+   "description": "Bir kablo ve nesnelere tutturmak için bir kancayla makara takımı; normalde kaldırabileceğin ağırlığın dört katını kaldırmanı sağlar."
+  },
+  {
+   "id": "incense-block",
+   "name": "Block of incense (Tütsü bloğu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "book",
+   "name": "Book",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 5,
+   "description": "Bir kitap şiir, tarihi kayıtlar, belirli bir bilgi alanına dair bilgiler, diyagramlar veya metin ya da resimle temsil edilebilecek hemen her şeyi içerebilir. Büyü kitabı bir spellbook'tur."
+  },
+  {
+   "id": "bottle-glass",
+   "name": "Bottle, glass",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 2
+  },
+  {
+   "id": "bucket",
+   "name": "Bucket",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "cp"
+   },
+   "costGp": 0.05,
+   "weight": 2
+  },
+  {
+   "id": "caltrops-bag-of-20",
+   "name": "Caltrops (bag of 20)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 2,
+   "description": "Bir eylem olarak, bir çuval caltrops'u 5 fit karelik bir alanı kaplayacak şekilde serebilirsin. Alana giren herhangi bir yaratık DC 15 Çeviklik kurtarma zarında başarılı olmalı yoksa hareketini durdurur ve 1 delme hasarı alır. Yaratık en az 1 hit point geri kazanana kadar yürüme hızı 10 fit azalır."
+  },
+  {
+   "id": "candle",
+   "name": "Candle",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "cp"
+   },
+   "costGp": 0.01,
+   "weight": null,
+   "description": "1 saat boyunca bir mum 5 fit yarıçapında parlak ışık ve ek 5 fitte loş ışık verir."
+  },
+  {
+   "id": "case-crossbow-bolt",
+   "name": "Case, crossbow bolt",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1,
+   "description": "Bu ahşap kutu yirmi tatar yayı oku tutabilir."
+  },
+  {
+   "id": "case-map-or-scroll",
+   "name": "Case, map or scroll",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1,
+   "description": "Bu silindirik deri çanta on rulo kâğıt ya da beş rulo parşömen tutabilir."
+  },
+  {
+   "id": "censer",
+   "name": "Censer (Buhurdan)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "vestments-ceremonial",
+   "name": "Ceremonial vestments (Törensel elbise)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 4
+  },
+  {
+   "id": "chain-10-feet",
+   "name": "Chain (10 feet)",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 10
+  },
+  {
+   "id": "chalk-1-piece",
+   "name": "Chalk (1 piece)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "cp"
+   },
+   "costGp": 0.01,
+   "weight": null
+  },
+  {
+   "id": "chest",
+   "name": "Chest",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 25
+  },
+  {
+   "id": "climbers-kit",
+   "name": "Climber's kit",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 12,
+   "description": "Özel pitonlar, bot uçları, eldivenler ve bir kemer içerir. Bir eylem olarak kendini sabitlemek için kullanabilirsin; bunu yaptığında, sabitlendiğin noktadan 25 fitten fazla düşemez ve o noktadan 25 fitten fazla uzağa tırmanamazsın."
+  },
+  {
+   "id": "clothes-common",
+   "name": "Clothes, common",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 3
+  },
+  {
+   "id": "clothes-costume",
+   "name": "Clothes, costume",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 4
+  },
+  {
+   "id": "clothes-fine",
+   "name": "Clothes, fine",
+   "category": "gear",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 6
+  },
+  {
+   "id": "clothes-travelers",
+   "name": "Clothes, traveler's",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 4
+  },
+  {
+   "id": "component-pouch",
+   "name": "Component pouch",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 2,
+   "group": "Spellcasting focus",
+   "description": "Belirli maliyeti olanlar dışında, büyü yapmak için gereken tüm materyal bileşenleri tutan küçük, su geçirmez bir deri kese."
+  },
+  {
+   "id": "fake-trinkets",
+   "name": "Con tools (Sahte eşyalar: renkli şişeler, işaretli zar, damgalı kâğıt, sahte mühür yüzüğü)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "crowbar",
+   "name": "Crowbar",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 5,
+   "description": "Bir levye kullanmak, levyenin kaldıraç gücünün uygulanabileceği Güç kontrollerinde avantaj sağlar."
+  },
+  {
+   "id": "fan-gift",
+   "name": "Favor of an admirer (Hayran hediyesi: aşk mektubu, saç tutamı ya da hatıra)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "fishing-tackle",
+   "name": "Fishing tackle",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 4,
+   "description": "Ahşap bir olta, ipek misina, mantar şamandıralar, çelik kancalar, kurşun ağırlıklar, kadife yemler ve dar ağ içerir."
+  },
+  {
+   "id": "flask-or-tankard",
+   "name": "Flask or tankard",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "cp"
+   },
+   "costGp": 0.02,
+   "weight": 1
+  },
+  {
+   "id": "grappling-hook",
+   "name": "Grappling hook",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 4
+  },
+  {
+   "id": "hammer",
+   "name": "Hammer",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 3
+  },
+  {
+   "id": "hammer-sledge",
+   "name": "Hammer, sledge",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 10
+  },
+  {
+   "id": "healers-kit",
+   "name": "Healer's kit",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 3,
+   "description": "Bandaj, merhem ve atel içeren bir deri kese. On kullanımı vardır. Bir eylem olarak, bir kullanım harcayarak 0 hit point'te olan bir yaratığı, Wisdom (Medicine) kontrolü yapmaya gerek kalmadan stabilize edebilirsin."
+  },
+  {
+   "id": "holy-water-flask",
+   "name": "Holy water (flask)",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 1,
+   "description": "Bir eylem olarak, bu şişenin içindekini 5 fit içindeki bir yaratığa sıçratabilir ya da 20 fite kadar fırlatabilirsin. Doğaçlama silah olarak menzilli saldırı yap. Hedef bir fiend ya da undead ise **2d6 radyant hasar** alır. Bir cleric ya da paladin, 1 saat süren, 25 gp değerinde toz gümüş kullanan ve 1. seviye büyü yuvası harcayan özel bir ritüelle kutsal su yaratabilir."
+  },
+  {
+   "id": "hourglass",
+   "name": "Hourglass",
+   "category": "gear",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 1
+  },
+  {
+   "id": "hunting-trap",
+   "name": "Hunting trap",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 25,
+   "description": "Kullandığın eylemle kurulur; merkezdeki bir basınç plakasına bir yaratık bastığında kapanan testere dişli çelik bir halka oluşturur. Plakaya basan yaratık DC 13 Çeviklik kurtarma zarında başarılı olmalı yoksa 1d4 delme hasarı alır ve hareketini durdurur. Bir yaratık DC 13 Güç kontrolüyle kendini ya da erişimindeki başka bir yaratığı serbest bırakabilir; her başarısız kontrol 1 delme hasarı verir."
+  },
+  {
+   "id": "ink-1-ounce-bottle",
+   "name": "Ink (1 ounce bottle)",
+   "category": "gear",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": null
+  },
+  {
+   "id": "ink-pen",
+   "name": "Ink pen",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "cp"
+   },
+   "costGp": 0.02,
+   "weight": null
+  },
+  {
+   "id": "rank-insignia",
+   "name": "Insignia of rank (Askeri rütbe nişanı)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "jug-or-pitcher",
+   "name": "Jug or pitcher",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "cp"
+   },
+   "costGp": 0.02,
+   "weight": 4
+  },
+  {
+   "id": "ladder-10-foot",
+   "name": "Ladder (10-foot)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": 25
+  },
+  {
+   "id": "lamp",
+   "name": "Lamp",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 1,
+   "description": "Bir lamba 15 fit yarıçapında parlak ışık ve ek 30 fitte loş ışık verir. Yakıldıktan sonra bir şişe (1 pint) yağla 6 saat yanar."
+  },
+  {
+   "id": "lantern-bullseye",
+   "name": "Lantern, bullseye",
+   "category": "gear",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 2,
+   "description": "60 fitlik bir koni içinde parlak ışık ve ek 60 fitte loş ışık verir. Bir şişe yağla 6 saat yanar."
+  },
+  {
+   "id": "lantern-hooded",
+   "name": "Lantern, hooded",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 2,
+   "description": "30 fit yarıçapında parlak ışık ve ek 30 fitte loş ışık verir. Bir şişe yağla 6 saat yanar. Bir eylem olarak kapağını indirerek ışığı 5 fit yarıçapında loş ışığa düşürebilirsin."
+  },
+  {
+   "id": "colleague-letter",
+   "name": "Letter from a dead colleague posing an unanswered question (Meslektaş mektubu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "guild-letter",
+   "name": "Letter of introduction from your guild (Lonca tanıtım mektubu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "bag-of-sand",
+   "name": "Little bag of sand (Kum torbası)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "lock",
+   "name": "Lock",
+   "category": "gear",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 1,
+   "description": "Kilitle birlikte bir anahtar verilir. Anahtar olmadan, hırsız aletlerinde yetkin bir yaratık DC 15 Çeviklik kontrolüyle kilidi açabilir."
+  },
+  {
+   "id": "lucky-charm",
+   "name": "Lucky charm (Şanslı muska)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "magnifying-glass",
+   "name": "Magnifying glass",
+   "category": "gear",
+   "cost": {
+    "amount": 100,
+    "unit": "gp"
+   },
+   "costGp": 100,
+   "weight": null,
+   "description": "Küçük nesnelere daha yakından bakmayı sağlar. Ateş yakarken çakmaktaşı yerine de kullanılabilir (güneş ışığı kadar parlak ışık, tutuşacak kav ve yaklaşık 5 dakika gerektirir). Küçük ya da çok detaylı bir eşyayı incelemek için yapılan yetenek kontrollerinde avantaj sağlar."
+  },
+  {
+   "id": "manacles",
+   "name": "Manacles",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 6,
+   "description": "Small ya da Medium bir yaratığı bağlayabilen metal kelepçeler. Kaçmak DC 20 Çeviklik kontrolü, kırmak DC 20 Güç kontrolü gerektirir. Her set bir anahtarla gelir. Anahtar olmadan, hırsız aletlerinde yetkin biri DC 15 Çeviklik kontrolüyle kilidi açabilir. Kelepçelerin 15 hit point'i vardır."
+  },
+  {
+   "id": "city-map",
+   "name": "Map of the city you grew up in (Şehir haritası)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "mess-kit",
+   "name": "Mess kit",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "sp"
+   },
+   "costGp": 0.2,
+   "weight": 1,
+   "description": "Bir bardak ve basit çatal-bıçak içeren teneke kutu. Bir tarafı tencere, diğeri tabak ya da sığ kâse olarak kullanılabilir."
+  },
+  {
+   "id": "mirror-steel",
+   "name": "Mirror, steel",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 0.5
+  },
+  {
+   "id": "oil-flask",
+   "name": "Oil (flask)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": 1,
+   "description": "Genellikle 1 pint tutan kil bir şişede gelir. Bir eylem olarak 5 fit içindeki bir yaratığa sıçratabilir ya da 20 fite fırlatabilirsin; doğaçlama silah olarak menzilli saldırı yap. İsabette hedef yağa bulanır ve kuruma öncesinde (1 dakika) ateş hasarı alırsa ek 5 ateş hasarı alır. Ayrıca zemine dökerek 5 fit karelik alanı kaplayabilirsin (zemin düz olmalı); yakılırsa 2 tur yanar ve alana giren ya da turunu orada bitiren yaratıklara 5 ateş hasarı verir (tur başına yalnızca bir kez)."
+  },
+  {
+   "id": "paper-one-sheet",
+   "name": "Paper (one sheet)",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "sp"
+   },
+   "costGp": 0.2,
+   "weight": null
+  },
+  {
+   "id": "parchment-one-sheet",
+   "name": "Parchment (one sheet)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": null
+  },
+  {
+   "id": "perfume-vial",
+   "name": "Perfume (vial)",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": null
+  },
+  {
+   "id": "pick-miners",
+   "name": "Pick, miner's",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 10
+  },
+  {
+   "id": "piton",
+   "name": "Piton",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "cp"
+   },
+   "costGp": 0.05,
+   "weight": 0.25
+  },
+  {
+   "id": "poison-basic-vial",
+   "name": "Poison, basic (vial)",
+   "category": "gear",
+   "cost": {
+    "amount": 100,
+    "unit": "gp"
+   },
+   "costGp": 100,
+   "weight": null,
+   "description": "Bir kesme ya da delme silahını veya üç mühimmata kadar zehirlemek için kullanabilirsin. Uygulamak bir eylem alır. Zehirli silah ya da mühimmatla vurulan yaratık DC 10 Constitution kurtarma zarında başarılı olmalı yoksa 1d4 zehir hasarı alır. Uygulandıktan sonra zehir kurumadan önce 1 dakika etkisini korur."
+  },
+  {
+   "id": "pole-10-foot",
+   "name": "Pole (10-foot)",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "cp"
+   },
+   "costGp": 0.05,
+   "weight": 7
+  },
+  {
+   "id": "pot-iron",
+   "name": "Pot, iron",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 10
+  },
+  {
+   "id": "potion-of-healing",
+   "name": "Potion of healing",
+   "category": "gear",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 0.5,
+   "description": "Bu şişedeki büyülü kırmızı sıvıyı içen bir karakter **2d4 + 2 hit point** geri kazanır. İçmek ya da uygulamak bir eylem alır."
+  },
+  {
+   "id": "pouch",
+   "name": "Pouch",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 1,
+   "description": "20 sapan mermisi ya da 50 üfleme borusu iğnesi tutabilen kumaş ya da deri kese."
+  },
+  {
+   "id": "prayer-book",
+   "name": "Prayer book (Dua kitabı)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 5
+  },
+  {
+   "id": "prayer-wheel",
+   "name": "Prayer wheel (Dua çarkı)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 2
+  },
+  {
+   "id": "quiver",
+   "name": "Quiver",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 1,
+   "description": "Bir sadak 20 ok tutabilir."
+  },
+  {
+   "id": "ram-portable",
+   "name": "Ram, portable",
+   "category": "gear",
+   "cost": {
+    "amount": 4,
+    "unit": "gp"
+   },
+   "costGp": 4,
+   "weight": 35,
+   "description": "Kapıları kırmak için kullanabilirsin; bunu yaparken Güç kontrolüne +4 bonus alırsın. Başka bir karakter yardım ederek sana avantaj sağlayabilir."
+  },
+  {
+   "id": "rations-1-day",
+   "name": "Rations (1 day)",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 2,
+   "description": "Uzun yolculuklara uygun kuru gıdalar: kurutulmuş et, kuru meyve, peksimet ve fındık."
+  },
+  {
+   "id": "robes",
+   "name": "Robes",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 4
+  },
+  {
+   "id": "rope-hempen-50-feet",
+   "name": "Rope, hempen (50 feet)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 10,
+   "description": "İster kenevir ister ipek olsun, bir ipin 2 hit point'i vardır ve DC 17 Güç kontrolüyle koparılabilir."
+  },
+  {
+   "id": "rope-silk-50-feet",
+   "name": "Rope, silk (50 feet)",
+   "category": "gear",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 5
+  },
+  {
+   "id": "sack",
+   "name": "Sack",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "cp"
+   },
+   "costGp": 0.01,
+   "weight": 0.5
+  },
+  {
+   "id": "scale-merchants",
+   "name": "Scale, merchant's",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 3,
+   "description": "Küçük bir terazi, tabaklar ve 2 pound'a kadar bir ağırlık takımı içerir. Ham değerli metaller ya da ticaret malları gibi küçük nesnelerin ağırlığını ölçebilirsin."
+  },
+  {
+   "id": "scroll-case-notes",
+   "name": "Scroll case stuffed full of notes (Notlarla dolu parşömen kutusu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "pedigree-scroll",
+   "name": "Scroll of pedigree (Soy ağacı belgesi)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "sealing-wax",
+   "name": "Sealing wax",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": null
+  },
+  {
+   "id": "shovel",
+   "name": "Shovel",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 5
+  },
+  {
+   "id": "signal-whistle",
+   "name": "Signal whistle",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "cp"
+   },
+   "costGp": 0.05,
+   "weight": null
+  },
+  {
+   "id": "signet-ring",
+   "name": "Signet ring",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": null
+  },
+  {
+   "id": "small-knife",
+   "name": "Small knife (Küçük bıçak)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0.25
+  },
+  {
+   "id": "soap",
+   "name": "Soap",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "cp"
+   },
+   "costGp": 0.02,
+   "weight": null
+  },
+  {
+   "id": "spellbook",
+   "name": "Spellbook",
+   "category": "gear",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 3,
+   "description": "Wizardlar için zorunlu; büyü kaydetmeye uygun 100 boş parşömen sayfası olan deri ciltli bir tomar."
+  },
+  {
+   "id": "spikes-iron-10",
+   "name": "Spikes, iron (10)",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 5
+  },
+  {
+   "id": "spyglass",
+   "name": "Spyglass",
+   "category": "gear",
+   "cost": {
+    "amount": 1000,
+    "unit": "gp"
+   },
+   "costGp": 1000,
+   "weight": 1,
+   "description": "Dürbünle bakılan nesneler boyutlarının iki katına büyütülür."
+  },
+  {
+   "id": "staff-walking",
+   "name": "Staff (Asa / yürüyüş sopası)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 4
+  },
+  {
+   "id": "incense-stick",
+   "name": "Stick of incense (Tütsü çubuğu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "tent-two-person",
+   "name": "Tent, two-person",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 20,
+   "description": "Basit ve taşınabilir kanvas bir barınak; iki kişilik."
+  },
+  {
+   "id": "tinderbox",
+   "name": "Tinderbox",
+   "category": "gear",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 1,
+   "description": "Çakmaktaşı, ateş çeliği ve kav tutan küçük bir kutu. Bir meşaleyi (ya da bol açık yakıtı olan başka bir şeyi) yakmak bir eylem alır; başka bir ateşi yakmak 1 dakika alır."
+  },
+  {
+   "id": "parent-token",
+   "name": "Token to remember your parents by (Ebeveyn madalyonu)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 0
+  },
+  {
+   "id": "torch",
+   "name": "Torch",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "cp"
+   },
+   "costGp": 0.01,
+   "weight": 1,
+   "description": "Bir meşale 1 saat yanar, 20 fit yarıçapında parlak ışık ve ek 20 fitte loş ışık verir. Yanan bir meşaleyle yakın dövüş saldırısı yapıp isabet ettirirsen 1 ateş hasarı verir."
+  },
+  {
+   "id": "animal-trophy",
+   "name": "Trophy from an animal you killed (Hayvan trofesi)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "enemy-trophy",
+   "name": "Trophy taken from a fallen enemy (Düşman ganimeti)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 1
+  },
+  {
+   "id": "vestments",
+   "name": "Vestments (Ayin giysileri)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 4
+  },
+  {
+   "id": "vial",
+   "name": "Vial",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": null
+  },
+  {
+   "id": "waterskin",
+   "name": "Waterskin",
+   "category": "gear",
+   "cost": {
+    "amount": 2,
+    "unit": "sp"
+   },
+   "costGp": 0.2,
+   "weight": 5
+  },
+  {
+   "id": "whetstone",
+   "name": "Whetstone",
+   "category": "gear",
+   "cost": {
+    "amount": 1,
+    "unit": "cp"
+   },
+   "costGp": 0.01,
+   "weight": 1
+  },
+  {
+   "id": "winter-blanket",
+   "name": "Winter blanket (Kışlık battaniye)",
+   "category": "gear",
+   "cost": null,
+   "costGp": null,
+   "weight": 3
+  },
+  {
+   "id": "burglars-pack",
+   "name": "Burglar's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 16,
+    "unit": "gp"
+   },
+   "costGp": 16,
+   "weight": 47.5,
+   "description": "Bir sırt çantası, 1.000 bilyeli çuval, 10 fit ip, bir zil, 5 mum, bir levye, bir çekiç, 10 piton, kapaklı bir fener, 2 şişe yağ, 5 günlük erzak, bir çakmak kutusu ve bir su kabı içerir. Ayrıca yanına bağlı 50 fit kenevir ip vardır.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "ball-bearings-bag-of-1-000",
+     "qty": 1
+    },
+    {
+     "itemId": "rope-hempen-50-feet",
+     "qty": 1,
+     "note": "10 fit ip + 50 fit kenevir ip"
+    },
+    {
+     "itemId": "bell",
+     "qty": 1
+    },
+    {
+     "itemId": "candle",
+     "qty": 5
+    },
+    {
+     "itemId": "crowbar",
+     "qty": 1
+    },
+    {
+     "itemId": "hammer",
+     "qty": 1
+    },
+    {
+     "itemId": "piton",
+     "qty": 10
+    },
+    {
+     "itemId": "lantern-hooded",
+     "qty": 1
+    },
+    {
+     "itemId": "oil-flask",
+     "qty": 2
+    },
+    {
+     "itemId": "rations-1-day",
+     "qty": 5
+    },
+    {
+     "itemId": "tinderbox",
+     "qty": 1
+    },
+    {
+     "itemId": "waterskin",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "diplomats-pack",
+   "name": "Diplomat's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 39,
+    "unit": "gp"
+   },
+   "costGp": 39,
+   "weight": 36,
+   "description": "Bir sandık, harita ve parşömenler için 2 çanta, bir set ince kıyafet, bir şişe mürekkep, bir mürekkep kalemi, bir lamba, 2 şişe yağ, 5 sayfa kâğıt, bir şişe parfüm, mühür mumu ve sabun içerir.",
+   "contents": [
+    {
+     "itemId": "chest",
+     "qty": 1
+    },
+    {
+     "itemId": "case-map-or-scroll",
+     "qty": 2
+    },
+    {
+     "itemId": "clothes-fine",
+     "qty": 1
+    },
+    {
+     "itemId": "ink-1-ounce-bottle",
+     "qty": 1
+    },
+    {
+     "itemId": "ink-pen",
+     "qty": 1
+    },
+    {
+     "itemId": "lamp",
+     "qty": 1
+    },
+    {
+     "itemId": "oil-flask",
+     "qty": 2
+    },
+    {
+     "itemId": "paper-one-sheet",
+     "qty": 5
+    },
+    {
+     "itemId": "perfume-vial",
+     "qty": 1
+    },
+    {
+     "itemId": "sealing-wax",
+     "qty": 1
+    },
+    {
+     "itemId": "soap",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "dungeoneers-pack",
+   "name": "Dungeoneer's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 12,
+    "unit": "gp"
+   },
+   "costGp": 12,
+   "weight": 61.5,
+   "description": "Bir sırt çantası, bir levye, bir çekiç, 10 piton, 10 meşale, bir çakmak kutusu, 10 günlük erzak ve bir su kabı içerir. Ayrıca yanına bağlı 50 fit kenevir ip vardır.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "crowbar",
+     "qty": 1
+    },
+    {
+     "itemId": "hammer",
+     "qty": 1
+    },
+    {
+     "itemId": "piton",
+     "qty": 10
+    },
+    {
+     "itemId": "torch",
+     "qty": 10
+    },
+    {
+     "itemId": "tinderbox",
+     "qty": 1
+    },
+    {
+     "itemId": "rations-1-day",
+     "qty": 10
+    },
+    {
+     "itemId": "waterskin",
+     "qty": 1
+    },
+    {
+     "itemId": "rope-hempen-50-feet",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "entertainers-pack",
+   "name": "Entertainer's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 40,
+    "unit": "gp"
+   },
+   "costGp": 40,
+   "weight": 38,
+   "description": "Bir sırt çantası, bir yatak rulosu, 2 kostüm, 5 mum, 5 günlük erzak, bir su kabı ve bir kılık değiştirme kiti içerir.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "bedroll",
+     "qty": 1
+    },
+    {
+     "itemId": "clothes-costume",
+     "qty": 2
+    },
+    {
+     "itemId": "candle",
+     "qty": 5
+    },
+    {
+     "itemId": "rations-1-day",
+     "qty": 5
+    },
+    {
+     "itemId": "waterskin",
+     "qty": 1
+    },
+    {
+     "itemId": "disguise-kit",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "explorers-pack",
+   "name": "Explorer's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 59,
+   "description": "Bir sırt çantası, bir yatak rulosu, bir yemek kiti (mess kit), bir çakmak kutusu, 10 meşale, 10 günlük erzak ve bir su kabı içerir. Ayrıca yanına bağlı 50 fit kenevir ip vardır.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "bedroll",
+     "qty": 1
+    },
+    {
+     "itemId": "mess-kit",
+     "qty": 1
+    },
+    {
+     "itemId": "tinderbox",
+     "qty": 1
+    },
+    {
+     "itemId": "torch",
+     "qty": 10
+    },
+    {
+     "itemId": "rations-1-day",
+     "qty": 10
+    },
+    {
+     "itemId": "waterskin",
+     "qty": 1
+    },
+    {
+     "itemId": "rope-hempen-50-feet",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "priests-pack",
+   "name": "Priest's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 19,
+    "unit": "gp"
+   },
+   "costGp": 19,
+   "weight": 24,
+   "description": "Bir sırt çantası, bir battaniye, 10 mum, bir çakmak kutusu, bir sadaka kutusu, 2 blok tütsü, bir buhurdan, ayin giysileri, 2 günlük erzak ve bir su kabı içerir.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "blanket",
+     "qty": 1
+    },
+    {
+     "itemId": "candle",
+     "qty": 10
+    },
+    {
+     "itemId": "tinderbox",
+     "qty": 1
+    },
+    {
+     "itemId": "alms-box",
+     "qty": 1
+    },
+    {
+     "itemId": "incense-block",
+     "qty": 2
+    },
+    {
+     "itemId": "censer",
+     "qty": 1
+    },
+    {
+     "itemId": "vestments",
+     "qty": 1
+    },
+    {
+     "itemId": "rations-1-day",
+     "qty": 2
+    },
+    {
+     "itemId": "waterskin",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "scholars-pack",
+   "name": "Scholar's Pack",
+   "category": "pack",
+   "cost": {
+    "amount": 40,
+    "unit": "gp"
+   },
+   "costGp": 40,
+   "weight": 11.25,
+   "description": "Bir sırt çantası, bir bilgi kitabı, bir şişe mürekkep, bir mürekkep kalemi, 10 sayfa parşömen, biraz kum torbası ve küçük bir bıçak içerir.",
+   "contents": [
+    {
+     "itemId": "backpack",
+     "qty": 1
+    },
+    {
+     "itemId": "book",
+     "qty": 1,
+     "note": "bilgi kitabı (book of lore)"
+    },
+    {
+     "itemId": "ink-1-ounce-bottle",
+     "qty": 1
+    },
+    {
+     "itemId": "ink-pen",
+     "qty": 1
+    },
+    {
+     "itemId": "parchment-one-sheet",
+     "qty": 10
+    },
+    {
+     "itemId": "bag-of-sand",
+     "qty": 1
+    },
+    {
+     "itemId": "small-knife",
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": "shield",
+   "name": "Shield",
+   "category": "shield",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 6,
+   "armorType": "shield",
+   "acBase": 2,
+   "acDexMax": 0,
+   "strengthReq": null,
+   "stealthDisadvantage": false
+  },
+  {
+   "id": "alchemists-supplies",
+   "name": "Alchemist's supplies",
+   "category": "tool",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 8,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "bagpipes",
+   "name": "Bagpipes",
+   "category": "tool",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 6,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "brewers-supplies",
+   "name": "Brewer's supplies",
+   "category": "tool",
+   "cost": {
+    "amount": 20,
+    "unit": "gp"
+   },
+   "costGp": 20,
+   "weight": 9,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "calligraphers-supplies",
+   "name": "Calligrapher's supplies",
+   "category": "tool",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "carpenters-tools",
+   "name": "Carpenter's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 8,
+    "unit": "gp"
+   },
+   "costGp": 8,
+   "weight": 6,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "cartographers-tools",
+   "name": "Cartographer's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 6,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "cobblers-tools",
+   "name": "Cobbler's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "cooks-utensils",
+   "name": "Cook's utensils",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 8,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "dice-set",
+   "name": "Dice set",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": null,
+   "group": "Gaming set",
+   "toolGroup": "gaming"
+  },
+  {
+   "id": "disguise-kit",
+   "name": "Disguise kit",
+   "category": "tool",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 3,
+   "toolGroup": "kit",
+   "description": "Kozmetikler, saç boyası ve küçük aksesuarlar içeren bir kese; fiziksel görünümünü değiştiren kılıklar oluşturmanı sağlar."
+  },
+  {
+   "id": "dragonchess-set",
+   "name": "Dragonchess set",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 0.5,
+   "group": "Gaming set",
+   "toolGroup": "gaming"
+  },
+  {
+   "id": "drum",
+   "name": "Drum",
+   "category": "tool",
+   "cost": {
+    "amount": 6,
+    "unit": "gp"
+   },
+   "costGp": 6,
+   "weight": 3,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "dulcimer",
+   "name": "Dulcimer",
+   "category": "tool",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 10,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "flute",
+   "name": "Flute",
+   "category": "tool",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 1,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "forgery-kit",
+   "name": "Forgery kit",
+   "category": "tool",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 5,
+   "toolGroup": "kit",
+   "description": "Kâğıtlar, parşömenler, kalemler, mürekkepler, mühürler, mühür mumu, altın ve gümüş yaprak ve fiziksel belge sahtekârlığı yapmak için gereken diğer malzemeleri içeren küçük bir kutu."
+  },
+  {
+   "id": "glassblowers-tools",
+   "name": "Glassblower's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "herbalism-kit",
+   "name": "Herbalism kit",
+   "category": "tool",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 3,
+   "toolGroup": "kit",
+   "description": "Makas, havan ve tokmak, keseler ve şişeler içerir. Bu kitle yetkinlik, otları tanımlamak ya da uygulamak için yapılan kontrollere bonus ekler. Ayrıca antitoxin ve potion of healing yaratmak için bu kitle yetkinlik gerekir."
+  },
+  {
+   "id": "horn",
+   "name": "Horn",
+   "category": "tool",
+   "cost": {
+    "amount": 3,
+    "unit": "gp"
+   },
+   "costGp": 3,
+   "weight": 2,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "jewelers-tools",
+   "name": "Jeweler's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 2,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "leatherworkers-tools",
+   "name": "Leatherworker's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "lute",
+   "name": "Lute",
+   "category": "tool",
+   "cost": {
+    "amount": 35,
+    "unit": "gp"
+   },
+   "costGp": 35,
+   "weight": 2,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "lyre",
+   "name": "Lyre",
+   "category": "tool",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 2,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "masons-tools",
+   "name": "Mason's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 8,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "navigators-tools",
+   "name": "Navigator's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 2,
+   "toolGroup": "kit",
+   "description": "Denizde navigasyon için kullanılan bir alet seti. Bir geminin rotasını çizmeni ve denizde kaybolmamak için yaptığın kontrollere bonus eklemeni sağlar."
+  },
+  {
+   "id": "painters-supplies",
+   "name": "Painter's supplies",
+   "category": "tool",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "pan-flute",
+   "name": "Pan flute",
+   "category": "tool",
+   "cost": {
+    "amount": 12,
+    "unit": "gp"
+   },
+   "costGp": 12,
+   "weight": 2,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "playing-card-set",
+   "name": "Playing card set",
+   "category": "tool",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": null,
+   "group": "Gaming set",
+   "toolGroup": "gaming"
+  },
+  {
+   "id": "poisoners-kit",
+   "name": "Poisoner's kit",
+   "category": "tool",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 2,
+   "toolGroup": "kit",
+   "description": "Zehir üretimi için gereken şişeleri, kimyasalları ve ekipmanı içerir. Zehir üretmek ya da kullanmak için yapılan kontrollere bonus ekler."
+  },
+  {
+   "id": "potters-tools",
+   "name": "Potter's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 3,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "shawm",
+   "name": "Shawm",
+   "category": "tool",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 1,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "smiths-tools",
+   "name": "Smith's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 20,
+    "unit": "gp"
+   },
+   "costGp": 20,
+   "weight": 8,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "thieves-tools",
+   "name": "Thieves' tools",
+   "category": "tool",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 1,
+   "toolGroup": "kit",
+   "description": "Küçük bir eğe, bir kilit maşası seti, metal saplı küçük bir ayna, dar ağızlı bir makas ve bir pense içerir. Tuzakları etkisiz hâle getirmek ya da kilit açmak için yapılan kontrollere bonus ekler."
+  },
+  {
+   "id": "three-dragon-ante-set",
+   "name": "Three-Dragon Ante set",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": null,
+   "group": "Gaming set",
+   "toolGroup": "gaming"
+  },
+  {
+   "id": "tinkers-tools",
+   "name": "Tinker's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 10,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "vehicles-land-or-water",
+   "name": "Vehicles (land or water)",
+   "category": "tool",
+   "cost": null,
+   "costGp": null,
+   "weight": null,
+   "toolGroup": "vehicle"
+  },
+  {
+   "id": "viol",
+   "name": "Viol",
+   "category": "tool",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 1,
+   "group": "Musical instrument",
+   "toolGroup": "instrument"
+  },
+  {
+   "id": "weavers-tools",
+   "name": "Weaver's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "woodcarvers-tools",
+   "name": "Woodcarver's tools",
+   "category": "tool",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 5,
+   "group": "Artisan's tools",
+   "toolGroup": "artisan"
+  },
+  {
+   "id": "battleaxe",
+   "name": "Battleaxe",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 4,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "slashing",
+   "properties": [
+    "versatile (1d10)"
+   ]
+  },
+  {
+   "id": "blowgun",
+   "name": "Blowgun",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 1,
+   "weaponClass": "martial",
+   "weaponRange": "ranged",
+   "damage": "1",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 25/100)",
+    "loading"
+   ]
+  },
+  {
+   "id": "club",
+   "name": "Club",
+   "category": "weapon",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d4",
+   "damageType": "bludgeoning",
+   "properties": [
+    "light"
+   ]
+  },
+  {
+   "id": "crossbow-hand",
+   "name": "Crossbow, hand",
+   "category": "weapon",
+   "cost": {
+    "amount": 75,
+    "unit": "gp"
+   },
+   "costGp": 75,
+   "weight": 3,
+   "weaponClass": "martial",
+   "weaponRange": "ranged",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 30/120)",
+    "light",
+    "loading"
+   ]
+  },
+  {
+   "id": "crossbow-heavy",
+   "name": "Crossbow, heavy",
+   "category": "weapon",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 18,
+   "weaponClass": "martial",
+   "weaponRange": "ranged",
+   "damage": "1d10",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 100/400)",
+    "heavy",
+    "loading",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "crossbow-light",
+   "name": "Crossbow, light",
+   "category": "weapon",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 5,
+   "weaponClass": "simple",
+   "weaponRange": "ranged",
+   "damage": "1d8",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 80/320)",
+    "loading",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "dagger",
+   "name": "Dagger",
+   "category": "weapon",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 1,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d4",
+   "damageType": "piercing",
+   "properties": [
+    "finesse",
+    "light",
+    "thrown (range 20/60)"
+   ]
+  },
+  {
+   "id": "dart",
+   "name": "Dart",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "cp"
+   },
+   "costGp": 0.05,
+   "weight": 0.25,
+   "weaponClass": "simple",
+   "weaponRange": "ranged",
+   "damage": "1d4",
+   "damageType": "piercing",
+   "properties": [
+    "finesse",
+    "thrown (range 20/60)"
+   ]
+  },
+  {
+   "id": "flail",
+   "name": "Flail",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "bludgeoning",
+   "properties": []
+  },
+  {
+   "id": "glaive",
+   "name": "Glaive",
+   "category": "weapon",
+   "cost": {
+    "amount": 20,
+    "unit": "gp"
+   },
+   "costGp": 20,
+   "weight": 6,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d10",
+   "damageType": "slashing",
+   "properties": [
+    "heavy",
+    "reach",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "greataxe",
+   "name": "Greataxe",
+   "category": "weapon",
+   "cost": {
+    "amount": 30,
+    "unit": "gp"
+   },
+   "costGp": 30,
+   "weight": 7,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d12",
+   "damageType": "slashing",
+   "properties": [
+    "heavy",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "greatclub",
+   "name": "Greatclub",
+   "category": "weapon",
+   "cost": {
+    "amount": 2,
+    "unit": "sp"
+   },
+   "costGp": 0.2,
+   "weight": 10,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "bludgeoning",
+   "properties": [
+    "two-handed"
+   ]
+  },
+  {
+   "id": "greatsword",
+   "name": "Greatsword",
+   "category": "weapon",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 6,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "2d6",
+   "damageType": "slashing",
+   "properties": [
+    "heavy",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "halberd",
+   "name": "Halberd",
+   "category": "weapon",
+   "cost": {
+    "amount": 20,
+    "unit": "gp"
+   },
+   "costGp": 20,
+   "weight": 6,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d10",
+   "damageType": "slashing",
+   "properties": [
+    "heavy",
+    "reach",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "handaxe",
+   "name": "Handaxe",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "slashing",
+   "properties": [
+    "light",
+    "thrown (range 20/60)"
+   ]
+  },
+  {
+   "id": "javelin",
+   "name": "Javelin",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "sp"
+   },
+   "costGp": 0.5,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "thrown (range 30/120)"
+   ]
+  },
+  {
+   "id": "lance",
+   "name": "Lance",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 6,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d12",
+   "damageType": "piercing",
+   "properties": [
+    "reach",
+    "special"
+   ]
+  },
+  {
+   "id": "light-hammer",
+   "name": "Light hammer",
+   "category": "weapon",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d4",
+   "damageType": "bludgeoning",
+   "properties": [
+    "light",
+    "thrown (range 20/60)"
+   ]
+  },
+  {
+   "id": "longbow",
+   "name": "Longbow",
+   "category": "weapon",
+   "cost": {
+    "amount": 50,
+    "unit": "gp"
+   },
+   "costGp": 50,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "ranged",
+   "damage": "1d8",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 150/600)",
+    "heavy",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "longsword",
+   "name": "Longsword",
+   "category": "weapon",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 3,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "slashing",
+   "properties": [
+    "versatile (1d10)"
+   ]
+  },
+  {
+   "id": "mace",
+   "name": "Mace",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 4,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "bludgeoning",
+   "properties": []
+  },
+  {
+   "id": "maul",
+   "name": "Maul",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 10,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "2d6",
+   "damageType": "bludgeoning",
+   "properties": [
+    "heavy",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "morningstar",
+   "name": "Morningstar",
+   "category": "weapon",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 4,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "piercing",
+   "properties": []
+  },
+  {
+   "id": "net",
+   "name": "Net",
+   "category": "weapon",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 3,
+   "weaponClass": "martial",
+   "weaponRange": "ranged",
+   "properties": [
+    "special",
+    "thrown (range 5/15)"
+   ]
+  },
+  {
+   "id": "pike",
+   "name": "Pike",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 18,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d10",
+   "damageType": "piercing",
+   "properties": [
+    "heavy",
+    "reach",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "quarterstaff",
+   "name": "Quarterstaff",
+   "category": "weapon",
+   "cost": {
+    "amount": 2,
+    "unit": "sp"
+   },
+   "costGp": 0.2,
+   "weight": 4,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "bludgeoning",
+   "properties": [
+    "versatile (1d8)"
+   ]
+  },
+  {
+   "id": "rapier",
+   "name": "Rapier",
+   "category": "weapon",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "piercing",
+   "properties": [
+    "finesse"
+   ]
+  },
+  {
+   "id": "scimitar",
+   "name": "Scimitar",
+   "category": "weapon",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 3,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "slashing",
+   "properties": [
+    "finesse",
+    "light"
+   ]
+  },
+  {
+   "id": "shortbow",
+   "name": "Shortbow",
+   "category": "weapon",
+   "cost": {
+    "amount": 25,
+    "unit": "gp"
+   },
+   "costGp": 25,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "ranged",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "ammunition (range 80/320)",
+    "two-handed"
+   ]
+  },
+  {
+   "id": "shortsword",
+   "name": "Shortsword",
+   "category": "weapon",
+   "cost": {
+    "amount": 10,
+    "unit": "gp"
+   },
+   "costGp": 10,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "finesse",
+    "light"
+   ]
+  },
+  {
+   "id": "sickle",
+   "name": "Sickle",
+   "category": "weapon",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 2,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d4",
+   "damageType": "slashing",
+   "properties": [
+    "light"
+   ]
+  },
+  {
+   "id": "sling",
+   "name": "Sling",
+   "category": "weapon",
+   "cost": {
+    "amount": 1,
+    "unit": "sp"
+   },
+   "costGp": 0.1,
+   "weight": null,
+   "weaponClass": "simple",
+   "weaponRange": "ranged",
+   "damage": "1d4",
+   "damageType": "bludgeoning",
+   "properties": [
+    "ammunition (range 30/120)"
+   ]
+  },
+  {
+   "id": "spear",
+   "name": "Spear",
+   "category": "weapon",
+   "cost": {
+    "amount": 1,
+    "unit": "gp"
+   },
+   "costGp": 1,
+   "weight": 3,
+   "weaponClass": "simple",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "thrown (range 20/60)",
+    "versatile (1d8)"
+   ]
+  },
+  {
+   "id": "trident",
+   "name": "Trident",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 4,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d6",
+   "damageType": "piercing",
+   "properties": [
+    "thrown (range 20/60)",
+    "versatile (1d8)"
+   ]
+  },
+  {
+   "id": "war-pick",
+   "name": "War pick",
+   "category": "weapon",
+   "cost": {
+    "amount": 5,
+    "unit": "gp"
+   },
+   "costGp": 5,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "piercing",
+   "properties": []
+  },
+  {
+   "id": "warhammer",
+   "name": "Warhammer",
+   "category": "weapon",
+   "cost": {
+    "amount": 15,
+    "unit": "gp"
+   },
+   "costGp": 15,
+   "weight": 2,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d8",
+   "damageType": "bludgeoning",
+   "properties": [
+    "versatile (1d10)"
+   ]
+  },
+  {
+   "id": "whip",
+   "name": "Whip",
+   "category": "weapon",
+   "cost": {
+    "amount": 2,
+    "unit": "gp"
+   },
+   "costGp": 2,
+   "weight": 3,
+   "weaponClass": "martial",
+   "weaponRange": "melee",
+   "damage": "1d4",
+   "damageType": "slashing",
+   "properties": [
+    "finesse",
+    "reach"
+   ]
+  }
+ ],
+ "startingWealth": [
+  {
+   "classId": "barbarian",
+   "dice": {
+    "count": 2,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "2d4 × 10 gp"
+  },
+  {
+   "classId": "bard",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "5d4 × 10 gp"
+  },
+  {
+   "classId": "cleric",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "5d4 × 10 gp"
+  },
+  {
+   "classId": "druid",
+   "dice": {
+    "count": 2,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "2d4 × 10 gp"
+  },
+  {
+   "classId": "fighter",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "5d4 × 10 gp"
+  },
+  {
+   "classId": "monk",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 1
+   },
+   "text": "5d4 gp"
+  },
+  {
+   "classId": "paladin",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "5d4 × 10 gp"
+  },
+  {
+   "classId": "ranger",
+   "dice": {
+    "count": 5,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "5d4 × 10 gp"
+  },
+  {
+   "classId": "rogue",
+   "dice": {
+    "count": 4,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "4d4 × 10 gp"
+  },
+  {
+   "classId": "sorcerer",
+   "dice": {
+    "count": 3,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "3d4 × 10 gp"
+  },
+  {
+   "classId": "warlock",
+   "dice": {
+    "count": 4,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "4d4 × 10 gp"
+  },
+  {
+   "classId": "wizard",
+   "dice": {
+    "count": 4,
+    "die": 4,
+    "multiplier": 10
+   },
+   "text": "4d4 × 10 gp"
+  }
+ ],
+ "coinage": {
+  "cp": 1,
+  "sp": 10,
+  "ep": 50,
+  "gp": 100,
+  "pp": 1000
+ },
+ "groupDescriptions": {
+  "artisans-tools": "Bir zanaat ya da ticareti sürdürmek için gereken eşyaları içeren özel aletler. Her tür artisan aleti ayrı bir yetkinlik gerektirir.",
+  "gaming-set": "Zar ve kart desteleri dâhil geniş bir oyun parçası yelpazesini kapsar (Three-Dragon Ante gibi oyunlar için). Her tür oyun seti ayrı bir yetkinlik gerektirir.",
+  "musical-instrument": "Bir müzik aletiyle yetkinsen, o aletle müzik çalmak için yaptığın kontrollere yetkinlik bonusu ekleyebilirsin. Bir bard, müzik aletini büyü odağı olarak kullanabilir. Her müzik aleti ayrı bir yetkinlik gerektirir."
+ }
+}

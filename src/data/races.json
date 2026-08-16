@@ -1,0 +1,368 @@
+[
+  {
+    "id": "dwarf",
+    "name": "DWARF",
+    "nameTr": "Cüce",
+    "description": "Dağların derinliklerinde yaşayan, klan ve geleneğe bağlı, dayanıklı ve inatçı bir ırk. İyi birer savaşçı, madenci ve zanaatkar olarak bilinirler. Ortalama ömürleri ~350 yıldır.",
+    "abilityBonuses": {
+      "Constitution": 2
+    },
+    "abilityScoreText": "+2 Constitution",
+    "speed": 25,
+    "sizeText": "Medium. Boy 120–150 cm, ağırlık ~70 kg.",
+    "ageText": "İnsanlarla aynı hızda olgunlaşır; 50 yaşına kadar 'genç' sayılır. Ortalama ömür ~350 yıl.",
+    "alignmentText": "Genellikle Lawful Good. Düzeni ve adaleti önemserler.",
+    "languages": "Common + Dwarvish.",
+    "languagesRaw": "Common + Dwarvish.",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. yarı ışıkta (dim light) tam ışıkmış gibi, tam karanlıkta dim light varmış gibi görürsün. Karanlıkta renk algılanamaz, yalnızca gri tonlar."
+      },
+      {
+        "name": "Dwarven Resilience",
+        "description": "Zehre (poison) karşı saving throw'larda Advantage. Poison damage'a Resistance (yani aldığın hasar yarıya iner)."
+      },
+      {
+        "name": "Dwarven Combat Training",
+        "description": "Battleaxe, handaxe, throwing hammer ve warhammer ile Proficiency."
+      },
+      {
+        "name": "Tool Proficiency",
+        "description": "Smith's tools, brewer's supplies veya mason's tools'dan birini seç; o araçta Proficiency."
+      },
+      {
+        "name": "Stonecunning",
+        "description": "Taş işçiliğinin kökeniyle ilgili Intelligence (History) kontrollerinde Proficiency bonus'un iki katını kullanırsın."
+      }
+    ],
+    "subraces": [
+      {
+        "id": "hill-dwarf",
+        "name": "Hill Dwarf",
+        "description": "+1 Wisdom. Dwarven Toughness: Max HP her seviyede +1 artar. Daha sezgisel ve dayanıklı; Gold Dwarf, Neidar ve Klar bu türdendir.",
+        "abilityBonuses": {
+          "Wisdom": 1
+        },
+        "hpPerLevelBonus": 1
+      },
+      {
+        "id": "mountain-dwarf",
+        "name": "Mountain Dwarf",
+        "description": "+2 Strength. Dwarven Armor Training: Hafif (light) ve orta (medium) zırhla Proficiency. Güçlü ve donanımlı; Shield Dwarf, Hylar bu türdendir.",
+        "abilityBonuses": {
+          "Strength": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "elf",
+    "name": "ELF",
+    "nameTr": "Elf",
+    "description": "Büyülü ve zarif bir ırk. Ormanlarda ya da gümüş kulelerde yaşarlar; doğayı, sanatı ve büyüyü severler. Ömürleri 750 yıla kadar çıkabilir; bu da onlara kısa ömürlü ırklara kıyasla çok daha geniş bir perspektif kazandırır.",
+    "abilityBonuses": {
+      "Dexterity": 2
+    },
+    "abilityScoreText": "+2 Dexterity",
+    "speed": 30,
+    "sizeText": "Medium. Boy 150–185 cm, ağırlık 45–65 kg.",
+    "ageText": "Bedensel olgunluk insanlarla aynı hızda; ancak elfler yetişkinliği ~100. yaşta ilan eder. Ömür ~750 yıl.",
+    "alignmentText": "Kaosu sevme eğilimindedirler; özgürlüğü ve çeşitliliği önemserler. Genellikle iyi hizalamaya yakındırlar.",
+    "languages": "Common + Elvish.",
+    "languagesRaw": "Common + Elvish.",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. — Dwarf ile aynı mekanik."
+      },
+      {
+        "name": "Keen Senses",
+        "description": "Perception (algılama) skill'inde Proficiency. Her zaman uyanık ve çevresini fark eden bir ırktır."
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "Büyülenme (charmed) durumuna karşı saving throw'larda Advantage. Büyü seni uyutamaz (sleep spell ve benzeri etkiler sana işlemez)."
+      },
+      {
+        "name": "Trance",
+        "description": "Elfler uyumaz; 4 saat derin meditasyon (trance) yaparlar. Bu 4 saat, insanların 8 saatlik uykusuyla aynı dinlenme faydasını sağlar. Hem Short Rest hem Long Rest için geçerlidir."
+      }
+    ],
+    "subraces": [
+      {
+        "id": "high-elf",
+        "name": "High Elf",
+        "description": "+1 Intelligence. Elf Weapon Training (longsword, shortsword, shortbow, longbow). Wizard spell listesinden bir Cantrip öğren (zekâ temelli). Ekstra bir dil seç.",
+        "abilityBonuses": {
+          "Intelligence": 1
+        }
+      },
+      {
+        "id": "wood-elf",
+        "name": "Wood Elf",
+        "description": "+1 Wisdom. Elf Weapon Training. Fleet of Foot: Hız 35 ft olur. Mask of the Wild: Hafif doğal örtüde (foliage, yağmur, sis vb.) Hiding deneyebilirsin.",
+        "abilityBonuses": {
+          "Wisdom": 1
+        },
+        "speed": 35
+      },
+      {
+        "id": "dark-elf-drow",
+        "name": "Dark Elf / Drow",
+        "description": "+1 Charisma. Superior Darkvision: 120 ft. Sunlight Sensitivity: Güneş ışığında saldırı rolls ve Perception (görme) kontrollerinde Disadvantage. Drow Magic: Dancing Lights cantrip; 3. seviyede Faerie Fire; 5. seviyede Darkness (her biri günde bir kez, Charisma bazlı). Drow Weapon Training: rapier, shortsword, hand crossbow.",
+        "abilityBonuses": {
+          "Charisma": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "halfling",
+    "name": "HALFLING",
+    "nameTr": "Yarımcı",
+    "description": "Küçük, neşeli ve pratik bir ırk. Savaşmak yerine hayatta kalmayı tercih ederler; fark edilmemek ve offense vermemekle geçinirler. Ömürleri genellikle ikinci yüzyılın ortasına kadar ulaşır.",
+    "abilityBonuses": {
+      "Dexterity": 2
+    },
+    "abilityScoreText": "+2 Dexterity",
+    "speed": 25,
+    "sizeText": "Small. Boy ~90 cm, ağırlık ~18 kg. Small olmanın önemi: Heavy etiketli silahları kullanamaz.",
+    "ageText": "20 yaşında yetişkin sayılır. Ömür ~150 yıl.",
+    "alignmentText": "Çoğunlukla Lawful Good. İyiliksever, düzenli ve geleneklere bağlı.",
+    "languages": "Common + Halfling.",
+    "languagesRaw": "Common + Halfling.",
+    "traits": [
+      {
+        "name": "Lucky",
+        "description": "Attack roll, ability check veya saving throw'da 1 atarsan, zarı yeniden at ve yeni sonucu kullan. Bu pasif bir yetenek; istediğinde değil, 1 geldiğinde otomatik devreye girer."
+      },
+      {
+        "name": "Brave",
+        "description": "Frightened durumuna (korkutulma) karşı saving throw'larda Advantage."
+      },
+      {
+        "name": "Halfling Nimbleness",
+        "description": "Kendinden daha büyük bir yaratığın alanından geçebilirsin (normalde engel sayılır)."
+      }
+    ],
+    "subraces": [
+      {
+        "id": "lightfoot-halfling",
+        "name": "Lightfoot Halfling",
+        "description": "+1 Charisma. Naturally Stealthy: Senden en az bir boy büyük bir yaratığın arkasına gizlenebilirsin (Hide deneyebilirsin). En yaygın halfling türü.",
+        "abilityBonuses": {
+          "Charisma": 1
+        }
+      },
+      {
+        "id": "stout-halfling",
+        "name": "Stout Halfling",
+        "description": "+1 Constitution. Stout Resilience: Zehre karşı saving throw'larda Advantage ve poison damage'a Resistance (Dwarf Resilience ile aynı mekanik). Bazıları bu türde cüce kanı olduğunu söyler.",
+        "abilityBonuses": {
+          "Constitution": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "human",
+    "name": "HUMAN",
+    "nameTr": "İnsan",
+    "description": "D&D'nin en yaygın ırkı. Uyum sağlama ve hırs konusunda benzersizler. Kısa ömürlerine rağmen büyük imparatorluklar kurmuş, tüm sınıf ve rollerle uyumlu esnek bir ırktır.",
+    "abilityBonuses": {},
+    "abilityScoreText": "Tüm ability score'lar +1 artar (toplam 6 farklı stat'a +1).",
+    "speed": 30,
+    "sizeText": "Medium. Boy 150–190 cm, ağırlık 55–110 kg.",
+    "ageText": "Geç ergenlikte yetişkin; ömür genellikle 100 yılı geçmez.",
+    "alignmentText": "Belirli bir eğilim yok; en iyi ve en kötüler insanlar arasında bulunur.",
+    "languages": "Common + kendi seçeceğin bir ekstra dil.",
+    "languagesRaw": "Common + kendi seçeceğin bir ekstra dil.",
+    "traits": [],
+    "subraces": [],
+    "abilityBonusesAll": 1
+  },
+  {
+    "id": "dragonborn",
+    "name": "DRAGONBORN",
+    "nameTr": "Ejderha Doğumlu",
+    "description": "Ejderhalardan türemiş, dik duran ve insansı bir ırk; kanatları ve kuyrukları yoktur. Klan onuru her şeyin üzerindedir. Hızlı büyürler; 15 yaşında yetişkin sayılırlar, yaklaşık 80 yıl yaşarlar.",
+    "abilityBonuses": {
+      "Strength": 2,
+      "Charisma": 1
+    },
+    "abilityScoreText": "+2 Strength, +1 Charisma",
+    "speed": 30,
+    "sizeText": "Medium. Boy 185 cm üzeri, ağırlık ~115 kg.",
+    "ageText": "Doğumdan saatler sonra yürür; 3 yaşında 10 yaşındaki bir insan çocuğu kadar gelişmiş. Yetişkinlik: 15. Ömür: ~80 yıl.",
+    "alignmentText": "Uç noktalara meyillidir: bilinçli olarak iyi ya da kötü tarafı seçer. Çoğunlukla iyi.",
+    "languages": "Common + Draconic.",
+    "languagesRaw": "Common + Draconic.",
+    "traits": [
+      {
+        "name": "Draconic Ancestry",
+        "description": "10 ejderha türünden birini seç (Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White). Bu seçim hem Breath Weapon hem Damage Resistance'ını belirler."
+      },
+      {
+        "name": "Breath Weapon",
+        "description": "Action harcayarak solunum silahını kullan. Etkilenen tüm yaratıklar saving throw atar. DC = 8 + Constitution modifier + Proficiency Bonus. Başarısız olursa 2d6 hasar, başarılıysa yarısı. Hasar seviyelere göre artar: 6. seviye 3d6 / 11. seviye 4d6 / 16. seviye 5d6. Kullandıktan sonra Short veya Long Rest tamamlanana kadar tekrar kullanamazsın."
+      },
+      {
+        "name": "Damage Resistance",
+        "description": "Seçtiğin ejderha türüne karşılık gelen hasar türüne Resistance (yarı hasar alırsın)."
+      },
+      {
+        "name": "Draconic Ancestry Tablosu",
+        "description": "|**Ejderha**|**Hasar Türü**|**Breath Weapon Şekli / Saving Throw**|\n|---|---|---|\n|Black|Acid|5x30 ft. çizgi (line) — Dex save|\n|Blue|Lightning|5x30 ft. çizgi (line) — Dex save|\n|Brass|Fire|5x30 ft. çizgi (line) — Dex save|\n|Bronze|Lightning|5x30 ft. çizgi (line) — Dex save|\n|Copper|Acid|5x30 ft. çizgi (line) — Dex save|\n|Gold|Fire|15 ft. koni (cone) — Dex save|\n|---|---|---|\n|Green|Poison|15 ft. koni (cone) — Con save|\n|Red|Fire|15 ft. koni (cone) — Dex save|\n|Silver|Cold|15 ft. koni (cone) — Con save|\n|White|Cold|15 ft. koni (cone) — Con save|\nDragonborn'un subrace'i yoktur; klan mirası ve ejderha türü seçimi karakteri özelleştirir."
+      }
+    ],
+    "subraces": []
+  },
+  {
+    "id": "gnome",
+    "name": "GNOME",
+    "nameTr": "Cüce Sihirbaz / Gnome",
+    "description": "Meraklı, neşeli ve yaratıcı bir ırk. Yeraltında yaşarlar ama cücelere göre daha fazla taze hava alırlar. Ömürleri 350–500 yıl arasındadır.",
+    "abilityBonuses": {
+      "Intelligence": 2
+    },
+    "abilityScoreText": "+2 Intelligence",
+    "speed": 25,
+    "sizeText": "Small. Boy 90–120 cm, ağırlık ~18 kg.",
+    "ageText": "İnsanlarla aynı hızda olgunlaşır; ~40 yaşında yetişkin sayılır. Ömür 350–500 yıl.",
+    "alignmentText": "Genellikle iyi; kargaşa ya da düzene eşit dağılımla yönelirler.",
+    "languages": "Common + Gnomish (Dwarvish alfabesiyle yazılır).",
+    "languagesRaw": "Common + Gnomish (Dwarvish alfabesiyle yazılır).",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. — standart mekanik."
+      },
+      {
+        "name": "Gnome Cunning",
+        "description": "Büyüye karşı tüm Intelligence, Wisdom ve Charisma saving throw'larında Advantage. Bu son derece güçlü bir passive yetenek; gnome'ları büyüsel efektlere karşı çok dayanıklı kılar."
+      }
+    ],
+    "subraces": [
+      {
+        "id": "forest-gnome",
+        "name": "Forest Gnome",
+        "description": "+1 Dexterity. Natural Illusionist: Minor Illusion cantrip'ini bilirsin (Intelligence bazlı). Speak with Small Beasts: Küçük hayvanlarla basit iletişim kurabilirsin.",
+        "abilityBonuses": {
+          "Dexterity": 1
+        }
+      },
+      {
+        "id": "rock-gnome",
+        "name": "Rock Gnome",
+        "description": "+1 Constitution. Artificer's Lore: Sihirli eşya, alşimik nesne veya teknolojik alet hakkındaki Intelligence (History) kontrollerinde Proficiency bonus'u iki katla. Tinker: Tinker's tools kullanarak 1 saatte küçük mekanik aygıtlar yapabilirsin (Clockwork Toy, Fire Starter veya Music Box); aynı anda en fazla 3 aktif aygıt.",
+        "abilityBonuses": {
+          "Constitution": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "half-elf",
+    "name": "HALF-ELF",
+    "nameTr": "Yarım Elf",
+    "description": "İnsan ve elfin çocukları. Ne tamamen insan ne de tamamen elf olarak kabul görürler. Elfin zarafeti ile insanın enerjisini birleştirirler. Ömürleri genellikle 180 yılı aşar.",
+    "abilityBonuses": {
+      "Charisma": 2
+    },
+    "abilityScoreText": "+2 Charisma; bunun yanı sıra kendi seçeceğin iki farklı ability score'a +1.",
+    "speed": 30,
+    "sizeText": "Medium. Boy 150–185 cm, ağırlık 45–80 kg.",
+    "ageText": "İnsanlarla aynı hızda olgunlaşır; yetişkinlik ~20 yaş. Ömür genellikle 180 yılı aşar.",
+    "alignmentText": "Elven mirasın kargaşa eğilimini paylaşır. Kişisel özgürlüğü önemser.",
+    "languages": "Common + Elvish + kendi seçeceğin bir ekstra dil.",
+    "languagesRaw": "Common + Elvish + kendi seçeceğin bir ekstra dil.",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. — standart mekanik."
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "Büyülenme (charmed) durumuna karşı saving throw'larda Advantage; uyku büyüsü sana işlemez. (Elf ile aynı.)"
+      },
+      {
+        "name": "Skill Versatility",
+        "description": "Kendi seçeceğin iki farklı skill'de Proficiency kazanırsın. Bu, sınıfından bağımsız ekstra yetenekler demektir; oldukça esnek ve güçlü.\nHalf-elf'in subrace'i yoktur. Charisma +2 ve Skill Versatility kombinasyonu onu pek çok sosyal ve versatile build için güçlü bir seçenek yapar."
+      }
+    ],
+    "subraces": [],
+    "abilityBonusChoice": {
+      "count": 2,
+      "amount": 1
+    }
+  },
+  {
+    "id": "half-orc",
+    "name": "HALF-ORC",
+    "nameTr": "Yarım Ork",
+    "description": "İnsan ve ork birlikteliğinden doğan güçlü savaşçılar. Gri tenli, iri yapılı ve korkutucu görünümlüdürler. Hem ork kabilelerinde hem de insan toplumlarında yerlerini bulmaya çalışırlar. Nadiren 75 yaşını geçerler.",
+    "abilityBonuses": {
+      "Strength": 2,
+      "Constitution": 1
+    },
+    "abilityScoreText": "+2 Strength, +1 Constitution",
+    "speed": 30,
+    "sizeText": "Medium. Boy 150–185 cm üzeri, ağırlık 80–115 kg.",
+    "ageText": "İnsanlardan biraz daha hızlı olgunlaşır; yetişkinlik ~14 yaş. Nadiren 75 yaşını aşar.",
+    "alignmentText": "Ork mirasından gelen kaos eğilimi; doğası gereği iyi değildir. Ork kabilelerinde yetişenler genellikle kötü hizalıdır.",
+    "languages": "Common + Orc (Dwarvish alfabesiyle yazılır).",
+    "languagesRaw": "Common + Orc (Dwarvish alfabesiyle yazılır).",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. — standart mekanik."
+      },
+      {
+        "name": "Menacing",
+        "description": "Intimidation skill'inde Proficiency kazanırsın."
+      },
+      {
+        "name": "Relentless Endurance",
+        "description": "0 HP'ye düşürüldüğünde (ama anında öldürülmeden) 1 HP ile ayakta kalabilirsin. Bu özelliği her Long Rest'ten sonra bir kez kullanabilirsin. Seni çok dayanıklı kılan ve birçok ölümden kurtarabilecek güçlü bir passive yetenek."
+      },
+      {
+        "name": "Savage Attacks",
+        "description": "Yakın dövüş silahıyla Critical Hit (tam isabet) vururken, silahın hasar zarlarından bir tanesini bir kez daha at ve sonucu ekstra hasara ekle.\nHalf-Orc'un subrace'i yoktur. Relentless Endurance özellikle yeni oyuncular için can kurtarıcı olabilir; mutlaka Long Rest zamanını ve kullanım sayısını takip et."
+      }
+    ],
+    "subraces": []
+  },
+  {
+    "id": "tiefling",
+    "name": "TIEFLING",
+    "nameTr": "Şeytan Kanı",
+    "description": "İnsanlardan türemiş ama Cehennem hükümdarı Asmodeus'un özüyle karışmış bir ırk. Boynuzlar, uzun kuyruk, keskin dişler ve düz renkli gözlerle ayırt edilirler. İnsanlardan biraz daha uzun yaşarlar. Toplum tarafından şüpheyle karşılanırlar.",
+    "abilityBonuses": {
+      "Intelligence": 1,
+      "Charisma": 2
+    },
+    "abilityScoreText": "+1 Intelligence, +2 Charisma",
+    "speed": 30,
+    "sizeText": "Medium. İnsanlarla aynı yapı ve boy.",
+    "ageText": "İnsanlarla aynı hızda olgunlaşır; biraz daha uzun yaşar.",
+    "alignmentText": "Doğası gereği kötü eğilimli değil, ancak kaotik eğilim yaygın. Yıllar içinde şüphe ve güvensizlikle büyümek kişiliği şekillendirir.",
+    "languages": "Common + Infernal.",
+    "languagesRaw": "Common + Infernal.",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "60 ft. — standart mekanik."
+      },
+      {
+        "name": "Hellish Resistance",
+        "description": "Ateş hasarına (fire damage) Resistance (yarı hasar alırsın). Hem D&D'de hem de pek çok senaryoda çok işe yarayan bir özellik; ateş bazlı büyü ve tuzaklara karşı çok daha dayanıklısın."
+      },
+      {
+        "name": "Infernal Legacy",
+        "description": "Büyü yeteneklerin seviyeye göre açılır: Her seviye: Thaumaturgy cantrip'i bilirsin (Charisma bazlı). 3. seviyede: Hellish Rebuke spell'ini günde bir kez 2. seviye slot olarak kullanabilirsin. 5. seviyede:\nDarkness spell'ini günde bir kez kullanabilirsin. Bu büyüler için spell slot harcamazsın; ancak günde yalnızca bir kez kullanılabilirler. Charisma, bu büyüler için spellcasting ability'ndir.\nTiefling'in subrace'i yoktur. Infernal Legacy'deki büyüler için spell slot harcanmaz; yalnızca günlük kullanım sınırı vardır. Long Rest sonrası yenilenir."
+      }
+    ],
+    "subraces": []
+  }
+]

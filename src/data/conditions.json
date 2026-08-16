@@ -1,0 +1,178 @@
+[
+ {
+  "id": "blinded",
+  "name": "Blinded",
+  "nameTr": "Kör",
+  "effects": [
+   "Kör bir yaratık göremez ve görme gerektiren herhangi bir yetenek kontrolünde otomatik olarak başarısız olur.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır (advantage) ve yaratığın saldırı zarları dezavantajlıdır (disadvantage)."
+  ]
+ },
+ {
+  "id": "charmed",
+  "name": "Charmed",
+  "nameTr": "Büyülenmiş",
+  "effects": [
+   "Büyülenmiş bir yaratık, kendisini büyüleyene (charmer) saldıramaz ya da onu zararlı yetenekler veya sihirli etkilerle hedef alamaz.",
+   "Büyüleyen, yaratıkla sosyal olarak etkileşim kurmak için yaptığı herhangi bir yetenek kontrolünde avantaja sahiptir."
+  ]
+ },
+ {
+  "id": "deafened",
+  "name": "Deafened",
+  "nameTr": "Sağır",
+  "effects": [
+   "Sağır bir yaratık duyamaz ve işitme gerektiren herhangi bir yetenek kontrolünde otomatik olarak başarısız olur."
+  ]
+ },
+ {
+  "id": "frightened",
+  "name": "Frightened",
+  "nameTr": "Korkmuş",
+  "effects": [
+   "Korkmuş bir yaratık, korkusunun kaynağı görüş hattı (line of sight) içindeyken yetenek kontrollerinde ve saldırı zarlarında dezavantaja sahiptir.",
+   "Yaratık, korkusunun kaynağına gönüllü olarak daha fazla yaklaşamaz."
+  ]
+ },
+ {
+  "id": "grappled",
+  "name": "Grappled",
+  "nameTr": "Kıstırılmış",
+  "effects": [
+   "Kıstırılmış bir yaratığın hızı 0 olur ve hızına yönelik herhangi bir bonustan yararlanamaz.",
+   "Kıstıran yaratık (grappler) **incapacitated** olursa durum sona erer (bkz. ilgili durum).",
+   "Bir etki, kıstırılmış yaratığı kıstıranın ya da kıstırma etkisinin erişiminden çıkarırsa durum yine sona erer — örneğin bir yaratık *thunderwave* büyüsüyle savrulduğunda."
+  ]
+ },
+ {
+  "id": "incapacitated",
+  "name": "Incapacitated",
+  "nameTr": "Etkisiz",
+  "effects": [
+   "Etkisiz bir yaratık eylem (action) ya da tepki (reaction) gerçekleştiremez."
+  ]
+ },
+ {
+  "id": "invisible",
+  "name": "Invisible",
+  "nameTr": "Görünmez",
+  "effects": [
+   "Görünmez bir yaratık, sihir ya da özel bir duyu yardımı olmadan görülemez. Saklanma amacıyla, yaratık ağır şekilde gizlenmiş (heavily obscured) sayılır. Yaratığın konumu, çıkardığı herhangi bir sesle ya da bıraktığı izlerle tespit edilebilir.",
+   "Yaratığa karşı yapılan saldırı zarları dezavantajlıdır ve yaratığın saldırı zarları avantajlıdır."
+  ]
+ },
+ {
+  "id": "paralyzed",
+  "name": "Paralyzed",
+  "nameTr": "Felçli",
+  "effects": [
+   "Felçli bir yaratık **incapacitated** olur (bkz. ilgili durum) ve hareket edemez veya konuşamaz.",
+   "Yaratık, Güç (Strength) ve Çeviklik (Dexterity) kurtarma zarlarında otomatik olarak başarısız olur.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır.",
+   "Yaratığa isabet eden herhangi bir saldırı, saldıran yaratığın 5 fit içinde olması durumunda kritik isabettir (critical hit)."
+  ]
+ },
+ {
+  "id": "petrified",
+  "name": "Petrified",
+  "nameTr": "Taşlaşmış",
+  "effects": [
+   "Taşlaşmış bir yaratık, giydiği ya da taşıdığı sihirli olmayan herhangi bir nesneyle birlikte katı, cansız bir maddeye (genellikle taşa) dönüşür. Ağırlığı on kat artar ve yaşlanması durur.",
+   "Yaratık **incapacitated** olur (bkz. ilgili durum), hareket edemez veya konuşamaz ve çevresinden habersizdir.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır.",
+   "Yaratık, Güç ve Çeviklik kurtarma zarlarında otomatik olarak başarısız olur.",
+   "Yaratık tüm hasara karşı dirençlidir (resistance).",
+   "Yaratık zehre (poison) ve hastalığa (disease) karşı bağışıktır (immune); ancak sisteminde önceden var olan bir zehir ya da hastalık nötralize edilmez, yalnızca askıya alınır."
+  ]
+ },
+ {
+  "id": "poisoned",
+  "name": "Poisoned",
+  "nameTr": "Zehirlenmiş",
+  "effects": [
+   "Zehirlenmiş bir yaratık, saldırı zarlarında ve yetenek kontrollerinde dezavantaja sahiptir."
+  ]
+ },
+ {
+  "id": "prone",
+  "name": "Prone",
+  "nameTr": "Yerde/Devrilmiş",
+  "effects": [
+   "Yerde olan bir yaratığın tek hareket seçeneği emeklemektir; ancak ayağa kalkarak durumu sona erdirebilir.",
+   "Yaratık, saldırı zarlarında dezavantaja sahiptir.",
+   "Yaratığa karşı yapılan bir saldırı zarı, saldıran yaratığın 5 fit içinde olması durumunda avantajlıdır. Aksi takdirde saldırı zarı dezavantajlıdır."
+  ]
+ },
+ {
+  "id": "restrained",
+  "name": "Restrained",
+  "nameTr": "Bağlanmış/Kısıtlanmış",
+  "effects": [
+   "Kısıtlanmış bir yaratığın hızı 0 olur ve hızına yönelik herhangi bir bonustan yararlanamaz.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır ve yaratığın saldırı zarları dezavantajlıdır.",
+   "Yaratık, Çeviklik kurtarma zarlarında dezavantaja sahiptir."
+  ]
+ },
+ {
+  "id": "stunned",
+  "name": "Stunned",
+  "nameTr": "Sersemlemiş",
+  "effects": [
+   "Sersemlemiş bir yaratık **incapacitated** olur (bkz. ilgili durum), hareket edemez ve yalnızca kesik kesik konuşabilir.",
+   "Yaratık, Güç ve Çeviklik kurtarma zarlarında otomatik olarak başarısız olur.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır."
+  ]
+ },
+ {
+  "id": "unconscious",
+  "name": "Unconscious",
+  "nameTr": "Bilinçsiz",
+  "effects": [
+   "Bilinçsiz bir yaratık **incapacitated** olur (bkz. ilgili durum), hareket edemez veya konuşamaz ve çevresinden habersizdir.",
+   "Yaratık, tuttuğu her şeyi düşürür ve yere devrilir (**prone** olur).",
+   "Yaratık, Güç ve Çeviklik kurtarma zarlarında otomatik olarak başarısız olur.",
+   "Yaratığa karşı yapılan saldırı zarları avantajlıdır.",
+   "Yaratığa isabet eden herhangi bir saldırı, saldıran yaratığın 5 fit içinde olması durumunda kritik isabettir."
+  ]
+ },
+ {
+  "id": "exhaustion",
+  "name": "Exhaustion",
+  "nameTr": "Bitkinlik",
+  "effects": [],
+  "levels": [
+   {
+    "level": 1,
+    "effect": "Yetenek kontrollerinde dezavantaj (Disadvantage on ability checks)"
+   },
+   {
+    "level": 2,
+    "effect": "Hız yarıya iner (Speed halved)"
+   },
+   {
+    "level": 3,
+    "effect": "Saldırı zarlarında ve kurtarma zarlarında dezavantaj (Disadvantage on attack rolls and saving throws)"
+   },
+   {
+    "level": 4,
+    "effect": "Maksimum hit point yarıya iner (Hit point maximum halved)"
+   },
+   {
+    "level": 5,
+    "effect": "Hız 0'a düşer (Speed reduced to 0)"
+   },
+   {
+    "level": 6,
+    "effect": "Ölüm (Death)"
+   }
+  ],
+  "notes": [
+   "Açlık ve donma ya da kavurucu sıcaklıkların uzun vadeli etkileri gibi bazı özel yetenekler ve çevresel tehlikeler, **exhaustion** adı verilen özel bir duruma yol açabilir. Bitkinlik altı seviye halinde ölçülür. Bir etki, açıklamasında belirtildiği gibi bir yaratığa bir veya daha fazla bitkinlik seviyesi verebilir.",
+   "Halihazırda bitkin olan bir yaratık, bitkinliğe neden olan başka bir etkiye maruz kalırsa, mevcut bitkinlik seviyesi etkinin açıklamasında belirtilen miktar kadar artar.",
+   "Bir yaratık, mevcut bitkinlik seviyesinin etkisiyle birlikte **tüm alt seviyelerin** etkisine de maruz kalır. Örneğin, seviye 2 bitkinlik yaşayan bir yaratığın hızı yarıya iner ve yetenek kontrollerinde dezavantajı olur.",
+   "Bitkinliği azaltan bir etki, seviyesini etkinin açıklamasında belirtildiği gibi düşürür; bir yaratığın bitkinlik seviyesi 1'in altına düşerse tüm bitkinlik etkileri sona erer.",
+   "Uzun bir dinlenmeyi (long rest) tamamlamak, yaratığın bir miktar yiyecek ve içecek de tüketmiş olması koşuluyla, yaratığın bitkinlik seviyesini 1 azaltır.",
+   "*Kaynak: D&D 5e — Appendix A: Conditions (Player's Handbook). Yüklenen PDF'ten Markdown biçimine dönüştürülmüştür.*"
+  ]
+ }
+]
