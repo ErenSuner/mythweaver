@@ -40,7 +40,7 @@ export default function StepAbilities() {
         (puan − 10) ÷ 2.
       </Info>
 
-      <div className="spread">
+      <div className="spread" style={{ flexWrap: 'wrap' }}>
         <span className="badge" style={{ fontSize: 14 }}>
           Kalan Puan: {remaining} / {totalPoints}
         </span>
@@ -59,8 +59,8 @@ export default function StepAbilities() {
               className="panel"
               style={{ padding: 14, display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 12 }}
             >
-              <div>
-                <div className="row" style={{ gap: 8 }}>
+              <div style={{ minWidth: 0 }}>
+                <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
                   <b style={{ fontFamily: 'var(--serif)', color: 'var(--gold-bright)' }}>{config.abilitiesTr[a]}</b>
                   <Tip label={a}>{ABILITY_HELP[a]}</Tip>
                 </div>

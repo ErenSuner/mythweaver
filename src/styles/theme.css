@@ -214,12 +214,28 @@ textarea {
   display: inline-block;
   font-family: var(--body);
   font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.03em;
-  padding: 3px 9px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  padding: 4px 10px;
   border-radius: 6px;
   border: 1px solid var(--line-strong);
   color: var(--ink-dim);
+  background: transparent;
+}
+
+/* .badge bir <button> ise: native görünümü sıfırla, tıklanabilir hisset */
+button.badge {
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+button.badge:hover {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+  background: var(--accent-tint);
 }
 .badge-new {
   color: var(--new);

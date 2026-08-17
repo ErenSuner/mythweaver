@@ -46,7 +46,7 @@ export function Tip({ label, children }: { label: string; children: ReactNode })
             zIndex: 30,
             top: '120%',
             left: 0,
-            width: 260,
+            width: 'min(260px, calc(100vw - 32px))',
             background: 'var(--panel-solid)',
             border: '1px solid var(--line-strong)',
             borderRadius: 8,
