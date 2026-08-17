@@ -1,24 +1,18 @@
 import { useMemo } from 'react'
-import { config, classById, backgroundById } from '@/data'
+import { config, classById } from '@/data'
 import { Info, Tip } from '@/components/ui'
 import { useChar } from './useChar'
-import { formatMod, passivePerception, savingThrowModifier, skillModifier, isSkillProficient } from '@/lib/rules'
+import { formatMod, passivePerception, savingThrowModifier, skillModifier, isSkillProficient, classSkillOptions, backgroundSkills } from '@/lib/rules'
 import { ABILITIES, type Ability } from '@/types/data'
 
 const SKILL_KEYS = Object.keys(config.skills)
 
-function skillsInText(text: string): string[] {
-  if (!text) return []
-  return SKILL_KEYS.filter((s) => new RegExp(`\\b${s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i').test(text))
-}
-
 export default function StepSkills() {
   const { character, updateFn } = useChar()
   const klass = classById(character.classId)
-  const bg = backgroundById(character.backgroundId)
 
-  const bgSkills = useMemo(() => skillsInText(bg?.skillProficiencies ?? ''), [bg])
-  const classOptions = useMemo(() => skillsInText(klass?.skillChoices.options ?? ''), [klass])
+  const bgSkills = useMemo(() => backgroundSkills(character), [character])
+  const classOptions = useMemo(() => classSkillOptions(character.classId), [character.classId])
   const classCount = klass?.skillChoices.count ?? 0
 
   // NOT: background becerileri c.skills'e YAZILMAZ; isSkillProficient türetir

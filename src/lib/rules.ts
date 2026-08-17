@@ -73,6 +73,18 @@ export function backgroundSkills(char: Character): string[] {
   return SKILL_KEYS.filter((s) => new RegExp(`\\b${s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i').test(text))
 }
 
+// Sınıfın seçime açtığı skill listesi (serbest metinden). Metinde skill adı
+// yoksa ama açıkça "herhangi/any N skill" diyorsa (RAW: Bard serbest seçer) TÜM
+// skill'ler seçilebilir olur; aksi halde yalnız adı geçenler (5e kısıtı korunur).
+export function classSkillOptions(classId: string): string[] {
+  const klass = classById(classId)
+  const text = klass?.skillChoices.options ?? ''
+  const named = SKILL_KEYS.filter((s) => new RegExp(`\\b${s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i').test(text))
+  if (named.length) return named
+  if ((klass?.skillChoices.count ?? 0) > 0 && /herhangi|any/i.test(text)) return [...SKILL_KEYS]
+  return named
+}
+
 // bir beceride proficiency var mı (class/manuel + background + ırk + alt sınıf grantı)
 export function isSkillProficient(char: Character, skill: string): boolean {
   if (Boolean(char.skills[skill]?.proficient) || char.raceExtraSkills.includes(skill)) return true

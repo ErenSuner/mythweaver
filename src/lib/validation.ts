@@ -1,17 +1,10 @@
 // Wizard adım tamamlanma kontrolleri (zorunlu alanlar dolmadan İleri kapalı)
-import { config, classById, raceById, backgroundById } from '@/data'
+import { classById, raceById } from '@/data'
 import { collectChoiceSlots } from '@/data/grants'
 import { spellLimitsFor } from '@/data/spell-progression'
-import { pointBuyRemaining } from './rules'
+import { pointBuyRemaining, classSkillOptions, backgroundSkills } from './rules'
 import { pendingEquipChoices } from './inventory'
 import type { Character } from '@/types/character'
-
-const SKILL_KEYS = Object.keys(config.skills)
-
-function skillsInText(text: string): string[] {
-  if (!text) return []
-  return SKILL_KEYS.filter((s) => new RegExp(`\\b${s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i').test(text))
-}
 
 export function raceComplete(c: Character): boolean {
   const race = raceById(c.raceId)
@@ -42,8 +35,8 @@ export function skillsComplete(c: Character): boolean {
   if (!klass) return false
   const count = klass.skillChoices.count ?? 0
   if (count === 0) return true
-  const bgSkills = skillsInText(backgroundById(c.backgroundId)?.skillProficiencies ?? '')
-  const classOptions = skillsInText(klass.skillChoices.options)
+  const bgSkills = backgroundSkills(c)
+  const classOptions = classSkillOptions(c.classId)
   const chosen = classOptions.filter((s) => !bgSkills.includes(s) && c.skills[s]?.proficient).length
   return chosen >= count
 }
