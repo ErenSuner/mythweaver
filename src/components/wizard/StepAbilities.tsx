@@ -37,7 +37,7 @@ export default function StepAbilities() {
       <Info>
         <b>Point Buy</b> yöntemi: {totalPoints} puanın var. Her yetenek 8 ile 15 arasında; yükseldikçe daha pahalıya
         mal olur. Irk bonusların otomatik eklenir. <b>Modifier</b> (bonus), bir yeteneğin oyundaki gerçek etkisidir:
-        (puan − 10) ÷ 2.
+        (değer − 10) ÷ 2.
       </Info>
 
       <div className="spread" style={{ flexWrap: 'wrap' }}>
@@ -51,13 +51,13 @@ export default function StepAbilities() {
         <table className="pointbuy-table">
           <tbody>
             <tr>
-              <th>Puan</th>
+              <th>Değer</th>
               {Object.keys(config.pointBuy.cost).map((s) => (
                 <td key={s}>{s}</td>
               ))}
             </tr>
             <tr>
-              <th>Maliyet</th>
+              <th>Maliyet (puan)</th>
               {Object.values(config.pointBuy.cost).map((c, i) => (
                 <td key={i}>{c}</td>
               ))}
