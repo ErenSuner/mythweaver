@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { config, classById, raceById, backgroundById, spellById, itemById, spells } from '@/data'
 import { raceCantripEntries } from '@/data/grants'
 import { isPactCaster, subclassSpells } from '@/data/spell-progression'
-import { classResources } from '@/data/class-resources'
+import { classResources, type ClassResource } from '@/data/class-resources'
 import { inventoryWeight, weaponItemsIn } from '@/lib/inventory'
 import { characterLanguages } from '@/lib/derive'
 import RuleText from '@/components/RuleText'
 import ItemDetailModal from '@/components/equipment/ItemDetailModal'
 import SpellDetailModal from '@/components/SpellDetailModal'
+import { Modal } from '@/components/Modal'
 import type { Character, InventorySource } from '@/types/character'
 import type { Item, Spell } from '@/types/data'
 
@@ -56,6 +57,7 @@ export default function CharacterCard({
   const newKeys = new Set(character.lastGainedFeatureKeys)
   const [openItem, setOpenItem] = useState<Item | null>(null)
   const [openSpell, setOpenSpell] = useState<Spell | null>(null)
+  const [openResource, setOpenResource] = useState<ClassResource | null>(null)
   const languages = characterLanguages(character)
   const senses = (race?.traits ?? []).filter((t) => /darkvision|görüş|blindsight|tremorsense|truesight/i.test(t.name))
 
@@ -313,10 +315,16 @@ export default function CharacterCard({
             <Section title="Kaynaklar">
               <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
                 {classResources(character).map((r) => (
-                  <span key={r.name} className="badge" title={r.recharge ? `Yenilenme: ${r.recharge}` : undefined}>
-                    {r.name}: <b>{r.value}</b>
+                  <button
+                    key={r.name}
+                    className="badge"
+                    style={{ cursor: r.desc ? 'pointer' : 'default' }}
+                    onClick={() => r.desc && setOpenResource(r)}
+                    title={r.desc ? 'Ne olduğunu gör' : r.recharge ? `Yenilenme: ${r.recharge}` : undefined}
+                  >
+                    {r.name}: <b>{r.value}</b> {r.desc && <span className="hint">ⓘ</span>}
                     {r.recharge ? <span className="hint"> · {r.recharge}</span> : null}
-                  </span>
+                  </button>
                 ))}
               </div>
             </Section>
@@ -425,6 +433,18 @@ export default function CharacterCard({
 
       <ItemDetailModal item={openItem} onClose={() => setOpenItem(null)} />
       <SpellDetailModal spell={openSpell} onClose={() => setOpenSpell(null)} />
+      <Modal
+        open={Boolean(openResource)}
+        onClose={() => setOpenResource(null)}
+        title={openResource?.name}
+        subtitle={
+          openResource
+            ? `${openResource.value}${openResource.recharge ? ` · Yenilenme: ${openResource.recharge}` : ''}`
+            : undefined
+        }
+      >
+        {openResource?.desc && <RuleText>{openResource.desc}</RuleText>}
+      </Modal>
     </div>
   )
 }
