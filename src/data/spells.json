@@ -74,7 +74,7 @@
     "duration": "Instantaneous",
     "description": "Doğanın ruhlarına fısıldayarak menzil içinde şunlardan birini yaratırsın:\nÖnümüzdeki 24 saatin hava durumunu öngören zararsız sensör efekti (1 round sürer): parlak küre açık hava, bulut yağmur, kar tanesi kar vb.\nAnlık çiçek açması, tohum filizlenmesi veya yaprak tomuru.\n5-foot küpüne sığan zararsız sensör efekti: düşen yapraklar, hafif rüzgar, küçük bir hayvan sesi ya da kokarca hafif kokusu gibi.\nCandle, torch veya küçük kamp ateşini anlık yakar ya da söndürür.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -134,8 +134,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Dokunduğun istekli yaratık büyü sona ermeden önce bir kez seçtiği bir ability check'te d4 atarak sonucu ekleyebilir. Zar ability check'ten önce veya sonra atılabilir; zar atıldığında büyü sona erer.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -150,7 +150,7 @@
     "description": "Dokunduğun, boyutu 10 feet'i geçmeyen bir nesne parlak ışık yayar (20 feet yarıçap) ve etrafında ek 20 feet loş ışık oluşur. Işığın rengi serbestçe seçilebilir. Nesneyi opak bir şeyle tamamen kapatmak ışığı engeller. Büyüyü yeniden kullanmak veya action harcayarak sona erdirmek büyüyü bitirir. Düşman bir yaratığın taşıdığı nesneyi hedeflersen yaratık Dexterity saving throw yapar; başarılıysa büyü tutmaz.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "sorcerer",
       "wizard"
     ]
@@ -184,8 +184,8 @@
     "description": "Dokunduğun nesnedeki tek bir kırığı ya da yırtığı tamir edersin: kırık zincir halkası, anahtarın iki parçası, yırtık pelerin, sızdıran su torbası gibi. Hasar 1 foot boyutunu geçmiyorsa iz kalmadan onarılır. Büyü sihirli bir eşyayı fiziksel olarak onarabilir, ama sihirsel gücünü geri kazandıramaz.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "wizard"
     ]
   },
@@ -233,7 +233,7 @@
     "duration": "Instantaneous",
     "description": "Elini uzatır ve menzil içindeki bir yaratığa zararlı gaz bulutunu yönlendirirsin. Hedef Constitution saving throw yapar; başarısızsa 1d12 poison hasar alır. Hasar 5. seviyede 2d12, 11. seviyede 3d12, 17. seviyede 4d12'ye yükselir.",
     "classes": [
-      "drui-d",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -265,7 +265,7 @@
     "duration": "10 dakika",
     "description": "Elinde titreşen alev belirir; ne sana ne de ekipmana zarar vermez. 10-foot yarıçapta parlak, ekstra 10 feet loş ışık yayar. Büyüyü sona erdirmek için action harcarsın ya da alevi bir hedefe fırlatırsın — bu büyüyü bitirir. Fırlatmak için ranged spell attack yaparsın; isabet ederse 1d8 fire hasar. Hasar 5. seviyede 2d8, 11. seviyede 3d8, 17. seviyede 4d8.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -294,8 +294,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Dokunduğun istekli yaratık büyü sona ermeden önce bir kez seçtiği bir saving throw'da d4 atarak sonucu ekleyebilir. Zar saving throw'dan önce veya sonra atılabilir; zar atıldığında büyü sona erer.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -309,7 +309,7 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içindeki bir yaratığa alev benzeri radiant enerji iner. Hedef Dexterity saving throw yapar; başarısızsa 1d8 radiant hasar alır. Bu saving throw için hedef cover avantajından yararlanamaz. Hasar 5. seviyede 2d8, 11. seviyede 3d8, 17. seviyede 4d8'e yükselir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -323,7 +323,7 @@
     "duration": "1 dakika",
     "description": "Tuttuğun club veya quarterstaff doğanın gücüyle büyülenir. Büyü süresince bu silahla melee attack'larda Strength yerine spellcasting ability modifier kullanılır; hasar zarı d8 olur ve silah magical sayılır. Bırakırsan etki sona erer.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -352,7 +352,7 @@
     "duration": "Instantaneous",
     "description": "0 HP'deki yaşayan bir yaratığa dokunursun; yaratık stable hale gelir (death saving throw yapmayı bırakır). Undead ve construct'larda etkisizdir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -366,7 +366,7 @@
     "duration": "1 dakikaya kadar",
     "description": "Küçük bir mucize işareti yaratırsın; menzil içinde aşağıdakilerden birini yapabilirsin:\nSesin 3 kat daha güçlü çıkmasını sağlarsın (1 dakika).\nAlevi titretir, parlatır, karartır veya rengini değiştirirsin (1 dakika).\nZeminde zararsız sarsıntılar yaratırsın (1 dakika).\n30 feet içindeki belirli bir noktadan anlık bir ses çıkarsın: gök gürültüsü, karga çığlığı, uğursuz fısıltı vb.\nKilitlenmemiş bir kapı ya da pencereyi anında açar ya da kapatırsın.\nGözlerinin görünümünü 1 dakika boyunca değiştirirsin.\nAynı anda 3'e kadar 1 dakikalık efekt aktif tutulabilir; action harcayarak sona erdirilebilir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -380,7 +380,7 @@
     "duration": "Instantaneous",
     "description": "Emrinde kıvrılan uzun dikenli bir whip yaratırsın. Menzil içindeki bir hedefe melee spell attack yaparsın; isabet ederse 1d6 piercing hasar ve Large veya daha küçük yaratık 10 feet sana doğru çekilir. Hasar 5. seviyede 2d6, 11. seviyede 3d6, 17. seviyede 4d6.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -456,7 +456,7 @@
     "description": "Menzil içinde görebildiğin bir hayvanı sana zarar vermeyeceğine inandırmaya çalışırsın. Hayvan seni görmeli ve duymalıdır. Hayvanın Intelligence puanı 4 veya daha yüksekse büyü otomatik başarısız olur. Aksi hâlde hayvan Wisdom saving throw yapar; başarısızsa 24 saat boyunca senin tarafından büyülenmiş sayılır. Sen veya yoldaşlarından biri hayvana zarar verirse büyü anında sona erer.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir hayvan daha büyüye dahil edilebilir._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -500,7 +500,7 @@
     "description": "Menzil içinde görebildiğin en fazla üç yaratık Charisma saving throw yapmalıdır. Başarısız olan her yaratık, büyü süresince attack roll veya saving throw yaptığında bir d4 atarak sonucu çıkarır. **At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
       "bard",
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -514,8 +514,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde görebildiğin en fazla üç yaratığı kutsarsın. Büyü süresince her hedef, attack roll veya saving throw yaptığında bir d4 atarak sonucu ekler.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -545,7 +545,7 @@
     "description": "Menzil içinde görebildiğin bir insanı büyülemeye çalışırsın. Sen ya da yoldaşlarından biri o yaratıkla kavga ediyorsa hedef avantajla saving throw yapar. Wisdom saving throw başarısızsa hedef 1 saat boyunca senin tarafından büyülenmiş sayılır; seni dost bir tanıdık olarak görür. Büyü sona erdiğinde, büyülendiğini ve büyü kullandığını anlar.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir kişi daha hedeflenebilir; tüm hedefler büyü esnasında birbirinden 30 feet uzakta olmalıdır._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -592,8 +592,8 @@
     "duration": "1 round",
     "description": "Menzil içindeki bir yaratığa tek kelimelik emir verirsin. Wisdom saving throw başarısızsa bir sonraki turunda emri yerine getirir. Undead, dilini anlamayan veya emrin kendine doğrudan zarar vereceği yaratıklarda etkisizdir.\nTipik emirler:\nApproach — En kısa yoldan sana doğru yürür; 5 feet içine gelince durur.\nDrop — Elindekini bırakır ve turunu bitirir.\nFlee — Turunu senden mümkün olduğunca uzaklaşarak geçirir.\nGrovel — Yere kapanır ve turunu bitirir.\nHalt — Hareket etmez, eylem almaz. Uçan yaratık havada kalabilmek için gereken minimum hareketi yapar.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir; tümü 30 feet içinde olmalıdır._",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -607,7 +607,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde görebildiğin bir yaratığa ilahi zorlama yüklersin. Wisdom saving throw başarısızsa büyü süresince şu kısıtlamalar uygulanır: hedef senden başka bir yaratığa attack roll'unda dezavantajla atar; hedef gönüllü olarak senden 30 feetten fazla uzaklaşamaz. Aşağıdaki koşullardan biri gerçekleşirse büyü sona erer: hedef senden başka birine saldırılırsa, yoldaşlarından biri hedefe zarar verirse, hedefe başka biri tarafından büyü kullanılırsa, senden 30 feetten fazla uzaklaşmak zorunda kalırsa.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -638,8 +638,8 @@
     "duration": "Instantaneous",
     "description": "",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -654,9 +654,9 @@
     "description": "Dokunduğun yaratık 1d8 + spellcasting ability modifier kadar hit point kazanır. Bu büyünün undead ve construct'lar üzerinde etkisi yoktur.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 1d8 artar._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger"
     ]
   },
@@ -671,8 +671,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Büyü süresince 30 feet içinde aberration, celestial, elemental, fey, fiend veya undead bulunup bulunmadığını ve nerede olduğunu bilirsin. Ayrıca 30 feet içinde magically consecrated veya desecrated yer ya da nesne varsa onu da hissedersin. 1 foot taş, 1 inç metal veya herhangi bir kalınlıkta kurşun büyüyü bloklar.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -687,9 +687,9 @@
     "description": "Büyü süresince 30 feet yarıçapında sihir varlığını hissedebilirsin. Algıladığın sihri kaynaklamak için action harcayabilirsin: görebildiğin yaratık veya nesne üzerindeki sihirsel aurayı görür ve hangi okula ait olduğunu öğrenirsin. 1 foot taş, 1 inç metal veya kurşun sacı büyüyü bloklar.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger",
       "sorcerer",
       "wizard"
@@ -706,8 +706,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Büyü süresince 30 feet içindeki zehirleri, zehirli yaratıkları ve hastalıkları hisseder ve konumlarını bilirsin. Ayrıca her durumda zehirin veya hastalığın türünü de tanımlarsın. 1 foot taş, 1 inç metal veya kurşun sacı büyüyü bloklar.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "ranger"
     ]
   },
@@ -752,7 +752,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü süresince silah saldırıların isabet ettiğinde ek 1d4 radiant hasar verir.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -780,7 +780,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde seçtiğin noktadan 20-foot kare alan içinde bitkiler fışkırır; alan zor arazi olur. Büyü anında alanda bulunan her yaratık Strength saving throw yapar; başarısızsa bitkilerce restrained olur. Restrained yaratık eylem harcayarak spell save DC'ye karşı Strength ability check'i yapabilir; başarılıysa kurtulur. Büyü sona erince bitkiler solar.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -811,7 +811,7 @@
     "description": "Menzil içindeki 20-foot küpündeki tüm nesneler mavi, yeşil veya mor ışıkla çerçevelenir (rengi sen seçersin). Büyü esnasında alanda bulunan yaratıklar da Dexterity saving throw yaparsa parlar. Parlayan her nesne ve yaratık 10 feet yarıçapta loş ışık yayar. Büyü süresince parlayan her hedefe yapılan attack roll'larında saldırgan avantaj kazanır ve etkilenen yaratıklar görünmezlik avantajından yararlanamazlar.",
     "classes": [
       "bard",
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -870,7 +870,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Menzil içinde seçtiğin noktada 20-foot yarıçaplı yoğun sis küresi yaratırsın; alan heavily obscured'dur. Köşelerin etrafına yayılır. Saatte en az 10 mph rüzgarla dağılır.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için yarıçap 20 feet artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -887,7 +887,7 @@
     "duration": "Instantaneous",
     "description": "Elinde 10'a kadar sihirli berry belirir. Bir yaratık eylem kullanarak bir tane yer; 1 HP kazanır ve bir günlük beslenme karşılanmış olur. 24 saat içinde yenmezlerse etkisini yitirirler.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -916,7 +916,7 @@
     "duration": "1 round",
     "description": "Menzil içindeki bir yaratığa ranged spell attack yaparsın. İsabet ederse 4d6 radiant hasar alır. Ayrıca bir sonraki tur içinde bu hedefe yapılan ilk attack roll avantajla yapılır; gizemli ışığın parlaması sayesinde hedef göze çarpar.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d6 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -945,8 +945,8 @@
     "description": "Görebildiğin menzil içindeki bir yaratık 1d4 + spellcasting ability modifier kadar hit point kazanır. Bu büyünün undead ve construct'lar üzerinde etkisi yoktur.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 1d4 artar._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -975,7 +975,7 @@
     "description": "Dokunduğun istekli bir yaratık cesarete bürünür. Büyü süresince frightened durumuna giremez ve her turunda başında spellcasting ability modifier kadar geçici hit point kazanır. Büyü sona erdiğinde kalan geçici HP'ler yok olur.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
       "bard",
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -1048,7 +1048,7 @@
     "duration": "Instantaneous",
     "description": "Menzil içindeki bir yaratığa melee spell attack yaparsın. İsabet ederse 3d10 necrotic hasar alır. **At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d10 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -1062,7 +1062,7 @@
     "duration": "1 dakika",
     "description": "Dokunduğun yaratığın atlama mesafesi büyü süresince üç katına çıkar.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -1080,7 +1080,7 @@
     "description": "Dokunduğun yaratığın hareket hızı büyü boyunca 10 feet artar.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger",
       "wizard"
     ]
@@ -1126,8 +1126,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Dokunduğun istekli yaratık şu türlere karşı korunur: aberration, celestial, elemental, fey, fiend, undead. Bu türlerin o yaratığa yönelik attack roll'larında dezavantajı olur. Hedef bu türler tarafından charmed, frightened veya possessed edilemez. Zaten bu durumlardan birindeyse yeni saving throw'larda avantaj kazanır.",
     "classes": [
-      "cleri-c",
-      "paladi-n",
+      "cleric",
+      "paladin",
       "warlock",
       "wizard"
     ]
@@ -1143,9 +1143,9 @@
     "duration": "Instantaneous",
     "description": "Menzil içinde seçtiğin noktada 5-foot yarıçap küre içindeki tüm mundane yiyecek ve içecekler arındırılır; zehir ve hastalıktan temizlenir.",
     "classes": [
-      "cleri-c",
-      "drui-d",
-      "paladi-n"
+      "cleric",
+      "druid",
+      "paladin"
     ]
   },
   {
@@ -1174,8 +1174,8 @@
     "duration": "1 dakika",
     "description": "Menzil içindeki bir yaratığı saldırıdan korursun. Korunan yaratığa saldırmak veya zararlı büyü kullanmak isteyen her yaratık Wisdom saving throw yapmalıdır; başarısızsa başka bir hedef seçmek ya da saldırıdan/büyüden vazgeçmek zorundadır. Area of effect büyülerinden koruma sağlamaz. Korunan yaratık bir düşmana saldırır veya zararlı büyü kullanırsa büyü anında sona erer.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -1204,8 +1204,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde görebildiğin seçtiğin yaratığın etrafında parlayan koruma alanı belirir. Büyü süresince o yaratığın AC'si +2 artar.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -1251,7 +1251,7 @@
     "description": "Büyü süresince hayvanlarla konuşabilir ve sözlü olarak anlayabilirsin. Hayvanların zekaları sınırlıdır; ama en azından yakın bölge, olası tehlikeler ve son 24 saatte algıladıkları şeyler hakkında bilgi verebilirler. DM'in takdirine bağlı olarak küçük bir iyilik yapmalarını isteyebilirsin.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -1282,7 +1282,7 @@
     "description": "Senden dışarı doğru 15-foot küpü boyunca güçlü bir ses dalgası fışkırır. Alandaki her yaratık Constitution saving throw yapmalıdır. Başarısızsa 2d8 thunder hasarı alır ve 10 feet geri itilir. Başarılıysa yarı hasar alır, itilmez. Bunun yanı sıra alanda tamamen bulunan ve sabitlenmemiş tüm nesneler otomatik olarak 10 feet geri itilir. Büyü 300 feet çevrede duyulan güçlü bir gürültü çıkarır.\n**At Higher Levels:** _2. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d8 artar._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -1330,7 +1330,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü aktifken bir sonraki melee weapon attack'ın isabet ederse ek 1d6 psychic hasar verir ve hedef Wisdom saving throw yapar; başarısızsa büyü sona erene kadar frightened olur. Frightened hedef her turunda sonunda yeniden saving throw yapabilir; başarılıysa büyü sona erer.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -1358,8 +1358,8 @@
     "duration": "8 saat",
     "description": "Menzil içinden seçtiğin en fazla üç yaratık cesaret ve dayanıklılıkla pekiştirilir. Her hedefin maksimum hit point'i ve mevcut hit point'i 5 artar.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için 5 hit point daha eklenir._",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -1388,7 +1388,7 @@
     "description": "Menzil içinde görebildiğin küçük (Tiny) bir hayvanı — sincap, mavi jay ya da yarasa gibi — mesaj taşımak için görevlendirirsin. Hedef konumu ve alıcının genel tarifini belirlersin (örn. 'tüccar giysileri içinde, kızıl saçlı bir insan'). 25 kelimeye kadar mesaj söylersin. Hayvan büyü boyunca belirlenen konuma doğru yol alır: uçan haberci 24 saatte 50 mil, diğerleri 25 mil kat eder. Hedefe ulaşırsa mesajı senin sesinle alıcıya iletir; yalnızca tarifine uyan bir yaratığa konuşur. Süre bitmeden hedefe varamazsa mesaj kaybolur ve hayvan geri döner.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için süre 48 saat artar._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -1417,7 +1417,7 @@
     "duration": "Instantaneous",
     "description": "Gelecek 30 dakika içinde yapmayı planladığın belirli bir eylem hakkında tanrısal bir işaret alırsın. DM şu dört seçenekten birini söyler: Weal (iyi sonuç), Woe (kötü sonuç), Weal and Woe (her ikisi), ya da Nothing (belirgin bir etki yok). Büyü olası koşulları hesaba katmaz. Aynı uzun dinlenmede 2 veya daha fazla kez kullanılırsa her ekstra kullanımda rastgele cevap alma riski kümülatif %25 artar; DM bu atışı gizlice yapar.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -1431,7 +1431,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun istekli yaratığın derisi sert, kabuk gibi görünür. Büyü süresince hedefin AC'si 16'nın altına düşemez; ne tür zırh giyerse giysin.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -1446,7 +1446,7 @@
     "duration": "Concentration, 1 saat",
     "description": "İstekli bir hayvana dokunursun. Action kullanarak onun gözleriyle görebilir, kulaklarıyla duyabilirsin; hayvanın sahip olduğu özel duyulardan da faydalanırsın. Kendi duyularına dönmek için yeniden action harcarsın. Bu süre zarfında kendi çevrene kör ve sağır olursun.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -1462,7 +1462,7 @@
     "description": "Görebildiğin menzil içindeki bir yaratık Constitution saving throw yapmalıdır. Başarısızsa senin seçimine göre kör (blinded) ya da sağır (deafened) olur. Her turunda sonunda yeniden saving throw hakkı vardır; başarılıysa büyü o yaratık için sona erer.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "sorcerer",
       "wizard"
     ]
@@ -1493,7 +1493,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü aktifken bir sonraki weapon attack'ın isabet ederse ek 2d6 radiant hasar verir ve hedef parlak ışıkla işaretlenir. İşaretli hedef 1 dakika boyunca görünmez olamaz; 20-foot yarıçapta dim light yayar.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için ek hasar 1d6 artar._",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -1508,7 +1508,7 @@
     "description": "Menzil içindeki seçtiğin bir noktada 20-foot yarıçaplı küre içindeki tüm humanoidler Charisma saving throw yapar; isteyen yaratıklar başarısız olmayı seçebilir. Başarısız olan her hedefe şu iki etkiden birini uygularsın:\n- 1) Charmed veya frightened durumunu bastırırsın. Büyü sona erdiğinde, süresi dolmamışsa etki yeniden devreye girer.\n2) Seçtiğin bir veya birden fazla yaratığa karşı düşmanlıklarını geçici olarak sona erdirirsin. Hedef o yaratıklara ilgisiz davranır. Ancak hedef saldırıya uğrarsa ya da bir yoldaşının zarar gördüğüne tanık olursa bu ilgisizlik anında biter. Büyü sona erdiğinde hedef tekrar düşmanca hale gelir (DM aksine karar vermedikçe).",
     "classes": [
       "bard",
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -1539,7 +1539,7 @@
     "duration": "Dispel edilene kadar",
     "description": "Dokunduğun nesneden meşale parlaklığında alev sıçrar. Isı üretmez ve oksijen tüketmez; normal alev görünümündedir. Örtülebilir veya gizlenebilir, ancak söndürülemez ya da susturulamaz.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -1600,7 +1600,7 @@
     "duration": "8 saat",
     "description": "Dokunduğun istekli yaratık 8 saat boyunca 60 feet darkvision kazanır.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -1648,8 +1648,8 @@
     "description": "Dokunduğun yaratığa sihirsel bir güçlendirme bahşedersin. Büyü sona erene kadar aşağıdakilerden birini uygularsın:\nBear's Endurance: Constitution denetimlerinde avantaj + 2d6 geçici hit point (büyü bittiğinde kaybolur).\nBull's Strength: Strength denetimlerinde avantaj + taşıma kapasitesi iki katına çıkar.\nCat's Grace: Dexterity denetimlerinde avantaj + incapacitated değilse 20 feete kadar düşüşten hasar almaz.\nEagle's Splendor: Charisma denetimlerinde avantaj.\nFox's Cunning: Intelligence denetimlerinde avantaj.\nOwl's Wisdom: Wisdom denetimlerinde avantaj.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -1694,7 +1694,7 @@
     "duration": "Instantaneous",
     "description": "Güçlü bir binek çağırırsın; menzil içindeki boş bir alanda belirir. Ruhsal bağ kurarak bindiğinde sihirli iletişim kurabilirsin. Binek aşağıdaki formlardan birini alabilir: warhorse, pony, camel, elk veya mastiff. DM başka formlar da onaylayabilir.\nBinek, normal bir hayvanın istatistiklerine sahiptir; ancak Intelligence puanı 6'ya yükselir ve senin dil bilgini kazanır. Sana uygun olan saldırıları yapabilir.\nBinek 0 HP'ye düşünce kaybolur; aynı büyüyle yeniden çağırabilirsin. İkiniz aynı plane'deyken action harcayarak onu yeniden çağırabilirsin (menzil içinde boş alanda belirir). Farklı bir büyüyle çağrıldıysa bağ kurulmaz.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -1708,8 +1708,8 @@
     "duration": "Instantaneous",
     "description": "Görüş hattı içindeki menzilde kasıtlı olarak kurulmuş tuzakların varlığını hissedersin. 'Tuzak' bu büyü kapsamında, yaratıcısı tarafından zararlı ya da istenmeyen bir etki yaratmak amacıyla özellikle kurulmuş her şeyi içerir: alarm büyüsünün etkisi, glyph of warding veya mekanik bir çukur tuzağı gibi. Zemindeki doğal bir zayıflık veya kararsız tavan bu kapsama girmez. Büyü yalnızca bir tuzağın var olduğunu gösterir; her tuzağın konumunu değil, genel tehlike doğasını öğrenirsin.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "ranger"
     ]
   },
@@ -1724,7 +1724,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Boş elinde scimitar boyutunda ateşten kılıç çağırırsın. Bırakırsan kaybolur, bonus action ile yeniden çağırabilirsin. Action harcayarak melee spell attack yaparsın; isabet ederse 3d6 fire hasar. Kılıç 10-foot parlak + 10-foot loş ışık yayar.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her iki ekstra slot seviyesi için hasar 1d6 artar._",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -1738,7 +1738,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde seçtiğin boş alanda 5-foot çaplı ateş küresi belirir. Turunda sonunda 5 feet içinde olan her yaratık Dexterity saving throw yapar; başarısızsa 2d6 fire hasar, başarılıysa yarı. Bonus action harcayarak küreyi 30 feet hareket ettirebilirsin. Küreyi bir yaratığa çarptırırsan o yaratık saving throw yapar ve küre durur. 5 feet yüksekliği aşmayan engellerin üzerinden atlayabilir, 10 feet genişliği aşmayan çukurların üzerinden sıçrayabilir.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d6 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -1753,7 +1753,7 @@
     "duration": "10 gün",
     "description": "Dokunduğun ceset ya da kalıntıları çürümeden korursun ve undead haline gelmesini önlersin. Ayrıca Raise Dead gibi diriltiş büyüleri için geçen süreye bu büyü altında geçirilen günler sayılmaz.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -1767,7 +1767,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Seçtiğin yönde 60-foot uzun, 10-foot geniş kuvvetli rüzgar hattı oluşur. Hattın içinde turuna başlayan her yaratık Strength saving throw yapar; başarısızsa 15 feet geri itilir. Yaklaşmak için her 1 feet hareketine 2 feet harcanır. Gas ve sis dağıtır; korumasız alevi söndürür; protected alevi söndürme ihtimali %50. Her turunda bonus action ile yönü değiştirebilirsin.",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -1784,7 +1784,7 @@
     "description": "Menzil içinde gördüğün metal bir nesneyi — silah ya da ağır/orta metal zırh — kızıl sıcak yaparsın. Nesneyle fiziksel temas hâlinde olan yaratık büyüyü kullanırken 2d8 fire hasarı alır. Büyü süresince bonus action olarak bu hasarı yeniden uygulayabilirsin. Nesneyi tutan ya da giyen yaratık hasar aldığında Constitution saving throw yapar; başarısız olursa nesneyi bırakmaya zorlanır. Bırakamazsa attack roll'larında ve ability check'lerinde dezavantajı olur.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d8 artar._",
     "classes": [
       "bard",
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -1799,8 +1799,8 @@
     "description": "Menzil içinde görebildiğin bir humanoid Wisdom saving throw yapmalıdır. Başarısızsa büyü süresince paralyzed olur. Her turunda sonunda yeniden saving throw hakkı vardır; başarılıysa büyü o hedef için sona erer.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir humanoid daha hedeflenebilir; tümü büyü esnasında birbirinden 30 feet içinde olmalıdır._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -1851,9 +1851,9 @@
     "description": "Dokunduğun yaratıktaki bir hastalığı ya da şu durumlardan birini sona erdirirsin: blinded (kör), deafened (sağır), paralyzed (felçli) veya poisoned (zehirlenmiş).",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger"
     ]
   },
@@ -1884,7 +1884,7 @@
     "description": "Belirli bir hayvan ya da bitki türünü (örn. 'kızıl geyik' veya 'meşe palamudu') tarif edersin. Doğanın sesine odaklanarak bu türden en yakınının 5 mil içinde olup olmadığını; varsa yönünü ve mesafesini öğrenirsin.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -1900,9 +1900,9 @@
     "description": "Tanıdığın ya da en az bir kez 30 feet içinde gördüğün belirli bir nesneyi tarif edersin. 1.000 feet içindeyse yönünü ve mesafesini hissedersin; nesne hareket ediyorsa yönünü de bilirsin. Alternatif olarak belirli bir türdeki en yakın nesneyi (örn. 'en yakın plaka zırh') da arayabilirsin. Herhangi bir kalınlıkta kurşun büyüyü bloklar.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger",
       "wizard"
     ]
@@ -1933,7 +1933,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun nonmagical silaha büyüsel güç bahşedersin. Büyü süresince +1 bonus attack roll ve hasar roll'larına eklenir; silah magical sayılır.\n**At Higher Levels:** _4. seviye slotta +2; 6. seviye slotta +3 bonus._",
     "classes": [
-      "paladi-n",
+      "paladin",
       "wizard"
     ]
   },
@@ -2008,7 +2008,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içindeki noktada 5-foot yarıçap, 40-foot yüksek soluk ışık silindiri oluşur; loş ışık yayar. Turda ilk kez alana giren veya orada turuna başlayan yaratık Constitution saving throw yapar; başarısızsa 2d10 radiant hasar, başarılıysa yarı. Shapechanger yaratıklar dezavantajla atar; başarısız olurlarsa anında orijinal formlarına döner ve ışıkta kaldıkça başka form alamazlar. Her turunda action ile ışığı 60 feet hareket ettirebilirsin.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d10 artar._",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -2036,7 +2036,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Senden çıkan bir gölge ve sessizlik örtüsü, seni ve 30 feet içinde seçtiğin yoldaşları gizler. Büyü boyunca her biri Dexterity (Stealth) ability check'lerinde +10 bonus alır ve sihirsel olmayan yollarla izlenemez; ardlarında hiçbir iz bırakmazlar.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -2066,7 +2066,7 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içinden seçtiğin en fazla altı yaratık 2d8 + spellcasting ability modifier kadar hit point kazanır. Bu büyünün undead ve construct'lar üzerinde etkisi yoktur.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 1d8 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -2080,9 +2080,9 @@
     "duration": "1 saat",
     "description": "Dokunduğun yaratık zehirliyse o zehiri etkisizleştirirsin. Birden fazla zehir varsa bildiğin birini ya da rastgele birini etkisizleştirirsin. Büyü süresince hedef zehirlenmeye karşı saving throw'larında avantaj kazanır ve poison hasarına direnci olur.",
     "classes": [
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger"
     ]
   },
@@ -2175,7 +2175,7 @@
     "description": "Menzil içinde seçtiğin noktada 20-foot yarıçaplı bir sessizlik küresi oluşur. Küre içinden ses çıkamaz; dışarıdan ses giremez. Tamamen küre içinde olan yaratıklar sağır olur ve thunder hasarına bağışıklık kazanır. Verbal (V) bileşeni olan büyüler küre içinde kullanılamaz.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "ranger"
     ]
   },
@@ -2206,7 +2206,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde seçtiğin noktadan 20-foot yarıçapta zemin diken ve dikenlerle kaplanır; alan zor arazi olur. Alan içinde her 5 feet hareket için 2d4 piercing hasar alınır. Alan doğal görünmektedir. Büyü anında alanı görmeyenler, Wisdom (Perception) ability check'ini spell save DC'ye karşı yapmazlarsa tehlikeyi fark etmeden girebilirler.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -2221,7 +2221,7 @@
     "duration": "1 dakika",
     "description": "Menzil içinde görünür, hayalet bir silah yaratırsın. Yaratılışında 5 feet içindeki seçtiğin bir yaratığa melee spell attack yapabilirsin; isabet ederse 1d8 + spellcasting ability modifier force hasarı verir. Her turunda bonus action harcayarak silahı 20 feet hareket ettirip yeniden saldırabilirsin. Silahın görünümünü istediğin gibi belirleyebilirsin.\n**At Higher Levels:** _3. seviye veya daha yüksek slot kullanılırsa her iki slot seviyesi için hasar 1d8 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -2252,8 +2252,8 @@
     "duration": "1 saat",
     "description": "Dokunduğun istekli yaratıkla mistik bir bağ kurarsın. Büyü süresince hedef 60 feet içindeyken AC'ye ve saving throw'lara +1 bonus alır; tüm hasarlara direnci olur. Ancak hedefin aldığı her hasar seni de etkiler. 0 HP'ye düşersen veya ikiniz 60 feetten fazla uzaklaşırsanız büyü sona erer.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -2283,8 +2283,8 @@
     "description": "Menzil içinde seçtiğin noktada 15-foot yarıçap büyüsel doğruluk alanı oluşur. Her turunda ilk kez alana giren ya da orada turuna başlayan yaratık Charisma saving throw yapar. Başarısızsa büyü boyunca bilerek yalan söyleyemez. Her yaratığın başarılı mı yoksa başarısız mı olduğunu bilirsin. Büyünün farkında olan etkilenmiş bir yaratık soruları yanıtlamaktan kaçınabilir ya da muğlak söyleyebilir — ama söyledikleri gerçeğin sınırı içinde kalmalıdır.",
     "classes": [
       "bard",
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -2298,7 +2298,7 @@
     "duration": "Instantaneous",
     "description": "Menzil içindeki bir kemik yığını ya da Medium veya Small humanoid ceset seçersin. Kemikten skeleton, cesetten zombie yaratırsın (DM istatistikleri belirler).\nHer turunda bonus action harcayarak 60 feet içindeki yaratığa komut verebilirsin; birden fazla yaratık varsa hepsine aynı anda aynı komutu iletebilirsin. Komut yoksa kendini savunur. Yaratık 24 saat sonra itaat etmeyi bırakır; kontrolü sürdürmek için her 24 saatte bir aynı büyüyü yeniden uygulamak gerekir; bu uygulama yeni yaratmak yerine hâlihazırda yaratılan en fazla dört yaratık üzerindeki kontrolü yeniler.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iki undead daha animate edilebilir ya da yeniden kontrol sağlanabilir._",
     "classes": [
-      "cleri-c",
+      "cleric",
       "wizard"
     ]
   },
@@ -2313,7 +2313,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "30-foot yarıçaplı iyileştirici enerji alanı oluşur; seninle birlikte hareket eder. Her turunda bonus action harcayarak alanda görebildiğin bir yaratığın 2d6 hit point kazanmasını sağlayabilirsin.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -2327,7 +2327,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinden seçtiğin kadar yaratığa umut ve dirilik verirsin. Büyü süresince her hedef Wisdom saving throw'larında ve death saving throw'larında avantaj kazanır; ayrıca her türlü iyileşmeden mümkün olan maksimum hit point'i geri kazanır.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -2342,7 +2342,7 @@
     "description": "Dokunduğun yaratık Wisdom saving throw yapmalıdır. Başarısızsa aşağıdakilerden birini seçersin: 1) Bir yetenek puanı seç: hedef, o yetenek puanına dayalı denetim ve saving throw'larda dezavantajla atar.\n- 2) Sana karşı attack roll'larında dezavantajı olur.\n- 3) Her turunda başında Wisdom saving throw yapar; başarısızsa o tur eylemi boşa gider (hiçbir şey yapamaz).\n- 4) Büyü süresince senin saldırı ve büyülerin hedefe 1d8 ekstra necrotic hasar verir.\nRemove curse büyüsü etkiyi sona erdirir. DM'in onayıyla alternatif lanet efektleri de mümkündür. **At Higher Levels:** _4. seviyede süre concentration ile 10 dakika. 5. seviyede 8 saat, concentration gerekmez. 7. seviyede 24 saat. 9. seviye slotta dispel edilene kadar sürer._",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "wizard"
     ]
   },
@@ -2357,7 +2357,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü aktifken bir sonraki melee weapon attack'ın isabet ederse ek 3d8 radiant hasar verir ve hedef Constitution saving throw yapar; başarısızsa büyü sona erene kadar blinded olur. Blinded hedef her turunda sonunda yeniden saving throw yapabilir; başarılıysa kör durumu sona erer.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -2386,7 +2386,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Seni doğrudan 100 feet yukarıda 10-foot yüksek, 60-foot yarıçaplı silindirik fırtına bulutu belirir; kapalı mekânda kullanılamaz. Büyü kullanıldığında menzil içindeki bir noktayı seçersin; buluttan o noktaya yıldırım düşer ve 5 feet içindeki her yaratık Dexterity saving throw yapar; başarısızsa 3d10 lightning hasar, başarılıysa yarı. Her turunda action harcayarak yeni bir yıldırım çağırabilirsin. Fırtınalı dış mekânda kullanılırsa mevcut fırtınanın kontrolünü alırsın ve hasar 1d10 artar.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d10 artar._",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -2401,7 +2401,7 @@
     "description": "Daha önce ziyaret ettiğin ya da gördüğün, menzil içindeki bir konumda görünmez, sihirsel bir algı noktası yaratırsın. Alternatif olarak aşina olmadığın bariz bir konumu (duvarın arkası, köşe, ağaçlık) da hedef alabilirsin. Algı noktası büyü boyunca orada kalır; saldırılamaz ya da başka türlü etkilenemez. Büyüyü kullanırken görme veya işitmeden birini seçersin; bu duyuyu sanki o noktadaymış gibi kullanırsın. Action harcayarak iki duyu arasında geçiş yapabilirsin. Algı noktasını görebilenlere (örn. see invisibility) yumruk büyüklüğünde parlak bir küre olarak görünür.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "sorcerer",
       "wizard"
     ]
@@ -2417,7 +2417,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Görünür boş alanlarda fey ruhlarını hayvan formunda çağırırsın. Şu seçeneklerden birini seçersin: CR (Challenge Rating) 2 veya altında 1 hayvan.\nCR 1 veya altında 2 hayvan.\nCR 1/2 veya altında 4 hayvan.\nCR 1/4 veya altında 8 hayvan.\nHer hayvan fey türü sayılır ve sana dostça davranır; 0 HP'ye düşünce ya da büyü sona erince kaybolur. Kendi initiative'inde hareket eder; sözlü emirlerine itaat eder. Komut vermezsen kendini savunur. DM istatistikleri belirler.\n**At Higher Levels:** _5. seviye slotta seçilen seçenekten iki kat fazla; 7. seviye slotta üç kat; 9. seviye slotta dört kat hayvan çağırılır._",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -2462,8 +2462,8 @@
     "duration": "Instantaneous",
     "description": "Menzil içinde yerde veya kaplarda 45 pound yiyecek ve 30 galon su yaratırsın; 15 insanı veya 5 bineği 24 saat besler. Yiyecek yenmezse 24 saat içinde bozulur; su temizdir ve bozulmaz.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -2477,7 +2477,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Kutsal güç senden yayılır ve 30-foot yarıçaplı alan içindeki sen de dahil tüm dost yaratıkları etkiler. Alan içindeyken her dost yaratığın weapon attack'larının hasarına 1d4 radiant eklenir.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -2491,9 +2491,9 @@
     "duration": "1 saat",
     "description": "Seçtiğin menzil içindeki bir noktadan 60-foot yarıçapta parlak ışık, ekstra 60 feet loş ışık yayılır. Nesne üzerine yayılırsa nesneyle birlikte hareket eder. 3. seviye veya altı büyüyle yaratılan karanlığı dağıtır.",
     "classes": [
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger",
       "sorcerer"
     ]
@@ -2510,9 +2510,9 @@
     "description": "Menzil içinde bir yaratık, nesne veya sihirsel etkiyi hedef alırsın. 3. seviye veya altındaki tüm büyüler otomatik sona erer. 4. seviye veya üstü için: hedef üzerindeki her büyü için ayrı ayrı spellcasting ability denetimi yaparsın; DC = 10 + büyünün seviyesi. Başarılıysa o büyü sona erer.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa, slot seviyesine eşit veya altındaki tüm büyüler otomatik sona erer._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "warlock",
       "sorcerer",
       "wizard"
@@ -2529,7 +2529,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun nonmagical silah +1 attack roll ve hasar roll bonusu kazanır. Ayrıca silah acid, cold, fire, lightning veya thunder hasarından birini (senin seçimine göre) her isabet ettiğinde 1d4 ek olarak verir.\n**At Higher Levels:** _5. seviye slotta +2 attack roll ve hasar bonusu, 2d4 ek hasar; 7. seviye slotta +3 ve 3d4._",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -2575,8 +2575,8 @@
     "description": "Dokunduğun istekli bir yaratığı, dışarıdan ölü görünen kataleptik bir duruma sokarsun. Büyü boyunca hedef blinded ve incapacitated olur, hızı sıfıra düşer. Tüm hasarlara karşı direnci olur (psychic hariç). Büyü kullanıldığında hedef zehirlenmiş ya da hastalıklıysa, bu etkiler büyü süresince askıya alınır; büyü sona erince yeniden devreye girer. Action harcayarak büyüyü erken sona erdirebilirsin.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -2638,7 +2638,7 @@
     "description": "Bir yüzeye (masa, zemin, duvar gibi) ya da kapatılabilen bir nesneye (kitap, sandık) neredeyse görünmez zararlı bir glyph kazırsın. Yüzeyde 10-foot çapı geçemez; nesne 10 feet'ten fazla taşınırsa glyph bozulur. Bulmak için Intelligence (Investigation) denetimi gerekir (DC = spell save DC'n).\nTetikleyici koşulu sen belirlersin: üstüne basmak, nesneyi açmak, belirli mesafeye yaklaşmak vb. Fiziksel özellik, yaratık türü, hizalama gibi koşullara bağlayabilirsin; belirli yaratıkları muaf tutabilirsin.\nİki seçenek:\nExplosive Runes: Tetiklenince 20-foot küre. Her yaratık Dexterity saving throw yapar; başarısızsa 5d8 acid/cold/fire/lightning veya thunder hasarı (sen seçersin), başarılıysa yarı.\nSpell Glyph: 3. seviyeye kadar hazır bir büyü glyph'in içine depolanır. Tetiklenince o büyü, tetikleyen yaratığı ya da alanını hedef alarak çalışır. Concentration gerektiriyorsa tam süresiyle devam eder.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa explosive runes hasarı her seviye için 1d8 artar; spell glyph için de depolanabilecek büyü seviyesi slot seviyesine eşitlenilebilir._",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "wizard"
     ]
   },
@@ -2743,8 +2743,8 @@
     "duration": "1 saat",
     "description": "10-foot yarıçap, 20-foot yüksek büyüsel enerji silindiri yaratırsın; zemin ve tavan kesişiminde parlak runlar belirir. Celestial, elemental, fey, fiend veya undead türünden birini seçersin. Bu tür, seçilen silindir için şu kısıtlamalarla karşı karşıyadır:\nSilindirine nonmagical yollarla willingly giremez; teleportasyon veya interplanar seyahat denemesinde Charisma saving throw yapar.\nİçindeki hedeflere attack roll'larında dezavantajı olur.\nİçindekiler bu tür tarafından charmed, frightened veya possessed edilemez.\nBüyüyü tersine çevirerek belirtilen türü silindirden çıkamamasını ve dışarıdakileri korumasını da sağlayabilirsin.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için süre 1 saat artar._",
     "classes": [
-      "cleri-c",
-      "paladi-n",
+      "cleric",
+      "paladin",
       "warlock",
       "wizard"
     ]
@@ -2777,7 +2777,7 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içinden seçtiğin en fazla altı yaratık 1d4 + spellcasting ability modifier kadar hit point kazanır. Bu büyünün undead ve construct'lar üzerinde etkisi yoktur.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 1d4 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -2791,8 +2791,8 @@
     "duration": "8 saat",
     "description": "Seni tamamen içine alabilecek büyüklükte taş yüzeye girersin; taşla birleşirsin ve tüm ekipmanın da dahilir. Büyü boyunca dışarıdan görünmez ve mundane duyularla tespit edilemezsin. Taşın içindeyken dışarıyı göremezsin; ancak duyabilirsin (Wisdom (Perception) ability check'leri dezavantajlı). Kendin için büyü kullanabilirsin. Girdiğin yerden çıkarak büyüyü sonlandırabilirsin. Taşın kısmen yıkılması seni iterek 6d6 bludgeoning hasarı verir; tamamen yıkılması ya da farklı bir maddeye dönüşmesi 50 bludgeoning hasarı verir.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -2837,7 +2837,7 @@
     "description": "Bu büyünün iki kullanım biçimi vardır:\n1 Action — Anlık Büyüme: Menzil içinde seçtiğin bir noktadan 100-foot yarıçapta normal bitkiler anında kalınlaşır ve birbirine dolanır. Bu alanda her 1 feet hareket etmek için 4 feet hareket harcanır. Alandan bazı bölgeleri muaf tutabilirsin.\n8 Saat — Uzun Vadeli Zenginleştirme: Menzil içinde seçtiğin bir noktadan yarım mil yarıçapta toprak ve bitkiler bir yıl boyunca zenginleşir; bitkiler hasat yapıldığında iki kat ürün verir.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -2852,8 +2852,8 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun istekli yaratık seçtiğin hasar türüne karşı direnç kazanır: acid, cold, fire, lightning veya thunder.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -2870,8 +2870,8 @@
     "duration": "Instantaneous",
     "description": "Dokunduğun yaratık veya nesnedeki tüm lanetler sona erer. Nesne lanetli sihirli bir eşyaysa lanet devam eder, ancak sahibinin attunement bağı kırılır; artık onu bırakabilir veya atabilir.",
     "classes": [
-      "cleri-c",
-      "paladi-n",
+      "cleric",
+      "paladin",
       "warlock",
       "wizard"
     ]
@@ -2887,8 +2887,8 @@
     "duration": "Instantaneous",
     "description": "Son 1 dakika içinde ölen bir yaratığa dokunursun; yaratık 1 HP ile hayata döner. Yaşlılıktan ölenler üzerinde etkisizdir. Eksik vücut parçalarını geri getirmez.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -2903,7 +2903,7 @@
     "description": "25 kelimeye kadar kısa bir mesajı tanıdığın bir yaratığa gönderirsin. Mesaj yaratığın zihninde duyulur; seni tanıyorsa seni de tanır ve hemen aynı yöntemle karşılık verebilir. En az 1 Intelligence puanı olan her yaratık mesajın anlamını kavrayabilir. Mesajı her mesafede ve farklı bir plane'e bile gönderebilirsin; ancak farklı bir plane'deyse %5 ihtimalle mesaj kaybolur.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "warlock",
       "wizard"
     ]
@@ -2919,7 +2919,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde seçtiğin noktada 20-foot yüksek, 40-foot yarıçaplı silindir içine buz ve kar yağar; alan heavily obscured'dur, açık alevler söner. Zemin kaygan buz kaplar; zor arazidir. Turda ilk kez alana giren ya da orada turuna başlayan yaratık Dexterity saving throw yapar; başarısızsa prone olur. Alanda concentration yapan yaratık Constitution saving throw yapar; başarısızsa concentration bozulur.",
     "classes": [
-      "drui-d",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -2952,7 +2952,7 @@
     "description": "Menzil içindeki ağzı olan ve undead olmayan bir ceset canlanma görünümü kazanır; 10 dakika boyunca 5 soruya kadar yanıt verebilir. Ceset yalnızca yaşarken bildiklerini bilir; öldükten sonra olan olaylardan habersizdir ve spekülasyon yapamaz. Konuştuğu dilleri bilir. Yanıtlar genellikle kısa, muğlak ya da tekrarcıdır; ceset sana veya yoldaşlarına düşmansa yalan söyleyebilir. Son 10 gün içinde bu büyüyle zaten hedef alınan bir ceset yeniden hedeflenemez.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "warlock",
       "wizard"
     ]
@@ -2969,7 +2969,7 @@
     "description": "30 feet etrafındaki bitkilere sınırlı bilinç ve hareket kazandırırsın; onlarla iletişim kurabilirsin. Son bir gün içinde bu bölgede neler yaşandığını (geçen yaratıklar, hava koşulları, çeşitli olaylar) sorabilirsin. Ayrıca: bitki büyümesinden kaynaklanan ağır araziyi normal araziye dönüştürebilirsin (ya da tersini yaparak kovalayanları yavaşlatabilirsin). Bitkiler kök söküp hareket edemez; ama dal, filiz ve yapraklarını serbestçe hareket ettirebilir. Bölgede bir bitki yaratığı varsa ortak bir dil olmasa da onunla iletişim kurabilirsin; ancak onu etkileme konusunda sihirsel bir yetkin olmaz.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -2984,7 +2984,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Seni korumak için ruhlar çağırırsın; 15 feet etrafında dönerler. İyi ya da nötr hizalamanlıysan spectral angelic veya fey görünümü alır; kötü hizalamanlıysan fiendish görünür. Belirlediğin yaratıklar hariç alandaki tüm düşman yaratıkların hızı yarıya iner. Turda ilk kez alana giren veya orada turuna başlayan yaratık Wisdom saving throw yapar; başarısızsa 3d8 radiant (iyi/nötr) ya da necrotic (kötü) hasar alır, başarılıysa yarı hasar.\n**At Higher Levels:** _4. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d8 artar._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -2998,7 +2998,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Senden ruhsal bir enerji akımı yayılır. Büyü süresince: attack'larınla 10 feet içindeki yaratıklar hızını 10 feet kaybeder (tur sonuna kadar); attack'ların radiant, necrotic veya cold hasarından (sen seçersin) 1d8 ek hasar verir; hedef, alanı devreye giren tur başında Constitution saving throw yapar — başarısızsa heale bağışık olmaz anlamında değil, bu turda magic ile iyileşemez (yani herhangi bir iyileşme etkisi almaz). 5. seviyede hasar 2d8, 11. seviyede 3d8, 17. seviyede 4d8.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3071,7 +3071,7 @@
     "description": "Dokunduğun yaratık duyduğu her konuşulan dili anlayabilir. Ayrıca o yaratık konuştuğunda, en az bir dil bilen ve onu duyabilen her yaratık söylediklerini anlayabilir.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "warlock",
       "sorcerer",
       "wizard"
@@ -3103,7 +3103,7 @@
     "duration": "24 saat",
     "description": "Görebildiğin menzil içinden seçtiğin en fazla on istekli yaratık 24 saat boyunca su altında nefes alabilir. Normal nefes alma kapasitelerini de korurlar.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -3120,8 +3120,8 @@
     "duration": "1 saat",
     "description": "Görebildiğin menzil içinden seçtiğin en fazla on istekli yaratık su, asit, çamur, kar, bataklık veya lava yüzeyinde sanki sert zemindeymiş gibi yürüyebilir. Erimiş lavadan geçerken ısı hasarı almaya devam ederler. Sıvıya tamamen dalmış bir yaratık 60 feet/round hızla yüzeye çıkarılır.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "ranger"
     ]
   },
@@ -3136,7 +3136,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde zemin üzerinde 50-foot uzun, 15-foot yüksek, 1-foot kalın güçlü rüzgar duvarı yükselir; zemin boyunca tek bir sürekli yol oluşturmalıdır. Duvarda turuna başlayan yaratıklar Strength saving throw yapar; başarısızsa 3d8 bludgeoning hasar, başarılıysa yarı. Duvar sis, duman ve gazları engeller. Small veya daha küçük uçan yaratıklar ya da nesneler duvarcı geçemez. Hafif loose eşyalar yukarı uçar. Normal menzil silahları (ok, bolt vb.) otomatik ıskalanır; devasa mermiler etkilenmez. Gaseous form'daki yaratıklar geçemez.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -3165,7 +3165,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "30-foot yarıçaplı yaşam enerjisi alanı oluşur; seninle birlikte hareket eder. Alan içindeki sen de dahil dost yaratıkların maksimum hit point'leri azaltılamaz ve her turunda 0 HP'ye düşerlerse 1 HP'ye yükselir.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3179,7 +3179,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "30-foot yarıçaplı arındırıcı enerji alanı oluşur; seninle birlikte hareket eder. Alan içindeki sen de dahil dost yaratıklar: poison'a bağışık olur; blinded, charmed, deafened, frightened, paralyzed, poisoned ve stunned durumlarına karşı advantage ile saving throw atar.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3193,8 +3193,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde görebildiğin bir yaratığı başka bir plane'e göndermeye çalışırsın. Hedef Charisma saving throw yapmalıdır; başarısızsa aşağıdakilerden biri gerçekleşir:\nHedef bulunduğu plane'in yerlisiyse zararsız bir demi-plane'e gönderilir; orada incapacitated olur. Büyü sona erince çıktığı noktaya ya da en yakın boş alana döner. 1 dakika dolmadan büyü sona ererse döner; 1 dakika dolunca geri dönmez.\nHedef farklı bir plane'den geldiyse kendi ana plane'ine gönderilir; büyü 1 dakika dolmadan sona ererse döner, dolunca geri dönemez.\n**At Higher Levels:** _5. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bir yaratık daha hedeflenebilir._",
     "classes": [
-      "cleri-c",
-      "paladi-n",
+      "cleric",
+      "paladin",
       "warlock",
       "sorcerer",
       "wizard"
@@ -3211,7 +3211,7 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içindeki bir yaratığa necrotic enerji dalgası gönderirsin; nemi ve canlılığı söküp alır. Constitution saving throw yapar; başarısızsa 8d8 necrotic hasar, başarılıysa yarı. Undead ve construct'larda etkisizdir. Plant creature'a disadvantage ile saving throw atılır ve büyü maksimum hasar verir. Yaratık olmayan mundane bitki (ağaç, çalı vb.) saving throw yapmaz; anında solar ve ölür.\n**At Higher Levels:** _5. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d8 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "warlock"
     ]
   },
@@ -3255,7 +3255,7 @@
     "description": "10-foot yarıçap küre içindeki her yaratık Wisdom saving throw yapar; başarısız olanlar büyüye kapılır. Etkilenen yaratıklar reaction kullanamaz. Her tur başında 1d10 atarak davranışları belirlenir:\n1 — Rastgele hareket: Yaratık tüm hareketini rastgele bir yöne kullanır (d8 at, 1=kuzey, saat yönünde devam et). Eylem almaz.\n2-6 — Hareketsizlik: Yaratık hareket etmez ve eylem almaz.\n7-8 — Rasgele melee saldırı: Yaratık menzilindeki rastgele bir yaratığa melee saldırısı yapar. Menzilde kimse yoksa bir şey yapmaz.\n9-10 — Normal: Yaratık normal hareket eder ve eylem alır.\nHer tur sonunda etkilenen yaratık yeniden saving throw yapabilir; başarılıysa büyü o yaratık için sona erer.\n**At Higher Levels:** _5. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için küre yarıçapı 5 feet artar._",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -3271,7 +3271,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Görünür boş alanlarda elementalleri çağırırsın. Şu seçeneklerden birini seçersin:\nCR 2 veya altında 1 elemental.\nCR 1 veya altında 2 elemental.\nCR 1/2 veya altında 4 elemental.\nCR 1/4 veya altında 8 elemental.\nÇağrılan her elemental sana dostça davranır; 0 HP'ye düşünce ya da büyü sona erince kaybolur. Sözlü emirlerine itaat eder; komut yoksa kendini savunur. DM istatistikleri belirler.\n**At Higher Levels:** _6. seviye slotta iki kat; 8. seviye slotta üç kat elemental çağırılır._",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -3286,7 +3286,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Görünür boş alanlarda fey yaratıkları çağırırsın. Şu seçeneklerden birini seçersin:\nCR 2 veya altında 1 fey.\nCR 1 veya altında 2 fey.\nCR 1/2 veya altında 4 fey.\nCR 1/4 veya altında 8 fey.\nHer fey sana dostça davranır; 0 HP'ye düşünce ya da büyü sona erince kaybolur. Sözlü emirlerine itaat eder; komut yoksa kendini savunur. DM istatistikleri belirler.\n**At Higher Levels:** _6. seviye slotta iki kat; 8. seviye slotta üç kat fey çağırılır._",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -3301,8 +3301,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içindeki, en fazla 100-foot kenarlı bir küpü kapsayan durgun su kütlesi üzerinde kontrol kazanırsın. Her turunda aynı ya da farklı bir efekti seçebilirsin:\nFlood: Durgun suyun seviyesini 20 feet yükseltirsin; kıyı varsa taşar. Büyük su kütlesinde ise 20foot tsunami dalgası yaratır.\nPart Water: Alanda suyun ikiye ayrılmasını sağlar; geçit açılır. Büyü sona erince su yavaşça geri gelir.\nRedirect Flow: Akan suyu istediğin yönde yönlendirirsin.\nWhirlpool: En az 50-foot kare ve 25-foot derin bir su kütlesinde huni şeklinde girdap oluşturur. 25 feet içindeki her yaratık 10 feet girdaba doğru çekilir. Girdaba giren yaratık Strength saving throw yapar; başarısızsa 2d8 bludgeoning hasar alır ve hapsolur.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -3316,8 +3316,8 @@
     "duration": "8 saat",
     "description": "Dokunduğun yaratığa ölüme karşı koruma sağlarsın. Hasar alarak ilk kez 0 HP'ye düşeceği anda bunun yerine 1 HP'de kalır ve büyü sona erer. Büyü hâlâ aktifken anlık ölüm (hasar vermeksizin) etkisine maruz kalırsa o etki de geçersiz sayılır ve büyü sona erer.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -3348,7 +3348,7 @@
     "duration": "Instantaneous",
     "description": "Büyün ve sunduğun adak aracılığıyla tanrınla ya da tanrısal bir vekille iletişime geçersin. Önümüzdeki 7 gün içinde gerçekleşecek belirli bir hedef, olay veya aktiviteyle ilgili tek soru sorarsın. DM doğru bir yanıt verir; kısa bir cümle, şifreli bir kafiye ya da bir belirti olabilir. Büyü olası değişkenleri hesaba katmaz. Aynı uzun dinlenmede 2 veya daha fazla kez kullanılırsa rastgele cevap alma riski kümülatif %25 artar.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -3362,7 +3362,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde görebildiğin bir hayvanı büyülemeye çalışırsın. Wisdom saving throw yapar; sen ya da yoldaşların onunla kavga ediyorsa avantajla atar. Başarısızsa büyü süresince charmed olur. Aynı plane'deyken telepathic bağla ona komut verebilirsin. Action harcayarak tam kontrol alabilirsin; bir sonraki turuna kadar yalnızca senin belirlediğin eylemleri yapar. Hasar aldığında yeniden saving throw yapar.\n**At Higher Levels:** _5. seviye slotta 10 dakika; 6. seviyede 1 saat; 7. seviye ve üstünde 8 saat._",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer"
     ]
   },
@@ -3419,7 +3419,7 @@
     "duration": "Instantaneous",
     "description": "Find Steed'in güçlendirilmiş versiyonu; daha güçlü bir binek çağırırsın. Aşağıdaki formlardan birini alabilir: griffon, pegasus, peryton, dire wolf, rhinoceros veya saber-toothed tiger. DM başka formlar da onaylayabilir.\nBinek Intelligence puanı 6'ya yükselir, dillerini konuşabilir ve seninle telepathic iletişim kurabilir (1 mil içinde). Sana uygun attack'ları yapabilir; binince senin saldırılarından biriyle yapabileceğin bir attack yapabilirsin.\nBinek 0 HP'ye düşünce kaybolur; aynı büyüyle yeniden çağırabilirsin. İkiniz aynı plane'deyken action harcayarak onu tekrar çağırabilirsin.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3448,9 +3448,9 @@
     "description": "Dokunduğun yaratık şu avantajları kazanır: hareketi zor arazi tarafından yavaşlatılamaz; büyüler ve sihirsel efektler hızını düşüremez, paralyzed ya da restrained yapamaz. Hedef 5 feet hareket harcayarak non-magical kelepçe, bağ ve grapple durumlarından otomatik kurtulabilir. Su altında da tam hız hareket eder ve saldırı dezavantajı almaz.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger"
     ]
   },
@@ -3465,7 +3465,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde en fazla on kırkayak, üç örümcek, beş eşekarısı veya bir akrebi dev formlarına dönüştürürsün: kırkayak giant centipede, örümcek giant spider, eşekarısı giant wasp, akrep giant scorpion olur. Sözlü emirlere itaat ederler ve her turunda senin turunda hareket ederler. DM istatistikleri belirler. Büyü sona erince, 0 HP'ye düşünce veya action harcayarak sona erdirince orijinal formuna dönerler.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -3479,7 +3479,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içindeki görebildiğin boş bir alanda yerden asma filizi fışkırır. Büyü kullanılırken asmanın 30 feet içinde görebildiğin bir yaratığa sarılmasını emredebilirsin; Dexterity saving throw başarısızsa\nyaratık 20 feet asmaya doğru çekilir. Büyü süresince her turunda bonus action ile aynı veya farklı bir yaratığa sarılmasını emredebilirsin.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -3510,7 +3510,7 @@
     "duration": "8 saat",
     "description": "Menzil içindeki seçtiğin boş bir alanda Large boyutunda spectral bir koruyucu belirir ve havada asılı kalır. Tanrının sembolünü taşıyan parlayan bir kılıç ve kalkan tutar. Sana düşman her yaratık turda ilk kez koruyucunun 10 feet yakınına geldiğinde Dexterity saving throw yapar; başarısızsa 20 radiant hasar alır, başarılıysa yarı. Koruyucu toplam 60 hasar verdikten sonra kaybolur.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -3525,7 +3525,7 @@
     "description": "Menzil içinde 150-foot küp doğal araziyi başka bir doğal arazi gibi gösterir, duyurur ve kokutursun. Ova bataklık, tepe hendek, göl çayır gibi görünebilir. İllüzyon görsel, işitsel, dokunsal ve kokuya dayalıdır; zor araziyi normale ya da normali zor araziye çevirebilir. Yapay yapılar, ekipman ve yaratıklar görünümü değişmez. Araziyle fiziksel etkileşim gerçeği açığa çıkarır; Intelligence (Investigation) denetimi de çözebilir; çözen yaratık gerçek araziyi soluk bir görüntünün altında görür.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -3540,7 +3540,7 @@
     "duration": "Instantaneous",
     "description": "Menzil içinde seçtiğin noktada 20-foot yarıçap, 40-foot yüksek silindir içine sert buz parçaları döküldü. Alandaki her yaratık Dexterity saving throw yapar; başarısızsa 2d8 bludgeoning + 4d6 cold hasar, başarılıysa yarı. Hailstone'lar alanı bir tur sonuna kadar zor arazi haline getirir.\n**At Higher Levels:** _5. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için bludgeoning hasar 1d8 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -3571,9 +3571,9 @@
     "description": "Tanıdığın ya da en az bir kez 30 feet içinde gördüğün belirli bir yaratığı tarif edersin. 1.000 feet içindeyse yönünü hissedersin; hareket ediyorsa yönünü de bilirsin. Alternatif olarak belirli bir türdeki (örn. 'insan' veya 'unicorn') en yakın yaratığı da arayabilirsin — ama bu türü daha önce en\naz 30 feet içinde görmüş olmalısın. Hedef bir polymorph büyüsü altındaysa ve formu değişmişse tespit edilemez. Herhangi bir genişlikte akar su büyüyü bloklar.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n",
+      "cleric",
+      "druid",
+      "paladin",
       "ranger",
       "wizard"
     ]
@@ -3632,7 +3632,7 @@
     "description": "Menzil içinde görebildiğin bir yaratığı farklı bir forma dönüştürürsün. İsteksiz yaratık Wisdom saving throw yapar; başarılıysa etkilenmez. Şekil değiştirici (shapechanger) yaratıklar otomatik başarılıdır. Yeni form, hedefin challenge rating'ine (ya da seviyesine) eşit veya daha düşük CR (Challenge Rating)'ına eşit veya düşük herhangi bir hayvan olabilir. Hedefin tüm oyun istatistikleri (zihinsel ability score'lar dahil) yeni formun istatistikleriyle değişir; hizalaması ve kişiliği korunur.\nHedef yeni formun hit point'lerini alır; geri döndüğünde dönüşmeden önceki HP'sine döner. 0 HP'ye düşerse orijinal formuna geri döner; fazla hasar taşınır. Konuşamaz, büyü kullanamaz, el veya konuşma gerektiren eylemler yapamaz. Ekipmanı yeni forma kaynaşır; kullanamaz.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -3676,7 +3676,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü aktifken bir sonraki melee weapon attack'ın isabet ederse ek 4d6 psychic hasar verir ve hedef Wisdom saving throw yapar; başarısızsa bir sonraki turuna kadar şaşkın hale gelir: reaction alamaz; attack roll ve ability check'lerinde dezavantajı olur.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3690,8 +3690,8 @@
     "duration": "Instantaneous",
     "description": "Dokunduğun Medium boyutunu aşmayan taş nesneyi ya da en fazla 5 feet boyutundaki taş yüzeyi istediğin biçime sokarsun. Büyük kayanın silah, idol veya sandık haline getirilmesi, duvarda küçük geçit açılması (5 feet kalınlığı geçmeyen duvarda) ya da taş kapının çerçevesine kilitlenerek kapatılması gibi. Yarattığın nesne 2'ye kadar menteşe ve mandal içerebilir; ince mekanik ayrıntı mümkün değildir.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "wizard"
     ]
   },
@@ -3706,7 +3706,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun istekli yaratığın derisi taş kadar sertleşir. Büyü süresince nonmagical bludgeoning, piercing ve slashing hasarlarına direnci olur.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger",
       "sorcerer",
       "wizard"
@@ -3765,7 +3765,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde sağlam bir yüzey üzerinde ateş duvarı yaratırsın: 60-foot uzun, 20-foot yüksek, 1-foot kalın düz duvar ya da 20-foot çap, 20-foot yüksek, 1-foot kalın halka. Duvar opaktır. Belirirken alan içindeki yaratıklar Dexterity saving throw yapar; başarısızsa 5d8 fire hasar, başarılıysa yarı. Seçtiğin bir yüzün 10 feet içinde tur biten ya da girilen her yaratık 5d8 fire hasar alır; diğer yüzden hasar verilmez.\n**At Higher Levels:** _5. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d8 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -3798,7 +3798,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Etrafında 10-foot yarıçapta parlayan bariyer oluşur; seninle birlikte hareket eder. Undead ve construct'lar dışındaki tüm yaratıkları engeller: bariyer içine giremez, uzanamaz. Etkilenen\nyaratıklar ranged attack veya büyü kullanabilir. Hareket edip etkilenen bir yaratığı barrierden geçmek zorunda bırakırsan büyü sona erer.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -3826,7 +3826,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü aktifken bir sonraki weapon attack'ın isabet ederse ek 5d10 force hasar verir. Hedef bu saldırı sonrası 50 veya daha az HP'ye sahipse Charisma saving throw yapar; başarısızsa Banishment büyüsünün etkisine benzer biçimde başka plane'e gönderilir. Concentration 1 dakika dolmadan bozulursa geri döner.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3854,7 +3854,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Senden ilahi enerji yayılır; 30-foot yarıçaplı alan seninle birlikte hareket eder. Alan içindeki sen de dahil dost yaratıklar, büyülere ve sihirsel etkilere karşı saving throw'larında avantaj kazanır. Bunun yanı sıra bu tür etkilere karşı saving throw'larını geçerlerse hiç hasar almazlar (normalde yarı alacakları durumlar dahil).",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -3883,7 +3883,7 @@
     "duration": "1 dakika",
     "description": "Tanrınla veya tanrısal bir vekille iletişime geçer ve evet/hayır olarak yanıtlanabilecek 3'e kadar soru sorarsın. Büyü sona ermeden soruları sormak zorundasın. Her soru için doğru yanıt alırsın. Tanrılar her şeyi bilmez; bilgi kapsamı dışında kalıyorsa 'belirsiz' yanıtı alabilirsin. Tek kelimelik yanıt yanıltıcıysa DM kısa bir cümle de kullanabilir. Aynı uzun dinlenmede 2 veya daha fazla kez kullanılırsa hiç yanıt alamama riski kümülatif %25 artar.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -3897,7 +3897,7 @@
     "duration": "Instantaneous",
     "description": "Doğayla kısaca bir olursun ve çevreni anlarsın. Açık alanda 3 mil yarıçapındaki arazi hakkında; yeraltı veya doğal mağarada 300 feet yarıçapında bilgi edinirsin. Büyü insan yapımı yapıların bulunduğu yerlerde (zindan, şehir) çalışmaz. Aşağıdaki konulardan seçtiğin en fazla üç konuda bilgi edinirsin: arazi ve su kütleleri; baskın bitkiler, mineraller, hayvanlar veya halklar; güçlü celestial/fey/fiend/elemental/undead; başka plane'lerden etki; binalar.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -3927,7 +3927,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Menzil içinde 10-foot küpü dolduran bir hava, toprak, ateş veya su alanı seçersin; o alandan CR 5 veya altında uygun bir elemental çağrılır (ör. ateşten fire elemental, yerden earth elemental). Elemental sana ve yoldaşlarına dostça davranır; kendi turunda hareket eder; sözlü emirlerine itaat eder. Concentration bozulursa elemental kaybolmaz; kontrol dışına çıkar, sana ve yoldaşlarına düşman olur ve 1 saat sonra kaybolur.\n**At Higher Levels:** _6. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için CR 1 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -3971,8 +3971,8 @@
     "duration": "7 gün",
     "description": "Melee spell attack yaparsın; isabet ederse seçtiğin hastalığı hedefe bulaştırırsın. Her turunda sonunda Constitution saving throw yapar. Art arda üç başarısızlık: hastalık 7 gün sürer, artık saving throw yapmaz. Art arda üç başarı: iyileşir. Bu büyü doğal hastalık sayıldığından hastalığı gideren her efekt onu da giderir.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -4001,7 +4001,7 @@
     "duration": "Instantaneous",
     "description": "Güçlü bir ilahi enerji dalgası senden dışarı fışkırır. 30 feet içindeki her yaratık Constitution saving throw yapar; başarısızsa 5d6 thunder + 5d6 radiant ya da necrotic hasar (senin seçimine göre) alır ve prone olur; başarılıysa yarı hasar, prone olmaz.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -4015,8 +4015,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Parlayan enerji fey, undead ve öteki plane'lerden gelen varlıklara karşı seni sarar. Büyü süresince celestial, elemental, fey, fiend ve undead türlerin sana yönelik attack roll'larında dezavantajı olur.\nBu büyüyü şu iki özel eylemden biriyle erken sona erdirebilirsin:\nBreak Enchantment: Menzil içindeki, celestial/elemental/fey/fiend/undead tarafından charmed, frightened veya possessed edilmiş bir yaratığa dokunursun; o durum anında sona erer.\nDismissal: Menzil içindeki bir celestial/elemental/fey/fiend/undead'e melee spell attack yaparsın; isabet ederse Charisma saving throw yapar. Başarısızsa ana plane'ine gönderilir. Undead Shadowfell'e, fey Feywild'a gönderilir.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -4090,7 +4090,7 @@
     "duration": "Instantaneous",
     "description": "Menzil içinde belirlediğin noktada 10-foot yarıçap, 40-foot yüksek silindir içine gökten ilahi ateş sütunu iner. Alandaki her yaratık Dexterity saving throw yapar; başarısızsa 4d6 fire + 4d6 radiant hasar alır, başarılıysa yarı.\n**At Higher Levels:** _6. seviye veya daha yüksek slot kullanılırsa fire veya radiant hasardan birini (senin seçimine göre) her ekstra slot seviyesi için 1d6 artırırsın._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4105,8 +4105,8 @@
     "description": "Menzil içinde görebildiğin ve seni anlayan bir yaratığa sihirli bir zorunluluk yüklersin. Wisdom saving throw başarısızsa hedef büyü boyunca charmed olur. Charmed hâlde verdiğin direktife açıkça aykırı her eylemde hedef günde bir kez 5d10 psychic hasar alır. Seni anlamayan yaratıklar etkilenmez. Belirli bir eylemi emredebilir ya da yapmaktan kaçınmasını söyleyebilirsin; ölüme\nkesinlikle yol açan bir emir buyurulursa büyü sona erer. Remove curse, greater restoration ya da wish de büyüyü sona erdirir.\n**At Higher Levels:** _7. veya 8. seviye slotta süre 1 yıl. 9. seviye slotta büyü, yukarıdaki büyülerden biriyle sona erdirilene kadar devam eder._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "wizard"
     ]
   },
@@ -4122,9 +4122,9 @@
     "description": "Dokunduğun yaratığı olumlu enerjiyle doldurarak zayıflatıcı bir etkiyi giderirsin. Şunlardan birini yapabilirsin:\nHedefin yorgunluk (exhaustion) seviyesini bir azaltmak.\nHedefi etkileyen charmed veya petrified durumunu sona erdirmek.\nÜzerindeki lanetlerden birini (lanetli sihirli eşyaya attunement dahil) kaldırmak.\nBir yetenek puanındaki herhangi bir azalmayı gidermek.\nHedefin maksimum HP'sini düşüren herhangi bir etkiyi sona erdirmek.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
-      "paladi-n"
+      "cleric",
+      "druid",
+      "paladin"
     ]
   },
   {
@@ -4138,7 +4138,7 @@
     "duration": "Dispel edilene kadar",
     "description": "Belirlediğin noktanın etrafında 60-foot yarıçap kutsal (ya da kirli) güç alanı yaratırsın. Bu alan başka bir hallow büyüsünün etkisiyle örtüşemez. Alan şu etkilere tabi olur:\nCelestial, elemental, fey, fiend ve undead alana giremez; bu türler alan içindekileri charm, frighten veya possess edemez. Zaten bu durumdakilerin bu etkisi sona erer. Bu istisnalardan bir ya da birkaçını dışarıda bırakabilirsin.\nAyrıca aşağıdaki ek efektlerden birini seçersin (etkilenen yaratıklar alana her girişte Charisma saving throw yapabilir; başarılıysa o tur için etki uygulanmaz):\nCourage: Etkilenenler frightened olamaz.\nDarkness: Büyüyle yaratılan ışık (slot seviyesinden düşük) alana giremez.\nDaylight: Büyüyle yaratılan karanlık (slot seviyesinden düşük) ışığı söndüremez.\nEnergy Protection/Vulnerability: Seçilen hasar türüne direnç ya da vulnerability (bludgeoning/piercing/slashing hariç). Everlasting Rest: Alanda gömülü cesetler undead olamaz. Extradimensional Interference: Teleportasyon ve interplanar seyahat engellidir.\nFear: Etkilenenler frightened olur.\nSilence: Alandan ses çıkamaz, alan içine ses giremez.\nTongues: Alan içindekiler birbirleriyle ortak dil olmasa da konuşabilir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4169,7 +4169,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Dokunduğun bir silahı kutsal güçle kaplarsın. Büyü süresince silah magical olur (zaten değilse) ve her isabet ettiğinde 2d8 radiant ek hasar verir. Büyüyü sona erdirmek için bonus action harcarsın; silah 30 feet içindeki seçtiğin bir hedefe doğru güçlü bir patlama yaratır. Hedef Constitution saving throw yapar; başarısızsa 4d8 radiant hasar alır ve blinded olur; başarılıysa yarı hasar, kör olmaz. Her turunda sonunda blinded hedef yeniden saving throw yapabilir.",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -4197,8 +4197,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde seçtiğin noktada 20-foot yarıçaplı ısıran çekirge küresı belirir; alan hafif kapalı (lightly obscured) ve zor arazidir. Turda ilk kez alana giren ya da orada turuna başlayan yaratık Constitution saving throw yapar; başarısızsa 4d10 piercing hasar, başarılıysa yarı.\n**At Higher Levels:** _6. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için hasar 1d10 artar._",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "sorcerer"
     ]
   },
@@ -4214,7 +4214,7 @@
     "description": "Bir kişi, yer ya da nesnenin adını ya da tarifini söylersin. Büyü zihnine o şeyin efsanevi önem taşıyan kısaca özetini getirir: güncel söylenceler, unutulmuş hikayeler ya da hiç yaygınlaşmamış gizli bilgi. Hedeflediğin şey efsane değeri taşımıyorsa hiçbir bilgi gelmez. Hakkında ne kadar fazla bilgiye sahipsen, o kadar kesin ve ayrıntılı bilgi alırsın. Bilgi doğrudur; ancak mecazi dilde ifade edilmiş olabilir.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "wizard"
     ]
   },
@@ -4230,8 +4230,8 @@
     "description": "Menzil içinde seçtiğin bir noktadan 30-foot yarıçap küre içinde en fazla 6 yaratık seçersin; her biri 3d8 + spellcasting ability modifier kadar hit point kazanır. Bu büyünün undead ve construct'lar üzerinde etkisi yoktur.\n**At Higher Levels:** _6. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 1d8 artar._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -4305,8 +4305,8 @@
     "description": "Menzil içindeki bir celestial, elemental, fey veya fiend'i hizmetine bağlamaya çalışırsın. Büyü boyunca yaratık menzil içinde bulunmak zorundadır. Büyü tamamlandığında Charisma saving\nthrow yapar; başarısızsa 24 saat boyunca senin hizmetindedir. Yaratık zaten başka bir büyüyle çağrılmışsa o büyünün süresi bu büyünün süresiyle eşleşecek şekilde uzar. Bağlı yaratık direktiflerini harfiyen uygular; ancak sana düşmansa kelime oyunuyla kendi hedeflerine ulaşmaya çalışabilir. Görev tamamlanırsa aynı düzlemdeysen seni bulur ve rapor verir; değilsen seni bıraktığı yerde kalır.\n**At Higher Levels:** _Yüksek slot kullanılırsa süre: 6. seviyede 10 gün; 7. seviyede 30 gün; 8. seviyede 180 gün; 9. seviyede 1 yıl 1 gün._",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "warlock",
       "wizard"
     ]
@@ -4322,8 +4322,8 @@
     "duration": "Instantaneous",
     "description": "En fazla 10 gün önce hayatını kaybetmiş ve dokunduğun yaratığı diriltilebilirsin; yaratığın ruhu istekli ve serbest olmalıdır. Yaratık 1 HP ile hayata döner. Büyü zehirleri ve mundane hastalıkları giderir; sihirsel hastalık, lanet vb. kaldırılmazsa yeniden devreye girer. Undead'i hayata döndüremez. Eksik vücut parçalarını geri getirmez; baş gibi hayati organlar yoksa büyü başarısız olur. Ölüm cezası: tüm attack roll'larında, ability check'lerde ve saving throw'larda -4 ceza; her uzun dinlenmede 1 azalır.",
     "classes": [
-      "cleri-c",
-      "paladi-n"
+      "cleric",
+      "paladin"
     ]
   },
   {
@@ -4337,7 +4337,7 @@
     "duration": "Instantaneous",
     "description": "En fazla 10 gün önce hayatını kaybetmiş bir humanoid'e ya da parçasına dokunursun; ruhu serbest ve istekliyse yeni bir yetişkin beden oluşturulur. Büyü, yaratığın ırkını değiştirebilir. DM d100 atar ve aşağıdaki tablodan form belirlenir (ya da DM seçer):\n01-04 Dragonborn | 05-13 Dwarf, hill | 14-21 Dwarf, mountain | 22-25 Elf, dark | 26-34 Elf, high | 35-42 Elf, wood\n43-46 Gnome, forest | 47-52 Gnome, rock | 53-56 Half-elf | 57-60 Half-orc | 61-68 Halfling, lightfoot | 69-76 Halfling, stout\n77-96 Human | 97-00 Tiefling\nReincarnate edilen yaratık önceki hayatını hatırlar; eski yeteneklerini korur ancak ırk değişirse racial trait'ler de değişir.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -4351,8 +4351,8 @@
     "duration": "Concentration, 10 dakika",
     "description": "Aynı plane'de seçtiğin belirli bir yaratığı görüp duyabilirsin. Hedef Wisdom saving throw yapar; bu atış, seni ne kadar tanıdığına ve fiziksel bağlantıya göre modifiye edilir:\nİkinci el bilgi (duymuşsun): +5 | Doğrudan tanışıklık: +0 | Yakın tanışıklık: -5\nLikeness veya resim: -2 | Possessed item or garment: -4 | Body part, hair, nail, etc.: -10\nSaving throw başarısızsa hedefin 10 feet yakınında görünmez sensör oluşur; gözlerin ve kulaklarınmış gibi kullanırsın. Sensör hedefle birlikte hareket eder. Yaratık yerine daha önce gördüğün belirli bir konumu da hedef alabilirsin; sensör sabit kalır.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "warlock",
       "wizard"
     ]
@@ -4384,7 +4384,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Menzil içinde boş bir alanda kutsal bir ruh çağırırsın; bu ruh celestial bir yaratık görünümü alır. Sana ve yoldaşlarına dostça davranır; kendi turunda hareket eder; sözlü emirlere itaat eder (action gerektirmez). Komut vermezsen sana yakın durur, düşmanlara karşı savunur. Celestial'ın istatistikleri büyünün seviyesine göre değişir (DM belirlenen stat bloğu kullanır). 5d8 + 10 HP'ye sahiptir; AC 11 + slot seviyesi; Multiattack ile turda iki saldırı yapar; her saldırı 1d8 + 4 + slot seviyesi radiant hasar verir. Tur başında 30 feet içindeki dost bir yaratığa 2d6 + slot seviyesi hit point iyileşmesi sağlayabilir (bonus action olarak). **At Higher Levels:** _6. seviye veya daha yüksek slot kullanılırsa istatistikler güçlenir._",
     "classes": [
-      "paladi-n"
+      "paladin"
     ]
   },
   {
@@ -4458,7 +4458,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Büyü boyunca bir ağaca girip aynı türden 500 feet içindeki başka bir ağaca çıkabilirsin. Her iki ağaç da canlı ve en az senin boyutunda olmalıdır. Ağaca girmek 5 feet hareket gerektirir; 500 feet içindeki aynı türdeki tüm ağaçları anında hissedersin. Girişte hareket hakkın içinde birinden çıkabilirsin; çıkış da 5 feet hareket gerektirir. Her tur yalnızca bir kez kullanılabilir ve tur sonu ağaç dışında olman zorunludur.",
     "classes": [
-      "drui-d",
+      "druid",
       "ranger"
     ]
   },
@@ -4487,7 +4487,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde sağlam bir zemin üzerinde nonmagical taş duvar oluşturursun. On adet 10×10-foot panel (6 inç kalınlık) ya da on adet 10×20-foot panel (3 inç kalınlık); her panel en az bir diğeriyle bağlantılı olmalı. Duvar her şekli alabilir; yer çekimine bağlı değildir ama mevcut taşla birleşip desteklenmesi gerekir. Bir yaratığın alanından geçerse o tarafa itilir; etrafı çevrilirse Dexterity saving throw yapar, başarılıysa reaction ile hızı kadar hareket edip kurtulabilir. Duvar AC 15, inç başına 30 HP'ye sahiptir; bir panel 0 HP'ye düşünce yıkılır. Büyü tam süre concentrate edilirse duvar kalıcı hale gelir.",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -4519,7 +4519,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde dikey, dönen keskin bıçaklardan oluşan bir duvar oluşturursun. Düz duvar: 100 feet uzun, 20 feet yüksek, 5 feet kalın; ya da halka: 60 feet çap, 20 feet yüksek, 5 feet kalın. Duvar geri, dörtte üç cover sağlar. Alan zor arazidir. Turda ilk kez alana giren ya da orada turuna başlayan yaratık Dexterity saving throw yapar; başarısızsa 6d10 slashing hasar, başarılıysa yarı.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4564,7 +4564,7 @@
     "duration": "Concentration, 1 saat",
     "description": "CR 6 veya altında bir fey yaratığı ya da CR 6 veya altında hayvan formunu alan bir fey ruhu çağırırsın; menzil içinde boş bir alanda belirir. Sana ve yoldaşlarına dostça davranır; hizalamasına aykırı emirleri reddeder. Concentration bozulursa kaybolmaz; kontrol dışına çıkar, sana düşman olur ve 1 saat sonra kaybolur.\n**At Higher Levels:** _7. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için CR 1 artar._",
     "classes": [
-      "drui-d",
+      "druid",
       "warlock"
     ]
   },
@@ -4593,7 +4593,7 @@
     "duration": "Instantaneous",
     "description": "Bu büyüyü yalnızca gece kullanabilirsin. Menzil içindeki en fazla üç Medium veya Small humanoid cesedini seçersin; her biri senin kontrolünde bir ghoul haline gelir. Her turunda bonus action harcayarak 120 feet içindeki ghoul'larına komut verebilirsin. Yaratık 24 saat sonra kontrol dışına çıkar; kontrolü sürdürmek için her 24 saatte bir büyüyü yeniden uygularsın; bu, yenisini yaratmak yerine mevcut en fazla üç yaratık üzerindeki kontrolü yeniler.\n**At Higher Levels:** _7. seviye slotta 4 ghoul; 8. seviye slotta 5 ghoul ya da 2 ghast veya wight; 9. seviye slotta 6 ghoul, 3 ghast/wight veya 2 mummy._",
     "classes": [
-      "cleri-c",
+      "cleric",
       "warlock",
       "wizard"
     ]
@@ -4642,8 +4642,8 @@
     "description": "Aynı plane of existence'taki belirli sabit bir konuma giden en kısa, en doğrudan fiziksel güzergahı bulursun. Hedefin adını bilmen ya da onu tanıman yeterlidir. Hareket eden konumlar, başka bir düzlemdeki yerler ya da muğlak tarif edilen yerler (örn. 'bir ejderha ini') büyüyü başarısız kılar. Büyü boyunca, aynı plane'deyken hedefin ne kadar uzakta ve hangi yönde olduğunu bilirsin. Yol boyunca kavşaklarda otomatik olarak en kısa güzergahı seçersin (en güvenli değil, en doğrudan).",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -4671,7 +4671,7 @@
     "duration": "1 gün",
     "description": "Yere bastığın noktadan 40.000 square feet zemin alanını (30 feet yüksekliğe kadar) teleportasyon ve portal kullanımına karşı korursun. Bu alan planar travel'a da kapalıdır (Astral Plane, Ethereal Plane, Feywild, Shadowfell, plane shift). Ayrıca büyüyü kullanırken seçtiğin türlere (celestial, elemental, fey, fiend, undead) turda ilk giriş ya da başlangıçta 5d10 radiant ya da necrotic hasar (senin seçimine göre) verir. Bir parola belirleyebilirsin; parola söyleyenler hasar almaz. 30 gün boyunca aynı konumda her gün tekrarlanırsa kalıcı hale gelir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4715,7 +4715,7 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içindeki bir yaratığa virülant hastalık bulaştırırsın. Constitution saving throw yapar; başarısızsa 14d6 necrotic hasar, başarılıysa yarı. Bu hasar hedefin HP'sini 1'in altına düşüremez. Başarısız olursa maksimum HP'si 1 saat boyunca aldığı necrotic hasar kadar azalır. Hastalığı gideren herhangi bir efekt maksimum HP'yi normale döndürür.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4729,8 +4729,8 @@
     "duration": "Instantaneous",
     "description": "Görebildiğin menzil içindeki seçtiğin yaratığa güçlü pozitif enerji dalgası gönderirsin. 70 hit point kazanır. Ayrıca blindness, deafness ve üzerindeki tüm hastalıklar da sona erer. Undead ve construct'larda etkisizdir.\n**At Higher Levels:** _7. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için iyileşme 10 artar._",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -4744,8 +4744,8 @@
     "duration": "Instantaneous",
     "description": "İhtişamlı bir ziyafet ortaya çıkarsın. Yemek 1 saat sürer ve ancak bu 1 saat sonunda etkiler başlar; en fazla 12 kişi katılabilir. Katılımcılar şu faydaları kazanır: tüm hastalık ve zehirlerden iyileşir; poison ve frightened'a bağışık olur; tüm Wisdom saving throw'larında avantaj kazanır; maksimum HP'si 2d10 artar ve aynı kadar hit point kazanır. Bu faydalar 24 saat sürer.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -4874,7 +4874,7 @@
     "duration": "Concentration, 2 saat",
     "description": "Menzil içinde en fazla 40-foot kenarlı bir alan içindeki toprak, kum veya kili istediğin biçimde yeniden şekillendirebilirsin. Zemin yükseltebilir, alçaltabilir, hendek açabilir, duvar oluşturabilir ya da sütun dikebilirsin; değişiklik alanın en büyük boyutunun yarısını aşamaz. Her değişiklik 10\ndakika sürer. Dönüşüm yavaş gerçekleştiğinden yaratıklar genellikle tuzaklanmaz ya da zarar görmez. Bu büyü doğal taş veya yapay yapıları etkileyen toprağı şekillendiremez; yapılar kayabilir ya da çökebilir.",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -4904,7 +4904,7 @@
     "duration": "Instantaneous",
     "description": "Bir tanrıya, primordial'a, demon prensine ya da başka evrensel güce yalvarırsın. O varlık sana yardım etmek üzere bir celestial, elemental ya da fiend gönderir; menzil içinde boş bir alanda belirir. Bilinen bir yaratığın adını söylersen onu isteyebilirsin, ancak farklı biri gelebilir. Gelen yaratık sana itaat etmek zorunda değildir; bir görev karşılığında ücret müzakere edebilirsin. Göreve bağlı olarak ödeme şekli değişir; dakikalarla ölçülen görev 100 gp/dakika, saatlerle ölçülen 1.000 gp/saat, günlerle ölçülen (en fazla 10 gün) 10.000 gp/gün.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -4947,7 +4947,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Elinden 5-foot geniş, 60-foot uzun parlak ışık hattı fışkırır. Hattın içindeki her yaratık Constitution saving throw yapar; başarısızsa 6d8 radiant hasar alır ve bir sonraki turuna kadar blinded olur; başarılıysa yarı hasar ve kör olmaz. Undead ve ooze'lar dezavantajla atar. Her turunda action ile yeni bir ışık hattı oluşturabilirsin. Büyü süresince elinde parlak ışık noktası yanar; 30-foot parlak + 30-foot loş ışık verir; bu ışık güneş ışığıdır.",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -4962,7 +4962,7 @@
     "duration": "1 round",
     "description": "Menzil içindeki Large veya daha büyük cansız bir bitkiyle aynı plane'deki başka bir bitkiyi sihirsel olarak birbirine bağlarsın; varış bitkisini daha önce görmüş ya da dokunmuş olmalısın. Büyü boyunca bir yaratık hedef bitkiden girerek 5 feet hareket harcayarak varış bitkisinden çıkabilir.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -4977,7 +4977,7 @@
     "description": "Dokunduğun istekli yaratık 120 feet menzilinde truesight kazanır: illüzyonları otomatik görür, gizli kapıları fark eder ve Ethereal Plane'e bakabilir. Bu süre boyunca her şeyi olduğu gibi görür.",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "warlock",
       "wizard"
     ]
@@ -4993,7 +4993,7 @@
     "duration": "Concentration, 10 dakika",
     "description": "Menzil içinde sağlam bir yüzey üzerinde iğne uçlu sert dikenli çalılardan oluşan duvar yaratırsın: 60-foot uzun, 10-foot yüksek, 5-foot kalın düz duvar ya da 20-foot çap, 20-foot yüksek, 5-foot kalın halka. Duvar görüşü engeller. Belirirken alan içindeki yaratıklar Dexterity saving throw yapar; başarısızsa 7d8 piercing hasar, başarılıysa yarı. Duvarcı geçmek için her 1 feet başına 4 feet hareket harcanır; geçiş anında ve turda ilk geçişte Dexterity saving throw yapar; başarısızsa 7d8 slashing hasar, başarılıysa yarı.\n**At Higher Levels:** _7. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için her iki hasar türü 1d8 artar._",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5007,7 +5007,7 @@
     "duration": "8 saat",
     "description": "Sen ve görebildiğin menzil içinden seçtiğin en fazla on istekli yaratık bulut gibi gaseous form alırsınız. Bu formda 300 feet uçuş hızı kazanırsınız ve nonmagical silah hasarlarına direncin olur. Yalnızca Dash action veya normale dönme eylemi alınabilir. Normale dönmek 1 dakika sürer; bu süre incapacitated ve hareketsizsiniz. Büyü sona erince havadaysanız 1 dakika boyunca 60 feet/round inerek güvenli biçimde yere inersiniz.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5021,7 +5021,7 @@
     "duration": "Instantaneous",
     "description": "Sen ve 5 feet içindeki en fazla beş istekli yaratık daha önce belirlediğin kutsal sığınağa anında ışınlanırsınız; sığınağa en yakın boş alana çıkarsınız. Büyüyü önceden tanrının tapınağında veya o tapınakla güçlü bağı olan bir yerde kullanarak sığınağı belirlemiş olmalısın; aksi hâlde büyünün etkisi yoktur.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5036,7 +5036,7 @@
     "description": "Yüzeye ya da kapatılabilen nesneye zararlı bir glyph kazırsın; 10-foot çapı aşamaz. Nesne 10 feetten fazla taşınırsa glyph bozulur. Tetikleyici koşulunu kendin belirlersin; fiziksel özellik, yaratık türü, hizalama veya şifreye göre daraltabilirsin.\nTetiklenince glyph 60-foot yarıçapta loş ışık saçar (10 dakika). Alandaki her yaratık efektten etkilenir. Efekt seçenekleri:\nDeath: Constitution saving throw; başarısızsa 10d10 necrotic hasar, başarılıysa yarı.\nDiscord: Constitution saving throw; başarısızsa 1 dakika diğer yaratıklarla kavga eder, saldırı ve denetim dezavantajı.\nFear: Wisdom saving throw; başarısızsa 1 dakika frightened — elindekini bırakır, uzaklaşır. Hopelessness: Charisma saving throw; başarısızsa 1 dakika saldırı yapamaz, zararlı büyü kullanamaz.\nInsanity: Intelligence saving throw; başarısızsa 1 dakika eylem yapamaz, konuşamaz, okuyamaz, hareket DM kontrolünde.\nPain: Constitution saving throw; başarısızsa 1 dakika incapacitated.\nSleep: Wisdom saving throw; başarısızsa 10 dakika bilinçsiz (hasar veya sarsma ile uyandırılabilir). Stunning: Wisdom saving throw; başarısızsa 1 dakika stunned.",
     "classes": [
       "bard",
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5050,7 +5050,7 @@
     "duration": "Concentration, 1 saat",
     "description": "CR (Challenge Rating) 4 veya altında bir celestial çağırırsın; menzil içinde boş bir alanda belirir. 0 HP'ye düşünce ya da büyü sona erince kaybolur. Celestial, büyü boyunca sana ve yoldaşlarına dostça davranır; kendi turunda hareket eder ve sözlü emirlerine (action gerektirmez) itaat eder — ancak hizalamasına aykırı emirleri reddeder. Komut vermezsen kendini savunur.\n**At Higher Levels:** _9. seviye slot kullanılırsa CR 5 veya altında celestial çağırılabilir._",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5079,7 +5079,7 @@
     "duration": "Instantaneous",
     "description": "Dünyanın yaratılışında şekillendirici güce sahip ilahi bir söz söylersin. Menzil içinde görebildiğin istediğin sayıda yaratık Charisma saving throw yapar. Başarısız olan her yaratık mevcut HP'sine göre şu etkilerden birini alır:\n50 HP veya altı: 1 dakika deafened.\n40 HP veya altı: 10 dakika deafened + blinded.\n30 HP veya altı: 1 saat blinded + deafened + stunned.\n20 HP veya altı: Anında ölür.\nAyrıca saving throw başarısız olan her celestial, elemental, fey veya fiend — mevcut HP'si ne olursa olsun — ana plane'ine geri gönderilir ve 24 saat boyunca senin bulunduğun plane'e hiçbir yolla dönemez (wish hariç).",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5094,7 +5094,7 @@
     "description": "Ethereal Plane'in sınır bölgelerine, mevcut düzlemle örtüşen alana adım atarsın. Büyü boyunca ya da action harcayarak sona erdirene kadar orada kalırsın. Her yöne hareket edebilirsin; yukarı veya aşağı hareket ekstra hareket gerektirir. Kaynaklandığın düzlemi görebilir ve duyabilirsin; ama her şey gri tonlarında görünür ve 60 feetten öteyi göremezsin. Ethereal Plane'deki diğer varlıklar seni etkiler; öteki düzlemdekilerse özel yetenekleri olmadıkça seni algılayamaz ya da seninle etkileşemez. Düzlemdeki nesneleri yok sayarak hareket edersin. Süre sona erince hemen bulunduğun yere, kaynaklandığın düzleme dönersin. Aynı alana sıkışmak zorunda kalırsan en yakın boş alana çıkarsın ve mesafeye göre force hasarı alırsın.\n**At Higher Levels:** _8. seviye veya daha yüksek slot kullanılırsa her ekstra slot seviyesi için 3 istekli yaratık daha (10 feet içinde) beraberinde taşınabilir._",
     "classes": [
       "bard",
-      "cleri-c",
+      "cleric",
       "warlock",
       "sorcerer",
       "wizard"
@@ -5127,8 +5127,8 @@
     "duration": "Instantaneous",
     "description": "Menzil içinde seçtiğin konumda en fazla on adet 10-foot küpten oluşan alev fırtınası belirir; küpler birbirine bağlı olmalıdır. Alandaki her yaratık Dexterity saving throw yapar; başarısızsa 7d10 fire hasar, başarılıysa yarı. Alandaki nesneler tutuşur. İstersen bitkiler bu büyüden etkilenmez.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "sorcerer"
     ]
   },
@@ -5160,7 +5160,7 @@
     "description": "1 mil kare boyutuna kadar araziyi başka bir arazi türüymüş gibi gösterir, duyurur, kokutursun; dokunulunca bile gerçekmiş gibi hissettiren tam duyusal illüzyon. Arazi genel formu aynı kalır; açık alanlar bataklık gibi, uçurum hafif yamaç gibi görünebilir. Yapılar eklenebilir ya da kaldırılabilir; ancak yaratıklar ve ekipman değişmez. İllüzyon zor araziyi normale ya da tersine çevirebilir. Truesight yeteneğine sahip yaratıklar gerçek araziyi görür; ama illüzyonun diğer unsurları onlara da görünür (yani varlığının farkındadırlar ama diğer duyularıyla hissedebilirler).",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -5205,8 +5205,8 @@
     "duration": "Instantaneous",
     "description": "İki kullanım biçimi vardır:\nSeyahat: Sen ve ellerini tutan en fazla sekiz istekli yaratık farklı bir plane'e taşınırsınız. Genel bir varış noktası belirtebilirsin; DM'in takdirine göre o bölgede bir yerde ortaya çıkarsınız.\nSürgün: Menzil içindeki isteksiz bir yaratığa melee spell attack yaparsın; isabet ederse Charisma saving throw yapar. Başarısızsa belirlediğin plane'de rastgele bir yerde ortaya çıkar; kendi başına geri dönmek zorundadır.",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "warlock",
       "sorcerer",
       "wizard"
@@ -5253,8 +5253,8 @@
     "description": "Dokunduğun yaratığın doğal iyileşme kapasitesini harekete geçirirsin. Hedef 4d8 + 15 hit point kazanır. Büyü boyunca her turunda başında 1 hit point (her dakika 10 HP) otomatik olarak iyileşir. Kesilmiş vücut parçaları (parmak, kol, kuyruk vb.) 2 dakika içinde yeniden büyür. Parçayı köke tutarsan büyü anında birleştirir.",
     "classes": [
       "bard",
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {
@@ -5269,7 +5269,7 @@
     "description": "En fazla 100 yıl önce hayatını kaybetmiş (yaşlılıktan ölmemiş, undead olmayan) bir yaratığa dokunursun. Ruhu serbest ve istekliyse, tüm HP'siyle hayata döner. Büyü tüm açık yaraları kapatır, zehirleri giderir, normal hastalıkları iyileştirir. Sihirsel hastalık, lanet vb. kaldırılmazsa yeniden devreye girer. Eksik organlar ve vücut parçaları geri gelir. Ölüm cezası hâlâ uygulanır (-4 penalty, her uzun dinlenmede 1 azalır). 1 yıl veya daha uzun önce ölen birini diriltmek seni büyük ölçüde yorar; uzun dinlenmeye kadar büyü kullanamazsın ve tüm attack roll'larında, ability check'lerinde ve saving throw'larında dezavantajın olur.",
     "classes": [
       "bard",
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5283,7 +5283,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde seçtiğin noktada 50-foot yarıçap, 100-foot yüksek silindir içinde yerçekimi tersine döner. Zemine sabitlenmemiş tüm yaratıklar ve nesneler silindirin tepesine doğru düşer. Sabit bir nesneye tutunmak için Dexterity saving throw gerekir. Tavana ya da başka bir katı yüzeye çarparlarsa normal çarpışma hasarı alırlar. Büyü sona erince silindir içindekiler yeniden aşağı düşer.",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -5357,7 +5357,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Etrafında 10-foot yarıçaplı görünmez antimagic küre oluşur; seninle birlikte hareket eder. Küre içinde büyü kullanılamaz, çağrılmış yaratıklar kaybolur, magic item'lar mundane hale gelir. Artifact'lar ve tanrısal yaratılanlar bu etkiden muaftır.\nHedeflenen efektler: Magic missile ve charm person gibi yaratığı veya nesneyi hedefleyen büyüler küre içindeki hedefleri etkileyemez.\nAlan efektleri: Fireball gibi alan büyülerinin küreyle örtüşen kısmı bastırılır.\nAktif büyüler: Küre içindeyken bir yaratık veya nesne üzerindeki tüm aktif büyüler bastırılır. Magic item'lar: Özellikleri ve güçleri bastırılır; kullanılamaz.\nBüyüsel seyahat: Teleportasyon ve planar seyahat küre içinde işlemez.\nÇağrılmış varlıklar: Küre içindeyken geçici olarak yok olur; küre ayrılınca geri döner. Dispel magic küreyi etkileyemez.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5371,7 +5371,7 @@
     "duration": "Concentration, 8 saat",
     "description": "Açık havada 5 mil yarıçapında hava koşullarını kontrol edersin. Yayın tamamlanmasından sonra binaları vb. engelleyen konuma geçersen büyü erken sona erer. Yağış, sıcaklık ve rüzgar üç ayrı kategoride birer adım ileri ya da geri alınabilir; değişimin yürürlüğe girmesi 1d4 × 10 dakika sürer. Büyü sona erince hava yavaşça normalleşir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5399,7 +5399,7 @@
     "duration": "Concentration, 24 saat",
     "description": "Menzil içinde görebildiğin istediğin sayıda istekli yaratığı Large veya daha küçük, CR 4 veya altında bir hayvan formuna dönüştürürsün. Sonraki turnlarında action harcayarak bu yaratıkları yeni formlara sokabilirsin. Dönüşüm, yaratık 0 HP'ye düşene ya da ölene ya da büyü sona erene kadar sürer. Her yaratık için farklı form seçebilirsin. Hedefin istatistikleri yeni formun istatistikleriyle değişir; hizalama, Intelligence, Wisdom ve Charisma korunur. 0 HP'ye düşünce orijinal formuna döner ve hasar taşınır. Konuşamaz, büyü kullanamaz, ekipman çalışmaz.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5413,7 +5413,7 @@
     "duration": "10 gün",
     "description": "Menzil içindeki Huge veya daha küçük bir nesne/yaratık ya da 200-foot küpü aşmayan bir bölgeyi hedeflersin; belirli bir intelligent yaratık türü seçersin (örn. kırmızı ejderhalar, goblinler). Seçtiğin efekti uygularsın:\nAntipathy: Belirlenen tür hedefe yaklaştığında veya 60 feet içine girdiğinde Wisdom saving throw yapar; başarısızsa frightened olur ve uzaklaşmak zorundadır. 60 feetten uzaklaşıp hedefe bakamadığı bir yere geçince etki sona erer; tekrar yaklaşırsa tekrar başlar.\nSympathy: Belirlenen tür 60 feet içine girdiğinde veya gördüğünde Wisdom saving throw yapar; başarısızsa turunda hareketini alana yaklaşmak ya da hedefe menzile girmek için kullanmak zorundadır; bir kez ulaştığında gönüllü olarak uzaklaşamaz.\nHer 24 saatte bir yeniden saving throw hakkı vardır; 60 feet dışındayken de yapabilir. Başarılıysa bağışık kalır (1 dakika).",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5441,7 +5441,7 @@
     "duration": "Concentration, 8 saat",
     "description": "Açık havada 5 mil yarıçapında hava koşullarını kontrol edersin. Yayın tamamlanmasından sonra binaları vb. engelleyen konuma geçersen büyü erken sona erer. Yağış, sıcaklık ve rüzgar üç ayrı kategoride birer adım değiştirilebilir; değişimin yürürlüğe girmesi 1d4 × 10 dakika sürer. Büyü sona erince hava yavaşça normalleşir.",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -5488,8 +5488,8 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde seçtiğin zemin noktasında 100-foot yarıçapta sismik sarsıntı yaratırsın. Alan zor arazidir.\nConcentration: Alanda concentration yapan her yaratık Constitution saving throw yapar; başarısızsa concentration bozulur.\nYere kapanma: Büyü kullanıldığında ve senin her turunda sonunda alandaki her zemin yaratığı Dexterity saving throw yapar; başarısızsa prone olur.\nYarıklar: Sonraki turunda 1d6 yarık açılır; her biri 1d10 × 10 feet derin, 10 feet geniş. Üstünde duran yaratıklar Dexterity saving throw yapar; başarısızsa içine düşer.\nYapılar: Temas eden yapılara turda 50 bludgeoning hasar verir. 0 HP'ye düşen yapı çöker; etrafındaki yaratıklar Dexterity saving throw yapar; başarısızsa 5d6 bludgeoning, prone ve moloz altında kalır (DC 20 Strength (Athletics) kurtarma gerekir).",
     "classes": [
-      "cleri-c",
-      "drui-d",
+      "cleric",
+      "druid",
       "sorcerer"
     ]
   },
@@ -5505,7 +5505,7 @@
     "description": "Görebildiğin menzil içindeki bir yaratığın zihnini paramparça etmeye çalışırsın. Hedef 4d6 psychic hasar alır ve Intelligence saving throw yapar. Başarısızsa Intelligence ve Charisma puanları 1'e düşer. Büyü konuşamaz, okunamaz, büyü kullanamaz, sihirli eşyaları etkinleştiremez ve anlamlı iletişim kuramaz hale getirir. Dostlarını tanıyabilir, onları izleyebilir ve koruyabilir. Her 30 günde bir saving throw yapabilir; başarılıysa büyü sona erer. Greater restoration, heal veya wish de büyüyü sona erdirir.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "warlock",
       "wizard"
     ]
@@ -5612,7 +5612,7 @@
     "duration": "Instantaneous",
     "description": "Menzil içindeki belirlediğin noktada 60-foot yarıçapta parlak güneş ışığı patlar. Alandaki her yaratık Constitution saving throw yapar; başarısızsa 12d6 radiant hasar alır ve 1 dakika blinded olur; başarılıysa yarı, kör olmaz. Undead ve ooze'lar dezavantajla atar. Blinded yaratık her turunda sonunda yeniden saving throw yapabilir; başarılıysa kör durumu sona erer. Bu büyü alandaki büyüsel karanlığı dağıtır.",
     "classes": [
-      "drui-d",
+      "druid",
       "sorcerer",
       "wizard"
     ]
@@ -5642,7 +5642,7 @@
     "duration": "Concentration, 6 round",
     "description": "Seçtiğin noktada 300-foot uzun, 300-foot yüksek, 50-foot kalın bir su duvarı belirir. Belirirken alan içindeki yaratıklar Strength saving throw yapar; başarısızsa 6d10 bludgeoning hasar, başarılıysa yarı. Her turunda duvar senden 50 feet uzaklaşır; Huge veya daha küçük alan içindeki yaratıklar Strength saving throw yapar; başarısızsa 5d10 bludgeoning hasar. Her tur sonunda duvar 50 feet kısalır ve sonraki round'un hasarı 1d10 azalır. Sıfır yüksekliğe düşünce büyü sona erer. Duvarda yakalanmış yaratıklar yüzerek hareket edebilir; ancak Strength (Athletics) ability check'i spell save DC'ye karşı yapmaları gerekir.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5656,7 +5656,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Menzil içinde görebildiğin boş bir alandan farklı bir plane'deki belirli bir konuma dairesel portal açarsın; çapı 5–20 feet arasında seçilir. Portal, büyü boyunca ön yüzünden geçişe izin verir; geçen her şey diğer plane'de portala en yakın boş alana çıkar.\nİsteğe bağlı olarak belirli bir yaratığın adını (takma ad değil gerçek ad) söyleyebilirsin. O yaratık başka bir plane'deyse portal onun hemen yakınında açılır ve yaratığı en yakın boş alana çeker. Yaratık üzerinde özel güç kazanmazsın; DM davranışına karar verir.\nTanrılar ve planar yöneticiler kendi alanlarında portal açılmasını engelleyebilir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5670,7 +5670,7 @@
     "duration": "Special",
     "description": "Sen ve menzil içinde gönüllü en fazla sekiz yaratık astral bedenlerinizi Astral Plane'e yollarsınız; fiziksel bedenler bilinçsiz ve askıya alınmış hâlde kalır. Astral beden oyun istatistiklerini ve eşyaları kopyalar; tek fark omuz küreklerinizden uzanan gümüş kordon. Bu kordon tether'dır; kesilirse anında ölürsünüz.\nAstral Plane'de serbestçe hareket eder, portallara girebilirsiniz. Yeni bir plane'e girildiğinde fiziksel bedeniniz ve eşyalarınız silver cord aracılığıyla taşınır; o plane'de yeniden canlanırsınız.\nAstral formda alınan hasar ve efektler fiziksel bedeni etkilemez; büyü sona erdiğinde de kalıcı değildir.\nBüyü action harcayarak sona erdirilebilir; sona erince yaratık fiziksel bedenine döner. Astral form veya fiziksel beden 0 HP'ye düşünce büyü o yaratık için sona erer. Silver cord kesilirse — yalnızca bunu özellikle belirten bir efekt yapabilir — ruh ve beden ayrılır; anında ölüm.\nFarklı plane'de olan arkadaşlardan ayrılırsanız kendi yollarını bulmak zorundadırlar (genellikle 0 HP'ye düşerek).",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5699,7 +5699,7 @@
     "description": "Dokunduğun istekli yaratığa yakın geleceği sınırlı biçimde sezme yetisi kazandırırsın. Büyü boyunca hedef şaşırma durumuna (surprised) giremez; attack roll'larında, ability check'lerinde ve saving throw'larında avantaj kazanır. Üstelik ona yönelik tüm attack roll'ları dezavantajla yapılır. Bu büyüyü süresi bitmeden yeniden kullanmak öncekini anında sona erdirir.",
     "classes": [
       "bard",
-      "drui-d",
+      "druid",
       "warlock",
       "wizard"
     ]
@@ -5746,7 +5746,7 @@
     "duration": "Instantaneous",
     "description": "Senden iyileştirici enerji dalgası taşar. Menzil içinde görebildiğin istediğin sayıda yaratık arasında paylaştırmak üzere toplam 700 hit point dağıtırsın. Her yaratık aynı anda blinded ve deafened durumundan ve tüm hastalıklardan iyileşir. Undead ve construct'larda etkisizdir.",
     "classes": [
-      "cleri-c"
+      "cleric"
     ]
   },
   {
@@ -5834,7 +5834,7 @@
     "duration": "Concentration, 1 saat",
     "description": "Karakter seviyene eşit veya düşük CR (Challenge Rating)'lı herhangi bir yaratığın formuna bürünürsün; construct veya undead olamaz ve bu tür bir yaratığı en az bir kez görmüş olmalısın. Ortalama bir örneğini temsil edersin; class level veya Spellcasting trait olmadan.\nOyun istatistiklerin (HP ve Hit Dice dahil) yeni formun istatistikleriyle değişir; hizalama, Intelligence, Wisdom ve Charisma korunur. Kendi sınıf özelliklerini, yetenek ve saving throw proficiency'lerini de korursun; aynı proficiency için formunkiyle karşılaştırılır, hangisi yüksekse o kullanılır. Legendary action veya lair action kullanamazsın.\nYeni formun hit point'lerini alırsın; geri döndüğünde dönüşmeden önceki HP'ne dönersin. Konuşabilirsin (form izin veriyorsa), büyü kullanabilirsin, sınıf özelliklerini kullanabilirsin (form fiziksel olarak izin veriyorsa). Büyü boyunca action harcayarak farklı bir forma geçebilirsin; yeni form mevcut HP'den fazlasına sahipse HP değişmez.",
     "classes": [
-      "drui-d",
+      "druid",
       "wizard"
     ]
   },
@@ -5849,7 +5849,7 @@
     "duration": "Concentration, 1 dakika",
     "description": "Görebildiğin bir noktada 360-foot yarıçaplı fırtına bulutu belirir; bulutun 5.000 feet altındaki her yaratık Constitution saving throw yapar; başarısızsa 2d6 thunder hasar alır ve 5 dakika deafened olur.\nBüyü süresince her turunda otomatik ek efektler gerçekleşir:\n2. tur: Buluttan asit yağmuru; alandaki her yaratık ve nesne 1d6 acid hasar alır.\n3. tur: Buluttan altı adet lightning bolt çağırırsın; altı farklı yaratık veya nesneyi hedeflersin. Her hedef Dexterity saving throw yapar; başarısızsa 10d6 lightning hasar, başarılıysa yarı.\n4. tur: Buluttan dolu yağmuru; alandaki her yaratık 2d6 bludgeoning hasar alır.\n5-10. tur: Bölge heavily obscured ve zor arazi haline gelir; her yaratık 1d6 cold hasar alır. Ranged weapon attack'lar imkânsızdır. Güçlü rüzgarlar (20-50 mph) bölgedeki tüm sis, pus ve benzer fenomenleri otomatik dağıtır. Bu rüzgarlar concentration büyüleri için ciddi dikkat dağıtıcı sayılır.",
     "classes": [
-      "drui-d"
+      "druid"
     ]
   },
   {
@@ -5894,8 +5894,8 @@
     "duration": "Instantaneous",
     "description": "En fazla 200 yıl önce hayatını kaybetmiş ve yaşlılıktan ölmemiş bir yaratığa dokunursun. Ruhu serbest ve istekliyse tüm HP'siyle hayata döner. Tüm yaraları kapatır, zehirleri giderir, tüm hastalıkları ve lanetleri kaldırır. Eksik organ ve uzuvları geri getirir. Orijinal beden artık mevcut değilse yaratığın adını söylemen yeterlidir; 10 feet içindeki boş bir alanda yeni bedenle ortaya çıkar.",
     "classes": [
-      "cleri-c",
-      "drui-d"
+      "cleric",
+      "druid"
     ]
   },
   {

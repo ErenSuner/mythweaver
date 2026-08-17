@@ -143,6 +143,8 @@ const UPPER_PAREN = /^[A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜ'’ \/-]*\(.+\)$/
 function slug(s: string): string {
   return s
     .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // Türkçe İ → i + combining dot temizliği
     .replace(/\(.+\)/g, '')
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
