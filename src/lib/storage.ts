@@ -26,6 +26,7 @@ export function migrateCharacter(raw: Character): Character {
     inventory: raw.inventory ?? [],
     equippedArmorId: raw.equippedArmorId ?? '',
     equippedShield: raw.equippedShield ?? false,
+    shieldOff: raw.shieldOff ?? false,
   }
   for (const k of Object.keys(c.choiceSelections)) if (k.startsWith('equip-')) delete c.choiceSelections[k]
   // eski elle girilen AC artık türetiliyor

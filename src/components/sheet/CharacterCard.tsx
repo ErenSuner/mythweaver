@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { config, classById, raceById, backgroundById, spellById, itemById } from '@/data'
-import { innateCantripFor } from '@/data/grants'
+import { config, classById, raceById, backgroundById, spellById, itemById, spells } from '@/data'
+import { raceCantripEntries } from '@/data/grants'
 import { isPactCaster, subclassSpells } from '@/data/spell-progression'
 import { classResources } from '@/data/class-resources'
 import { inventoryWeight, weaponItemsIn } from '@/lib/inventory'
@@ -286,14 +286,24 @@ export default function CharacterCard({
 
           <Section title="Diğer Yeterlilikler & Diller" editStep="languages">
             <div className="muted" style={{ whiteSpace: 'pre-wrap' }}>{character.otherProficienciesLanguages || '—'}</div>
-            {(character.raceCantripIds.length > 0 || innateCantripFor(character)) && (
+            {raceCantripEntries(character).length > 0 && (
               <div style={{ marginTop: 8 }}>
                 <label>Irk Cantrip'leri</label>
                 <div className="row" style={{ gap: 6, flexWrap: 'wrap' }}>
-                  {character.raceCantripIds.map((id) => (
-                    <span key={id} className="badge">{spellById(id)?.name ?? id}</span>
-                  ))}
-                  {innateCantripFor(character) && <span className="badge">{innateCantripFor(character)}</span>}
+                  {raceCantripEntries(character).map((e, i) => {
+                    const sp = e.spellId ? spellById(e.spellId) : spells.find((s) => s.name.toLowerCase() === e.name.toLowerCase())
+                    return (
+                      <button
+                        key={i}
+                        className="badge"
+                        style={{ cursor: sp ? 'pointer' : 'default' }}
+                        onClick={() => sp && setOpenSpell(sp)}
+                        title={sp ? 'Künyeyi gör' : undefined}
+                      >
+                        {e.name} {sp && <span className="hint">ⓘ</span>} <span className="hint">· {e.sourceLabel}</span>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}

@@ -14,9 +14,9 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
     <Modal open onClose={onClose} wide title={item.name} subtitle={categoryLabel(item)}>
       <div className="row" style={{ flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
         {damageLabel(item) && <span className="badge badge-new">Hasar: {damageLabel(item)}</span>}
+        {armorLabel(item) && <span className="badge badge-new">{armorLabel(item)}</span>}
         <span className="badge">Fiyat: {costLabel(item)}</span>
         <span className="badge">Ağırlık: {weightLabel(item)}</span>
-        {armorLabel(item) && <span className="badge">{armorLabel(item)}</span>}
         {item.strengthReq && <span className="badge">Güç {item.strengthReq} gerekir (yoksa hız −10 ft)</span>}
         {item.stealthDisadvantage && <span className="badge">Gizlenmede dezavantaj</span>}
       </div>

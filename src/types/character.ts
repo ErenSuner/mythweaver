@@ -161,6 +161,8 @@ export interface Character {
   /** giyilen zırh (items.json id) ve kalkan — AC otomatik hesaplanır */
   equippedArmorId: string
   equippedShield: boolean
+  /** kullanıcı kalkanı bilinçli kapattı mı (auto-equip'i ezmesin) */
+  shieldOff?: boolean
 
   /** türetilmiş: tüm eşyalar tek listede */
   inventory: InventoryEntry[]

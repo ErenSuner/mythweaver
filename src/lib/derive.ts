@@ -212,15 +212,18 @@ export function recomputeDerived(input: Character): Character {
   // giyilen zırh artık envanterde değilse temizle
   c.inventory = buildInventory(c)
   const ownedIds = new Set(c.inventory.map((e) => e.itemId))
-  if (c.equippedArmorId && !ownedIds.has(c.equippedArmorId)) c.equippedArmorId = ''
+  // 'none' = kullanıcı bilinçli zırhsız (envanterde item değil, sıfırlama)
+  if (c.equippedArmorId && c.equippedArmorId !== 'none' && !ownedIds.has(c.equippedArmorId)) c.equippedArmorId = ''
   if (c.equippedShield && !ownedIds.has('shield')) c.equippedShield = false
-  // zırh sahibiyse ve hiçbir şey giymemişse en yüksek AC'li zırhı otomatik giy
+  // zırh sahibiyse ve HENÜZ SEÇMEMİŞSE ('') en yüksek AC'li zırhı otomatik giy.
+  // 'none' seçtiyse dokunma (bilinçli zırhsız).
   if (!c.equippedArmorId) {
     const armors = [...ownedIds].map((id) => itemById(id)).filter((i) => i?.category === 'armor')
     const best = armors.sort((a, b) => (b!.acBase ?? 0) - (a!.acBase ?? 0))[0]
     if (best) c.equippedArmorId = best.id
   }
-  if (!c.equippedShield && ownedIds.has('shield')) c.equippedShield = true
+  // kalkan varsayılan takılı; kullanıcı bilinçli kapattıysa (shieldOff) zorlama
+  if (!c.equippedShield && ownedIds.has('shield') && !c.shieldOff) c.equippedShield = true
   c.currency = currencyFromGp(remainingGoldGp(c))
   c.equipment = composeEquipmentText(c)
 

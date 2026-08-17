@@ -1,6 +1,6 @@
 // Guided choices — veriden okunup elle sabitlenen istisna seçimleri. Kullanıcı
 // karakter oluştururken elle dil/tool/skill yazmaz; buradan picker'lar üretilir.
-import { raceById, backgroundById, classById, items } from '@/data'
+import { raceById, backgroundById, classById, items, spellById } from '@/data'
 import type { Character } from '@/types/character'
 import type { Item } from '@/types/data'
 
@@ -350,4 +350,33 @@ export function toolSlotOptions(slot: ChoiceSlot): Item[] {
 
 export function innateCantripFor(char: Character): string | null {
   return INNATE_CANTRIP[char.subraceId] ?? INNATE_CANTRIP[char.raceId] ?? SUBCLASS_GRANTS[char.subclassId]?.innateCantrip ?? null
+}
+
+// Irk/subrace/alt sınıf cantrip'leri, kaynak etiketiyle. Seçmeli olanlar id'li
+// (tıklanıp künye açılabilir); otomatik innate'ler yalnız isimle gelir.
+export interface RaceCantripEntry {
+  name: string
+  spellId?: string
+  sourceLabel: string
+}
+
+export function raceCantripEntries(char: Character): RaceCantripEntry[] {
+  const race = raceById(char.raceId)
+  const sub = race?.subraces.find((s) => s.id === char.subraceId)
+  const out: RaceCantripEntry[] = []
+  // seçmeli (High-Elf gibi): id'li, tıklanabilir
+  if (char.raceCantripIds.length) {
+    const src = (SUBRACE_CANTRIP_CHOICE[char.subraceId] ? sub?.name : race?.name) ?? 'Irk'
+    for (const id of char.raceCantripIds) out.push({ name: spellById(id)?.name ?? id, spellId: id, sourceLabel: `${src} özelliği` })
+  }
+  // otomatik innate (ırk/subrace)
+  const innate = INNATE_CANTRIP[char.subraceId] ?? INNATE_CANTRIP[char.raceId]
+  if (innate) {
+    const src = (INNATE_CANTRIP[char.subraceId] ? sub?.name : race?.name) ?? 'Irk'
+    out.push({ name: innate, sourceLabel: `${src} özelliği (otomatik)` })
+  }
+  // alt sınıf innate (ör. Light domain)
+  const subInnate = SUBCLASS_GRANTS[char.subclassId]?.innateCantrip
+  if (subInnate) out.push({ name: subInnate, sourceLabel: 'Alt sınıf özelliği (otomatik)' })
+  return out
 }

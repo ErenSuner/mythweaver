@@ -528,8 +528,8 @@ function ArmorPanel({ onDetail }: { onDetail: (i: Item) => void }) {
           <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>
             <button
               type="button"
-              className={`btn ${!character.equippedArmorId ? 'btn-primary' : ''}`}
-              onClick={() => updateFn((c) => { c.equippedArmorId = '' })}
+              className={`btn ${character.equippedArmorId === 'none' ? 'btn-primary' : ''}`}
+              onClick={() => updateFn((c) => { c.equippedArmorId = 'none' })}
             >
               Zırhsız
             </button>
@@ -552,7 +552,7 @@ function ArmorPanel({ onDetail }: { onDetail: (i: Item) => void }) {
           <input
             type="checkbox"
             checked={character.equippedShield}
-            onChange={(e) => updateFn((c) => { c.equippedShield = e.target.checked })}
+            onChange={(e) => updateFn((c) => { c.equippedShield = e.target.checked; c.shieldOff = !e.target.checked })}
             style={{ width: 'auto' }}
           />
           Kalkanı kuşan (+2 AC)
@@ -564,7 +564,7 @@ function ArmorPanel({ onDetail }: { onDetail: (i: Item) => void }) {
           <span style={{ color: 'var(--ink-dim)' }}>Hesaplanan Armor Class</span>
           <span className="gold-amount">{ac}</span>
         </div>
-        {character.equippedArmorId && (
+        {character.equippedArmorId && character.equippedArmorId !== 'none' && (
           <button type="button" className="term" style={{ marginTop: 8 }} onClick={() => onDetail(itemById(character.equippedArmorId)!)}>
             {itemById(character.equippedArmorId)?.name} künyesini gör ⓘ
           </button>
