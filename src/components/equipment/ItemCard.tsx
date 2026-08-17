@@ -1,4 +1,6 @@
 // Tek eşya kartı — seçim ve mağazada ortak kullanılır.
+// onSelect verildiğinde tüm kart tek <button> (tek tıkla seçim). onSelect yoksa
+// (Shop) kart tıklanamaz <div> kalır; alım ayrı +/− ile yapılır.
 import type { Item } from '@/types/data'
 import { costLabel, quickTags, weightLabel } from './format'
 
@@ -15,29 +17,28 @@ export interface ItemCardProps {
 
 export default function ItemCard({ item, selected, disabled, badge, showPrice = true, onSelect, onDetail }: ItemCardProps) {
   const tags = quickTags(item).slice(0, 4)
+  const selectable = Boolean(onSelect)
+  const Root: any = selectable ? 'button' : 'div'
   return (
-    <div className={`item-card${selected ? ' selected' : ''}`} style={disabled ? { opacity: 0.35 } : undefined}>
-      <button
-        type="button"
-        onClick={onSelect}
-        disabled={disabled || !onSelect}
-        style={{ all: 'unset', cursor: disabled || !onSelect ? 'default' : 'pointer', display: 'flex', flexDirection: 'column', gap: 6 }}
-      >
-        <span className="spread">
-          <span className="item-name">{item.name}</span>
-          {badge && <span className="badge badge-new">{badge}</span>}
+    <Root
+      className={`item-card${selected ? ' selected' : ''}`}
+      {...(selectable ? { type: 'button', disabled, onClick: onSelect } : {})}
+      style={disabled && !selectable ? { opacity: 0.35 } : undefined}
+    >
+      <span className="spread">
+        <span className="item-name">{item.name}</span>
+        {badge && <span className="badge badge-new">{badge}</span>}
+      </span>
+      {tags.length > 0 && (
+        <span className="item-meta">
+          {tags.map((t) => (
+            <span key={t} className="item-tag">
+              {t}
+            </span>
+          ))}
         </span>
-        {tags.length > 0 && (
-          <span className="item-meta">
-            {tags.map((t) => (
-              <span key={t} className="item-tag">
-                {t}
-              </span>
-            ))}
-          </span>
-        )}
-      </button>
-      <div className="spread">
+      )}
+      <span className="spread" style={{ marginTop: 'auto' }}>
         {showPrice ? (
           <span className="item-price">
             {costLabel(item)} · {weightLabel(item)}
@@ -46,11 +47,27 @@ export default function ItemCard({ item, selected, disabled, badge, showPrice = 
           <span />
         )}
         {onDetail && (
-          <button type="button" className="badge" style={{ cursor: 'pointer', borderStyle: 'dashed' }} onClick={onDetail}>
+          <span
+            role="button"
+            tabIndex={0}
+            className="badge"
+            style={{ cursor: 'pointer', borderStyle: 'dashed' }}
+            onClick={(e) => {
+              e.stopPropagation()
+              onDetail()
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                e.stopPropagation()
+                onDetail()
+              }
+            }}
+          >
             Detay ⓘ
-          </button>
+          </span>
         )}
-      </div>
-    </div>
+      </span>
+    </Root>
   )
 }

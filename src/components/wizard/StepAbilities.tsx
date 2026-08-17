@@ -2,7 +2,7 @@ import { config } from '@/data'
 import { Info, Tip } from '@/components/ui'
 import { useChar } from './useChar'
 import { ABILITIES, type Ability } from '@/types/data'
-import { abilityModifier, formatMod, pointBuyRemaining, raceBonuses } from '@/lib/rules'
+import { abilityModifier, formatMod, pointBuyCost, pointBuyRemaining, raceBonuses } from '@/lib/rules'
 
 const ABILITY_HELP: Record<Ability, string> = {
   Strength: 'Fiziksel güç; yakın dövüş saldırıları ve ağır kaldırma.',
@@ -47,9 +47,30 @@ export default function StepAbilities() {
         <span className="hint">8 = ucuz · 15 = pahalı</span>
       </div>
 
+      <div style={{ overflowX: 'auto' }}>
+        <table className="pointbuy-table">
+          <tbody>
+            <tr>
+              <th>Puan</th>
+              {Object.keys(config.pointBuy.cost).map((s) => (
+                <td key={s}>{s}</td>
+              ))}
+            </tr>
+            <tr>
+              <th>Maliyet</th>
+              {Object.values(config.pointBuy.cost).map((c, i) => (
+                <td key={i}>{c}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div className="stack">
         {ABILITIES.map((a) => {
           const base = character.baseAbilityScores[a]
+          const stepUpCost = pointBuyCost(base + 1) - pointBuyCost(base)
+          const cantAfford = base < max && stepUpCost > remaining
           const bonus = rb[a] || 0
           const final = base + bonus + (character.asiBonuses[a] || 0)
           const mod = abilityModifier(final)
@@ -75,7 +96,12 @@ export default function StepAbilities() {
                   −
                 </button>
                 <span style={{ minWidth: 28, textAlign: 'center', fontSize: 20, fontFamily: 'var(--serif)' }}>{base}</span>
-                <button className="btn" onClick={() => change(a, +1)} disabled={base >= max || remaining <= 0}>
+                <button
+                  className="btn"
+                  onClick={() => change(a, +1)}
+                  disabled={base >= max || cantAfford}
+                  title={cantAfford ? `${base + 1} için ${stepUpCost} puan gerekir, kalan ${remaining}` : undefined}
+                >
                   +
                 </button>
               </div>
