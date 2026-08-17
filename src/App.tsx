@@ -7,6 +7,8 @@ import Login from '@/pages/Login'
 import MyCharacters from '@/pages/MyCharacters'
 import Wizard from '@/pages/Wizard'
 import CharacterSheet from '@/pages/CharacterSheet'
+import CampaignParty from '@/pages/CampaignParty'
+import DMPanel from '@/pages/DMPanel'
 import BrandHeader from '@/components/BrandHeader'
 import { ConfirmProvider } from '@/components/Modal'
 
@@ -14,6 +16,14 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   const { user, ready } = useAuthStore()
   if (!ready) return <div className="container">Yükleniyor…</div>
   if (!user) return <Navigate to="/login" replace />
+  return children
+}
+
+function RequireAdmin({ children }: { children: JSX.Element }) {
+  const { user, ready } = useAuthStore()
+  if (!ready) return <div className="container">Yükleniyor…</div>
+  if (!user) return <Navigate to="/login" replace />
+  if (!user.isAdmin) return <Navigate to="/" replace />
   return children
 }
 
@@ -56,6 +66,22 @@ export default function App() {
             <RequireAuth>
               <CharacterSheet />
             </RequireAuth>
+          }
+        />
+        <Route
+          path="/campaign"
+          element={
+            <RequireAuth>
+              <CampaignParty />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dm"
+          element={
+            <RequireAdmin>
+              <DMPanel />
+            </RequireAdmin>
           }
         />
         <Route path="*" element={<Navigate to="/" replace />} />

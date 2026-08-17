@@ -1,0 +1,87 @@
+import { useEffect, useState } from 'react'
+import { useAuthStore } from '@/state/authStore'
+import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
+import CharacterCard from '@/components/sheet/CharacterCard'
+import { classById, raceById } from '@/data'
+import type { Character } from '@/types/character'
+
+interface PartyGroup {
+  campaign: CampaignRef
+  members: Character[]
+}
+
+export default function CampaignParty() {
+  const { user } = useAuthStore()
+  const [groups, setGroups] = useState<PartyGroup[] | null>(null)
+  const [myIds, setMyIds] = useState<Set<string>>(new Set())
+  const [openId, setOpenId] = useState<string | null>(null)
+
+  useEffect(() => {
+    ;(async () => {
+      const [camps, mine] = await Promise.all([myCampaigns(), listCharacters(user?.id ?? null)])
+      setMyIds(new Set(mine.map((c) => c.id)))
+      const withMembers = await Promise.all(
+        camps.map(async (campaign) => ({ campaign, members: await campaignPeers(campaign.id) })),
+      )
+      setGroups(withMembers)
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+
+  return (
+    <div className="container">
+      <div style={{ marginBottom: 18 }}>
+        <h1 style={{ fontSize: 30, marginBottom: 2 }}>Campaign</h1>
+        <p className="muted">Aynı maceradaki yoldaşlarının karakterleri.</p>
+      </div>
+
+      {groups === null ? (
+        <p className="muted">Yükleniyor…</p>
+      ) : groups.length === 0 ? (
+        <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
+          <p className="muted">Henüz dahil olduğun bir campaign yok.</p>
+        </div>
+      ) : (
+        groups.map((g) => (
+          <section key={g.campaign.id} style={{ marginBottom: 28 }}>
+            <h2 style={{ fontSize: 22, marginBottom: 10 }}>{g.campaign.name}</h2>
+            <div className="choice-grid">
+              {g.members.map((m) => {
+                const race = raceById(m.raceId)
+                const klass = classById(m.classId)
+                const mine = myIds.has(m.id)
+                return (
+                  <div key={m.id} className="choice-card" onClick={() => setOpenId(m.id)}>
+                    <div className="spread">
+                      <h3>{m.characterName || 'İsimsiz Kahraman'}</h3>
+                      {mine && <span className="badge badge-new">sen</span>}
+                    </div>
+                    <p>
+                      {race?.name ?? '—'} · {klass?.name ?? '—'} · Seviye {m.level}
+                    </p>
+                    {m.playerName && <p className="hint">Oyuncu: {m.playerName}</p>}
+                  </div>
+                )
+              })}
+            </div>
+
+            {g.members
+              .filter((m) => m.id === openId)
+              .map((m) => (
+                <div key={m.id} style={{ marginTop: 16 }}>
+                  <div className="spread" style={{ marginBottom: 10 }}>
+                    <h3 style={{ fontSize: 20 }}>{m.characterName || 'İsimsiz Kahraman'}</h3>
+                    <button className="btn btn-ghost" onClick={() => setOpenId(null)}>
+                      Kapat
+                    </button>
+                  </div>
+                  {/* onEdit verilmez -> salt-okur; büyü/silah/kaynak ⓘ künyeleri yine çalışır */}
+                  <CharacterCard character={m} />
+                </div>
+              ))}
+          </section>
+        ))
+      )}
+    </div>
+  )
+}

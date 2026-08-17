@@ -2,16 +2,21 @@ import { create } from 'zustand'
 import type { Character } from '@/types/character'
 import { emptyCharacter } from '@/lib/character-factory'
 import { saveCharacter } from '@/lib/storage'
+import { adminSaveCharacter } from '@/lib/admin-storage'
 import { recomputeDerived } from '@/lib/derive'
 
 interface CharacterState {
   character: Character | null
   userId: string | null
+  /** DM düzenleme bağlamı: doluysa kaydetme owner'ı korur (sahiplik kaymaz). */
+  adminOwnerId: string | null
   saving: boolean
   lastSavedAt: number | null
   setUserId: (id: string | null) => void
   startNew: () => Character
   load: (c: Character) => void
+  /** DM olarak bir oyuncunun karakterini düzenleme moduna yükle. */
+  loadAsAdmin: (c: Character, ownerId: string) => void
   update: (patch: Partial<Character>) => void
   updateFn: (fn: (c: Character) => void) => void
   replace: (c: Character) => void
@@ -24,6 +29,7 @@ let saveTimer: ReturnType<typeof setTimeout> | null = null
 export const useCharacterStore = create<CharacterState>((set, get) => ({
   character: null,
   userId: null,
+  adminOwnerId: null,
   saving: false,
   lastSavedAt: null,
 
@@ -31,11 +37,13 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
 
   startNew: () => {
     const c = emptyCharacter()
-    set({ character: c })
+    set({ character: c, adminOwnerId: null })
     return c
   },
 
-  load: (c) => set({ character: recomputeDerived(c) }),
+  load: (c) => set({ character: recomputeDerived(c), adminOwnerId: null }),
+
+  loadAsAdmin: (c, ownerId) => set({ character: recomputeDerived(c), adminOwnerId: ownerId }),
 
   update: (patch) => {
     const cur = get().character
@@ -68,13 +76,16 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
   },
 
   save: async () => {
-    const { character, userId } = get()
+    const { character } = get()
     if (!character) return
     if (saveTimer) clearTimeout(saveTimer)
     saveTimer = setTimeout(async () => {
       set({ saving: true })
       try {
-        await saveCharacter(get().character!, userId)
+        const { adminOwnerId, userId } = get()
+        // DM bağlamında owner korunarak kaydet; aksi halde normal kayıt.
+        if (adminOwnerId) await adminSaveCharacter(get().character!, adminOwnerId)
+        else await saveCharacter(get().character!, userId)
         set({ saving: false, lastSavedAt: Date.now() })
       } catch (e) {
         console.error('[save] hata', e)

@@ -28,6 +28,14 @@ export default function BrandHeader() {
         {user && (
           <div className="row" style={{ gap: 14 }}>
             {!supabaseEnabled && <span className="badge">yerel mod</span>}
+            <Link to="/campaign" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
+              Campaign
+            </Link>
+            {user.isAdmin && (
+              <Link to="/dm" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
+                DM Paneli
+              </Link>
+            )}
             <span className="muted" style={{ fontSize: 14 }}>
               {user.email}
             </span>

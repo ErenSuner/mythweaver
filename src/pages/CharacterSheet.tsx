@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { useCharacterStore } from '@/state/characterStore'
 import { getCharacter, deleteCharacter } from '@/lib/storage'
+import { adminGetCharacter } from '@/lib/admin-storage'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import LevelUpPanel from '@/components/sheet/LevelUpPanel'
 import { useConfirm } from '@/components/Modal'
@@ -12,13 +13,28 @@ export default function CharacterSheet() {
   const { id } = useParams()
   const nav = useNavigate()
   const { user } = useAuthStore()
-  const { character, load, update } = useCharacterStore()
+  const { character, load, loadAsAdmin, update } = useCharacterStore()
   const [showLevelUp, setShowLevelUp] = useState(false)
+  // DM başka oyuncunun karakterini görüntülüyorsa e-posta; kendi karakteri/normal ise null
+  const [dmOwnerEmail, setDmOwnerEmail] = useState<string | null>(null)
   const confirm = useConfirm()
 
   useEffect(() => {
-    if (character?.id === id) return
     ;(async () => {
+      // DM ise owner'ı öğrenmek için admin yolundan çek (bant + owner-safe kayıt için)
+      if (user?.isAdmin) {
+        const row = await adminGetCharacter(id!)
+        if (!row) return nav('/dm')
+        if (row.ownerId === user.id) {
+          setDmOwnerEmail(null)
+          if (character?.id !== id) load(row.character)
+        } else {
+          setDmOwnerEmail(row.ownerEmail ?? '—')
+          loadAsAdmin(row.character, row.ownerId)
+        }
+        return
+      }
+      if (character?.id === id) return
       const c = await getCharacter(id!, user?.id ?? null)
       if (c) load(c)
       else nav('/')
@@ -30,11 +46,18 @@ export default function CharacterSheet() {
 
   const hasNew = character.lastGainedFeatureKeys.length > 0
 
+  const isDmView = Boolean(dmOwnerEmail)
+
   return (
     <div className="container">
+      {isDmView && (
+        <div className="info" style={{ borderColor: 'var(--danger)', marginBottom: 14 }}>
+          ⚠ <b>DM modu:</b> <b>{dmOwnerEmail}</b> oyuncusunun karakteri. Yaptığın değişiklikler doğrudan oyuncuya yansır.
+        </div>
+      )}
       <div className="spread" style={{ marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
-        <button className="btn btn-ghost" onClick={() => nav('/')}>
-          ← Karakterlerim
+        <button className="btn btn-ghost" onClick={() => nav(isDmView ? '/dm' : '/')}>
+          ← {isDmView ? 'DM Paneli' : 'Karakterlerim'}
         </button>
         <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>
           {hasNew && (
@@ -48,26 +71,29 @@ export default function CharacterSheet() {
           <button className="btn btn-primary" onClick={() => setShowLevelUp((v) => !v)} disabled={character.level >= 20}>
             ⬆ Seviye Atla ({character.level} → {Math.min(character.level + 1, 20)})
           </button>
-          <button
-            className="btn btn-danger"
-            onClick={async () => {
-              const ok = await confirm({
-                title: 'Karakteri sil',
-                message: (
-                  <>
-                    <b>{character.characterName || 'Bu karakter'}</b> kalıcı olarak silinecek. Bu işlem geri alınamaz.
-                  </>
-                ),
-                confirmLabel: 'Evet, sil',
-                danger: true,
-              })
-              if (!ok) return
-              await deleteCharacter(character.id, user?.id ?? null)
-              nav('/')
-            }}
-          >
-            Sil
-          </button>
+          {/* DM başkasının karakterini silemez — buton yalnız sahibe */}
+          {!isDmView && (
+            <button
+              className="btn btn-danger"
+              onClick={async () => {
+                const ok = await confirm({
+                  title: 'Karakteri sil',
+                  message: (
+                    <>
+                      <b>{character.characterName || 'Bu karakter'}</b> kalıcı olarak silinecek. Bu işlem geri alınamaz.
+                    </>
+                  ),
+                  confirmLabel: 'Evet, sil',
+                  danger: true,
+                })
+                if (!ok) return
+                await deleteCharacter(character.id, user?.id ?? null)
+                nav('/')
+              }}
+            >
+              Sil
+            </button>
+          )}
         </div>
       </div>
 

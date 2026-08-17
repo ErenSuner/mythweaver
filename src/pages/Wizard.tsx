@@ -11,7 +11,7 @@ export default function Wizard() {
   const nav = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const { user } = useAuthStore()
-  const { character, load, setStep, saving } = useCharacterStore()
+  const { character, load, setStep, saving, adminOwnerId } = useCharacterStore()
   // ?step=<key> ile gelindiyse düzenleme modu — mount'ta yakala
   const [editMode] = useState(() => searchParams.has('step'))
   const [needFix, setNeedFix] = useState<string | null>(null)
@@ -92,7 +92,7 @@ export default function Wizard() {
         </button>
         <div className="row" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           {!canNext && <span style={{ color: 'var(--danger)', fontSize: 13 }}>Bu adımdaki zorunlu seçimleri tamamla.</span>}
-          <button className="btn btn-ghost" onClick={() => nav('/')}>
+          <button className="btn btn-ghost" onClick={() => nav(adminOwnerId ? '/dm' : '/')}>
             Kaydet & Çık
           </button>
           {editMode ? (
@@ -116,6 +116,20 @@ export default function Wizard() {
 
   return (
     <div className="container">
+      {adminOwnerId && (
+        <div
+          className="info"
+          style={{
+            borderColor: 'var(--danger)',
+            marginBottom: 14,
+            position: 'sticky',
+            top: 60,
+            zIndex: 10,
+          }}
+        >
+          ⚠ <b>DM modu:</b> Bir oyuncunun karakterini düzenliyorsun. Değişiklikler doğrudan oyuncuya yansır.
+        </div>
+      )}
       {/* progress */}
       <div style={{ marginBottom: 18 }}>
         <div className="spread" style={{ marginBottom: 8 }}>

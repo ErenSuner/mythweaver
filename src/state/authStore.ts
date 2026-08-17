@@ -4,6 +4,14 @@ import { supabase, supabaseEnabled } from '@/lib/supabase'
 export interface AuthUser {
   id: string
   email: string | null
+  isAdmin: boolean
+}
+
+// Kullanıcının DM (admin) olup olmadığını profiles'tan oku. Hata/eksikte false.
+async function fetchIsAdmin(id: string): Promise<boolean> {
+  if (!supabase) return false
+  const { data } = await supabase.from('profiles').select('is_admin').eq('id', id).maybeSingle()
+  return Boolean(data?.is_admin)
 }
 
 interface AuthState {
@@ -16,7 +24,7 @@ interface AuthState {
   signOut: () => Promise<void>
 }
 
-const LOCAL_USER: AuthUser = { id: 'local-dev', email: 'yerel@mythweaver' }
+const LOCAL_USER: AuthUser = { id: 'local-dev', email: 'yerel@mythweaver', isAdmin: false }
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
@@ -29,9 +37,14 @@ export const useAuthStore = create<AuthState>((set) => ({
       return
     }
     const { data } = await supabase.auth.getSession()
-    set({ user: data.session ? { id: data.session.user.id, email: data.session.user.email ?? null } : null, ready: true })
-    supabase.auth.onAuthStateChange((_e, session) => {
-      set({ user: session ? { id: session.user.id, email: session.user.email ?? null } : null })
+    const sUser = data.session?.user
+    set({
+      user: sUser ? { id: sUser.id, email: sUser.email ?? null, isAdmin: await fetchIsAdmin(sUser.id) } : null,
+      ready: true,
+    })
+    supabase.auth.onAuthStateChange(async (_e, session) => {
+      const u = session?.user
+      set({ user: u ? { id: u.id, email: u.email ?? null, isAdmin: await fetchIsAdmin(u.id) } : null })
     })
   },
 

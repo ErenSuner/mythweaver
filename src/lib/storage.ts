@@ -47,9 +47,13 @@ function lsWrite(list: Character[]) {
 
 export async function listCharacters(userId: string | null): Promise<Character[]> {
   if (supabaseEnabled && supabase) {
+    // Yalnız sahibin karakterleri. RLS artık parti-eşlerini de select ediyor
+    // (characters_select_party); "Karakterlerim" başkasının karakterini
+    // göstermesin diye burada açıkça user_id filtrele.
     const { data, error } = await supabase
       .from('characters')
       .select('data')
+      .eq('user_id', userId)
       .order('updated_at', { ascending: false })
     if (error) throw error
     return (data || []).map((r) => migrateCharacter(r.data as Character))
@@ -85,6 +89,40 @@ export async function deleteCharacter(id: string, _userId: string | null): Promi
     return
   }
   lsWrite(lsRead().filter((c) => c.id !== id))
+}
+
+// ---- Oyuncu parti/campaign görünümü ----
+
+export interface CampaignRef {
+  id: string
+  name: string
+}
+
+/** Çağıranın karakterlerinin dahil olduğu campaign'ler (RLS ile filtrelenir). */
+export async function myCampaigns(): Promise<CampaignRef[]> {
+  if (!(supabaseEnabled && supabase)) return []
+  const { data, error } = await supabase.from('campaigns').select('id, name').order('created_at', { ascending: true })
+  if (error) throw error
+  return (data || []) as CampaignRef[]
+}
+
+/** Bir campaign'deki tüm karakterler (parti-eşleri). RLS characters_select_party ile okunur. */
+export async function campaignPeers(campaignId: string): Promise<Character[]> {
+  if (!(supabaseEnabled && supabase)) return []
+  const { data, error } = await supabase
+    .from('campaign_members')
+    .select('characters ( data )')
+    .eq('campaign_id', campaignId)
+  if (error) throw error
+  // PostgREST embed'i ilişkiye göre nesne ya da dizi olarak dönebilir; ikisini de karşıla.
+  return (data || [])
+    .map((r) => {
+      const ch = (r as { characters: unknown }).characters
+      const rec = Array.isArray(ch) ? ch[0] : ch
+      return (rec as { data?: Character } | null)?.data
+    })
+    .filter((d): d is Character => Boolean(d))
+    .map(migrateCharacter)
 }
 
 export async function getCharacter(id: string, userId: string | null): Promise<Character | null> {
