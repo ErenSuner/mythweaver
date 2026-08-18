@@ -62,7 +62,12 @@ export function previewLevelUp(char: Character, pendingSubclassId?: string): Lev
   // seçili (ya da bu adımda seçilen) alt sınıfın bu seviyedeki özellikleri
   const subId = char.subclassId || pendingSubclassId
   if (subId) feats.push(...subclassFeaturesAt(char.classId, subId, toLevel))
-  const needsASI = config.abilityScoreImprovementLevels.includes(toLevel)
+  // ASI'yi statik seviye listesinden DEĞİL, o seviyede "Ability Score Improvement"
+  // özelliği var mı diye tespit et — Fighter 6/14, Rogue 10 gibi ekstra ASI'ler de
+  // yakalanır (statik liste [4,8,12,16,19] yedek olarak kalır).
+  const needsASI =
+    config.abilityScoreImprovementLevels.includes(toLevel) ||
+    feats.some((f) => /^ability score improvement$/i.test(f.name.trim()))
   const needsSubclass = klass.subclassLevel === toLevel && !char.subclassId
   const isExtraAttack = feats.some((f) => /Extra Attack/i.test(f.name))
   return {

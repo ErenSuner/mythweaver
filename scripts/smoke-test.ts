@@ -34,7 +34,7 @@ check('spell save DC 12', wiz.spellcasting?.spellSaveDC === 12, `got ${wiz.spell
 check('HP L1 = 8', wiz.maxHp === 8, `got ${wiz.maxHp}`)
 // AC = 10 + Dex mod(+3) = 13
 check('AC 13', armorClass(wiz) === 13, `got ${armorClass(wiz)}`)
-check('speed 30', wiz.speed === 30, `got ${wiz.speed}`)
+check('speed 35 (wood elf)', wiz.speed === 35, `got ${wiz.speed}`)
 check('L1 features present', wiz.featuresAndTraits.length > 0)
 check('saves Int+Wis', wiz.savingThrowProficiencies.includes('Intelligence') && wiz.savingThrowProficiencies.includes('Wisdom'))
 
@@ -86,6 +86,60 @@ const beforeStr = finalAbilityScores(barb).Strength
 barb = applyLevelUp(barb, { asi: { Strength: 2 } })
 check('ASI +2 Str applied', finalAbilityScores(barb).Strength === beforeStr + 2, `got ${finalAbilityScores(barb).Strength}`)
 check('history has 3 entries', barb.levelUpHistory.length === 3, `got ${barb.levelUpHistory.length}`)
+
+// ---- 2b) Kural düzeltmeleri ----
+console.log('\n[Kural düzeltmeleri]')
+
+// ASI: Fighter'ın ekstra ASI seviyeleri (6, 14) statik liste dışında da yakalanır
+let fig = emptyCharacter()
+fig.classId = 'fighter'
+fig.level = 5
+check('Fighter L6 ekstra ASI algılandı', previewLevelUp(fig)!.needsASI === true)
+fig.level = 4
+check('Fighter L5 (Extra Attack) ASI değil', previewLevelUp(fig)!.needsASI === false)
+fig.level = 13
+check('Fighter L14 ekstra ASI algılandı', previewLevelUp(fig)!.needsASI === true)
+
+// Ability score 20'de kapanır (ASI/half-feat şişirmesi engellenir)
+let cap = emptyCharacter()
+cap.classId = 'fighter'
+cap.raceId = 'elf'
+cap.baseAbilityScores.Dexterity = 18 // +2 elf +4 asi = 24 -> 20
+cap.asiBonuses.Dexterity = 4
+check('ability score 20 cap', finalAbilityScores(cap).Dexterity === 20, `got ${finalAbilityScores(cap).Dexterity}`)
+
+// Passive Perception expertise'i sayar
+let pp = emptyCharacter()
+pp.classId = 'rogue'
+pp.raceId = 'elf'
+pp.level = 1
+pp.baseAbilityScores.Wisdom = 14 // mod +2
+pp.skills['Perception'] = { proficient: true }
+pp.choiceSelections['expertise'] = ['Perception']
+pp = recomputeDerived(pp)
+// 10 + Wis(2) + prof(2) + expertise(2) = 16
+check('passive perception expertise dahil', passivePerception(pp) === 16, `got ${passivePerception(pp)}`)
+
+// Sınıf değişince eski class-skill proficiency'si düşer
+let sc = emptyCharacter()
+sc.classId = 'rogue'
+sc.raceId = 'elf'
+sc.skills['Stealth'] = { proficient: true }
+sc = recomputeDerived(sc)
+check('rogue Stealth korunur', Boolean(sc.skills['Stealth']?.proficient))
+sc.classId = 'cleric'
+sc = recomputeDerived(sc)
+check('sınıf değişince seçilemeyen skill düşer', !sc.skills['Stealth'])
+
+// HP: 0 (downed) düzenlemede full'a dönmez
+let hp = emptyCharacter()
+hp.classId = 'fighter'
+hp.raceId = 'elf'
+hp = recomputeDerived(hp)
+check('HP ilk hesapta full', hp.currentHp === hp.maxHp && hp.currentHp > 0)
+hp.currentHp = 0 // düşmüş
+hp = recomputeDerived({ ...hp, characterName: 'X' }) // alakasız düzenleme
+check('0 HP korunur (full olmaz)', hp.currentHp === 0, `got ${hp.currentHp}`)
 
 // ---- 3) Veri bütünlüğü (parser) ----
 console.log('\n[Veri bütünlüğü]')

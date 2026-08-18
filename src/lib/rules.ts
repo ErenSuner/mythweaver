@@ -53,7 +53,8 @@ export function finalAbilityScores(char: Character): AbilityScores {
   const fsb = featSelectionAbilityBonuses(char.featSelections ?? {})
   const out = { ...char.baseAbilityScores }
   ABILITIES.forEach((a) => {
-    out[a] = char.baseAbilityScores[a] + (rb[a] || 0) + (char.asiBonuses[a] || 0) + (fb[a] || 0) + (fsb[a] || 0)
+    // 5e: sihir olmadan ability score 20'yi geçemez (ASI/half-feat dahil)
+    out[a] = Math.min(20, char.baseAbilityScores[a] + (rb[a] || 0) + (char.asiBonuses[a] || 0) + (fb[a] || 0) + (fsb[a] || 0))
   })
   return out
 }
@@ -96,11 +97,12 @@ export function isSkillProficient(char: Character, skill: string): boolean {
   return featGrantedSkills(char.feats ?? [], char.featSelections ?? {}).includes(skill)
 }
 
-// pasif algı = 10 + Wis mod + (proficient ise) prof bonus
+// pasif algı = 10 + Wis mod + (proficient ise) prof bonus + (expertise ise) bir kez daha
 export function passivePerception(char: Character): number {
   const wis = abilityMod(char, 'Wisdom')
   const prof = isSkillProficient(char, 'Perception') ? proficiencyBonus(char.level) : 0
-  return 10 + wis + prof + featNumeric(char.feats ?? [], 'passivePerceptionBonus')
+  const expertise = hasExpertise(char, 'Perception') ? proficiencyBonus(char.level) : 0
+  return 10 + wis + prof + expertise + featNumeric(char.feats ?? [], 'passivePerceptionBonus')
 }
 
 // Rogue/Bard Expertise + Knowledge domain — seçilen skill'lerde proficiency iki katı

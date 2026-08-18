@@ -32,6 +32,7 @@ import {
   armorClass,
   isSkillProficient,
   backgroundSkills,
+  classSkillOptions,
 } from './rules'
 import { abilityModifier } from './rules'
 
@@ -197,6 +198,12 @@ export function recomputeDerived(input: Character): Character {
   // background becerileri artık c.skills'te tutulmaz (isSkillProficient türetir);
   // eski davranıştan kalan kayıtları temizle ki sınıf-seçimi sayımı bozulmasın
   for (const s of backgroundSkills(c)) delete c.skills[s]
+  // sınıf değişince eski sınıfın verdiği, yeni sınıfta seçilemeyen class-skill
+  // proficiency'lerini at (aksi halde bedava kalıcı skill sızar)
+  if (klass) {
+    const opts = new Set(classSkillOptions(c.classId))
+    for (const s of Object.keys(c.skills)) if (!opts.has(s)) delete c.skills[s]
+  }
   // Expertise: artık proficient olmayan (ör. beceri seçiminden çıkarılan) skill'leri at
   const expSlot = slots.find((s) => s.type === 'expertise')
   if (expSlot && c.choiceSelections['expertise']) {
@@ -243,8 +250,16 @@ export function recomputeDerived(input: Character): Character {
     const derivedMax = first + (c.level - 1) * perLevel + subraceHpBonus + subclassHpBonus + featHpBonus
     c.maxHp = derivedMax
     c.hitDiceTotal = `${c.level}d${klass.hitDie}`
-    if (c.currentHp <= 0 || c.currentHp > c.maxHp) c.currentHp = c.maxHp
-    if (c.hitDiceRemaining <= 0 || c.hitDiceRemaining > c.level) c.hitDiceRemaining = c.level
+    // İlk hesapta full başlat; sonra yalnız üst sınırı kıs (0 HP = downed korunur,
+    // her düzenlemede full'a dönmez).
+    if (!c.hpInitialized) {
+      c.currentHp = c.maxHp
+      c.hitDiceRemaining = c.level
+      c.hpInitialized = true
+    } else {
+      if (c.currentHp > c.maxHp) c.currentHp = c.maxHp
+      if (c.hitDiceRemaining > c.level) c.hitDiceRemaining = c.level
+    }
   }
 
   // AC + ağır zırhın Güç şartı karşılanmıyorsa hız cezası

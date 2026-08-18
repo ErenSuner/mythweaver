@@ -142,6 +142,9 @@ export interface Character {
   speed: number
   maxHp: number
   currentHp: number
+  /** currentHp/hitDiceRemaining ilk hesapta full'a ayarlandı mı — 0 HP (downed)
+   *  durumunu "başlatılmamış"tan ayırır (her düzenlemede full'a dönmeyi önler). */
+  hpInitialized?: boolean
   tempHp: number
   hitDiceTotal: string
   hitDiceRemaining: number
