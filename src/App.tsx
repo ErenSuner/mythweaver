@@ -11,6 +11,8 @@ import CampaignParty from '@/pages/CampaignParty'
 import DMPanel from '@/pages/DMPanel'
 import BrandHeader from '@/components/BrandHeader'
 import { ConfirmProvider } from '@/components/Modal'
+import { ToastProvider } from '@/components/Toast'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 function RequireAuth({ children }: { children: JSX.Element }) {
   const { user, ready } = useAuthStore()
@@ -39,10 +41,28 @@ export default function App() {
     setUserId(user?.id ?? null)
   }, [user, setUserId])
 
+  // Sekme arka plana alınırken / kapanırken bekleyen kaydı diske indir (veri kaybı önleme).
+  useEffect(() => {
+    const flush = () => {
+      void useCharacterStore.getState().flushSave()
+    }
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') flush()
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+    window.addEventListener('beforeunload', flush)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility)
+      window.removeEventListener('beforeunload', flush)
+    }
+  }, [])
+
   return (
-    <ConfirmProvider>
-      <BrandHeader />
-      <Routes>
+    <ErrorBoundary>
+      <ConfirmProvider>
+        <ToastProvider>
+          <BrandHeader />
+          <Routes>
         <Route path="/login" element={<Login />} />
         <Route
           path="/"
@@ -84,8 +104,10 @@ export default function App() {
             </RequireDM>
           }
         />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </ConfirmProvider>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </ToastProvider>
+      </ConfirmProvider>
+    </ErrorBoundary>
   )
 }

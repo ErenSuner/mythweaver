@@ -15,16 +15,24 @@ export default function CampaignParty() {
   const [groups, setGroups] = useState<PartyGroup[] | null>(null)
   const [myIds, setMyIds] = useState<Set<string>>(new Set())
   const [openId, setOpenId] = useState<string | null>(null)
+  const [error, setError] = useState(false)
 
-  useEffect(() => {
-    ;(async () => {
+  async function load() {
+    try {
+      setError(false)
       const [camps, mine] = await Promise.all([myCampaigns(), listCharacters(user?.id ?? null)])
       setMyIds(new Set(mine.map((c) => c.id)))
       const withMembers = await Promise.all(
         camps.map(async (campaign) => ({ campaign, members: await campaignPeers(campaign.id) })),
       )
       setGroups(withMembers)
-    })()
+    } catch (e) {
+      console.error('[campaign] yükleme hatası', e)
+      setError(true)
+    }
+  }
+  useEffect(() => {
+    load()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
@@ -35,7 +43,12 @@ export default function CampaignParty() {
         <p className="muted">Aynı maceradaki yoldaşlarının karakterleri.</p>
       </div>
 
-      {groups === null ? (
+      {error ? (
+        <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
+          <p className="muted" style={{ marginBottom: 12 }}>Campaign'ler yüklenemedi.</p>
+          <button className="btn btn-primary" onClick={load}>Tekrar dene</button>
+        </div>
+      ) : groups === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : groups.length === 0 ? (
         <div className="panel" style={{ textAlign: 'center', padding: 40 }}>

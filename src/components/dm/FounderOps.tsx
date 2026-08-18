@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuthStore } from '@/state/authStore'
 import { useConfirm } from '@/components/Modal'
+import { useToast } from '@/components/Toast'
 import {
   listUsers,
   setUserRole,
@@ -51,12 +52,18 @@ function TabBtn({ active, onClick, children }: { active: boolean; onClick: () =>
 
 function UsersTab() {
   const confirm = useConfirm()
+  const toast = useToast()
   const myId = useAuthStore((s) => s.user?.id ?? null)
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
 
   async function refresh() {
-    setUsers(await listUsers())
+    try {
+      setUsers(await listUsers())
+    } catch (e) {
+      console.error('[founder] kullanıcı listesi', e)
+      toast('Kullanıcılar yüklenemedi.', 'error')
+    }
   }
   useEffect(() => {
     refresh()
@@ -87,6 +94,9 @@ function UsersTab() {
     try {
       await setUserRole(u.id, { is_admin: !u.isAdmin })
       await refresh()
+    } catch (e) {
+      console.error('[founder] rol değişimi', e)
+      toast('Rol değiştirilemedi. Tekrar dene.', 'error')
     } finally {
       setBusy(null)
     }
@@ -131,6 +141,7 @@ function UsersTab() {
 }
 
 function CampaignsTab() {
+  const toast = useToast()
   const [camps, setCamps] = useState<CampaignWithDm[] | null>(null)
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
@@ -141,7 +152,11 @@ function CampaignsTab() {
     setUsers(u)
   }
   useEffect(() => {
-    refresh()
+    refresh().catch((e) => {
+      console.error('[founder] campaign listesi', e)
+      toast('Campaign listesi yüklenemedi.', 'error')
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function onChangeDm(campaignId: string, value: string) {
@@ -149,6 +164,9 @@ function CampaignsTab() {
     try {
       await setCampaignDm(campaignId, value || null)
       await refresh()
+    } catch (e) {
+      console.error('[founder] DM atama', e)
+      toast('DM atanamadı. Tekrar dene.', 'error')
     } finally {
       setBusy(null)
     }
@@ -202,7 +220,7 @@ function CampaignsTab() {
 function StatsTab() {
   const [stats, setStats] = useState<PlatformStats | null>(null)
   useEffect(() => {
-    platformStats().then(setStats)
+    platformStats().then(setStats).catch((e) => console.error('[founder] istatistik', e))
   }, [])
   if (stats === null) return <p className="muted">Yükleniyor…</p>
   return (
@@ -228,7 +246,7 @@ function StatCard({ label, value }: { label: string; value: number }) {
 function AuditTab() {
   const [rows, setRows] = useState<AuditRow[] | null>(null)
   useEffect(() => {
-    listAuditLog(50).then(setRows)
+    listAuditLog(50).then(setRows).catch((e) => console.error('[founder] denetim log', e))
   }, [])
   if (rows === null) return <p className="muted">Yükleniyor…</p>
   if (rows.length === 0)

@@ -11,6 +11,8 @@ interface CharacterState {
   /** DM düzenleme bağlamı: doluysa kaydetme owner'ı korur (sahiplik kaymaz). */
   adminOwnerId: string | null
   saving: boolean
+  /** Son kayıt denemesi hata verdiyse true — gösterge "kaydedilemedi" göstersin. */
+  saveError: boolean
   lastSavedAt: number | null
   setUserId: (id: string | null) => void
   startNew: () => Character
@@ -22,75 +24,117 @@ interface CharacterState {
   replace: (c: Character) => void
   setStep: (n: number) => void
   save: () => Promise<void>
+  /** Bekleyen debounce'lı kaydı iptal edip hemen diske yazar (karakter değişimi / sekme kapanışı). */
+  flushSave: () => Promise<void>
 }
 
+// Bekleyen kayıt, schedule anında yakalanan snapshot ile tutulur — böylece timer
+// ateşlendiğinde (ya da flush'ta) store başka karaktere geçmiş olsa bile DOĞRU
+// karakter yazılır (save race + karakter-değişimi veri kaybı önlenir).
 let saveTimer: ReturnType<typeof setTimeout> | null = null
+let pending: { snap: Character; owner: string | null; uid: string | null } | null = null
 
-export const useCharacterStore = create<CharacterState>((set, get) => ({
-  character: null,
-  userId: null,
-  adminOwnerId: null,
-  saving: false,
-  lastSavedAt: null,
+async function persist(
+  set: (p: Partial<CharacterState>) => void,
+  snap: Character,
+  owner: string | null,
+  uid: string | null,
+): Promise<void> {
+  set({ saving: true })
+  try {
+    if (owner) await adminSaveCharacter(snap, owner)
+    else await saveCharacter(snap, uid)
+    set({ saving: false, saveError: false, lastSavedAt: Date.now() })
+  } catch (e) {
+    console.error('[save] hata', e)
+    set({ saving: false, saveError: true })
+  }
+}
 
-  setUserId: (id) => set({ userId: id }),
+export const useCharacterStore = create<CharacterState>((set, get) => {
+  // Karakter değişiminden önce bekleyen kaydı diske indir (yeni karakteri ezmeden).
+  async function flush(): Promise<void> {
+    if (saveTimer) {
+      clearTimeout(saveTimer)
+      saveTimer = null
+    }
+    if (!pending) return
+    const p = pending
+    pending = null
+    await persist(set, p.snap, p.owner, p.uid)
+  }
 
-  startNew: () => {
-    const c = emptyCharacter()
-    set({ character: c, adminOwnerId: null })
-    return c
-  },
+  return {
+    character: null,
+    userId: null,
+    adminOwnerId: null,
+    saving: false,
+    saveError: false,
+    lastSavedAt: null,
 
-  load: (c) => set({ character: recomputeDerived(c), adminOwnerId: null }),
+    setUserId: (id) => set({ userId: id }),
 
-  loadAsAdmin: (c, ownerId) => set({ character: recomputeDerived(c), adminOwnerId: ownerId }),
+    startNew: () => {
+      void flush()
+      const c = emptyCharacter()
+      set({ character: c, adminOwnerId: null, saveError: false })
+      return c
+    },
 
-  update: (patch) => {
-    const cur = get().character
-    if (!cur) return
-    const next = recomputeDerived({ ...cur, ...patch })
-    set({ character: next })
-    get().save()
-  },
+    load: (c) => {
+      void flush()
+      set({ character: recomputeDerived(c), adminOwnerId: null, saveError: false })
+    },
 
-  updateFn: (fn) => {
-    const cur = get().character
-    if (!cur) return
-    const draft = structuredClone(cur)
-    fn(draft)
-    const next = recomputeDerived(draft)
-    set({ character: next })
-    get().save()
-  },
+    loadAsAdmin: (c, ownerId) => {
+      void flush()
+      set({ character: recomputeDerived(c), adminOwnerId: ownerId, saveError: false })
+    },
 
-  replace: (c) => {
-    set({ character: recomputeDerived(c) })
-    get().save()
-  },
+    update: (patch) => {
+      const cur = get().character
+      if (!cur) return
+      const next = recomputeDerived({ ...cur, ...patch })
+      set({ character: next })
+      get().save()
+    },
 
-  setStep: (n) => {
-    const cur = get().character
-    if (!cur) return
-    set({ character: { ...cur, wizardStep: n } })
-    get().save()
-  },
+    updateFn: (fn) => {
+      const cur = get().character
+      if (!cur) return
+      const draft = structuredClone(cur)
+      fn(draft)
+      const next = recomputeDerived(draft)
+      set({ character: next })
+      get().save()
+    },
 
-  save: async () => {
-    const { character } = get()
-    if (!character) return
-    if (saveTimer) clearTimeout(saveTimer)
-    saveTimer = setTimeout(async () => {
-      set({ saving: true })
-      try {
-        const { adminOwnerId, userId } = get()
-        // DM bağlamında owner korunarak kaydet; aksi halde normal kayıt.
-        if (adminOwnerId) await adminSaveCharacter(get().character!, adminOwnerId)
-        else await saveCharacter(get().character!, userId)
-        set({ saving: false, lastSavedAt: Date.now() })
-      } catch (e) {
-        console.error('[save] hata', e)
-        set({ saving: false })
-      }
-    }, 600)
-  },
-}))
+    replace: (c) => {
+      set({ character: recomputeDerived(c) })
+      get().save()
+    },
+
+    setStep: (n) => {
+      const cur = get().character
+      if (!cur) return
+      set({ character: { ...cur, wizardStep: n } })
+      get().save()
+    },
+
+    save: async () => {
+      const { character, adminOwnerId, userId } = get()
+      if (!character) return
+      // En güncel snapshot'ı yakala; bekleyen timer'ı yeniden zamanla.
+      pending = { snap: character, owner: adminOwnerId, uid: userId }
+      if (saveTimer) clearTimeout(saveTimer)
+      saveTimer = setTimeout(() => {
+        saveTimer = null
+        const p = pending
+        pending = null
+        if (p) void persist(set, p.snap, p.owner, p.uid)
+      }, 600)
+    },
+
+    flushSave: flush,
+  }
+})

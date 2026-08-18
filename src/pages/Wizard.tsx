@@ -11,17 +11,24 @@ export default function Wizard() {
   const nav = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const { user } = useAuthStore()
-  const { character, load, setStep, saving, adminOwnerId } = useCharacterStore()
+  const { character, load, setStep, saving, saveError, save, adminOwnerId } = useCharacterStore()
   // ?step=<key> ile gelindiyse düzenleme modu — mount'ta yakala
   const [editMode] = useState(() => searchParams.has('step'))
   const [needFix, setNeedFix] = useState<string | null>(null)
+  const [loadError, setLoadError] = useState(false)
 
   useEffect(() => {
     if (character?.id === id) return
     ;(async () => {
-      const c = await getCharacter(id!, user?.id ?? null)
-      if (c) load(c)
-      else nav('/')
+      try {
+        setLoadError(false)
+        const c = await getCharacter(id!, user?.id ?? null)
+        if (c) load(c)
+        else nav('/')
+      } catch (e) {
+        console.error('[wizard] yükleme hatası', e)
+        setLoadError(true)
+      }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
@@ -43,7 +50,27 @@ export default function Wizard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [character?.id, steps])
 
-  if (!character) return <div className="container">Yükleniyor…</div>
+  if (!character) {
+    if (loadError) {
+      return (
+        <div className="container" style={{ textAlign: 'center', padding: 50 }}>
+          <p className="muted" style={{ marginBottom: 12 }}>Karakter yüklenemedi.</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setLoadError(false)
+              getCharacter(id!, user?.id ?? null)
+                .then((c) => (c ? load(c) : nav('/')))
+                .catch(() => setLoadError(true))
+            }}
+          >
+            Tekrar dene
+          </button>
+        </div>
+      )
+    }
+    return <div className="container">Yükleniyor…</div>
+  }
 
   const stepIndex = Math.min(character.wizardStep, steps.length - 1)
   const step = steps[stepIndex]
@@ -136,9 +163,15 @@ export default function Wizard() {
           <span className="badge">
             Adım {stepIndex + 1} / {steps.length}
           </span>
-          <span className="muted" style={{ fontSize: 13 }}>
-            {saving ? 'kaydediliyor…' : 'kaydedildi ✓'}
-          </span>
+          {saving ? (
+            <span className="muted" style={{ fontSize: 13 }}>kaydediliyor…</span>
+          ) : saveError ? (
+            <span style={{ fontSize: 13, color: 'var(--danger)', cursor: 'pointer' }} onClick={() => save()} title="Tekrar dene">
+              ⚠ kaydedilemedi — tekrar dene
+            </span>
+          ) : (
+            <span className="muted" style={{ fontSize: 13 }}>kaydedildi ✓</span>
+          )}
         </div>
         <div className="progress">
           <span style={{ width: `${pct}%` }} />

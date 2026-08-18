@@ -7,6 +7,7 @@ import { adminGetCharacter } from '@/lib/admin-storage'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import LevelUpPanel from '@/components/sheet/LevelUpPanel'
 import { useConfirm } from '@/components/Modal'
+import { useToast } from '@/components/Toast'
 import ConditionsReference from '@/components/sheet/ConditionsReference'
 
 export default function CharacterSheet() {
@@ -17,10 +18,13 @@ export default function CharacterSheet() {
   const [showLevelUp, setShowLevelUp] = useState(false)
   // DM başka oyuncunun karakterini görüntülüyorsa e-posta; kendi karakteri/normal ise null
   const [dmOwnerEmail, setDmOwnerEmail] = useState<string | null>(null)
+  const [loadError, setLoadError] = useState(false)
   const confirm = useConfirm()
+  const toast = useToast()
 
-  useEffect(() => {
-    ;(async () => {
+  async function loadSheet() {
+    try {
+      setLoadError(false)
       // DM ise owner'ı öğrenmek için admin yolundan çek (bant + owner-safe kayıt için)
       if (user?.isAdmin) {
         const row = await adminGetCharacter(id!)
@@ -38,11 +42,27 @@ export default function CharacterSheet() {
       const c = await getCharacter(id!, user?.id ?? null)
       if (c) load(c)
       else nav('/')
-    })()
+    } catch (e) {
+      console.error('[karakter] yükleme hatası', e)
+      setLoadError(true)
+    }
+  }
+  useEffect(() => {
+    loadSheet()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  if (!character) return <div className="container">Yükleniyor…</div>
+  if (!character) {
+    if (loadError) {
+      return (
+        <div className="container" style={{ textAlign: 'center', padding: 50 }}>
+          <p className="muted" style={{ marginBottom: 12 }}>Karakter yüklenemedi.</p>
+          <button className="btn btn-primary" onClick={loadSheet}>Tekrar dene</button>
+        </div>
+      )
+    }
+    return <div className="container">Yükleniyor…</div>
+  }
 
   const hasNew = character.lastGainedFeatureKeys.length > 0
 
@@ -87,8 +107,13 @@ export default function CharacterSheet() {
                   danger: true,
                 })
                 if (!ok) return
-                await deleteCharacter(character.id, user?.id ?? null)
-                nav('/')
+                try {
+                  await deleteCharacter(character.id, user?.id ?? null)
+                  nav('/')
+                } catch (e) {
+                  console.error('[karakter sil] hata', e)
+                  toast('Karakter silinemedi. Tekrar dene.', 'error')
+                }
               }}
             >
               Sil

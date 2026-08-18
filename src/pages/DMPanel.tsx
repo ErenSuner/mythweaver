@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCharacterStore } from '@/state/characterStore'
 import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
+import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import PartyStatTable from '@/components/dm/PartyStatTable'
 import FounderOps from '@/components/dm/FounderOps'
@@ -25,6 +26,7 @@ import {
 export default function DMPanel() {
   const nav = useNavigate()
   const confirm = useConfirm()
+  const toast = useToast()
   const loadAsAdmin = useCharacterStore((s) => s.loadAsAdmin)
   const isAdmin = useAuthStore((s) => s.user?.isAdmin ?? false)
 
@@ -37,29 +39,55 @@ export default function DMPanel() {
   const [openRow, setOpenRow] = useState<AdminCharacterRow | null>(null)
   const [membersView, setMembersView] = useState<'summary' | 'cards'>('summary')
   const [users, setUsers] = useState<UserRow[] | null>(null)
+  const [campaignsError, setCampaignsError] = useState(false)
+  const [membersError, setMembersError] = useState(false)
 
   const selected = campaigns?.find((c) => c.id === selectedId) ?? null
 
+  // Mutation sarmalı: hata → toast, sessiz kalmaz.
+  async function run(fn: () => Promise<void>, errMsg: string) {
+    try {
+      await fn()
+    } catch (e) {
+      console.error(errMsg, e)
+      toast(errMsg, 'error')
+    }
+  }
+
   async function refreshCampaigns() {
-    const list = await adminListCampaigns()
-    setCampaigns(list)
-    if (!selectedId && list.length) setSelectedId(list[0].id)
+    try {
+      setCampaignsError(false)
+      const list = await adminListCampaigns()
+      setCampaigns(list)
+      if (!selectedId && list.length) setSelectedId(list[0].id)
+    } catch (e) {
+      console.error('[dm] campaign yükleme hatası', e)
+      setCampaignsError(true)
+    }
   }
   useEffect(() => {
     refreshCampaigns()
-    if (isAdmin) listUsers().then(setUsers)
+    if (isAdmin) listUsers().then(setUsers).catch((e) => console.error('[dm] kullanıcı listesi', e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function onSetDm(userId: string | null) {
     if (!selected) return
-    await setCampaignDm(selected.id, userId)
-    refreshCampaigns()
+    await run(async () => {
+      await setCampaignDm(selected.id, userId)
+      await refreshCampaigns()
+    }, 'DM atanamadı. Tekrar dene.')
   }
 
   async function refreshMembers(id: string) {
     setMembers(null)
-    setMembers(await adminListCharacters(id))
+    try {
+      setMembersError(false)
+      setMembers(await adminListCharacters(id))
+    } catch (e) {
+      console.error('[dm] üye yükleme hatası', e)
+      setMembersError(true)
+    }
   }
   useEffect(() => {
     if (selectedId) refreshMembers(selectedId)
@@ -68,18 +96,22 @@ export default function DMPanel() {
   async function onCreate() {
     const name = newName.trim()
     if (!name) return
-    const c = await createCampaign(name)
-    setNewName('')
-    await refreshCampaigns()
-    setSelectedId(c.id)
+    await run(async () => {
+      const c = await createCampaign(name)
+      setNewName('')
+      await refreshCampaigns()
+      setSelectedId(c.id)
+    }, 'Campaign oluşturulamadı. Tekrar dene.')
   }
 
   async function onRename() {
     if (!selected) return
     const name = window.prompt('Yeni campaign adı', selected.name)?.trim()
     if (!name || name === selected.name) return
-    await renameCampaign(selected.id, name)
-    refreshCampaigns()
+    await run(async () => {
+      await renameCampaign(selected.id, name)
+      await refreshCampaigns()
+    }, 'Ad değiştirilemedi. Tekrar dene.')
   }
 
   async function onDelete() {
@@ -96,23 +128,33 @@ export default function DMPanel() {
       danger: true,
     })
     if (!ok) return
-    await deleteCampaign(selected.id)
-    setSelectedId(null)
-    setMembers(null)
-    refreshCampaigns()
+    await run(async () => {
+      await deleteCampaign(selected.id)
+      setSelectedId(null)
+      setMembers(null)
+      await refreshCampaigns()
+    }, 'Campaign silinemedi. Tekrar dene.')
   }
 
   async function openAssign() {
     setAssignOpen(true)
     setPool(null)
-    setPool(await adminListCharacters('unassigned'))
+    try {
+      setPool(await adminListCharacters('unassigned'))
+    } catch (e) {
+      console.error('[dm] havuz yükleme hatası', e)
+      toast('Karakter havuzu yüklenemedi.', 'error')
+      setAssignOpen(false)
+    }
   }
 
   async function onAssign(row: AdminCharacterRow) {
     if (!selectedId) return
-    await assignCharacter(row.character.id, selectedId)
-    setAssignOpen(false)
-    refreshMembers(selectedId)
+    await run(async () => {
+      await assignCharacter(row.character.id, selectedId)
+      setAssignOpen(false)
+      await refreshMembers(selectedId)
+    }, 'Karakter eklenemedi. Tekrar dene.')
   }
 
   async function onUnassign(row: AdminCharacterRow) {
@@ -126,8 +168,10 @@ export default function DMPanel() {
       confirmLabel: 'Çıkar',
     })
     if (!ok) return
-    await unassignCharacter(row.character.id)
-    if (selectedId) refreshMembers(selectedId)
+    await run(async () => {
+      await unassignCharacter(row.character.id)
+      if (selectedId) await refreshMembers(selectedId)
+    }, 'Karakter çıkarılamadı. Tekrar dene.')
   }
 
   async function onEdit(row: AdminCharacterRow) {
@@ -164,7 +208,12 @@ export default function DMPanel() {
       {/* Campaign seçici + oluştur */}
       <div className="panel" style={{ marginBottom: 18 }}>
         <label>Campaign'ler</label>
-        {campaigns === null ? (
+        {campaignsError ? (
+          <div className="row" style={{ gap: 10, marginTop: 6, alignItems: 'center' }}>
+            <span className="muted">Campaign'ler yüklenemedi.</span>
+            <button className="btn btn-ghost" onClick={refreshCampaigns}>Tekrar dene</button>
+          </div>
+        ) : campaigns === null ? (
           <p className="muted">Yükleniyor…</p>
         ) : (
           <>
@@ -270,7 +319,12 @@ export default function DMPanel() {
             </div>
           </div>
 
-          {members === null ? (
+          {membersError ? (
+            <div className="panel" style={{ textAlign: 'center', padding: 20 }}>
+              <p className="muted" style={{ marginBottom: 10 }}>Karakterler yüklenemedi.</p>
+              <button className="btn btn-ghost" onClick={() => selectedId && refreshMembers(selectedId)}>Tekrar dene</button>
+            </div>
+          ) : members === null ? (
             <p className="muted">Yükleniyor…</p>
           ) : members.length === 0 ? (
             <div className="panel" style={{ textAlign: 'center', padding: 30 }}>

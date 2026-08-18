@@ -7,16 +7,25 @@ import { emptyCharacter } from '@/lib/character-factory'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 import { useConfirm } from '@/components/Modal'
+import { useToast } from '@/components/Toast'
 
 export default function MyCharacters() {
   const { user } = useAuthStore()
   const nav = useNavigate()
   const startNew = useCharacterStore((s) => s.startNew)
   const [chars, setChars] = useState<Character[] | null>(null)
+  const [error, setError] = useState(false)
   const confirm = useConfirm()
+  const toast = useToast()
 
   async function refresh() {
-    setChars(await listCharacters(user?.id ?? null))
+    try {
+      setError(false)
+      setChars(await listCharacters(user?.id ?? null))
+    } catch (e) {
+      console.error('[karakterler] yükleme hatası', e)
+      setError(true)
+    }
   }
   useEffect(() => {
     refresh()
@@ -24,11 +33,16 @@ export default function MyCharacters() {
   }, [user])
 
   async function createNew() {
-    const c = emptyCharacter()
-    await saveCharacter(c, user?.id ?? null)
-    startNew()
-    useCharacterStore.getState().load(c)
-    nav(`/wizard/${c.id}`)
+    try {
+      const c = emptyCharacter()
+      await saveCharacter(c, user?.id ?? null)
+      startNew()
+      useCharacterStore.getState().load(c)
+      nav(`/wizard/${c.id}`)
+    } catch (e) {
+      console.error('[karakter oluştur] hata', e)
+      toast('Karakter oluşturulamadı. Bağlantını kontrol et.', 'error')
+    }
   }
 
   async function remove(id: string) {
@@ -39,8 +53,13 @@ export default function MyCharacters() {
       danger: true,
     })
     if (!ok) return
-    await deleteCharacter(id, user?.id ?? null)
-    refresh()
+    try {
+      await deleteCharacter(id, user?.id ?? null)
+      refresh()
+    } catch (e) {
+      console.error('[karakter sil] hata', e)
+      toast('Karakter silinemedi. Tekrar dene.', 'error')
+    }
   }
 
   return (
@@ -55,7 +74,12 @@ export default function MyCharacters() {
         </button>
       </div>
 
-      {chars === null ? (
+      {error ? (
+        <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
+          <p className="muted" style={{ marginBottom: 12 }}>Karakterler yüklenemedi.</p>
+          <button className="btn btn-primary" onClick={refresh}>Tekrar dene</button>
+        </div>
+      ) : chars === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : chars.length === 0 ? (
         <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
