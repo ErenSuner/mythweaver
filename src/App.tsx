@@ -19,11 +19,11 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   return children
 }
 
-function RequireAdmin({ children }: { children: JSX.Element }) {
+function RequireDM({ children }: { children: JSX.Element }) {
   const { user, ready } = useAuthStore()
   if (!ready) return <div className="container">Yükleniyor…</div>
   if (!user) return <Navigate to="/login" replace />
-  if (!user.isAdmin) return <Navigate to="/" replace />
+  if (!user.isAdmin && !user.isDm) return <Navigate to="/" replace />
   return children
 }
 
@@ -79,9 +79,9 @@ export default function App() {
         <Route
           path="/dm"
           element={
-            <RequireAdmin>
+            <RequireDM>
               <DMPanel />
-            </RequireAdmin>
+            </RequireDM>
           }
         />
         <Route path="*" element={<Navigate to="/" replace />} />

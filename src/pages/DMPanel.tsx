@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCharacterStore } from '@/state/characterStore'
+import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
 import CharacterCard from '@/components/sheet/CharacterCard'
+import PartyStatTable from '@/components/dm/PartyStatTable'
+import FounderOps from '@/components/dm/FounderOps'
 import { classById, raceById } from '@/data'
 import {
   adminListCampaigns,
@@ -12,14 +15,18 @@ import {
   deleteCampaign,
   assignCharacter,
   unassignCharacter,
+  setCampaignDm,
+  listUsers,
   type Campaign,
   type AdminCharacterRow,
+  type UserRow,
 } from '@/lib/admin-storage'
 
 export default function DMPanel() {
   const nav = useNavigate()
   const confirm = useConfirm()
   const loadAsAdmin = useCharacterStore((s) => s.loadAsAdmin)
+  const isAdmin = useAuthStore((s) => s.user?.isAdmin ?? false)
 
   const [campaigns, setCampaigns] = useState<Campaign[] | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -28,6 +35,8 @@ export default function DMPanel() {
   const [assignOpen, setAssignOpen] = useState(false)
   const [pool, setPool] = useState<AdminCharacterRow[] | null>(null)
   const [openRow, setOpenRow] = useState<AdminCharacterRow | null>(null)
+  const [membersView, setMembersView] = useState<'summary' | 'cards'>('summary')
+  const [users, setUsers] = useState<UserRow[] | null>(null)
 
   const selected = campaigns?.find((c) => c.id === selectedId) ?? null
 
@@ -38,8 +47,15 @@ export default function DMPanel() {
   }
   useEffect(() => {
     refreshCampaigns()
+    if (isAdmin) listUsers().then(setUsers)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  async function onSetDm(userId: string | null) {
+    if (!selected) return
+    await setCampaignDm(selected.id, userId)
+    refreshCampaigns()
+  }
 
   async function refreshMembers(id: string) {
     setMembers(null)
@@ -167,13 +183,31 @@ export default function DMPanel() {
             </div>
             {/* seçili campaign yönetimi */}
             {selected && (
-              <div className="row" style={{ gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
+              <div className="row" style={{ gap: 8, marginTop: 10, flexWrap: 'wrap', alignItems: 'center' }}>
                 <button className="btn btn-ghost" onClick={onRename}>
                   ✎ Yeniden adlandır
                 </button>
                 <button className="btn btn-danger" onClick={onDelete}>
                   Sil
                 </button>
+                {isAdmin && (
+                  <label className="row" style={{ gap: 6, alignItems: 'center', marginLeft: 4 }}>
+                    <span className="hint">DM:</span>
+                    <select
+                      value={selected.dm_user_id ?? ''}
+                      onChange={(e) => onSetDm(e.target.value || null)}
+                      disabled={users === null}
+                    >
+                      <option value="">— DM yok —</option>
+                      {(users ?? []).map((u) => (
+                        <option key={u.id} value={u.id}>
+                          {u.email ?? u.id}
+                          {u.isAdmin ? ' (kurucu)' : ''}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
               </div>
             )}
 
@@ -211,17 +245,41 @@ export default function DMPanel() {
         <div style={{ marginBottom: 24 }}>
           <div className="spread" style={{ marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
             <h2 style={{ fontSize: 22 }}>{selected.name} — Karakterler</h2>
-            <button className="btn btn-primary" onClick={openAssign}>
-              + Karakter ekle
-            </button>
+            <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+              {members && members.length > 0 && (
+                <div className="row" style={{ gap: 4 }}>
+                  <button
+                    className={`btn btn-ghost${membersView === 'summary' ? ' badge-new' : ''}`}
+                    onClick={() => setMembersView('summary')}
+                  >
+                    Özet
+                  </button>
+                  <button
+                    className={`btn btn-ghost${membersView === 'cards' ? ' badge-new' : ''}`}
+                    onClick={() => setMembersView('cards')}
+                  >
+                    Kartlar
+                  </button>
+                </div>
+              )}
+              {isAdmin && (
+                <button className="btn btn-primary" onClick={openAssign}>
+                  + Karakter ekle
+                </button>
+              )}
+            </div>
           </div>
 
           {members === null ? (
             <p className="muted">Yükleniyor…</p>
           ) : members.length === 0 ? (
             <div className="panel" style={{ textAlign: 'center', padding: 30 }}>
-              <p className="muted">Bu campaign'de henüz karakter yok. "Karakter ekle" ile ata.</p>
+              <p className="muted">
+                Bu campaign'de henüz karakter yok.{isAdmin ? ' "Karakter ekle" ile ata.' : ' Kurucu karakter atayınca burada görünür.'}
+              </p>
             </div>
+          ) : membersView === 'summary' ? (
+            <PartyStatTable rows={members} />
           ) : (
             <div className="choice-grid">
               {members.map((row) => {
@@ -325,6 +383,9 @@ export default function DMPanel() {
           <CharacterCard character={openRow.character} />
         </Modal>
       )}
+
+      {/* Kurucu ops — yalnız founder */}
+      {isAdmin && <FounderOps />}
     </div>
   )
 }

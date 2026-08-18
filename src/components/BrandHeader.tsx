@@ -31,7 +31,7 @@ export default function BrandHeader() {
             <Link to="/campaign" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
               Campaign
             </Link>
-            {user.isAdmin && (
+            {(user.isAdmin || user.isDm) && (
               <Link to="/dm" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
                 DM Paneli
               </Link>
