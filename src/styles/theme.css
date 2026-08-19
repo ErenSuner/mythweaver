@@ -157,12 +157,24 @@ textarea,
 select {
   width: 100%;
   font-family: var(--body);
-  font-size: 16px;
+  font-size: 15.5px;
+  line-height: 1.5;
   color: var(--ink);
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 9px 11px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-faint);
+}
+input:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  border-color: var(--line-strong);
+  background: var(--bg-1);
 }
 input:focus,
 textarea:focus,
@@ -170,6 +182,7 @@ select:focus {
   outline: none;
   border-color: var(--accent-bright);
   box-shadow: 0 0 0 3px var(--accent-tint);
+  background: var(--bg-1);
 }
 label {
   color: var(--ink-dim);
@@ -179,7 +192,89 @@ label {
 }
 textarea {
   resize: vertical;
-  min-height: 70px;
+  min-height: 84px;
+}
+
+/* zengin-metin editörü (evren lore) */
+.rte {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.rte:focus-within {
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+.rte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-1);
+}
+.rte-toolbar button {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+  min-width: 32px;
+  transition: all 0.12s ease;
+}
+.rte-toolbar button:hover {
+  color: var(--ink);
+  background: var(--bg-2);
+  border-color: var(--line);
+}
+.rte-editor {
+  min-height: 220px;
+  padding: 14px 16px;
+  color: var(--ink);
+  outline: none;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+.rte-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+/* lore/zengin-metin gösterim (editör + salt-okur ortak) */
+.rte-editor h1,
+.lore h1 {
+  font-size: 24px;
+  margin: 0.4em 0 0.3em;
+}
+.rte-editor h2,
+.lore h2 {
+  font-size: 20px;
+  margin: 0.4em 0 0.3em;
+}
+.rte-editor h3,
+.lore h3 {
+  font-size: 17px;
+  margin: 0.4em 0 0.3em;
+}
+.rte-editor p,
+.lore p {
+  margin: 0 0 0.7em;
+}
+.rte-editor ul,
+.rte-editor ol,
+.lore ul,
+.lore ol {
+  margin: 0 0 0.7em;
+  padding-left: 1.4em;
+}
+.lore > :last-child {
+  margin-bottom: 0;
 }
 
 /* seçim kartları (ırk/sınıf/background) */

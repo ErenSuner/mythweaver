@@ -5,6 +5,7 @@ import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/
 import { createCampaign } from '@/lib/admin-storage'
 import { listMyInvites, acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
 import { getUniverse, type Universe } from '@/lib/universe'
+import { sanitizeLore } from '@/lib/sanitize'
 import { supabaseEnabled } from '@/lib/supabase'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
@@ -211,9 +212,13 @@ export default function CampaignParty() {
                   Evren: {universeById[g.campaign.universeId].name}
                 </summary>
                 {universeById[g.campaign.universeId].description ? (
-                  <p style={{ whiteSpace: 'pre-wrap', marginTop: 10, marginBottom: 0 }}>
-                    {universeById[g.campaign.universeId].description}
-                  </p>
+                  <div
+                    className="lore"
+                    style={{ marginTop: 10 }}
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeLore(universeById[g.campaign.universeId].description ?? ''),
+                    }}
+                  />
                 ) : (
                   <p className="muted" style={{ marginTop: 10, marginBottom: 0 }}>Lore henüz yazılmamış.</p>
                 )}

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useToast } from '@/components/Toast'
 import { useConfirm } from '@/components/Modal'
+import RichTextEditor from '@/components/RichTextEditor'
+import { sanitizeLore } from '@/lib/sanitize'
 import {
   listMyUniverses,
   createUniverse,
@@ -18,6 +20,7 @@ export default function Universes() {
   const [error, setError] = useState(false)
   const [newName, setNewName] = useState('')
   const [newDesc, setNewDesc] = useState('')
+  const [newKey, setNewKey] = useState(0) // editörü temizlemek için remount
   const [creating, setCreating] = useState(false)
   // Düzenleme taslakları: id -> {name, description}
   const [draft, setDraft] = useState<Record<string, { name: string; description: string }>>({})
@@ -41,9 +44,10 @@ export default function Universes() {
     if (!name || creating) return
     setCreating(true)
     try {
-      await createUniverse(name, newDesc.trim())
+      await createUniverse(name, sanitizeLore(newDesc))
       setNewName('')
       setNewDesc('')
+      setNewKey((k) => k + 1)
       toast('Evren oluşturuldu.', 'success')
       await load()
     } catch (e2) {
@@ -63,7 +67,7 @@ export default function Universes() {
       return
     }
     try {
-      await updateUniverse(u.id, { name, description: d.description })
+      await updateUniverse(u.id, { name, description: sanitizeLore(d.description) })
       toast('Kaydedildi.', 'success')
       setDraft((p) => {
         const n = { ...p }
@@ -123,11 +127,11 @@ export default function Universes() {
           placeholder="Evren adı (ör. Faerûn)"
           maxLength={80}
         />
-        <textarea
+        <RichTextEditor
+          key={newKey}
           value={newDesc}
-          onChange={(e) => setNewDesc(e.target.value)}
+          onChange={setNewDesc}
           placeholder="Dünya hakkında oyuncuların bilmesi gerekenler…"
-          rows={4}
         />
         <button className="btn btn-primary" type="submit" disabled={creating || !newName.trim()} style={{ alignSelf: 'flex-start' }}>
           {creating ? 'Oluşturuluyor…' : '✦ Oluştur'}
@@ -158,10 +162,10 @@ export default function Universes() {
                       onChange={(e) => setDraft((p) => ({ ...p, [u.id]: { ...d, name: e.target.value } }))}
                       maxLength={80}
                     />
-                    <textarea
+                    <RichTextEditor
                       value={d.description}
-                      onChange={(e) => setDraft((p) => ({ ...p, [u.id]: { ...d, description: e.target.value } }))}
-                      rows={5}
+                      onChange={(html) => setDraft((p) => ({ ...p, [u.id]: { ...d, description: html } }))}
+                      placeholder="Dünya hakkında oyuncuların bilmesi gerekenler…"
                     />
                     <div className="row" style={{ gap: 8 }}>
                       <button className="btn btn-primary" onClick={() => onSave(u)}>
@@ -195,7 +199,7 @@ export default function Universes() {
                       </div>
                     </div>
                     {u.description ? (
-                      <p style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{u.description}</p>
+                      <div className="lore" dangerouslySetInnerHTML={{ __html: sanitizeLore(u.description) }} />
                     ) : (
                       <p className="muted" style={{ margin: 0 }}>Açıklama yok.</p>
                     )}

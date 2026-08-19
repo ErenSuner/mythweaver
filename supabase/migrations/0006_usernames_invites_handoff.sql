@@ -15,13 +15,13 @@ alter table public.profiles add column if not exists username text;
 create unique index if not exists profiles_username_lower_idx
   on public.profiles (lower(username));
 
--- izinli format: 3-20 harf/rakam/alt-çizgi. null'a izin (ilk-giriş öncesi).
+-- izinli format: 3-20 harf/rakam/alt-çizgi/nokta. null'a izin (ilk-giriş öncesi).
 -- Zorunluluk DB'de NOT NULL ile DEĞİL (handle_new_user trigger'ını ve mevcut satırları
 -- kırar) — app tarafında ilk-giriş gate ile uygulanır.
 alter table public.profiles drop constraint if exists profiles_username_format;
 alter table public.profiles
   add constraint profiles_username_format
-  check (username is null or username ~ '^[A-Za-z0-9_]{3,20}$');
+  check (username is null or username ~ '^[A-Za-z0-9_.]{3,20}$');
 
 -- ------------------------------------------------------------
 -- 2b. Ayrıcalıklı kolon kilidi + self-update policy (yalnız username)
