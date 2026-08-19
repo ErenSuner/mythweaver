@@ -36,6 +36,9 @@ export default function BrandHeader() {
                 DM Paneli
               </Link>
             )}
+            <Link to="/ayarlar" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
+              Ayarlar
+            </Link>
             <span className="muted" style={{ fontSize: 14 }}>
               {user.email}
             </span>

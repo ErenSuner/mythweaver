@@ -23,9 +23,13 @@ interface AuthState {
   user: AuthUser | null
   ready: boolean
   init: () => Promise<void>
-  signInPassword: (email: string, password: string) => Promise<string | null>
-  signUpPassword: (email: string, password: string) => Promise<string | null>
+  signInPassword: (email: string, password: string, captchaToken?: string) => Promise<string | null>
+  signUpPassword: (email: string, password: string, captchaToken?: string) => Promise<string | null>
   signInGoogle: () => Promise<string | null>
+  /** Şifre sıfırlama e-postası gönder (recovery linki /reset'e döner). */
+  resetPassword: (email: string, captchaToken?: string) => Promise<string | null>
+  /** Recovery/oturum içindeyken yeni şifre belirle. */
+  updatePassword: (password: string) => Promise<string | null>
   signOut: () => Promise<void>
 }
 
@@ -53,15 +57,41 @@ export const useAuthStore = create<AuthState>((set) => ({
     })
   },
 
-  signInPassword: async (email, password) => {
+  signInPassword: async (email, password, captchaToken) => {
     if (!supabase) return null
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+      options: captchaToken ? { captchaToken } : undefined,
+    })
     return error?.message ?? null
   },
 
-  signUpPassword: async (email, password) => {
+  signUpPassword: async (email, password, captchaToken) => {
     if (!supabase) return null
-    const { error } = await supabase.auth.signUp({ email, password })
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/login`,
+        ...(captchaToken ? { captchaToken } : {}),
+      },
+    })
+    return error?.message ?? null
+  },
+
+  resetPassword: async (email, captchaToken) => {
+    if (!supabase) return null
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset`,
+      ...(captchaToken ? { captchaToken } : {}),
+    })
+    return error?.message ?? null
+  },
+
+  updatePassword: async (password) => {
+    if (!supabase) return null
+    const { error } = await supabase.auth.updateUser({ password })
     return error?.message ?? null
   },
 

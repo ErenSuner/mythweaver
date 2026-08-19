@@ -1,5 +1,6 @@
 // Render sırasında bir throw olursa tüm app'in beyazlamasını önler.
 import { Component, type ErrorInfo, type ReactNode } from 'react'
+import { captureError } from '@/lib/monitoring'
 
 interface Props {
   children: ReactNode
@@ -17,6 +18,7 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     console.error('[ErrorBoundary]', error, info)
+    captureError(error, { componentStack: info.componentStack })
   }
 
   render() {

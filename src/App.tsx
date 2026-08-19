@@ -4,12 +4,17 @@ import { useAuthStore } from '@/state/authStore'
 import { useCharacterStore } from '@/state/characterStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import Login from '@/pages/Login'
+import ResetPassword from '@/pages/ResetPassword'
 import MyCharacters from '@/pages/MyCharacters'
 import Wizard from '@/pages/Wizard'
 import CharacterSheet from '@/pages/CharacterSheet'
 import CampaignParty from '@/pages/CampaignParty'
 import DMPanel from '@/pages/DMPanel'
+import Settings from '@/pages/Settings'
+import Privacy from '@/pages/Privacy'
+import Terms from '@/pages/Terms'
 import BrandHeader from '@/components/BrandHeader'
+import Footer from '@/components/Footer'
 import { ConfirmProvider } from '@/components/Modal'
 import { ToastProvider } from '@/components/Toast'
 import ErrorBoundary from '@/components/ErrorBoundary'
@@ -64,6 +69,9 @@ export default function App() {
           <BrandHeader />
           <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/reset" element={<ResetPassword />} />
+        <Route path="/gizlilik" element={<Privacy />} />
+        <Route path="/kosullar" element={<Terms />} />
         <Route
           path="/"
           element={
@@ -104,8 +112,17 @@ export default function App() {
             </RequireDM>
           }
         />
+        <Route
+          path="/ayarlar"
+          element={
+            <RequireAuth>
+              <Settings />
+            </RequireAuth>
+          }
+        />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          <Footer />
         </ToastProvider>
       </ConfirmProvider>
     </ErrorBoundary>
