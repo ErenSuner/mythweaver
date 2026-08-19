@@ -15,7 +15,7 @@ export default function Privacy() {
         </p>
 
         <h2 style={{ fontSize: 18 }}>Veri sorumlusu</h2>
-        <p>[AD SOYAD / İŞLETME], iletişim: [E-POSTA].</p>
+        <p>Eren Süner, iletişim: erenn.suner@gmail.com.</p>
 
         <h2 style={{ fontSize: 18 }}>İşlenen veriler</h2>
         <ul>
@@ -43,7 +43,7 @@ export default function Privacy() {
         <h2 style={{ fontSize: 18 }}>Haklarını kullanma</h2>
         <p>
           KVKK md. 11 kapsamında verilerine erişme, düzeltme ve silme haklarına sahipsin. <b>Ayarlar</b> sayfasından
-          verilerini JSON olarak indirebilir veya hesabını (tüm verilerinle) silebilirsin. Ek talepler için [E-POSTA].
+          verilerini JSON olarak indirebilir veya hesabını (tüm verilerinle) silebilirsin. Ek talepler için erenn.suner@gmail.com.
         </p>
 
         <p style={{ marginTop: 12 }}>

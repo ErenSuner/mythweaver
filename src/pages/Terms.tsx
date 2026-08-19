@@ -40,7 +40,7 @@ export default function Terms() {
         <p>Hesabını dilediğin an silebilirsin. Bu koşulları ihlal eden hesaplar askıya alınabilir veya kapatılabilir.</p>
 
         <h2 style={{ fontSize: 18 }}>İletişim</h2>
-        <p>[E-POSTA]</p>
+        <p>erenn.suner@gmail.com</p>
 
         <p style={{ marginTop: 12 }}>
           <Link to="/gizlilik">Gizlilik Politikası</Link> · <Link to="/">Ana sayfa</Link>
