@@ -75,7 +75,9 @@ export default function DMPanel() {
   async function refreshCampaigns() {
     try {
       setCampaignsError(false)
-      const list = await adminListCampaigns()
+      const all = await adminListCampaigns()
+      // Kurucu hariç: kullanıcı yalnız DM'i olduğu campaign'leri görür.
+      const list = isAdmin ? all : all.filter((c) => c.dm_user_id === myId)
       setCampaigns(list)
       if (!selectedId && list.length) setSelectedId(list[0].id)
     } catch (e) {
@@ -132,22 +134,31 @@ export default function DMPanel() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId, canManageInvites])
 
-  async function onSearchUsers() {
+  // Canlı arama: yazdıkça (debounce 300ms) kullanıcı önerileri getir.
+  useEffect(() => {
     const q = inviteQuery.trim()
     if (q.length < 2) {
-      toast('En az 2 karakter yaz.', 'info')
+      setInviteResults(null)
+      setSearching(false)
       return
     }
+    let cancelled = false
     setSearching(true)
-    try {
-      setInviteResults(await searchUsers(q))
-    } catch (e) {
-      console.error('[dm] kullanıcı arama hatası', e)
-      toast('Arama başarısız. Tekrar dene.', 'error')
-    } finally {
-      setSearching(false)
+    const t = setTimeout(async () => {
+      try {
+        const r = await searchUsers(q)
+        if (!cancelled) setInviteResults(r)
+      } catch (e) {
+        if (!cancelled) console.error('[dm] kullanıcı arama hatası', e)
+      } finally {
+        if (!cancelled) setSearching(false)
+      }
+    }, 300)
+    return () => {
+      cancelled = true
+      clearTimeout(t)
     }
-  }
+  }, [inviteQuery])
 
   async function onInvite(u: UserSearchResult) {
     if (!selected) return
@@ -304,7 +315,7 @@ export default function DMPanel() {
 
       {/* Campaign seçici + oluştur */}
       <div className="panel" style={{ marginBottom: 18 }}>
-        <label>Campaign'ler</label>
+        <label style={{ display: 'block', marginBottom: 8 }}>Campaign'ler</label>
         {campaignsError ? (
           <div className="row" style={{ gap: 10, marginTop: 6, alignItems: 'center' }}>
             <span className="muted">Campaign'ler yüklenemedi.</span>
@@ -314,19 +325,21 @@ export default function DMPanel() {
           <p className="muted">Yükleniyor…</p>
         ) : (
           <>
-            <div className="row" style={{ gap: 8, flexWrap: 'wrap', marginTop: 6 }}>
-              {campaigns.length === 0 && <span className="muted">Henüz campaign yok. Aşağıdan oluştur.</span>}
-              {campaigns.map((c) => (
-                <button
-                  key={c.id}
-                  className={`badge${c.id === selectedId ? ' badge-new' : ''}`}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => setSelectedId(c.id)}
-                >
-                  {c.name}
-                </button>
-              ))}
-            </div>
+            {campaigns.length === 0 ? (
+              <p className="muted" style={{ marginTop: 6 }}>Henüz campaign yok. Aşağıdan oluştur.</p>
+            ) : (
+              <select
+                value={selectedId ?? ''}
+                onChange={(e) => setSelectedId(e.target.value || null)}
+                style={{ marginTop: 6, maxWidth: 360 }}
+              >
+                {campaigns.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            )}
             {/* seçili campaign yönetimi */}
             {selected && (
               <div className="row" style={{ gap: 8, marginTop: 10, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -515,29 +528,23 @@ export default function DMPanel() {
           <p className="muted" style={{ marginBottom: 12 }}>
             Kullanıcı adıyla ara ve davet gönder. Davetli kabul edince kendi karakterini bu campaign'e katar.
           </p>
-          <form
-            className="row"
-            style={{ gap: 10, flexWrap: 'wrap' }}
-            onSubmit={(e) => {
-              e.preventDefault()
-              onSearchUsers()
-            }}
-          >
+          <div style={{ position: 'relative' }}>
             <input
               value={inviteQuery}
               onChange={(e) => setInviteQuery(e.target.value)}
-              placeholder="kullanıcı adı ara…"
-              style={{ flex: '1 1 220px' }}
+              placeholder="kullanıcı adı yaz…"
             />
-            <button className="btn btn-primary" type="submit" disabled={searching || inviteQuery.trim().length < 2}>
-              {searching ? 'Aranıyor…' : 'Ara'}
-            </button>
-          </form>
+            {searching && (
+              <span className="hint" style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)' }}>
+                Aranıyor…
+              </span>
+            )}
+          </div>
 
-          {inviteResults !== null && (
+          {inviteQuery.trim().length >= 2 && inviteResults !== null && (
             <div className="stack" style={{ gap: 8, marginTop: 12 }}>
               {inviteResults.length === 0 ? (
-                <p className="muted">Eşleşen kullanıcı yok.</p>
+                <p className="muted">{searching ? '' : 'Eşleşen kullanıcı yok.'}</p>
               ) : (
                 inviteResults.map((u) => (
                   <div key={u.id} className="spread panel" style={{ padding: 12 }}>

@@ -151,10 +151,14 @@ a {
 }
 
 /* form öğeleri — koyu, düz, tutarlı; hover'da renk DEĞİŞMEZ, yazı her zaman okunur */
+input:not([type]),
 input[type='text'],
 input[type='number'],
 input[type='email'],
 input[type='password'],
+input[type='search'],
+input[type='url'],
+input[type='tel'],
 textarea,
 select {
   width: 100%;
@@ -205,6 +209,18 @@ label {
 textarea {
   resize: vertical;
   min-height: 84px;
+}
+
+/* select: appearance:none native oku siler → custom chevron ekle */
+select {
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a8a29a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+select:focus {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a8434c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
 }
 
 /* zengin-metin editörü (evren lore) */
