@@ -4,6 +4,7 @@ import { useAuthStore } from '@/state/authStore'
 import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
 import { createCampaign } from '@/lib/admin-storage'
 import { listMyInvites, acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
+import { getUniverse, type Universe } from '@/lib/universe'
 import { supabaseEnabled } from '@/lib/supabase'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
@@ -22,6 +23,7 @@ export default function CampaignParty() {
   const [groups, setGroups] = useState<PartyGroup[] | null>(null)
   const [myIds, setMyIds] = useState<Set<string>>(new Set())
   const [myChars, setMyChars] = useState<Character[]>([])
+  const [universeById, setUniverseById] = useState<Record<string, Universe>>({})
   const [invites, setInvites] = useState<MyInvite[] | null>(null)
   const [pick, setPick] = useState<Record<string, string>>({})
   const [openId, setOpenId] = useState<string | null>(null)
@@ -90,6 +92,12 @@ export default function CampaignParty() {
         camps.map(async (campaign) => ({ campaign, members: await campaignPeers(campaign.id) })),
       )
       setGroups(withMembers)
+      // Atanmış evrenlerin lore'unu çek (RLS: üye okuyabilir).
+      const uniIds = Array.from(new Set(camps.map((c) => c.universeId).filter(Boolean))) as string[]
+      const unis = await Promise.all(uniIds.map((id) => getUniverse(id).catch(() => null)))
+      const map: Record<string, Universe> = {}
+      for (const u of unis) if (u) map[u.id] = u
+      setUniverseById(map)
     } catch (e) {
       console.error('[campaign] yükleme hatası', e)
       setError(true)
@@ -197,6 +205,20 @@ export default function CampaignParty() {
         groups.map((g) => (
           <section key={g.campaign.id} style={{ marginBottom: 28 }}>
             <h2 style={{ fontSize: 22, marginBottom: 10 }}>{g.campaign.name}</h2>
+            {g.campaign.universeId && universeById[g.campaign.universeId] && (
+              <details className="panel" style={{ marginBottom: 12 }}>
+                <summary style={{ cursor: 'pointer', fontWeight: 600 }}>
+                  Evren: {universeById[g.campaign.universeId].name}
+                </summary>
+                {universeById[g.campaign.universeId].description ? (
+                  <p style={{ whiteSpace: 'pre-wrap', marginTop: 10, marginBottom: 0 }}>
+                    {universeById[g.campaign.universeId].description}
+                  </p>
+                ) : (
+                  <p className="muted" style={{ marginTop: 10, marginBottom: 0 }}>Lore henüz yazılmamış.</p>
+                )}
+              </details>
+            )}
             <div className="choice-grid">
               {g.members.map((m) => {
                 const race = raceById(m.raceId)

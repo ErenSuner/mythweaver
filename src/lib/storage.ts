@@ -96,14 +96,22 @@ export async function deleteCharacter(id: string, _userId: string | null): Promi
 export interface CampaignRef {
   id: string
   name: string
+  universeId: string | null
 }
 
 /** Çağıranın karakterlerinin dahil olduğu campaign'ler (RLS ile filtrelenir). */
 export async function myCampaigns(): Promise<CampaignRef[]> {
   if (!(supabaseEnabled && supabase)) return []
-  const { data, error } = await supabase.from('campaigns').select('id, name').order('created_at', { ascending: true })
+  const { data, error } = await supabase
+    .from('campaigns')
+    .select('id, name, universe_id')
+    .order('created_at', { ascending: true })
   if (error) throw error
-  return (data || []) as CampaignRef[]
+  return (data || []).map((c) => ({
+    id: c.id as string,
+    name: c.name as string,
+    universeId: (c.universe_id as string | null) ?? null,
+  }))
 }
 
 /** Bir campaign'deki tüm karakterler (parti-eşleri). RLS characters_select_party ile okunur. */

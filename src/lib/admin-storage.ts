@@ -9,6 +9,7 @@ export interface Campaign {
   name: string
   created_at: string
   dm_user_id: string | null
+  universe_id: string | null
 }
 
 export interface AdminCharacterRow {
@@ -27,7 +28,10 @@ function ensure() {
 
 export async function adminListCampaigns(): Promise<Campaign[]> {
   const sb = ensure()
-  const { data, error } = await sb.from('campaigns').select('id, name, created_at, dm_user_id').order('created_at', { ascending: true })
+  const { data, error } = await sb
+    .from('campaigns')
+    .select('id, name, created_at, dm_user_id, universe_id')
+    .order('created_at', { ascending: true })
   if (error) throw error
   return (data || []) as Campaign[]
 }
@@ -42,7 +46,7 @@ export async function createCampaign(name: string): Promise<Campaign> {
   const { data, error } = await sb
     .from('campaigns')
     .insert({ name, dm_user_id: auth.user.id })
-    .select('id, name, created_at, dm_user_id')
+    .select('id, name, created_at, dm_user_id, universe_id')
     .single()
   if (error) throw error
   return data as Campaign

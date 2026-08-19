@@ -10,6 +10,7 @@ import Wizard from '@/pages/Wizard'
 import CharacterSheet from '@/pages/CharacterSheet'
 import CampaignParty from '@/pages/CampaignParty'
 import DMPanel from '@/pages/DMPanel'
+import Universes from '@/pages/Universes'
 import Settings from '@/pages/Settings'
 import Privacy from '@/pages/Privacy'
 import Terms from '@/pages/Terms'
@@ -114,6 +115,14 @@ export default function App() {
             <RequireDM>
               <DMPanel />
             </RequireDM>
+          }
+        />
+        <Route
+          path="/evrenler"
+          element={
+            <RequireAuth>
+              <Universes />
+            </RequireAuth>
           }
         />
         <Route

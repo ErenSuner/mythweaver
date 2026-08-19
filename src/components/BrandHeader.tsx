@@ -32,9 +32,14 @@ export default function BrandHeader() {
               Campaign
             </Link>
             {(user.isAdmin || user.isDm) && (
-              <Link to="/dm" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
-                DM Paneli
-              </Link>
+              <>
+                <Link to="/dm" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
+                  DM Paneli
+                </Link>
+                <Link to="/evrenler" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
+                  Evrenler
+                </Link>
+              </>
             )}
             <Link to="/ayarlar" className="muted" style={{ fontSize: 14, textDecoration: 'none' }}>
               Ayarlar

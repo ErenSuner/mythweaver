@@ -31,6 +31,7 @@ import {
   type UserSearchResult,
   type CampaignInvite,
 } from '@/lib/social'
+import { listMyUniverses, assignUniverse, type Universe } from '@/lib/universe'
 
 export default function DMPanel() {
   const nav = useNavigate()
@@ -56,6 +57,7 @@ export default function DMPanel() {
   const [inviteResults, setInviteResults] = useState<UserSearchResult[] | null>(null)
   const [searching, setSearching] = useState(false)
   const [invites, setInvites] = useState<CampaignInvite[] | null>(null)
+  const [universes, setUniverses] = useState<Universe[]>([])
 
   const selected = campaigns?.find((c) => c.id === selectedId) ?? null
   const canManageInvites = Boolean(selected && (isAdmin || selected.dm_user_id === myId))
@@ -84,8 +86,17 @@ export default function DMPanel() {
   useEffect(() => {
     refreshCampaigns()
     if (isAdmin) listUsers().then(setUsers).catch((e) => console.error('[dm] kullanıcı listesi', e))
+    listMyUniverses().then(setUniverses).catch((e) => console.error('[dm] evren listesi', e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  async function onAssignUniverse(universeId: string | null) {
+    if (!selected) return
+    await run(async () => {
+      await assignUniverse(selected.id, universeId)
+      await refreshCampaigns()
+    }, 'Evren atanamadı. Tekrar dene.')
+  }
 
   async function onSetDm(userId: string | null) {
     if (!selected) return
@@ -460,6 +471,39 @@ export default function DMPanel() {
                 )
               })}
             </div>
+          )}
+        </div>
+      )}
+
+      {/* Evren atama — campaign'in DM'i veya kurucu */}
+      {selected && canManageInvites && (
+        <div className="panel" style={{ marginBottom: 18 }}>
+          <div className="spread" style={{ flexWrap: 'wrap', gap: 8 }}>
+            <div>
+              <h2 style={{ fontSize: 20, marginBottom: 4 }}>Evren</h2>
+              <p className="muted" style={{ margin: 0 }}>
+                Bu campaign'e opsiyonel bir evren ata; oyuncular lore'u Campaign sayfasında okur.
+              </p>
+            </div>
+            <button className="btn btn-ghost" onClick={() => nav('/evrenler')}>
+              Evrenleri yönet
+            </button>
+          </div>
+          <label className="row" style={{ gap: 8, alignItems: 'center', marginTop: 12 }}>
+            <span className="hint">Atanan evren:</span>
+            <select value={selected.universe_id ?? ''} onChange={(e) => onAssignUniverse(e.target.value || null)}>
+              <option value="">— evren yok —</option>
+              {universes.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          {selected.universe_id && !universes.some((u) => u.id === selected.universe_id) && (
+            <p className="hint" style={{ marginTop: 8, marginBottom: 0 }}>
+              (Atanan evren başkasına ait; listede yalnız kendi evrenlerin görünür.)
+            </p>
           )}
         </div>
       )}
