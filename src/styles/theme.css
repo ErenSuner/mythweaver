@@ -46,6 +46,16 @@ body,
 #root {
   height: 100%;
 }
+
+/* App shell: içerik kısa olsa da footer'ı hep viewport dibine iter */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-main {
+  flex: 1 0 auto;
+}
 body {
   margin: 0;
   font-family: var(--body);

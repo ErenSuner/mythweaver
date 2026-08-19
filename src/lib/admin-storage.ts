@@ -34,9 +34,16 @@ export async function adminListCampaigns(): Promise<Campaign[]> {
 
 export async function createCampaign(name: string): Promise<Campaign> {
   const sb = ensure()
-  // DM opsiyonel: yeni campaign DM'siz oluşturulur. Kurucu is_admin ile yönetir,
-  // dilerse sonra DM atar (setCampaignDm).
-  const { data, error } = await sb.from('campaigns').insert({ name, dm_user_id: null }).select('id, name, created_at, dm_user_id').single()
+  // Campaign'i kuran otomatik o campaign'in DM'i olur (dm_user_id = kendisi).
+  // RLS insert policy'si (0005) with-check dm_user_id = auth.uid() bunu zorunlu kılar.
+  const { data: auth, error: uerr } = await sb.auth.getUser()
+  if (uerr) throw uerr
+  if (!auth.user) throw new Error('Oturum bulunamadı')
+  const { data, error } = await sb
+    .from('campaigns')
+    .insert({ name, dm_user_id: auth.user.id })
+    .select('id, name, created_at, dm_user_id')
+    .single()
   if (error) throw error
   return data as Campaign
 }

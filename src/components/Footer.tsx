@@ -5,7 +5,7 @@ export default function Footer() {
     <footer
       style={{
         borderTop: '1px solid var(--line)',
-        marginTop: 48,
+        marginTop: 'auto',
         padding: '20px',
         fontSize: 13,
       }}

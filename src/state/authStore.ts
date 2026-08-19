@@ -30,6 +30,8 @@ interface AuthState {
   resetPassword: (email: string, captchaToken?: string) => Promise<string | null>
   /** Recovery/oturum içindeyken yeni şifre belirle. */
   updatePassword: (password: string) => Promise<string | null>
+  /** Rolleri yeniden oku (ör. campaign kurunca DM'lik kazanılınca). */
+  refreshRoles: () => Promise<void>
   signOut: () => Promise<void>
 }
 
@@ -102,6 +104,13 @@ export const useAuthStore = create<AuthState>((set) => ({
       options: { redirectTo: `${window.location.origin}/login` },
     })
     return error?.message ?? null
+  },
+
+  refreshRoles: async () => {
+    const { user } = useAuthStore.getState()
+    if (!user) return
+    const roles = await fetchRoles(user.id)
+    set({ user: { ...user, ...roles } })
   },
 
   signOut: async () => {

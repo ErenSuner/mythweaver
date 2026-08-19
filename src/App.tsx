@@ -66,7 +66,9 @@ export default function App() {
     <ErrorBoundary>
       <ConfirmProvider>
         <ToastProvider>
+          <div className="app-shell">
           <BrandHeader />
+          <main className="app-main">
           <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/reset" element={<ResetPassword />} />
@@ -122,7 +124,9 @@ export default function App() {
         />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          </main>
           <Footer />
+          </div>
         </ToastProvider>
       </ConfirmProvider>
     </ErrorBoundary>
