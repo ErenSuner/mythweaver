@@ -9,6 +9,8 @@
   --bg-2: #1f1d1b;
   --panel: rgba(27, 26, 24, 0.72);
   --panel-solid: #1b1a18;
+  /* form alanı zemini — panelden bir tık ayrışan sıcak kömür (input/textarea/select) */
+  --field: #232120;
   /* metin — sıcak nötr ramp */
   --ink: #ece8e1;
   --ink-dim: #a8a29a;
@@ -148,7 +150,7 @@ a {
   background: transparent;
 }
 
-/* form öğeleri */
+/* form öğeleri — koyu, düz, tutarlı; hover'da renk DEĞİŞMEZ, yazı her zaman okunur */
 input[type='text'],
 input[type='number'],
 input[type='email'],
@@ -160,29 +162,39 @@ select {
   font-size: 15.5px;
   line-height: 1.5;
   color: var(--ink);
-  background: var(--bg-2);
+  background-color: var(--field);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   padding: 12px 14px;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  caret-color: var(--accent-bright);
+  /* yalnız kenar/halka animasyonu — arka plan hiçbir durumda değişmez */
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 input::placeholder,
 textarea::placeholder {
   color: var(--ink-faint);
+  opacity: 1; /* Firefox placeholder soluklaştırmasını iptal et */
 }
-input:hover:not(:focus),
-textarea:hover:not(:focus),
-select:hover:not(:focus) {
-  border-color: var(--line-strong);
-  background: var(--bg-1);
-}
+/* odak: yalnız kenar rengi + yumuşak accent halka; arka plan/rengi sabit */
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--accent-bright);
   box-shadow: 0 0 0 3px var(--accent-tint);
-  background: var(--bg-1);
+}
+/* Chrome/Safari autofill: input'u beyaza + siyah yazıya zorlamasını ez */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--ink);
+  /* iç gölgeyle arka planı kendi tema rengimizle boya (autofill sarı/beyazını gizler) */
+  -webkit-box-shadow: 0 0 0 1000px var(--field) inset;
+  box-shadow: 0 0 0 1000px var(--field) inset;
+  transition: background-color 9999s ease 0s;
 }
 label {
   color: var(--ink-dim);
@@ -199,7 +211,7 @@ textarea {
 .rte {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  background: var(--bg-2);
+  background: var(--field);
   overflow: hidden;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
