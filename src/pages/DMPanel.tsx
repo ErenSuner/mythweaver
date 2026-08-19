@@ -22,6 +22,15 @@ import {
   type AdminCharacterRow,
   type UserRow,
 } from '@/lib/admin-storage'
+import {
+  searchUsers,
+  sendInvite,
+  cancelInvite,
+  listCampaignInvites,
+  transferDm,
+  type UserSearchResult,
+  type CampaignInvite,
+} from '@/lib/social'
 
 export default function DMPanel() {
   const nav = useNavigate()
@@ -29,6 +38,7 @@ export default function DMPanel() {
   const toast = useToast()
   const loadAsAdmin = useCharacterStore((s) => s.loadAsAdmin)
   const isAdmin = useAuthStore((s) => s.user?.isAdmin ?? false)
+  const myId = useAuthStore((s) => s.user?.id ?? null)
 
   const [campaigns, setCampaigns] = useState<Campaign[] | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -41,8 +51,14 @@ export default function DMPanel() {
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [campaignsError, setCampaignsError] = useState(false)
   const [membersError, setMembersError] = useState(false)
+  // Davet + DM devri (campaign'in DM'i veya kurucu için)
+  const [inviteQuery, setInviteQuery] = useState('')
+  const [inviteResults, setInviteResults] = useState<UserSearchResult[] | null>(null)
+  const [searching, setSearching] = useState(false)
+  const [invites, setInvites] = useState<CampaignInvite[] | null>(null)
 
   const selected = campaigns?.find((c) => c.id === selectedId) ?? null
+  const canManageInvites = Boolean(selected && (isAdmin || selected.dm_user_id === myId))
 
   // Mutation sarmalı: hata → toast, sessiz kalmaz.
   async function run(fn: () => Promise<void>, errMsg: string) {
@@ -89,9 +105,79 @@ export default function DMPanel() {
       setMembersError(true)
     }
   }
+  async function refreshInvites(id: string) {
+    try {
+      setInvites(await listCampaignInvites(id))
+    } catch (e) {
+      console.error('[dm] davet listesi hatası', e)
+    }
+  }
   useEffect(() => {
     if (selectedId) refreshMembers(selectedId)
-  }, [selectedId])
+    setInvites(null)
+    setInviteResults(null)
+    setInviteQuery('')
+    if (selectedId && canManageInvites) refreshInvites(selectedId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId, canManageInvites])
+
+  async function onSearchUsers() {
+    const q = inviteQuery.trim()
+    if (q.length < 2) {
+      toast('En az 2 karakter yaz.', 'info')
+      return
+    }
+    setSearching(true)
+    try {
+      setInviteResults(await searchUsers(q))
+    } catch (e) {
+      console.error('[dm] kullanıcı arama hatası', e)
+      toast('Arama başarısız. Tekrar dene.', 'error')
+    } finally {
+      setSearching(false)
+    }
+  }
+
+  async function onInvite(u: UserSearchResult) {
+    if (!selected) return
+    await run(async () => {
+      await sendInvite(selected.id, u.id)
+      toast(`${u.username} davet edildi.`, 'success')
+      setInviteResults((prev) => (prev ? prev.filter((r) => r.id !== u.id) : prev))
+      await refreshInvites(selected.id)
+    }, 'Davet gönderilemedi. Tekrar dene.')
+  }
+
+  async function onCancelInvite(inviteId: string) {
+    if (!selected) return
+    await run(async () => {
+      await cancelInvite(inviteId)
+      await refreshInvites(selected.id)
+    }, 'Davet iptal edilemedi. Tekrar dene.')
+  }
+
+  async function onTransferDm(newDmId: string, label: string) {
+    if (!selected) return
+    const ok = await confirm({
+      title: "DM'liği devret",
+      message: (
+        <>
+          <b>{selected.name}</b> campaign'inin DM'liği <b>{label}</b> kişisine devredilecek. Sonrasında bu campaign
+          üzerindeki yetkin sona erer, normal oyuncuya dönersin. Emin misin?
+        </>
+      ),
+      confirmLabel: 'Evet, devret',
+      danger: true,
+    })
+    if (!ok) return
+    await run(async () => {
+      await transferDm(selected.id, newDmId)
+      toast('DM devredildi.', 'success')
+      setSelectedId(null)
+      setMembers(null)
+      await refreshCampaigns()
+    }, 'DM devredilemedi. Tekrar dene.')
+  }
 
   async function onCreate() {
     const name = newName.trim()
@@ -375,6 +461,102 @@ export default function DMPanel() {
               })}
             </div>
           )}
+        </div>
+      )}
+
+      {/* Oyuncu davet + DM devri — campaign'in DM'i veya kurucu */}
+      {selected && canManageInvites && (
+        <div className="panel" style={{ marginBottom: 24 }}>
+          <h2 style={{ fontSize: 20, marginBottom: 4 }}>Oyuncu davet et</h2>
+          <p className="muted" style={{ marginBottom: 12 }}>
+            Kullanıcı adıyla ara ve davet gönder. Davetli kabul edince kendi karakterini bu campaign'e katar.
+          </p>
+          <form
+            className="row"
+            style={{ gap: 10, flexWrap: 'wrap' }}
+            onSubmit={(e) => {
+              e.preventDefault()
+              onSearchUsers()
+            }}
+          >
+            <input
+              value={inviteQuery}
+              onChange={(e) => setInviteQuery(e.target.value)}
+              placeholder="kullanıcı adı ara…"
+              style={{ flex: '1 1 220px' }}
+            />
+            <button className="btn btn-primary" type="submit" disabled={searching || inviteQuery.trim().length < 2}>
+              {searching ? 'Aranıyor…' : 'Ara'}
+            </button>
+          </form>
+
+          {inviteResults !== null && (
+            <div className="stack" style={{ gap: 8, marginTop: 12 }}>
+              {inviteResults.length === 0 ? (
+                <p className="muted">Eşleşen kullanıcı yok.</p>
+              ) : (
+                inviteResults.map((u) => (
+                  <div key={u.id} className="spread panel" style={{ padding: 12 }}>
+                    <b>{u.username}</b>
+                    <button className="btn btn-primary" onClick={() => onInvite(u)}>
+                      Davet et
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+
+          {/* Bekleyen davetler */}
+          <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+            <h3 style={{ fontSize: 16, marginBottom: 8 }}>Bekleyen davetler</h3>
+            {invites === null ? (
+              <p className="muted">Yükleniyor…</p>
+            ) : invites.filter((i) => i.status === 'pending').length === 0 ? (
+              <p className="muted">Bekleyen davet yok.</p>
+            ) : (
+              <div className="stack" style={{ gap: 8 }}>
+                {invites
+                  .filter((i) => i.status === 'pending')
+                  .map((i) => (
+                    <div key={i.inviteId} className="spread panel" style={{ padding: 12 }}>
+                      <span>{i.inviteeUsername ?? '—'}</span>
+                      <button className="btn btn-ghost" onClick={() => onCancelInvite(i.inviteId)}>
+                        İptal
+                      </button>
+                    </div>
+                  ))}
+              </div>
+            )}
+          </div>
+
+          {/* DM devri */}
+          {(() => {
+            const owners = new Map<string, string>()
+            for (const r of members ?? []) {
+              if (r.ownerId !== myId) owners.set(r.ownerId, r.ownerEmail ?? r.ownerId)
+            }
+            const list = Array.from(owners.entries())
+            return (
+              <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+                <h3 style={{ fontSize: 16, marginBottom: 4 }}>DM'liği devret</h3>
+                <p className="muted" style={{ marginBottom: 8 }}>
+                  Bu campaign'in bir üyesine DM'liği ver. Devrettikten sonra normal oyuncuya dönersin.
+                </p>
+                {list.length === 0 ? (
+                  <p className="muted">Devredilecek başka üye yok (önce oyuncu davet et).</p>
+                ) : (
+                  <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+                    {list.map(([id, label]) => (
+                      <button key={id} className="btn btn-ghost" onClick={() => onTransferDm(id, label)}>
+                        {label} → DM yap
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })()}
         </div>
       )}
 

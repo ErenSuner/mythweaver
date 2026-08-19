@@ -1,18 +1,46 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
-import { supabase } from '@/lib/supabase'
+import { supabase, supabaseEnabled } from '@/lib/supabase'
 import { listCharacters } from '@/lib/storage'
+import { setUsername, USERNAME_RE } from '@/lib/social'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
 import { Info } from '@/components/ui'
 
 export default function Settings() {
-  const { user, signOut } = useAuthStore()
+  const { user, signOut, refreshRoles } = useAuthStore()
   const confirm = useConfirm()
   const toast = useToast()
   const nav = useNavigate()
   const [busy, setBusy] = useState(false)
+  const [uname, setUname] = useState(user?.username ?? '')
+  const [savingName, setSavingName] = useState(false)
+
+  async function saveUsername() {
+    const name = uname.trim()
+    if (!USERNAME_RE.test(name)) {
+      toast('3-20 karakter; yalnız harf, rakam ve alt çizgi (_).', 'error')
+      return
+    }
+    if (name === user?.username) return
+    setSavingName(true)
+    try {
+      await setUsername(name)
+      await refreshRoles()
+      toast('Kullanıcı adı güncellendi.', 'success')
+    } catch (e) {
+      const msg = e as { code?: string; message?: string }
+      if (msg.code === '23505' || /duplicate|unique/i.test(msg.message ?? '')) {
+        toast('Bu kullanıcı adı alınmış. Başka dene.', 'error')
+      } else {
+        toast('Güncellenemedi. Tekrar dene.', 'error')
+        console.error('[username] hata', e)
+      }
+    } finally {
+      setSavingName(false)
+    }
+  }
 
   async function exportData() {
     if (!user) return
@@ -75,6 +103,31 @@ export default function Settings() {
           <p className="muted" style={{ fontSize: 14 }}>{user.email}</p>
         </div>
       </div>
+
+      {supabaseEnabled && (
+        <div className="panel stack" style={{ marginBottom: 16 }}>
+          <h2 style={{ fontSize: 18 }}>Kullanıcı adı</h2>
+          <p className="muted" style={{ fontSize: 14 }}>
+            Diğer oyuncular seni bu adla arayıp campaign'e davet eder. 3-20 karakter; harf, rakam, alt çizgi.
+          </p>
+          <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}>
+            <input
+              value={uname}
+              onChange={(e) => setUname(e.target.value)}
+              placeholder="kullanici_adi"
+              maxLength={20}
+              style={{ flex: '1 1 220px' }}
+            />
+            <button
+              className="btn btn-primary"
+              onClick={saveUsername}
+              disabled={savingName || !uname.trim() || uname.trim() === user.username}
+            >
+              {savingName ? 'Kaydediliyor…' : 'Kaydet'}
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="panel stack" style={{ marginBottom: 16 }}>
         <h2 style={{ fontSize: 18 }}>Verilerini indir</h2>

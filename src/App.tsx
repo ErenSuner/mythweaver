@@ -15,6 +15,7 @@ import Privacy from '@/pages/Privacy'
 import Terms from '@/pages/Terms'
 import BrandHeader from '@/components/BrandHeader'
 import Footer from '@/components/Footer'
+import UsernameGate from '@/components/UsernameGate'
 import { ConfirmProvider } from '@/components/Modal'
 import { ToastProvider } from '@/components/Toast'
 import ErrorBoundary from '@/components/ErrorBoundary'
@@ -67,6 +68,7 @@ export default function App() {
       <ConfirmProvider>
         <ToastProvider>
           <div className="app-shell">
+          <UsernameGate />
           <BrandHeader />
           <main className="app-main">
           <Routes>

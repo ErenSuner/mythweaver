@@ -6,17 +6,19 @@ export interface AuthUser {
   email: string | null
   isAdmin: boolean // kurucu (platform sahibi): tam erişim
   isDm: boolean // campaign yürütebilen DM (kurucu da DM sayılır)
+  username: string | null // null = ilk-giriş username gate gösterilir
 }
 
-// Rolleri oku: is_admin profiles'tan; DM'lik ise bir campaign'e atanmış olmaktan türer
-// (dm_user_id = kullanıcı). Kurucu her zaman DM sayılır.
-async function fetchRoles(id: string): Promise<{ isAdmin: boolean; isDm: boolean }> {
-  if (!supabase) return { isAdmin: false, isDm: false }
-  const { data: prof } = await supabase.from('profiles').select('is_admin').eq('id', id).maybeSingle()
+// Rolleri oku: is_admin + username profiles'tan; DM'lik ise bir campaign'e atanmış
+// olmaktan türer (dm_user_id = kullanıcı). Kurucu her zaman DM sayılır.
+async function fetchRoles(id: string): Promise<{ isAdmin: boolean; isDm: boolean; username: string | null }> {
+  if (!supabase) return { isAdmin: false, isDm: false, username: null }
+  const { data: prof } = await supabase.from('profiles').select('is_admin, username').eq('id', id).maybeSingle()
   const isAdmin = Boolean(prof?.is_admin)
-  if (isAdmin) return { isAdmin: true, isDm: true }
+  const username = (prof?.username as string | null) ?? null
+  if (isAdmin) return { isAdmin: true, isDm: true, username }
   const { data: camp } = await supabase.from('campaigns').select('id').eq('dm_user_id', id).limit(1)
-  return { isAdmin: false, isDm: (camp?.length ?? 0) > 0 }
+  return { isAdmin: false, isDm: (camp?.length ?? 0) > 0, username }
 }
 
 interface AuthState {
@@ -35,7 +37,7 @@ interface AuthState {
   signOut: () => Promise<void>
 }
 
-const LOCAL_USER: AuthUser = { id: 'local-dev', email: 'yerel@mythweaver', isAdmin: false, isDm: false }
+const LOCAL_USER: AuthUser = { id: 'local-dev', email: 'yerel@mythweaver', isAdmin: false, isDm: false, username: 'yerel' }
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,

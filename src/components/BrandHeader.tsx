@@ -40,7 +40,7 @@ export default function BrandHeader() {
               Ayarlar
             </Link>
             <span className="muted" style={{ fontSize: 14 }}>
-              {user.email}
+              {user.username ?? user.email}
             </span>
             <button
               className="btn btn-ghost"

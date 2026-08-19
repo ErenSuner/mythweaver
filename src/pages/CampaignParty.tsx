@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
 import { createCampaign } from '@/lib/admin-storage'
+import { listMyInvites, acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
 import { supabaseEnabled } from '@/lib/supabase'
+import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
@@ -16,13 +18,44 @@ interface PartyGroup {
 export default function CampaignParty() {
   const { user, refreshRoles } = useAuthStore()
   const navigate = useNavigate()
+  const toast = useToast()
   const [groups, setGroups] = useState<PartyGroup[] | null>(null)
   const [myIds, setMyIds] = useState<Set<string>>(new Set())
+  const [myChars, setMyChars] = useState<Character[]>([])
+  const [invites, setInvites] = useState<MyInvite[] | null>(null)
+  const [pick, setPick] = useState<Record<string, string>>({})
   const [openId, setOpenId] = useState<string | null>(null)
   const [error, setError] = useState(false)
   const [newCampaign, setNewCampaign] = useState('')
   const [creating, setCreating] = useState(false)
   const [createErr, setCreateErr] = useState<string | null>(null)
+
+  async function onAcceptInvite(inv: MyInvite) {
+    const charId = pick[inv.inviteId] || myChars[0]?.id
+    if (!charId) {
+      toast('Önce bir karakter oluştur.', 'error')
+      return
+    }
+    try {
+      await acceptInvite(inv.inviteId, charId)
+      toast(`${inv.campaignName} campaign'ine katıldın.`, 'success')
+      await load()
+    } catch (e) {
+      const msg = e as { message?: string }
+      console.error('[invite] kabul hatası', e)
+      toast(msg.message ?? 'Davet kabul edilemedi.', 'error')
+    }
+  }
+
+  async function onDeclineInvite(inv: MyInvite) {
+    try {
+      await declineInvite(inv.inviteId)
+      await load()
+    } catch (e) {
+      console.error('[invite] reddetme hatası', e)
+      toast('Davet reddedilemedi.', 'error')
+    }
+  }
 
   async function onCreateCampaign() {
     const name = newCampaign.trim()
@@ -45,8 +78,14 @@ export default function CampaignParty() {
   async function load() {
     try {
       setError(false)
-      const [camps, mine] = await Promise.all([myCampaigns(), listCharacters(user?.id ?? null)])
+      const [camps, mine, inv] = await Promise.all([
+        myCampaigns(),
+        listCharacters(user?.id ?? null),
+        supabaseEnabled ? listMyInvites().catch(() => []) : Promise.resolve([]),
+      ])
       setMyIds(new Set(mine.map((c) => c.id)))
+      setMyChars(mine)
+      setInvites(inv)
       const withMembers = await Promise.all(
         camps.map(async (campaign) => ({ campaign, members: await campaignPeers(campaign.id) })),
       )
@@ -67,6 +106,48 @@ export default function CampaignParty() {
         <h1 style={{ fontSize: 30, marginBottom: 2 }}>Campaign</h1>
         <p className="muted">Aynı maceradaki yoldaşlarının karakterleri.</p>
       </div>
+
+      {invites && invites.length > 0 && (
+        <div className="panel" style={{ marginBottom: 22, borderColor: 'var(--accent)' }}>
+          <h2 style={{ fontSize: 18, marginBottom: 10 }}>Gelen davetler</h2>
+          <div className="stack" style={{ gap: 12 }}>
+            {invites.map((inv) => (
+              <div key={inv.inviteId} className="panel" style={{ padding: 14 }}>
+                <div style={{ marginBottom: 8 }}>
+                  <b>{inv.campaignName}</b>
+                  {inv.inviterUsername && <span className="muted"> · {inv.inviterUsername} davet etti</span>}
+                </div>
+                <div className="row" style={{ gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+                  {myChars.length === 0 ? (
+                    <span className="muted">Katılmak için önce bir karakter oluştur.</span>
+                  ) : (
+                    <select
+                      value={pick[inv.inviteId] ?? myChars[0]?.id ?? ''}
+                      onChange={(e) => setPick((p) => ({ ...p, [inv.inviteId]: e.target.value }))}
+                    >
+                      {myChars.map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.characterName || 'İsimsiz Kahraman'}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => onAcceptInvite(inv)}
+                    disabled={myChars.length === 0}
+                  >
+                    Kabul et
+                  </button>
+                  <button className="btn btn-ghost" onClick={() => onDeclineInvite(inv)}>
+                    Reddet
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {supabaseEnabled && (
         <div className="panel" style={{ marginBottom: 22 }}>
