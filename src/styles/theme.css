@@ -1722,3 +1722,54 @@ button.badge:hover {
   display: block;
   margin-bottom: 6px;
 }
+
+/* --- ayar listesi: her ayar tek satır, kart yığını değil --- */
+.settings-list {
+  padding: 4px 22px;
+}
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.setting-row:last-child {
+  border-bottom: 0;
+}
+.setting-label {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.setting-label > span {
+  display: block;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.setting-label .hint {
+  margin: 2px 0 0;
+}
+.setting-control {
+  flex: 0 1 auto;
+}
+.setting-control input {
+  width: auto;
+  flex: 0 1 190px;
+  min-width: 120px;
+}
+@media (max-width: 640px) {
+  .settings-list {
+    padding: 4px 16px;
+  }
+  /* dar ekranda kontrol etiketin altına iner ve tam genişlik alır */
+  .setting-row {
+    align-items: stretch;
+  }
+  .setting-control {
+    flex: 1 1 100%;
+  }
+}

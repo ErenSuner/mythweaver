@@ -6,7 +6,6 @@ import { listCharacters } from '@/lib/storage'
 import { setUsername, USERNAME_RE } from '@/lib/social'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
-import { Info } from '@/components/ui'
 import { SettingsIcon } from '@/components/icons'
 
 export default function Settings() {
@@ -106,54 +105,64 @@ export default function Settings() {
         </div>
       </div>
 
-      <div className="panel stack" style={{ marginBottom: 16 }}>
-        <div>
-          <h2 style={{ fontSize: 18, marginBottom: 4 }}>Hesap</h2>
-          <p className="muted" style={{ fontSize: 14 }}>{user.email}</p>
-        </div>
-      </div>
-
-      {supabaseEnabled && (
-        <div className="panel stack" style={{ marginBottom: 16 }}>
-          <h2 style={{ fontSize: 18 }}>Kullanıcı adı</h2>
-          <p className="muted" style={{ fontSize: 14 }}>
-            Diğer oyuncular seni bu adla arayıp campaign'e davet eder. 3-20 karakter; harf, rakam, alt çizgi.
-          </p>
-          <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}>
-            <input
-              value={uname}
-              onChange={(e) => setUname(e.target.value)}
-              placeholder="kullanici_adi"
-              maxLength={20}
-              style={{ flex: '1 1 220px' }}
-            />
-            <button
-              className="btn btn-primary"
-              onClick={saveUsername}
-              disabled={savingName || !uname.trim() || uname.trim() === user.username}
-            >
-              {savingName ? 'Kaydediliyor…' : 'Kaydet'}
-            </button>
+      {/* Tek liste: her ayar bir satır. Önceden her ayar ayrı panel kartıydı,
+          dört kart alt alta gereksiz ağırlık yapıyordu. */}
+      <div className="panel settings-list">
+        <div className="setting-row">
+          <div className="setting-label">
+            <span>E-posta</span>
+            <p className="hint">Giriş yaptığın hesap.</p>
           </div>
+          <span className="muted">{user.email}</span>
         </div>
-      )}
 
-      <div className="panel stack" style={{ marginBottom: 16 }}>
-        <h2 style={{ fontSize: 18 }}>Verilerini indir</h2>
-        <p className="muted" style={{ fontSize: 14 }}>
-          Tüm karakterlerini JSON dosyası olarak indir (veri taşınabilirliği).
-        </p>
-        <button className="btn" onClick={exportData} disabled={busy} style={{ alignSelf: 'flex-start' }}>
-          Verilerimi İndir (JSON)
-        </button>
+        {supabaseEnabled && (
+          <div className="setting-row">
+            <div className="setting-label">
+              <span>Kullanıcı adı</span>
+              <p className="hint">Oyuncular seni bu adla arayıp davet eder. 3-20 karakter; harf, rakam, alt çizgi.</p>
+            </div>
+            <div className="row setting-control" style={{ gap: 8 }}>
+              <input
+                value={uname}
+                onChange={(e) => setUname(e.target.value)}
+                placeholder="kullanici_adi"
+                maxLength={20}
+                aria-label="Kullanıcı adı"
+              />
+              <button
+                className="btn btn-primary"
+                onClick={saveUsername}
+                disabled={savingName || !uname.trim() || uname.trim() === user.username}
+              >
+                {savingName ? 'Kaydediliyor…' : 'Kaydet'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="setting-row">
+          <div className="setting-label">
+            <span>Verilerini indir</span>
+            <p className="hint">Tüm karakterlerin JSON dosyası olarak.</p>
+          </div>
+          <button className="btn" onClick={exportData} disabled={busy}>
+            İndir
+          </button>
+        </div>
       </div>
 
-      <div className="panel stack" style={{ borderColor: 'var(--danger)' }}>
-        <h2 style={{ fontSize: 18 }}>Tehlikeli bölge</h2>
-        <Info>Hesabını silmek tüm karakterlerini kalıcı olarak siler ve geri alınamaz.</Info>
-        <button className="btn btn-danger" onClick={deleteAccount} disabled={busy} style={{ alignSelf: 'flex-start' }}>
-          Hesabımı Sil
-        </button>
+      {/* Hesap silme ayrı kalır — yıkıcı eylem diğer ayarlarla aynı listede durmaz. */}
+      <div className="panel" style={{ marginTop: 16 }}>
+        <div className="danger-zone" style={{ marginTop: 0, paddingTop: 0, borderTop: 0 }}>
+          <span className="rubric">Geri alınamaz</span>
+          <p className="hint" style={{ margin: '0 0 12px' }}>
+            Hesabını silmek tüm karakterlerini kalıcı olarak siler.
+          </p>
+          <button className="btn btn-danger" onClick={deleteAccount} disabled={busy}>
+            Hesabımı sil
+          </button>
+        </div>
       </div>
     </div>
   )

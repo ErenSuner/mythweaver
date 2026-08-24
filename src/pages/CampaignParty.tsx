@@ -9,7 +9,8 @@ import { sanitizeLore } from '@/lib/sanitize'
 import { supabaseEnabled } from '@/lib/supabase'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
-import { CampaignIcon } from '@/components/icons'
+import { CampaignIcon, PlusIcon } from '@/components/icons'
+import { Modal } from '@/components/Modal'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 
@@ -32,7 +33,7 @@ export default function CampaignParty() {
   const [error, setError] = useState(false)
   const [newCampaign, setNewCampaign] = useState('')
   const [creating, setCreating] = useState(false)
-  const [createErr, setCreateErr] = useState<string | null>(null)
+  const [createOpen, setCreateOpen] = useState(false)
 
   async function onAcceptInvite(inv: MyInvite) {
     const charId = pick[inv.inviteId] || myChars[0]?.id
@@ -65,15 +66,15 @@ export default function CampaignParty() {
     const name = newCampaign.trim()
     if (!name || creating) return
     setCreating(true)
-    setCreateErr(null)
     try {
       await createCampaign(name)
       setNewCampaign('')
+      setCreateOpen(false)
       await refreshRoles() // kuran DM oldu → /dm açılır
       navigate('/dm')
     } catch (e) {
       console.error('[campaign] oluşturma hatası', e)
-      setCreateErr('Campaign oluşturulamadı. Tekrar dene.')
+      toast('Campaign oluşturulamadı. Tekrar dene.', 'error')
     } finally {
       setCreating(false)
     }
@@ -110,6 +111,9 @@ export default function CampaignParty() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
+  // Açık karakter tüm gruplarda aranır; modal tek yerde render edilir.
+  const openChar = groups?.flatMap((g) => g.members).find((m) => m.id === openId) ?? null
+
   return (
     <div className="container">
       <div className="page-head with-icon">
@@ -120,82 +124,94 @@ export default function CampaignParty() {
           <h1>Campaign</h1>
           <p className="page-sub">Aynı maceradaki yoldaşlarının karakterleri.</p>
         </div>
-      </div>
-
-      {invites && invites.length > 0 && (
-        <div className="panel" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
-          <h2 style={{ fontSize: 18, marginBottom: 10 }}>Gelen davetler</h2>
-          <div className="stack" style={{ gap: 12 }}>
-            {invites.map((inv) => (
-              <div key={inv.inviteId} className="panel" style={{ padding: 14 }}>
-                <div style={{ marginBottom: 8 }}>
-                  <b>{inv.campaignName}</b>
-                  {inv.inviterUsername && <span className="muted"> · {inv.inviterUsername} davet etti</span>}
-                </div>
-                <div className="row" style={{ gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-                  {myChars.length === 0 ? (
-                    <span className="muted">Katılmak için önce bir karakter oluştur.</span>
-                  ) : (
-                    <select
-                      value={pick[inv.inviteId] ?? myChars[0]?.id ?? ''}
-                      onChange={(e) => setPick((p) => ({ ...p, [inv.inviteId]: e.target.value }))}
-                    >
-                      {myChars.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.characterName || 'İsimsiz Kahraman'}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => onAcceptInvite(inv)}
-                    disabled={myChars.length === 0}
-                  >
-                    Kabul et
-                  </button>
-                  <button className="btn btn-ghost" onClick={() => onDeclineInvite(inv)}>
-                    Reddet
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {supabaseEnabled && (
-        <div className="panel" style={{ marginBottom: 22 }}>
-          <h2 style={{ fontSize: 18, marginBottom: 4 }}>Kendi campaign'ini kur</h2>
-          <p className="muted" style={{ marginBottom: 12 }}>
-            Bir campaign oluştur, otomatik olarak DM'i sen olursun ve oyuncu davet edebilirsin.
-          </p>
-          <form
-            className="row"
-            style={{ gap: 10, flexWrap: 'wrap' }}
-            onSubmit={(e) => {
-              e.preventDefault()
-              onCreateCampaign()
+        {supabaseEnabled && (
+          <button
+            className="icon-btn icon-btn-primary"
+            title="Kendi campaign'ini kur"
+            onClick={() => {
+              setNewCampaign('')
+              setCreateOpen(true)
             }}
           >
-            <input
-              value={newCampaign}
-              onChange={(e) => setNewCampaign(e.target.value)}
-              placeholder="ör. Kayıp Madenlerin Laneti"
-              maxLength={80}
-              style={{ flex: '1 1 240px' }}
-            />
-            <button className="btn btn-primary" type="submit" disabled={creating || !newCampaign.trim()}>
-              {creating ? 'Oluşturuluyor…' : '✦ Oluştur'}
-            </button>
-          </form>
-          {createErr && (
-            <p className="muted" style={{ color: 'var(--danger, #e57373)', marginTop: 10, marginBottom: 0 }}>
-              {createErr}
-            </p>
-          )}
+            <PlusIcon size={19} />
+            <span className="sr-only">Kendi campaign&apos;ini kur</span>
+          </button>
+        )}
+      </div>
+
+      {/* Gelen davetler — eyleme çağıran tek uyarı, o yüzden ekranda kalır.
+          İç içe panel yerine tek satırlık kayıtlar. */}
+      {invites && invites.length > 0 && (
+        <div className="panel stack" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
+          <span className="rubric">Gelen davetler</span>
+          {invites.map((inv) => (
+            <div key={inv.inviteId} className="setting-row" style={{ padding: '12px 0' }}>
+              <div className="setting-label">
+                <span>{inv.campaignName}</span>
+                {inv.inviterUsername && <p className="hint">{inv.inviterUsername} davet etti</p>}
+              </div>
+              <div className="row setting-control" style={{ gap: 8, alignItems: 'center' }}>
+                {myChars.length === 0 ? (
+                  <span className="muted">Katılmak için önce bir karakter oluştur.</span>
+                ) : (
+                  <select
+                    aria-label="Katılacak karakter"
+                    value={pick[inv.inviteId] ?? myChars[0]?.id ?? ''}
+                    onChange={(e) => setPick((p) => ({ ...p, [inv.inviteId]: e.target.value }))}
+                  >
+                    {myChars.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.characterName || 'İsimsiz Kahraman'}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                <button className="btn btn-primary" onClick={() => onAcceptInvite(inv)} disabled={myChars.length === 0}>
+                  Kabul et
+                </button>
+                <button className="btn btn-ghost" onClick={() => onDeclineInvite(inv)}>
+                  Reddet
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
+
+      {/* Campaign kurma modalı */}
+      <Modal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        title="Kendi campaign'ini kur"
+        subtitle="Kuran DM olur; sonra oyuncu davet edebilirsin."
+        footer={
+          <>
+            <button className="btn btn-ghost" onClick={() => setCreateOpen(false)}>
+              Vazgeç
+            </button>
+            <button className="btn btn-primary" disabled={creating || !newCampaign.trim()} onClick={onCreateCampaign}>
+              {creating ? 'Oluşturuluyor…' : 'Oluştur'}
+            </button>
+          </>
+        }
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            onCreateCampaign()
+          }}
+        >
+          <label htmlFor="new-campaign-name">Campaign adı</label>
+          <input
+            id="new-campaign-name"
+            autoFocus
+            value={newCampaign}
+            onChange={(e) => setNewCampaign(e.target.value)}
+            placeholder="ör. Kayıp Madenlerin Laneti"
+            maxLength={80}
+          />
+        </form>
+      </Modal>
 
       {error ? (
         <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
@@ -262,22 +278,22 @@ export default function CampaignParty() {
               })}
             </div>
 
-            {g.members
-              .filter((m) => m.id === openId)
-              .map((m) => (
-                <div key={m.id} style={{ marginTop: 16 }}>
-                  <div className="spread" style={{ marginBottom: 10 }}>
-                    <h3 style={{ fontSize: 20 }}>{m.characterName || 'İsimsiz Kahraman'}</h3>
-                    <button className="btn btn-ghost" onClick={() => setOpenId(null)}>
-                      Kapat
-                    </button>
-                  </div>
-                  {/* onEdit verilmez -> salt-okur; büyü/silah/kaynak ⓘ künyeleri yine çalışır */}
-                  <CharacterCard character={m} />
-                </div>
-              ))}
           </section>
         ))
+      )}
+
+      {/* Karakter detayı — satır içi açılım sayfayı itiyordu; DM panelindeki
+          gibi modalde gösterilir. onEdit verilmez, salt-okur. */}
+      {openChar && (
+        <Modal
+          open={Boolean(openChar)}
+          onClose={() => setOpenId(null)}
+          wide
+          title={openChar.characterName || 'İsimsiz Kahraman'}
+          subtitle={openChar.playerName ? `Oyuncu: ${openChar.playerName}` : undefined}
+        >
+          <CharacterCard character={openChar} />
+        </Modal>
       )}
     </div>
   )
