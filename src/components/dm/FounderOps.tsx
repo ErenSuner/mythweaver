@@ -44,7 +44,7 @@ export default function FounderOps() {
 
 function TabBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
-    <button className={`btn btn-ghost${active ? ' badge-new' : ''}`} onClick={onClick}>
+    <button className={`tab${active ? ' active' : ''}`} aria-pressed={active} onClick={onClick}>
       {children}
     </button>
   )

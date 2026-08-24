@@ -122,6 +122,37 @@ export function CandleIcon(p: IconProps) {
   )
 }
 
+// Duzenle — kalem
+export function EditIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z" />
+      <path d="M14.5 6.5l3 3" />
+    </svg>
+  )
+}
+
+// Oyuncular — iki figur
+export function PlayersIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3 20v-1.2A4.8 4.8 0 0 1 7.8 14h2.4a4.8 4.8 0 0 1 4.8 4.8V20" />
+      <path d="M16 5.6a3.2 3.2 0 0 1 0 5.6M17.5 14h.7a3.8 3.8 0 0 1 3.8 3.8V20" opacity="0.6" />
+    </svg>
+  )
+}
+
+// Sil — kutu
+export function TrashIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M4 7h16M9.5 7V5.2A1.2 1.2 0 0 1 10.7 4h2.6a1.2 1.2 0 0 1 1.2 1.2V7" />
+      <path d="M6.5 7l.8 12a1.6 1.6 0 0 0 1.6 1.5h6.2a1.6 1.6 0 0 0 1.6-1.5l.8-12" />
+    </svg>
+  )
+}
+
 const REGISTRY = {
   characters: CharactersIcon,
   campaign: CampaignIcon,
@@ -133,6 +164,9 @@ const REGISTRY = {
   dice: DiceIcon,
   daylight: DaylightIcon,
   candle: CandleIcon,
+  edit: EditIcon,
+  players: PlayersIcon,
+  trash: TrashIcon,
 }
 
 export type IconName = keyof typeof REGISTRY

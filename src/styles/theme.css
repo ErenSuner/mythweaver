@@ -1637,3 +1637,88 @@ button.badge:hover {
   font-family: var(--serif);
   font-size: 18px;
 }
+
+/* ============================================================
+   ARAÇ ÇUBUĞU — ikon düğmeleri
+   Yönetim eylemleri ekranda sürekli durmaz; araç çubuğundaki ikon
+   düğmelerinin arkasında, modalde toplanır. Ekran sade kalır,
+   yıkıcı eylemler kazayla tıklanmaz.
+   ============================================================ */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-btn);
+  background: var(--btn-face);
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.icon-btn:hover:not(:disabled) {
+  color: var(--leaf-bright);
+  border-color: var(--leaf);
+  background: var(--btn-face-hover);
+}
+.icon-btn:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 2px;
+}
+.icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.icon-btn-primary {
+  border-color: var(--leaf);
+  background: var(--leaf-tint);
+  color: var(--leaf-bright);
+}
+.icon-btn-primary:hover:not(:disabled) {
+  background: var(--leaf);
+  color: var(--on-leaf);
+}
+
+/* campaign araç çubuğu: seçici + eylem ikonları tek satırda */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.toolbar-select {
+  flex: 1 1 240px;
+  min-width: 0;
+  max-width: 380px;
+}
+.toolbar-sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 28px;
+  background: var(--line);
+  margin: 0 2px;
+}
+/* dar ekran: seçici tek başına üst satıra, ikonlar altına — üç satıra
+   bölünüp dağılmasın diye basis serbest bırakılır. */
+@media (max-width: 640px) {
+  .toolbar-select {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+  .toolbar-sep {
+    display: none;
+  }
+}
+
+/* modal içi tehlikeli bölge — silme burada, ayrı ve en altta */
+.danger-zone {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.danger-zone .rubric {
+  display: block;
+  margin-bottom: 6px;
+}

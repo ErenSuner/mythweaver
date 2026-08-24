@@ -5,7 +5,7 @@ import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
-import { DmIcon } from '@/components/icons'
+import { DmIcon, PlusIcon, EditIcon, PlayersIcon, UniverseIcon } from '@/components/icons'
 import PartyStatTable from '@/components/dm/PartyStatTable'
 import FounderOps from '@/components/dm/FounderOps'
 import { classById, raceById } from '@/data'
@@ -59,6 +59,11 @@ export default function DMPanel() {
   const [searching, setSearching] = useState(false)
   const [invites, setInvites] = useState<CampaignInvite[] | null>(null)
   const [universes, setUniverses] = useState<Universe[]>([])
+  // Yönetim eylemleri modallerde toplanır; ekranda sürekli durmaz.
+  const [createOpen, setCreateOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [playersOpen, setPlayersOpen] = useState(false)
+  const [renameDraft, setRenameDraft] = useState('')
 
   const selected = campaigns?.find((c) => c.id === selectedId) ?? null
   const canManageInvites = Boolean(selected && (isAdmin || selected.dm_user_id === myId))
@@ -208,19 +213,28 @@ export default function DMPanel() {
     await run(async () => {
       const c = await createCampaign(name)
       setNewName('')
+      setCreateOpen(false)
       await refreshCampaigns()
       setSelectedId(c.id)
     }, 'Campaign oluşturulamadı. Tekrar dene.')
   }
 
+  // Ad değişikliği ayarlar modalindeki input'tan gelir (tarayıcı prompt'u yok).
   async function onRename() {
     if (!selected) return
-    const name = window.prompt('Yeni campaign adı', selected.name)?.trim()
+    const name = renameDraft.trim()
     if (!name || name === selected.name) return
     await run(async () => {
       await renameCampaign(selected.id, name)
       await refreshCampaigns()
+      toast('Campaign adı güncellendi.', 'success')
     }, 'Ad değiştirilemedi. Tekrar dene.')
+  }
+
+  function openSettings() {
+    if (!selected) return
+    setRenameDraft(selected.name)
+    setSettingsOpen(true)
   }
 
   async function onDelete() {
@@ -239,6 +253,7 @@ export default function DMPanel() {
     if (!ok) return
     await run(async () => {
       await deleteCampaign(selected.id)
+      setSettingsOpen(false)
       setSelectedId(null)
       setMembers(null)
       await refreshCampaigns()
@@ -319,25 +334,30 @@ export default function DMPanel() {
         </button>
       </div>
 
-      {/* Campaign seçici + oluştur */}
+      {/* Campaign araç çubuğu — seçici + eylem ikonları.
+          Yeniden adlandır / sil / davet artık burada değil; ikonların
+          arkasındaki modallerde. Ekran sade kalır, yıkıcı eylem kazayla
+          tıklanmaz. */}
       <div className="panel" style={{ marginBottom: 18 }}>
-        <label style={{ display: 'block', marginBottom: 8 }}>Campaign'ler</label>
         {campaignsError ? (
-          <div className="row" style={{ gap: 10, marginTop: 6, alignItems: 'center' }}>
+          <div className="row" style={{ gap: 10, alignItems: 'center' }}>
             <span className="muted">Campaign'ler yüklenemedi.</span>
             <button className="btn btn-ghost" onClick={refreshCampaigns}>Tekrar dene</button>
           </div>
         ) : campaigns === null ? (
-          <p className="muted">Yükleniyor…</p>
+          <p className="muted" style={{ margin: 0 }}>Yükleniyor…</p>
         ) : (
-          <>
+          <div className="toolbar">
             {campaigns.length === 0 ? (
-              <p className="muted" style={{ marginTop: 6 }}>Henüz campaign yok. Aşağıdan oluştur.</p>
+              <span className="muted" style={{ flex: '1 1 auto' }}>
+                Henüz campaign yok. Sağdaki + ile ilkini oluştur.
+              </span>
             ) : (
               <select
+                className="toolbar-select"
+                aria-label="Campaign seç"
                 value={selectedId ?? ''}
                 onChange={(e) => setSelectedId(e.target.value || null)}
-                style={{ marginTop: 6, maxWidth: 360 }}
               >
                 {campaigns.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -346,62 +366,46 @@ export default function DMPanel() {
                 ))}
               </select>
             )}
-            {/* seçili campaign yönetimi */}
-            {selected && (
-              <div className="row" style={{ gap: 8, marginTop: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-                <button className="btn btn-ghost" onClick={onRename}>
-                  ✎ Yeniden adlandır
-                </button>
-                <button className="btn btn-danger" onClick={onDelete}>
-                  Sil
-                </button>
-                {isAdmin && (
-                  <label className="row" style={{ gap: 6, alignItems: 'center', marginLeft: 4 }}>
-                    <span className="hint">DM:</span>
-                    <select
-                      value={selected.dm_user_id ?? ''}
-                      onChange={(e) => onSetDm(e.target.value || null)}
-                      disabled={users === null}
-                    >
-                      <option value="">— DM yok —</option>
-                      {(users ?? []).map((u) => (
-                        <option key={u.id} value={u.id}>
-                          {u.email ?? u.id}
-                          {u.isAdmin ? ' (kurucu)' : ''}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                )}
-              </div>
-            )}
 
-            {/* yeni campaign oluştur — karakter oluşturmadaki input deseniyle */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault()
-                onCreate()
+            <button
+              className="icon-btn icon-btn-primary"
+              title="Yeni campaign oluştur"
+              onClick={() => {
+                setNewName('')
+                setCreateOpen(true)
               }}
-              style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--line)' }}
             >
-              <div className="row" style={{ gap: 12, flexWrap: 'wrap', alignItems: 'flex-end' }}>
-                <div style={{ flex: '1 1 260px' }}>
-                  <label htmlFor="new-campaign">Yeni campaign</label>
-                  <input
-                    id="new-campaign"
-                    type="text"
-                    placeholder="ör. Kayıp Madenlerin Laneti"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    style={{ marginTop: 6 }}
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary" disabled={!newName.trim()}>
-                  ✦ Oluştur
+              <PlusIcon size={19} />
+              <span className="sr-only">Yeni campaign oluştur</span>
+            </button>
+
+            {selected && (
+              <>
+                <span className="toolbar-sep" aria-hidden="true" />
+                <button className="icon-btn" title="Campaign ayarları" onClick={openSettings}>
+                  <EditIcon size={19} />
+                  <span className="sr-only">Campaign ayarları</span>
                 </button>
-              </div>
-            </form>
-          </>
+                {canManageInvites && (
+                  <button
+                    className="icon-btn"
+                    title="Oyuncular ve davetler"
+                    onClick={() => setPlayersOpen(true)}
+                  >
+                    <PlayersIcon size={19} />
+                    <span className="sr-only">Oyuncular ve davetler</span>
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
+        {/* bağlam satırı: atanmış evren varsa tek satırda görünür */}
+        {selected?.universe_id && (
+          <p className="hint" style={{ margin: '10px 0 0' }}>
+            Evren: {universes.find((u) => u.id === selected.universe_id)?.name ?? '(başkasına ait)'}
+          </p>
         )}
       </div>
 
@@ -414,13 +418,15 @@ export default function DMPanel() {
               {members && members.length > 0 && (
                 <div className="row" style={{ gap: 4 }}>
                   <button
-                    className={`btn btn-ghost${membersView === 'summary' ? ' badge-new' : ''}`}
+                    className={`tab${membersView === 'summary' ? ' active' : ''}`}
+                    aria-pressed={membersView === 'summary'}
                     onClick={() => setMembersView('summary')}
                   >
                     Özet
                   </button>
                   <button
-                    className={`btn btn-ghost${membersView === 'cards' ? ' badge-new' : ''}`}
+                    className={`tab${membersView === 'cards' ? ' active' : ''}`}
+                    aria-pressed={membersView === 'cards'}
                     onClick={() => setMembersView('cards')}
                   >
                     Kartlar
@@ -457,13 +463,22 @@ export default function DMPanel() {
                 const race = raceById(c.raceId)
                 const klass = classById(c.classId)
                 return (
-                  <div key={c.id} className="choice-card" onClick={() => setOpenRow(row)}>
+                  <div
+                    key={c.id}
+                    className={`choice-card ${c.completed ? 'illuminated' : ''}`}
+                    onClick={() => setOpenRow(row)}
+                  >
                     <div className="spread">
-                      <h3>{c.characterName || 'İsimsiz Kahraman'}</h3>
+                      <div>
+                        <span className="eyebrow">
+                          {[race?.name, klass?.name].filter(Boolean).join(' · ') || 'Kahraman'}
+                        </span>
+                        <h3>{c.characterName || 'İsimsiz Kahraman'}</h3>
+                      </div>
                       {!c.completed && <span className="badge">taslak</span>}
                     </div>
-                    <p>
-                      {race?.name ?? '—'} · {klass?.name ?? '—'} · Seviye {c.level}
+                    <p className="char-card-level">
+                      Seviye <b>{c.level}</b>
                     </p>
                     <p className="hint">Oyuncu: {row.ownerEmail ?? '—'}</p>
                     <div className="row" style={{ marginTop: 12, gap: 8 }}>
@@ -494,58 +509,173 @@ export default function DMPanel() {
         </div>
       )}
 
-      {/* Evren atama — campaign'in DM'i veya kurucu */}
-      {selected && canManageInvites && (
-        <div className="panel" style={{ marginBottom: 18 }}>
-          <div className="spread" style={{ flexWrap: 'wrap', gap: 8 }}>
+      {/* Yeni campaign modalı */}
+      <Modal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        title="Yeni campaign"
+        subtitle="Maceraya bir ad ver; sonradan değiştirebilirsin."
+        footer={
+          <>
+            <button className="btn btn-ghost" onClick={() => setCreateOpen(false)}>
+              Vazgeç
+            </button>
+            <button className="btn btn-primary" disabled={!newName.trim()} onClick={onCreate}>
+              Oluştur
+            </button>
+          </>
+        }
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            onCreate()
+          }}
+        >
+          <label htmlFor="new-campaign">Campaign adı</label>
+          <input
+            id="new-campaign"
+            type="text"
+            autoFocus
+            placeholder="ör. Kayıp Madenlerin Laneti"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+        </form>
+      </Modal>
+
+      {/* Campaign ayarları — ad, evren, DM; silme en altta ayrı bölmede */}
+      {selected && (
+        <Modal
+          open={settingsOpen}
+          onClose={() => setSettingsOpen(false)}
+          title="Campaign ayarları"
+          subtitle={selected.name}
+        >
+          <form
+            className="stack"
+            onSubmit={(e) => {
+              e.preventDefault()
+              onRename()
+            }}
+          >
             <div>
-              <h2 style={{ fontSize: 20, marginBottom: 4 }}>Evren</h2>
-              <p className="muted" style={{ margin: 0 }}>
-                Bu campaign'e opsiyonel bir evren ata; oyuncular lore'u Campaign sayfasında okur.
+              <label htmlFor="campaign-name">Ad</label>
+              <input
+                id="campaign-name"
+                type="text"
+                value={renameDraft}
+                onChange={(e) => setRenameDraft(e.target.value)}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ alignSelf: 'flex-start' }}
+              disabled={!renameDraft.trim() || renameDraft.trim() === selected.name}
+            >
+              Adı kaydet
+            </button>
+          </form>
+
+          {canManageInvites && (
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+              <div className="spread" style={{ alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+                <label htmlFor="campaign-universe" style={{ margin: 0 }}>
+                  Evren
+                </label>
+                <button
+                  type="button"
+                  className="btn btn-ghost"
+                  onClick={() => {
+                    setSettingsOpen(false)
+                    nav('/evrenler')
+                  }}
+                >
+                  <UniverseIcon size={16} style={{ verticalAlign: '-3px', marginRight: 6 }} />
+                  Evrenleri yönet
+                </button>
+              </div>
+              <select
+                id="campaign-universe"
+                value={selected.universe_id ?? ''}
+                onChange={(e) => onAssignUniverse(e.target.value || null)}
+              >
+                <option value="">— evren yok —</option>
+                {universes.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.name}
+                  </option>
+                ))}
+              </select>
+              <p className="hint" style={{ margin: '8px 0 0' }}>
+                {selected.universe_id && !universes.some((u) => u.id === selected.universe_id)
+                  ? '(Atanan evren başkasına ait; listede yalnız kendi evrenlerin görünür.)'
+                  : 'Oyuncular lore metnini Campaign sayfasında okur.'}
               </p>
             </div>
-            <button className="btn btn-ghost" onClick={() => nav('/evrenler')}>
-              Evrenleri yönet
+          )}
+
+          {isAdmin && (
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+              <label htmlFor="campaign-dm">DM</label>
+              <select
+                id="campaign-dm"
+                value={selected.dm_user_id ?? ''}
+                onChange={(e) => onSetDm(e.target.value || null)}
+                disabled={users === null}
+              >
+                <option value="">— DM yok —</option>
+                {(users ?? []).map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.email ?? u.id}
+                    {u.isAdmin ? ' (kurucu)' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div className="danger-zone">
+            <span className="rubric">Geri alınamaz</span>
+            <p className="hint" style={{ margin: '0 0 10px' }}>
+              Campaign silinir. Karakterler silinmez, yalnız bu campaign ile bağları kopar.
+            </p>
+            <button type="button" className="btn btn-danger" onClick={onDelete}>
+              Campaign&apos;i sil
             </button>
           </div>
-          <label className="row" style={{ gap: 8, alignItems: 'center', marginTop: 12 }}>
-            <span className="hint">Atanan evren:</span>
-            <select value={selected.universe_id ?? ''} onChange={(e) => onAssignUniverse(e.target.value || null)}>
-              <option value="">— evren yok —</option>
-              {universes.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {u.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          {selected.universe_id && !universes.some((u) => u.id === selected.universe_id) && (
-            <p className="hint" style={{ marginTop: 8, marginBottom: 0 }}>
-              (Atanan evren başkasına ait; listede yalnız kendi evrenlerin görünür.)
-            </p>
-          )}
-        </div>
+        </Modal>
       )}
 
-      {/* Oyuncu davet + DM devri — campaign'in DM'i veya kurucu */}
+      {/* Oyuncular — davet gönder, bekleyenleri yönet, DM devret */}
       {selected && canManageInvites && (
-        <div className="panel" style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: 20, marginBottom: 4 }}>Oyuncu davet et</h2>
-          <p className="muted" style={{ marginBottom: 12 }}>
-            Kullanıcı adıyla ara ve davet gönder. Davetli kabul edince kendi karakterini bu campaign'e katar.
-          </p>
+        <Modal
+          open={playersOpen}
+          onClose={() => setPlayersOpen(false)}
+          title="Oyuncular"
+          subtitle={selected.name}
+        >
+          <label htmlFor="invite-search">Kullanıcı ara</label>
           <div style={{ position: 'relative' }}>
             <input
+              id="invite-search"
               value={inviteQuery}
               onChange={(e) => setInviteQuery(e.target.value)}
               placeholder="kullanıcı adı yaz…"
             />
             {searching && (
-              <span className="hint" style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)' }}>
+              <span
+                className="hint"
+                style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)' }}
+              >
                 Aranıyor…
               </span>
             )}
           </div>
+          <p className="hint" style={{ margin: '8px 0 0' }}>
+            Davetli kabul edince kendi karakterini bu campaign&apos;e katar.
+          </p>
 
           {inviteQuery.trim().length >= 2 && inviteResults !== null && (
             <div className="stack" style={{ gap: 8, marginTop: 12 }}>
@@ -553,7 +683,7 @@ export default function DMPanel() {
                 <p className="muted">{searching ? '' : 'Eşleşen kullanıcı yok.'}</p>
               ) : (
                 inviteResults.map((u) => (
-                  <div key={u.id} className="spread panel" style={{ padding: 12 }}>
+                  <div key={u.id} className="spread panel" style={{ padding: 12, alignItems: 'center' }}>
                     <b>{u.username}</b>
                     <button className="btn btn-primary" onClick={() => onInvite(u)}>
                       Davet et
@@ -564,19 +694,22 @@ export default function DMPanel() {
             </div>
           )}
 
-          {/* Bekleyen davetler */}
-          <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
             <h3 style={{ fontSize: 16, marginBottom: 8 }}>Bekleyen davetler</h3>
             {invites === null ? (
-              <p className="muted">Yükleniyor…</p>
+              <p className="muted" style={{ margin: 0 }}>
+                Yükleniyor…
+              </p>
             ) : invites.filter((i) => i.status === 'pending').length === 0 ? (
-              <p className="muted">Bekleyen davet yok.</p>
+              <p className="muted" style={{ margin: 0 }}>
+                Bekleyen davet yok.
+              </p>
             ) : (
               <div className="stack" style={{ gap: 8 }}>
                 {invites
                   .filter((i) => i.status === 'pending')
                   .map((i) => (
-                    <div key={i.inviteId} className="spread panel" style={{ padding: 12 }}>
+                    <div key={i.inviteId} className="spread panel" style={{ padding: 12, alignItems: 'center' }}>
                       <span>{i.inviteeUsername ?? '—'}</span>
                       <button className="btn btn-ghost" onClick={() => onCancelInvite(i.inviteId)}>
                         İptal
@@ -587,7 +720,6 @@ export default function DMPanel() {
             )}
           </div>
 
-          {/* DM devri */}
           {(() => {
             const owners = new Map<string, string>()
             for (const r of members ?? []) {
@@ -595,17 +727,26 @@ export default function DMPanel() {
             }
             const list = Array.from(owners.entries())
             return (
-              <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
-                <h3 style={{ fontSize: 16, marginBottom: 4 }}>DM'liği devret</h3>
-                <p className="muted" style={{ marginBottom: 8 }}>
-                  Bu campaign'in bir üyesine DM'liği ver. Devrettikten sonra normal oyuncuya dönersin.
+              <div className="danger-zone">
+                <span className="rubric">DM&apos;liği devret</span>
+                <p className="hint" style={{ margin: '0 0 10px' }}>
+                  Devrettikten sonra bu campaign üzerindeki yetkin sona erer, normal oyuncuya dönersin.
                 </p>
                 {list.length === 0 ? (
-                  <p className="muted">Devredilecek başka üye yok (önce oyuncu davet et).</p>
+                  <p className="muted" style={{ margin: 0 }}>
+                    Devredilecek başka üye yok — önce oyuncu davet et.
+                  </p>
                 ) : (
                   <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
                     {list.map(([id, label]) => (
-                      <button key={id} className="btn btn-ghost" onClick={() => onTransferDm(id, label)}>
+                      <button
+                        key={id}
+                        className="btn btn-ghost"
+                        onClick={() => {
+                          setPlayersOpen(false)
+                          onTransferDm(id, label)
+                        }}
+                      >
                         {label} → DM yap
                       </button>
                     ))}
@@ -614,7 +755,7 @@ export default function DMPanel() {
               </div>
             )
           })()}
-        </div>
+        </Modal>
       )}
 
       {/* Karakter atama modalı */}
