@@ -5,6 +5,7 @@ import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
+import { DmIcon } from '@/components/icons'
 import PartyStatTable from '@/components/dm/PartyStatTable'
 import FounderOps from '@/components/dm/FounderOps'
 import { classById, raceById } from '@/data'
@@ -303,10 +304,15 @@ export default function DMPanel() {
 
   return (
     <div className="container">
-      <div className="spread" style={{ marginBottom: 18, flexWrap: 'wrap', gap: 10 }}>
-        <div>
-          <h1 style={{ fontSize: 30, marginBottom: 2 }}>DM Paneli</h1>
-          <p className="muted">Campaign'lerini yönet, oyuncuların karakterlerini gör ve düzenle.</p>
+      <div className="page-head spread" style={{ flexWrap: 'wrap', gap: 10 }}>
+        <div className="row" style={{ gap: 14 }}>
+          <span className="page-icon">
+            <DmIcon size={24} />
+          </span>
+          <div>
+            <h1>DM Paneli</h1>
+            <p className="page-sub">Campaign'lerini yönet, oyuncuların karakterlerini gör ve düzenle.</p>
+          </div>
         </div>
         <button className="btn btn-ghost" onClick={() => nav('/')}>
           ← Karakterlerim

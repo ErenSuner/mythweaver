@@ -8,6 +8,7 @@ import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
+import { CharactersIcon, PlusIcon } from '@/components/icons'
 
 export default function MyCharacters() {
   const { user } = useAuthStore()
@@ -64,13 +65,19 @@ export default function MyCharacters() {
 
   return (
     <div className="container">
-      <div className="spread" style={{ marginBottom: 18 }}>
-        <div>
-          <h1 style={{ fontSize: 30, marginBottom: 2 }}>Karakterlerim</h1>
-          <p className="muted">Efsanelerini burada topla.</p>
+      <div className="page-head spread">
+        <div className="row" style={{ gap: 14 }}>
+          <span className="page-icon">
+            <CharactersIcon size={24} />
+          </span>
+          <div>
+            <h1>Karakterlerim</h1>
+            <p className="page-sub">Efsanelerini burada topla.</p>
+          </div>
         </div>
         <button className="btn btn-primary" onClick={createNew}>
-          ✦ Yeni Karakter Oluştur
+          <PlusIcon size={16} style={{ verticalAlign: '-3px', marginRight: 6 }} />
+          Yeni Karakter Oluştur
         </button>
       </div>
 
@@ -82,9 +89,13 @@ export default function MyCharacters() {
       ) : chars === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : chars.length === 0 ? (
-        <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
+        <div className="panel empty-state">
+          <span className="empty-icon">
+            <CharactersIcon size={44} />
+          </span>
           <p className="muted">Henüz bir karakterin yok. İlk efsaneni dokumaya başla.</p>
           <button className="btn btn-primary" style={{ marginTop: 12 }} onClick={createNew}>
+            <PlusIcon size={16} style={{ verticalAlign: '-3px', marginRight: 6 }} />
             İlk Karakterini Oluştur
           </button>
         </div>

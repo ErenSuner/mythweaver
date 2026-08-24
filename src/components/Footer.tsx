@@ -6,13 +6,20 @@ export default function Footer() {
       style={{
         borderTop: '1px solid var(--line)',
         marginTop: 'auto',
-        padding: '20px',
+        padding: '12px 20px',
         fontSize: 13,
       }}
     >
       <div
-        className="container"
-        style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'space-between' }}
+        style={{
+          maxWidth: 1080,
+          margin: '0 auto',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '6px 16px',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
       >
         <div className="row" style={{ gap: 14, flexWrap: 'wrap' }}>
           <Link to="/gizlilik" className="muted" style={{ textDecoration: 'none' }}>

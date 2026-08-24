@@ -9,6 +9,7 @@ import { sanitizeLore } from '@/lib/sanitize'
 import { supabaseEnabled } from '@/lib/supabase'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
+import { CampaignIcon } from '@/components/icons'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 
@@ -111,9 +112,14 @@ export default function CampaignParty() {
 
   return (
     <div className="container">
-      <div style={{ marginBottom: 18 }}>
-        <h1 style={{ fontSize: 30, marginBottom: 2 }}>Campaign</h1>
-        <p className="muted">Aynı maceradaki yoldaşlarının karakterleri.</p>
+      <div className="page-head with-icon">
+        <span className="page-icon">
+          <CampaignIcon size={24} />
+        </span>
+        <div className="page-head-text">
+          <h1>Campaign</h1>
+          <p className="page-sub">Aynı maceradaki yoldaşlarının karakterleri.</p>
+        </div>
       </div>
 
       {invites && invites.length > 0 && (
@@ -199,13 +205,20 @@ export default function CampaignParty() {
       ) : groups === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : groups.length === 0 ? (
-        <div className="panel" style={{ textAlign: 'center', padding: 40 }}>
-          <p className="muted">Henüz dahil olduğun bir campaign yok.</p>
+        <div className="panel empty-state">
+          <span className="empty-icon">
+            <CampaignIcon size={44} />
+          </span>
+          <p className="muted">Henüz dahil olduğun bir campaign yok. Bir davet gelince ya da kendi campaign'ini kurunca burada görünür.</p>
         </div>
       ) : (
         groups.map((g) => (
-          <section key={g.campaign.id} style={{ marginBottom: 28 }}>
-            <h2 style={{ fontSize: 22, marginBottom: 10 }}>{g.campaign.name}</h2>
+          <section key={g.campaign.id} className="section-block">
+            <span className="eyebrow">Kampanya</span>
+            <div className="section-head">
+              <h2>{g.campaign.name}</h2>
+              <span className="section-meta">{g.members.length} kahraman</span>
+            </div>
             {g.campaign.universeId && universeById[g.campaign.universeId] && (
               <details className="panel" style={{ marginBottom: 12 }}>
                 <summary style={{ cursor: 'pointer', fontWeight: 600 }}>

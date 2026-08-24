@@ -7,6 +7,7 @@ import { setUsername, USERNAME_RE } from '@/lib/social'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
 import { Info } from '@/components/ui'
+import { SettingsIcon } from '@/components/icons'
 
 export default function Settings() {
   const { user, signOut, refreshRoles } = useAuthStore()
@@ -95,7 +96,15 @@ export default function Settings() {
 
   return (
     <div className="container" style={{ maxWidth: 620 }}>
-      <h1 style={{ fontSize: 26, marginBottom: 16 }}>Ayarlar</h1>
+      <div className="page-head with-icon">
+        <span className="page-icon">
+          <SettingsIcon size={24} />
+        </span>
+        <div className="page-head-text">
+          <h1>Ayarlar</h1>
+          <p className="page-sub">Hesabını ve verilerini yönet.</p>
+        </div>
+      </div>
 
       <div className="panel stack" style={{ marginBottom: 16 }}>
         <div>

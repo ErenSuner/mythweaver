@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useToast } from '@/components/Toast'
 import { useConfirm } from '@/components/Modal'
 import RichTextEditor from '@/components/RichTextEditor'
+import { UniverseIcon } from '@/components/icons'
 import { sanitizeLore } from '@/lib/sanitize'
 import {
   listMyUniverses,
@@ -109,10 +110,15 @@ export default function Universes() {
 
   return (
     <div className="container" style={{ maxWidth: 820 }}>
-      <div className="spread" style={{ marginBottom: 18, flexWrap: 'wrap', gap: 10 }}>
-        <div>
-          <h1 style={{ fontSize: 30, marginBottom: 2 }}>Evrenler</h1>
-          <p className="muted">Dünya/lore bilgisi. Bir evreni birden çok campaign'de kullanabilirsin.</p>
+      <div className="page-head spread" style={{ flexWrap: 'wrap', gap: 10 }}>
+        <div className="row" style={{ gap: 14 }}>
+          <span className="page-icon">
+            <UniverseIcon size={24} />
+          </span>
+          <div>
+            <h1>Evrenler</h1>
+            <p className="page-sub">Dünya/lore bilgisi. Bir evreni birden çok campaign'de kullanabilirsin.</p>
+          </div>
         </div>
         <button className="btn btn-ghost" onClick={() => nav('/dm')}>
           ← DM Paneli
@@ -146,8 +152,11 @@ export default function Universes() {
       ) : list === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : list.length === 0 ? (
-        <div className="panel" style={{ textAlign: 'center', padding: 30 }}>
-          <p className="muted">Henüz evrenin yok. Yukarıdan oluştur.</p>
+        <div className="panel empty-state">
+          <span className="empty-icon">
+            <UniverseIcon size={44} />
+          </span>
+          <p className="muted">Henüz evrenin yok. Yukarıdan ilk dünyanı oluştur.</p>
         </div>
       ) : (
         <div className="stack" style={{ gap: 14 }}>

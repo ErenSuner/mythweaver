@@ -48,6 +48,12 @@ body,
 #root {
   height: 100%;
 }
+/* güvenlik ağı: hiçbir şey gövdeyi yatay taşırmasın */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 /* App shell: içerik kısa olsa da footer'ı hep viewport dibine iter */
 .app-shell {
@@ -82,6 +88,19 @@ h4 {
   font-weight: 500;
   margin: 0 0 0.4em;
 }
+/* net skala: h1 belirgin öne çıkar, h2/h3 arası kontrast artar */
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 22px;
+  line-height: 1.25;
+}
+h3 {
+  font-size: 17px;
+}
 a {
   color: var(--accent-bright);
 }
@@ -90,6 +109,222 @@ a {
   max-width: 1080px;
   margin: 0 auto;
   padding: 24px 20px 80px;
+}
+
+/* ---------- hiyerarşi primitifleri ---------- */
+/* küçük bağlam etiketi — accent'i metin hiyerarşisine sokar */
+.eyebrow {
+  display: block;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin: 0 0 6px;
+}
+
+/* sayfa başlığı bloğu — h1 + subtitle, altında ince ayraç */
+.page-head {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.page-head > h1 {
+  margin-bottom: 4px;
+}
+.page-head .page-sub {
+  color: var(--ink-dim);
+  font-size: 15px;
+  margin: 0;
+}
+/* landmark ikonu: her sayfa için ayırt edici accent-tint amblem */
+.page-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--accent-tint);
+  border: 1px solid var(--accent-dim);
+  color: var(--accent-bright);
+}
+/* ikonlu page-head: ikon | (başlık+alt) | (opsiyonel sağ aksiyon) */
+.page-head.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.page-head.with-icon .page-head-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* boş-durum: büyük soluk alan ikonu + davet */
+.empty-state {
+  text-align: center;
+  padding: 44px 24px;
+}
+.empty-state .empty-icon {
+  display: inline-grid;
+  place-items: center;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+/* section başlığı — başlık (+ sağ meta) ve altında hairline: kapsam sınırı */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.section-head > h2,
+.section-head > h3 {
+  margin: 0;
+}
+.section-head .section-meta {
+  flex: none;
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-family: var(--body);
+  letter-spacing: 0.01em;
+}
+
+/* ardışık bloklar arası ayrım (ör. campaign'ler) */
+.section-block {
+  margin-bottom: 28px;
+}
+.section-block + .section-block {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- header ---------- */
+.brand-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* nav linki: okunur, aktif sayfa accent + alt çizgi */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+.nav-link svg {
+  flex: none;
+  opacity: 0.85;
+}
+.nav-link.active svg {
+  opacity: 1;
+}
+.nav-link:hover {
+  color: var(--ink);
+}
+.nav-link.active {
+  color: var(--accent-bright);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-bright);
+}
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+/* nav ile kimlik arasındaki dikey ayraç */
+.brand-sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 22px;
+  background: var(--line-strong);
+}
+/* kimlik: tıklanabilir hesap kontrolü (baş harf rozeti + username) */
+.identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--ink-dim);
+  font-size: 14px;
+  padding: 3px 3px 3px 3px;
+  border-radius: 999px;
+  transition: color 0.15s ease;
+}
+.identity:hover {
+  color: var(--ink);
+}
+.identity:hover .identity-avatar {
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+}
+.identity.active {
+  color: var(--accent-bright);
+}
+.identity:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+.identity-avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--field);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+/* hamburger — yalnız mobilde görünür */
+.brand-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  padding: 0;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-2);
+  color: var(--ink);
+  cursor: pointer;
+}
+.brand-menu-btn:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+/* mobil açılır menü — masaüstünde asla görünmez */
+.brand-drawer {
+  display: none;
 }
 
 /* panel/kart */
@@ -330,7 +565,8 @@ select:focus {
 }
 .choice-card h3 {
   margin-bottom: 6px;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 600;
 }
 .choice-card .tr {
   color: var(--ink-faint);
@@ -807,6 +1043,55 @@ button.badge:hover {
   }
   .container {
     padding: 16px 12px 96px;
+  }
+  /* header: inline nav gizle, hamburger göster */
+  .brand-nav {
+    display: none;
+  }
+  .brand-menu-btn {
+    display: inline-flex;
+  }
+  .brand-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 16px 14px;
+    border-top: 1px solid var(--line);
+    background: var(--panel-solid);
+    animation: fade-in 0.15s ease;
+  }
+  /* drawer içindeki nav linkleri: tam-genişlik, dikey, aktifte sol accent şerit */
+  .brand-drawer .nav-link {
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+  .brand-drawer .nav-link.active {
+    color: var(--accent-bright);
+    background: var(--accent-tint);
+  }
+  .brand-drawer .nav-link.active::after {
+    display: none;
+  }
+  .brand-drawer .nav-link:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .brand-drawer-sep {
+    height: 1px;
+    background: var(--line);
+    margin: 6px 0;
+  }
+  /* sayfa başlığı satırı mobilde sarılsın; CTA alt satıra düşsün */
+  .page-head.spread {
+    flex-wrap: wrap;
+  }
+  .page-head.spread > .btn {
+    flex: 1 1 100%;
+  }
+  .page-icon {
+    width: 38px;
+    height: 38px;
   }
   .choice-grid {
     grid-template-columns: 1fr;
