@@ -98,13 +98,15 @@ export function DiceIcon(p: IconProps) {
   )
 }
 
-// Gun isigi — pencereden gelen isik (Scriptorium)
+// Gun isigi — gunes (Scriptorium).
+// Not: once pencere denendi; 24'luk kutuda kenarlara dayanan dikdortgen
+// 17px'te eksik-glyph kutusuna benziyordu. Okunabilirlik once gelir.
 export function DaylightIcon(p: IconProps) {
   return (
     <svg {...base(p)}>
-      <rect x="4" y="3" width="16" height="18" rx="1.5" />
-      <path d="M12 3v18M4 12h16" />
-      <path d="M7.5 21l3-4M13.5 21l3-4" opacity="0.5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22" />
+      <path d="M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" />
     </svg>
   )
 }
