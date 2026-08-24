@@ -16,8 +16,9 @@ export default defineConfig({
         short_name: 'Mythweaver',
         description: 'D&D 5e için Türkçe, adım adım karakter oluşturma sihirbazı.',
         lang: 'tr',
-        theme_color: '#8a3038',
-        background_color: '#121110',
+        // Yükleme ekranı Scriptorium (varsayılan kutup) ile açılır.
+        theme_color: '#e4dcc9',
+        background_color: '#e4dcc9',
         display: 'standalone',
         start_url: '/',
         scope: '/',

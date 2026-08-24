@@ -56,7 +56,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 border: `1px solid ${t.kind === 'error' ? 'var(--danger)' : 'var(--line)'}`,
                 background: 'var(--panel, #1b1a18)',
                 color: 'var(--ink)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+                boxShadow: 'var(--shadow)',
                 fontSize: 14,
                 display: 'flex',
                 gap: 8,

@@ -98,6 +98,28 @@ export function DiceIcon(p: IconProps) {
   )
 }
 
+// Gun isigi — pencereden gelen isik (Scriptorium)
+export function DaylightIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <rect x="4" y="3" width="16" height="18" rx="1.5" />
+      <path d="M12 3v18M4 12h16" />
+      <path d="M7.5 21l3-4M13.5 21l3-4" opacity="0.5" />
+    </svg>
+  )
+}
+
+// Mum isigi — yanan mum (Grimoire)
+export function CandleIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M12 2.5c1.9 2.1 2.8 3.5 2.8 4.9a2.8 2.8 0 0 1-5.6 0c0-1.4.9-2.8 2.8-4.9Z" />
+      <rect x="8.5" y="11" width="7" height="10.5" rx="1" />
+      <path d="M12 11v-.8" />
+    </svg>
+  )
+}
+
 const REGISTRY = {
   characters: CharactersIcon,
   campaign: CampaignIcon,
@@ -107,6 +129,8 @@ const REGISTRY = {
   logout: LogoutIcon,
   plus: PlusIcon,
   dice: DiceIcon,
+  daylight: DaylightIcon,
+  candle: CandleIcon,
 }
 
 export type IconName = keyof typeof REGISTRY

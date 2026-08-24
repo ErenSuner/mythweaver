@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import { CharactersIcon, CampaignIcon, DmIcon, UniverseIcon, DiceIcon, SettingsIcon, LogoutIcon } from '@/components/icons'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function BrandHeader() {
   const { user, signOut } = useAuthStore()
@@ -61,7 +62,7 @@ export default function BrandHeader() {
     <header
       style={{
         borderBottom: '1px solid var(--line)',
-        background: 'rgba(18,17,16,0.85)',
+        background: 'var(--header-bg)',
         backdropFilter: 'blur(8px)',
         position: 'sticky',
         top: 0,
@@ -93,12 +94,16 @@ export default function BrandHeader() {
                 </span>
                 <span>{identity}</span>
               </NavLink>
+              <ThemeToggle />
               <button className="btn btn-ghost" onClick={onSignOut}>
                 Çıkış
               </button>
             </div>
 
-            {/* mobil: hamburger */}
+            {/* mobil: anahtar + hamburger */}
+            <span className="brand-mobile-actions">
+              <ThemeToggle />
+            </span>
             <button
               className="brand-menu-btn"
               aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}

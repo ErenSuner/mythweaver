@@ -1,43 +1,198 @@
-/* Mythweaver — rafine editöryel koyu tema: nötr kömür zemin, öküz kanı accent.
-   Not: eski --gold* isimleri geriye-uyum için korunur ama artık nötr sıcak
-   "highlight" (kemik-beyazı) anlamındadır — parlak altın değil. Accent renk
-   ayrı --accent* token'larıdır ve sınıf kurallarında merkezileşir. */
+/* Mythweaver — Scriptorium / Grimoire: aynı kütüphane, farklı saat.
+   ------------------------------------------------------------------
+   İki kutup, tek sistem. Scriptorium (:root) = gündüz, masaya serilmiş
+   parşömen. Grimoire ([data-theme="dark"]) = gece, siyah cilt üstüne
+   yaldız baskı. Sadece zemin ve ışık değişir; tipografi, ornament ve
+   accent mantığı ortaktır.
+
+   İKİ ACCENT, İKİ AYRI İŞ:
+     --leaf* (yaldız)  birincil — etkileşim, seçim, vurgu, ornament
+     --seal* (mühür)   ikincil  — rubrikasyon, uyarı, yıkıcı aksiyon
+
+   Eski isimler (--accent*, --gold*, --maroon*, --bronze) alias olarak
+   yaşar; inline style'lar bu adları kullandığı için silinmez. Yeni kod
+   doğrudan --leaf* / --seal* kullanmalı.
+
+   Kural: altın METİN sadece panel üstünde kullanılır, çıplak sayfa
+   zemininde değil — açık temada zemin üstünde AA'yı geçmiyor. */
+
+/* ---------- SCRIPTORIUM (gündüz / varsayılan) ---------- */
 :root {
-  /* zemin — nötr sıcak kömür */
-  --bg-0: #121110;
-  --bg-1: #171614;
-  --bg-2: #1f1d1b;
-  --panel: rgba(27, 26, 24, 0.72);
-  --panel-solid: #1b1a18;
-  /* form alanı zemini — panelden bir tık ayrışan sıcak kömür (input/textarea/select) */
-  --field: #232120;
-  /* metin — sıcak nötr ramp */
-  --ink: #ece8e1;
-  --ink-dim: #a8a29a;
-  --ink-faint: #7c766d;
-  /* accent — kısık öküz kanı / bordo */
-  --accent: #8a3038;
-  --accent-bright: #a8434c;
-  --accent-dim: #5e2028;
-  --accent-tint: rgba(138, 48, 56, 0.12);
-  /* eski altın adları -> nötr sıcak highlight (kemik) */
-  --gold: #b7ab98;
-  --gold-bright: #d8cfc0;
-  --bronze: #8a7f6d;
-  /* eski vurgu adları -> accent / nötr alias */
-  --maroon: var(--accent);
-  --maroon-bright: var(--accent-bright);
-  --indigo: #26241f;
-  --indigo-bright: #322f28;
+  color-scheme: light;
+
+  /* zemin — serilmiş parşömen; panel zeminden AÇIK (masaya konmuş sayfa) */
+  --bg-0: #e4dcc9;
+  --bg-1: #efe8d8;
+  --bg-2: #f6f1e4;
+  --panel: #f6f1e4;
+  --panel-solid: #f6f1e4;
+  --field: #fbf8ef;
+  --header-bg: rgba(239, 232, 216, 0.85);
+  --bar-bg: rgba(239, 232, 216, 0.95);
+  --scrim: rgba(52, 44, 32, 0.45);
+
+  /* metin — demir-mazı mürekkebi */
+  --ink: #2a241b;
+  --ink-dim: #5c5344;
+  --ink-faint: #756b5a;
+
+  /* yaldız — birincil */
+  --leaf: #7a5f17;
+  --leaf-bright: #634c12;
+  --leaf-dim: #c0ac77;
+  --leaf-tint: rgba(138, 109, 31, 0.1);
+
+  /* mühür — ikincil. --seal dolgu/kenar, --seal-text metin (kontrast) */
+  --seal: #8a3038;
+  --seal-bright: #73242b;
+  --seal-tint: rgba(138, 48, 56, 0.1);
+  --seal-text: #8a3038;
+
+  --new: #3f7a52;
+  --new-bg: rgba(63, 122, 82, 0.12);
+  --danger: #a3382f;
+  --danger-line: rgba(163, 56, 47, 0.5);
+
+  --line: rgba(42, 36, 27, 0.14);
+  --line-strong: rgba(42, 36, 27, 0.28);
+  --rule: rgba(138, 109, 31, 0.42);
+  --hover-wash: rgba(42, 36, 27, 0.05);
+  --btn-face: #eee7d6;
+  --btn-face-hover: #e6ddc8;
+  --on-leaf: #f8f4e8;
+
+  /* ışık kaynağı: sol üstten gelen pencere */
+  --light-source: radial-gradient(1100px 850px at 12% -12%, rgba(255, 253, 244, 0.95), transparent 58%);
+  --texture-blend: multiply;
+  --texture-opacity: 0.3;
+
+  --radius: 3px;
+  --corner-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 14 V5 Q1 1 5 1 H14' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Cpath d='M5.5 6 C10 5.5 13.5 8 15 12 C10.5 12.5 7 10 5.5 6 Z' fill='%23fff' opacity='.55'/%3E%3Ccircle cx='17' cy='15' r='1.1' fill='%23fff'/%3E%3C/svg%3E");
+  --radius-btn: 2px;
+  --shadow: 0 2px 3px rgba(90, 72, 40, 0.07), 0 10px 30px rgba(90, 72, 40, 0.12);
+  --shadow-page: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 14px 34px rgba(90, 72, 40, 0.16);
+
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --reading: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* --- geriye uyum alias'ları --- */
+  --accent: var(--leaf);
+  --accent-bright: var(--leaf-bright);
+  --accent-dim: var(--leaf-dim);
+  --accent-tint: var(--leaf-tint);
+  --gold: var(--leaf);
+  --gold-bright: var(--leaf-bright);
+  --bronze: var(--leaf-dim);
+  --maroon: var(--seal);
+  --maroon-bright: var(--seal-text);
+  --indigo: var(--bg-2);
+  --indigo-bright: var(--bg-1);
+}
+
+/* ---------- GRIMOIRE (gece) ---------- */
+/* Not: her iki kutupta da panel zeminden AÇIK. Basit invert değil,
+   malzeme mantığı — panel her zaman "masaya konmuş sayfa". */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-0: #08080a;
+  --bg-1: #0d0d0f;
+  --bg-2: #131316;
+  --panel: #121214;
+  --panel-solid: #121214;
+  --field: #171719;
+  --header-bg: rgba(8, 8, 10, 0.86);
+  --bar-bg: rgba(8, 8, 10, 0.95);
+  --scrim: rgba(4, 4, 6, 0.78);
+
+  --ink: #e9e7e1;
+  --ink-dim: #9c9a92;
+  --ink-faint: #85837b;
+
+  /* kısık yaldız: saf siyah üstünde parlak doygun sarı halation yapar */
+  --leaf: #a5863a;
+  --leaf-bright: #b79a55;
+  --leaf-dim: #574923;
+  --leaf-tint: rgba(165, 134, 58, 0.09);
+
+  --seal: #a8434c;
+  --seal-bright: #c25c63;
+  --seal-tint: rgba(168, 67, 76, 0.12);
+  --seal-text: #cc6a73;
+
   --new: #6fae7f;
   --new-bg: rgba(111, 174, 127, 0.12);
-  --line: rgba(236, 232, 225, 0.12);
-  --line-strong: rgba(236, 232, 225, 0.22);
   --danger: #c86a63;
-  --radius: 10px;
-  --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --danger-line: rgba(200, 106, 99, 0.5);
+
+  --line: rgba(236, 236, 240, 0.13);
+  --line-strong: rgba(236, 236, 240, 0.26);
+  --rule: rgba(165, 134, 58, 0.38);
+  --hover-wash: rgba(255, 255, 255, 0.05);
+  --btn-face: #1a1a1d;
+  --btn-face-hover: #222225;
+  --on-leaf: #08080a;
+
+  /* ışık kaynağı: sayfanın üstündeki mum — nötr, sıcak değil (kahve yapar) */
+  --light-source: radial-gradient(1000px 660px at 50% -16%, rgba(255, 255, 255, 0.035), transparent 62%);
+  --texture-blend: soft-light;
+  --texture-opacity: 0.13;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-page: 0 1px 0 rgba(255, 255, 255, 0.035) inset, 0 14px 36px rgba(0, 0, 0, 0.72);
+}
+
+/* sistem tercihi: kullanıcı açıkça 'light' seçmediyse gece uygulanır.
+   Değerler yukarıdaki [data-theme='dark'] bloğuyla aynı kalmalı. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
+    color-scheme: dark;
+
+    --bg-0: #08080a;
+    --bg-1: #0d0d0f;
+    --bg-2: #131316;
+    --panel: #121214;
+    --panel-solid: #121214;
+    --field: #171719;
+    --header-bg: rgba(8, 8, 10, 0.86);
+    --bar-bg: rgba(8, 8, 10, 0.95);
+    --scrim: rgba(4, 4, 6, 0.78);
+
+    --ink: #e9e7e1;
+    --ink-dim: #9c9a92;
+    --ink-faint: #85837b;
+
+    --leaf: #a5863a;
+    --leaf-bright: #b79a55;
+    --leaf-dim: #574923;
+    --leaf-tint: rgba(165, 134, 58, 0.09);
+
+    --seal: #a8434c;
+    --seal-bright: #c25c63;
+    --seal-tint: rgba(168, 67, 76, 0.12);
+    --seal-text: #cc6a73;
+
+    --new: #6fae7f;
+    --new-bg: rgba(111, 174, 127, 0.12);
+    --danger: #c86a63;
+    --danger-line: rgba(200, 106, 99, 0.5);
+
+    --line: rgba(236, 236, 240, 0.13);
+    --line-strong: rgba(236, 236, 240, 0.26);
+    --rule: rgba(165, 134, 58, 0.38);
+    --hover-wash: rgba(255, 255, 255, 0.05);
+    --btn-face: #1a1a1d;
+    --btn-face-hover: #222225;
+    --on-leaf: #08080a;
+
+    --light-source: radial-gradient(1000px 660px at 50% -16%, rgba(255, 255, 255, 0.035), transparent 62%);
+    --texture-blend: soft-light;
+    --texture-opacity: 0.13;
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    --shadow-page: 0 1px 0 rgba(255, 255, 255, 0.035) inset, 0 14px 36px rgba(0, 0, 0, 0.72);
+  }
 }
 
 * {
@@ -70,12 +225,28 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink);
-  background:
-    radial-gradient(1200px 800px at 50% -20%, rgba(255, 255, 255, 0.025), transparent 65%),
-    var(--bg-0);
+  background: var(--light-source), var(--bg-0);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* parşömen / laid-paper dokusu — prosedürel SVG gürültüsü, asset gerektirmez.
+   Sabit katman: sayfa kaydırılırken doku kaymaz, kağıt duruyormuş gibi. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--texture-opacity);
+  mix-blend-mode: var(--texture-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* dokunun üstünde kalsın diye uygulama kabuğu kendi katmanına alınır */
+.app-shell {
+  position: relative;
+  z-index: 1;
 }
 
 h1,
@@ -304,6 +475,10 @@ a {
   transition: border-color 0.15s ease, color 0.15s ease;
 }
 /* hamburger — yalnız mobilde görünür */
+.brand-mobile-actions {
+  display: none;
+  align-items: center;
+}
 .brand-menu-btn {
   display: none;
   align-items: center;
@@ -343,9 +518,9 @@ a {
   font-weight: 500;
   letter-spacing: 0;
   padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-btn);
   border: 1px solid var(--line-strong);
-  background: var(--bg-2);
+  background: var(--btn-face);
   color: var(--ink);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
@@ -354,33 +529,36 @@ a {
   min-height: 44px; /* dokunma hedefi */
 }
 .btn:hover:not(:disabled) {
-  border-color: var(--ink-faint);
-  background: #262320;
+  border-color: var(--leaf);
+  background: var(--btn-face-hover);
 }
 .btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
+/* birincil: yaldız kenar + kısık dolgu. Dolu altın yüzey iki temada da
+   kamaştırıyor; tint + kenar hem sakin hem daha "baskı" hissi veriyor. */
 .btn-primary {
-  background: var(--accent);
-  color: #fbf1f0;
-  border-color: var(--accent-bright);
+  background: var(--leaf-tint);
+  color: var(--leaf-bright);
+  border-color: var(--leaf);
   font-weight: 500;
+  letter-spacing: 0.04em;
 }
 .btn-primary:hover:not(:disabled) {
-  background: var(--accent-bright);
-  border-color: var(--accent-bright);
-  color: #fff;
+  background: var(--leaf);
+  border-color: var(--leaf);
+  color: var(--on-leaf);
 }
 .btn-ghost {
   background: transparent;
   border-color: var(--line);
 }
 .btn-ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--hover-wash);
 }
 .btn-danger {
-  border-color: rgba(200, 106, 99, 0.5);
+  border-color: var(--danger-line);
   color: var(--danger);
   background: transparent;
 }
@@ -547,6 +725,7 @@ select:focus {
   gap: 14px;
 }
 .choice-card {
+  position: relative;
   text-align: left;
   cursor: pointer;
   border: 1px solid var(--line);
@@ -559,9 +738,44 @@ select:focus {
   border-color: var(--ink-faint);
 }
 .choice-card.selected {
-  border-color: var(--accent);
-  box-shadow: inset 0 0 0 1px var(--accent);
-  background: var(--accent-tint);
+  border-color: var(--leaf);
+  box-shadow: inset 0 0 0 1px var(--leaf);
+  background: var(--leaf-tint);
+}
+/* Seçili kart tezhiplenir: köşe filigree'si SADECE seçimde belirir, yani
+   süsleme dekorasyon değil durum bilgisi taşır. Maskeyle çizildiği için
+   rengi --leaf'ten gelir ve iki temada da doğru olur. */
+.choice-card.selected::before,
+.choice-card.selected::after,
+.choice-card.illuminated::before,
+.choice-card.illuminated::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: var(--leaf);
+  pointer-events: none;
+  -webkit-mask: var(--corner-mask) no-repeat center / contain;
+  mask: var(--corner-mask) no-repeat center / contain;
+}
+.choice-card.selected::before,
+.choice-card.illuminated::before {
+  top: 4px;
+  left: 4px;
+}
+.choice-card.selected::after,
+.choice-card.illuminated::after {
+  bottom: 4px;
+  right: 4px;
+  transform: scale(-1);
+}
+/* Tamamlanmış karakter = bitmiş eser: tezhiplenir. Taslak sade kalır.
+   Süsleme yine durum bilgisi — hangi kartın bittiği tek bakışta okunur. */
+.choice-card.illuminated {
+  border-color: var(--leaf-dim);
+}
+.choice-card.illuminated:hover {
+  border-color: var(--leaf);
 }
 .choice-card h3 {
   margin-bottom: 6px;
@@ -619,7 +833,7 @@ button.badge:hover {
 .progress {
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--hover-wash);
   overflow: hidden;
 }
 .progress > span {
@@ -632,7 +846,7 @@ button.badge:hover {
 /* info kutucuğu */
 .info {
   border-left: 2px solid var(--accent);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--hover-wash);
   padding: 12px 15px;
   border-radius: 0 8px 8px 0;
   color: var(--ink-dim);
@@ -679,7 +893,7 @@ button.badge:hover {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(9, 8, 7, 0.74);
+  background: var(--scrim);
   backdrop-filter: blur(3px);
   animation: fade-in 0.15s ease;
 }
@@ -692,7 +906,7 @@ button.badge:hover {
   background: var(--panel-solid);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow);
   outline: none;
   animation: modal-rise 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
 }
@@ -805,7 +1019,7 @@ button.badge:hover {
   border-top: none;
 }
 .dice-row:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--hover-wash);
 }
 .dice-row-hit {
   background: var(--accent-tint);
@@ -919,7 +1133,7 @@ button.badge:hover {
   padding: 10px 14px;
   border: 1px solid var(--line-strong);
   border-radius: 10px;
-  background: rgba(18, 17, 16, 0.95);
+  background: var(--bar-bg);
   backdrop-filter: blur(8px);
 }
 .gold-amount {
@@ -949,9 +1163,9 @@ button.badge:hover {
   color: var(--ink);
 }
 .tab.active {
-  background: var(--accent);
-  color: #fbf1f0;
-  border-color: var(--accent-bright);
+  background: var(--leaf-tint);
+  color: var(--leaf-bright);
+  border-color: var(--leaf);
 }
 
 /* envanter satırı */
@@ -976,9 +1190,26 @@ button.badge:hover {
 }
 
 /* ---------- kural metni (markdown-lite) ---------- */
+/* kural metni = kitap dizgisi: proza --reading ile, veri (tablo/liste) --body ile.
+   Ayrım keyfi değil — uygulamanın içeriği zaten "okunacak metin" ve
+   "bakılacak veri" diye ikiye ayrılıyor. */
 .rule-text {
   color: var(--ink-dim);
   font-size: 14px;
+}
+.rule-text .rule-p {
+  font-family: var(--reading);
+  font-size: 17px;
+  line-height: 1.58;
+}
+.rule-text .rule-list {
+  font-family: var(--reading);
+  font-size: 17px;
+  line-height: 1.5;
+}
+.rule-table {
+  font-family: var(--body);
+  font-variant-numeric: tabular-nums;
 }
 .rule-text b {
   color: var(--ink);
@@ -1014,7 +1245,7 @@ button.badge:hover {
 .rule-table th {
   font-family: var(--body);
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--hover-wash);
   font-weight: 600;
 }
 
@@ -1048,6 +1279,10 @@ button.badge:hover {
   .brand-nav {
     display: none;
   }
+  .brand-mobile-actions {
+    display: inline-flex;
+    margin-left: auto;
+  }
   .brand-menu-btn {
     display: inline-flex;
   }
@@ -1075,7 +1310,7 @@ button.badge:hover {
     display: none;
   }
   .brand-drawer .nav-link:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--hover-wash);
   }
   .brand-drawer-sep {
     height: 1px;
@@ -1106,7 +1341,7 @@ button.badge:hover {
     z-index: 15;
     margin: 18px -12px 0;
     padding: 12px;
-    background: rgba(18, 17, 16, 0.95);
+    background: var(--bar-bg);
     backdrop-filter: blur(8px);
     border-top: 1px solid var(--line);
   }
@@ -1137,4 +1372,268 @@ button.badge:hover {
   .item-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+   TEZHİP KATMANI — imza öğeleri
+   Kısıtlı kullanım: .artifact sadece "eser" yüzeylerinde (karakter
+   sayfası, seçili ırk/sınıf kartı, kampanya kartı, Login paneli).
+   Uzun formlar ve DM paneli sade kalır — okunabilirlik önce gelir.
+   ============================================================ */
+
+/* --- İMZA 1: tezhipli çerçeve --- */
+.artifact {
+  position: relative;
+  padding: 34px 36px;
+}
+/* çift cetvel: panelin kendi hairline'ı dış, bu yaldız çizgi iç */
+.artifact::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  pointer-events: none;
+}
+/* köşe filigree'si — <Ornament> bileşeni bu sınıfları basar */
+.orn {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  color: var(--leaf);
+  pointer-events: none;
+  z-index: 2;
+}
+.orn-tl {
+  top: 3px;
+  left: 3px;
+}
+.orn-tr {
+  top: 3px;
+  right: 3px;
+  transform: scaleX(-1);
+}
+.orn-bl {
+  bottom: 3px;
+  left: 3px;
+  transform: scaleY(-1);
+}
+.orn-br {
+  bottom: 3px;
+  right: 3px;
+  transform: scale(-1);
+}
+/* küçük yüzeyler (seçim kartları) için kısılmış ornament */
+.artifact-sm {
+  position: relative;
+}
+.artifact-sm .orn {
+  width: 26px;
+  height: 26px;
+}
+
+/* ayraç flourish — bölüm sonu / başlık altı */
+.flourish {
+  display: block;
+  margin: 22px auto;
+  width: 190px;
+  height: 16px;
+  color: var(--leaf);
+  opacity: 0.85;
+}
+
+/* --- İMZA 2: rubrikasyon + okuma dizgisi + drop cap --- */
+/* rubrik: ortaçağ el yazmasında bölüm işaretleri kırmızıyla atılırdı */
+.rubric {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--seal-text);
+}
+
+/* uzun proza: kural metni, evren lore, hikaye. UI chrome'a girmez. */
+.reading {
+  font-family: var(--reading);
+  font-size: 19px;
+  line-height: 1.62;
+  color: var(--ink);
+}
+.reading.dropcap > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 144;
+  font-weight: 600;
+  float: left;
+  font-size: 62px;
+  line-height: 0.82;
+  padding: 6px 12px 0 0;
+  color: var(--leaf);
+}
+
+/* koyu temada küçük punto altın metin bloom yapar — bir tık ince */
+:root[data-theme='dark'] .eyebrow {
+  font-weight: 500;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) .eyebrow {
+    font-weight: 500;
+  }
+}
+
+/* --- hareket tercihi --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* --- tema anahtarı --- */
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-btn);
+  overflow: hidden;
+  flex: none;
+}
+.theme-toggle-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  min-height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.theme-toggle-btn + .theme-toggle-btn {
+  border-left: 1px solid var(--line);
+}
+.theme-toggle-btn:hover {
+  color: var(--ink);
+  background: var(--hover-wash);
+}
+.theme-toggle-btn[aria-pressed='true'] {
+  color: var(--leaf);
+  background: var(--leaf-tint);
+}
+/* 'system' modunda: seçili değil ama o an geçerli olan kutup işaretlenir */
+.theme-toggle-btn[data-auto] {
+  color: var(--ink-dim);
+  position: relative;
+}
+.theme-toggle-btn[data-auto]::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--leaf);
+}
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: -2px;
+}
+
+/* ekran okuyucu metni */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Login: el yazmasının başlık sayfası --- */
+.login-page {
+  padding-top: 56px;
+}
+.login-page .artifact > .stack,
+.login-page .artifact {
+  position: relative;
+}
+.login-theme {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+}
+.login-wordmark {
+  font-size: 46px;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.05;
+  margin: 0 0 10px;
+}
+.login-tagline {
+  color: var(--ink-dim);
+  font-size: 20px;
+  font-style: italic;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .login-page {
+    padding-top: 28px;
+  }
+  .login-wordmark {
+    font-size: 34px;
+  }
+  .login-tagline {
+    font-size: 17px;
+  }
+  /* dar ekranda tezhip payı içeriği boğmasın */
+  .artifact {
+    padding: 26px 20px;
+  }
+  .orn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* --- uzun proza yüzeyleri: evren lore + yasal metinler --- */
+/* Kitap gibi dizilir; başlıklar Fraunces kalır, gövde --reading olur. */
+.lore p,
+.lore li,
+.legal-doc > p:not(.muted),
+.legal-doc > ul li {
+  font-family: var(--reading);
+  font-size: 18px;
+  line-height: 1.62;
+}
+.legal-doc {
+  line-height: 1.7;
+}
+/* drop cap: el yazmasında bölüm açılışı. Sadece ilk paragrafta. */
+.lore > p:first-child::first-letter,
+.legal-doc > p.lead::first-letter {
+  font-family: var(--serif);
+  font-variation-settings: 'opsz' 144;
+  font-weight: 600;
+  float: left;
+  font-size: 56px;
+  line-height: 0.82;
+  padding: 6px 11px 0 0;
+  color: var(--leaf);
+}
+
+/* karakter kartında seviye: veri olduğu için --body + tabular */
+.char-card-level {
+  font-family: var(--body);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-dim);
+}
+.char-card-level b {
+  color: var(--leaf);
+  font-family: var(--serif);
+  font-size: 18px;
 }

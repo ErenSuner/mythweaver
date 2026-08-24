@@ -105,13 +105,20 @@ export default function MyCharacters() {
             const race = raceById(c.raceId)
             const klass = classById(c.classId)
             return (
-              <div key={c.id} className="choice-card" onClick={() => nav(c.completed ? `/character/${c.id}` : `/wizard/${c.id}`)}>
+              <div
+                key={c.id}
+                className={`choice-card ${c.completed ? 'illuminated' : ''}`}
+                onClick={() => nav(c.completed ? `/character/${c.id}` : `/wizard/${c.id}`)}
+              >
                 <div className="spread">
-                  <h3>{c.characterName || 'İsimsiz Kahraman'}</h3>
+                  <div>
+                    <span className="eyebrow">{[race?.name, klass?.name].filter(Boolean).join(' · ') || 'Yeni kahraman'}</span>
+                    <h3>{c.characterName || 'İsimsiz Kahraman'}</h3>
+                  </div>
                   {!c.completed && <span className="badge">taslak</span>}
                 </div>
-                <p>
-                  {race?.name ?? '—'} · {klass?.name ?? '—'} · Seviye {c.level}
+                <p className="char-card-level">
+                  Seviye <b>{c.level}</b>
                 </p>
                 <div className="row" style={{ marginTop: 12, gap: 8 }}>
                   <button

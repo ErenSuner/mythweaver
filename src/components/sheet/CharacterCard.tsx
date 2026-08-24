@@ -37,6 +37,7 @@ import {
 } from '@/lib/rules'
 import { featureKey } from '@/lib/character-factory'
 import { LevelBadge } from '@/components/ui'
+import { Corners } from '@/components/Ornament'
 import { featGrantedSpells } from '@/data/feats'
 
 const SKILL_KEYS = Object.keys(config.skills)
@@ -83,10 +84,14 @@ export default function CharacterCard({
 
   return (
     <div className="stack">
-      {/* başlık */}
-      <div className="panel">
+      {/* başlık — karakter sayfası bir "eser" yüzeyi: tam tezhipli */}
+      <div className="panel artifact">
+        <Corners />
         <div className="spread" style={{ alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
           <div>
+            <span className="eyebrow">
+              {[race?.name, sub?.name].filter(Boolean).join(' · ') || 'Kahraman'}
+            </span>
             <h1 style={{ fontSize: 30, marginBottom: 2 }}>{character.characterName || 'İsimsiz Kahraman'}</h1>
             <p className="muted">
               {race?.name}

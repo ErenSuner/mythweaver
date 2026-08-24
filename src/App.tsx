@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { useCharacterStore } from '@/state/characterStore'
+import { useThemeStore } from '@/state/themeStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import Login from '@/pages/Login'
 import ResetPassword from '@/pages/ResetPassword'
@@ -63,6 +64,9 @@ export default function App() {
       window.removeEventListener('beforeunload', flush)
     }
   }, [])
+
+  // Tema: kökteki data-theme'i uygula ve 'system' modunda sistem tercihini izle.
+  useEffect(() => useThemeStore.getState().init(), [])
 
   return (
     <ErrorBoundary>

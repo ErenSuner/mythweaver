@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 export default function Terms() {
   return (
     <div className="container" style={{ maxWidth: 760 }}>
-      <div className="panel stack" style={{ lineHeight: 1.7 }}>
+      <div className="panel stack legal-doc">
         <h1 style={{ fontSize: 26 }}>Kullanım Koşulları</h1>
         <p className="muted" style={{ fontSize: 13 }}>Son güncelleme: 2026-08-19</p>
 
-        <p>Mythweaver’ı (“Hizmet”) kullanarak bu koşulları kabul etmiş olursun.</p>
+        <p className="lead">Mythweaver’ı (“Hizmet”) kullanarak bu koşulları kabul etmiş olursun.</p>
 
         <h2 style={{ fontSize: 18 }}>Hesap</h2>
         <p>

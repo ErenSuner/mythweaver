@@ -47,7 +47,7 @@ export default function UsernameGate() {
         position: 'fixed',
         inset: 0,
         zIndex: 1000,
-        background: 'rgba(0,0,0,0.72)',
+        background: 'var(--scrim)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

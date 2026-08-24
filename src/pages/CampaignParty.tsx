@@ -123,7 +123,7 @@ export default function CampaignParty() {
       </div>
 
       {invites && invites.length > 0 && (
-        <div className="panel" style={{ marginBottom: 22, borderColor: 'var(--accent)' }}>
+        <div className="panel" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
           <h2 style={{ fontSize: 18, marginBottom: 10 }}>Gelen davetler</h2>
           <div className="stack" style={{ gap: 12 }}>
             {invites.map((inv) => (
@@ -243,13 +243,18 @@ export default function CampaignParty() {
                 const klass = classById(m.classId)
                 const mine = myIds.has(m.id)
                 return (
-                  <div key={m.id} className="choice-card" onClick={() => setOpenId(m.id)}>
+                  <div key={m.id} className="choice-card illuminated" onClick={() => setOpenId(m.id)}>
                     <div className="spread">
-                      <h3>{m.characterName || 'İsimsiz Kahraman'}</h3>
+                      <div>
+                        <span className="eyebrow">
+                          {[race?.name, klass?.name].filter(Boolean).join(' · ') || 'Kahraman'}
+                        </span>
+                        <h3>{m.characterName || 'İsimsiz Kahraman'}</h3>
+                      </div>
                       {mine && <span className="badge badge-new">sen</span>}
                     </div>
-                    <p>
-                      {race?.name ?? '—'} · {klass?.name ?? '—'} · Seviye {m.level}
+                    <p className="char-card-level">
+                      Seviye <b>{m.level}</b>
                     </p>
                     {m.playerName && <p className="hint">Oyuncu: {m.playerName}</p>}
                   </div>

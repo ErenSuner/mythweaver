@@ -4,6 +4,8 @@ import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import Turnstile, { turnstileEnabled } from '@/components/Turnstile'
 import { Info } from '@/components/ui'
+import { Corners, Flourish } from '@/components/Ornament'
+import ThemeToggle from '@/components/ThemeToggle'
 
 type Mode = 'signin' | 'signup' | 'forgot'
 
@@ -67,11 +69,19 @@ export default function Login() {
   }
 
   return (
-    <div className="container" style={{ maxWidth: 460 }}>
-      <div className="panel stack">
-        <div>
-          <h1 style={{ fontSize: 28, marginBottom: 4 }}>Efsaneni Doku</h1>
-          <p className="muted">Karakterlerini oluştur, sakla ve büyüt.</p>
+    <div className="container login-page" style={{ maxWidth: 520 }}>
+      {/* Giriş sayfası sitenin tek halka açık yüzü: burası el yazmasının
+          başlık sayfası gibi tam tezhipli kurulur. */}
+      <div className="panel artifact stack">
+        <Corners />
+        <div className="login-theme">
+          <ThemeToggle />
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <span className="eyebrow">D&amp;D 5e · Karakter Atölyesi</span>
+          <h1 className="login-wordmark">Mythweaver</h1>
+          <p className="reading login-tagline">Efsaneni doku. Karakterlerini yarat, sakla, büyüt.</p>
+          <Flourish />
         </div>
 
         {!supabaseEnabled && (

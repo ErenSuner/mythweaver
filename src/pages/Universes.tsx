@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useToast } from '@/components/Toast'
 import { useConfirm } from '@/components/Modal'
 import RichTextEditor from '@/components/RichTextEditor'
+import { Corners } from '@/components/Ornament'
 import { UniverseIcon } from '@/components/icons'
 import { sanitizeLore } from '@/lib/sanitize'
 import {
@@ -163,7 +164,8 @@ export default function Universes() {
           {list.map((u) => {
             const d = draft[u.id]
             return (
-              <div key={u.id} className="panel stack" style={{ gap: 10 }}>
+              <div key={u.id} className={`panel stack${d ? '' : ' artifact'}`} style={{ gap: 10 }}>
+                {!d && <Corners />}
                 {d ? (
                   <>
                     <input

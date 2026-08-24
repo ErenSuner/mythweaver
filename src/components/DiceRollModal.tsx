@@ -81,7 +81,7 @@ export default function DiceRollModal({ open, onClose, title, subtitle, rows, ov
       }
     >
       {overwriteWarning && (
-        <div className="info" style={{ borderLeftColor: 'var(--maroon-bright)', background: 'rgba(168, 53, 67, 0.14)' }}>
+        <div className="info" style={{ borderLeftColor: 'var(--seal)', background: 'var(--seal-tint)' }}>
           Bu alana elle yazdığın metin var. <b>Kabul et</b> dersen üzerine yazılır.
         </div>
       )}

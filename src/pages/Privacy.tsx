@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 export default function Privacy() {
   return (
     <div className="container" style={{ maxWidth: 760 }}>
-      <div className="panel stack" style={{ lineHeight: 1.7 }}>
+      <div className="panel stack legal-doc">
         <h1 style={{ fontSize: 26 }}>Gizlilik Politikası</h1>
         <p className="muted" style={{ fontSize: 13 }}>Son güncelleme: 2026-08-19</p>
 
-        <p>
+        <p className="lead">
           Bu politika, Mythweaver (“Hizmet”) kullanımında kişisel verilerinin nasıl işlendiğini 6698 sayılı Kişisel
           Verilerin Korunması Kanunu (KVKK) kapsamında açıklar.
         </p>
