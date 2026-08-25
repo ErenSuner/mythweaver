@@ -5,14 +5,12 @@ import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
-import { DmIcon, PlusIcon, EditIcon, PlayersIcon, UniverseIcon } from '@/components/icons'
+import { PlusIcon, EditIcon, PlayersIcon, UniverseIcon } from '@/components/icons'
 import PartyStatTable from '@/components/dm/PartyStatTable'
-import FounderOps from '@/components/dm/FounderOps'
 import { classById, raceById } from '@/data'
 import {
   adminListCampaigns,
   adminListCharacters,
-  createCampaign,
   renameCampaign,
   deleteCampaign,
   assignCharacter,
@@ -34,7 +32,18 @@ import {
 } from '@/lib/social'
 import { listMyUniverses, assignUniverse, type Universe } from '@/lib/universe'
 
-export default function DMPanel() {
+/* Campaign detay sayfasina gomulen DM yonetim araclari.
+   Ayri bir "DM Paneli" sekmesi yoktu edilip buraya tasindi: bir campaign'i
+   yonetmek, o campaign'in sayfasinda olmali. Yalnizca campaign'in DM'ine
+   ve kurucuya render edilir. */
+export default function CampaignDmTools({
+  campaignId,
+  onCampaignChanged,
+}: {
+  campaignId: string
+  /** Ad/evren degisince ust sayfa kendi kopyasini tazelesin diye. */
+  onCampaignChanged?: () => void
+}) {
   const nav = useNavigate()
   const confirm = useConfirm()
   const toast = useToast()
@@ -43,10 +52,8 @@ export default function DMPanel() {
   const myId = useAuthStore((s) => s.user?.id ?? null)
   const refreshRoles = useAuthStore((s) => s.refreshRoles)
 
-  const [campaigns, setCampaigns] = useState<Campaign[] | null>(null)
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [selected, setSelected] = useState<Campaign | null>(null)
   const [members, setMembers] = useState<AdminCharacterRow[] | null>(null)
-  const [newName, setNewName] = useState('')
   const [assignOpen, setAssignOpen] = useState(false)
   const [pool, setPool] = useState<AdminCharacterRow[] | null>(null)
   const [openRow, setOpenRow] = useState<AdminCharacterRow | null>(null)
@@ -61,12 +68,10 @@ export default function DMPanel() {
   const [invites, setInvites] = useState<CampaignInvite[] | null>(null)
   const [universes, setUniverses] = useState<Universe[]>([])
   // Yönetim eylemleri modallerde toplanır; ekranda sürekli durmaz.
-  const [createOpen, setCreateOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [playersOpen, setPlayersOpen] = useState(false)
   const [renameDraft, setRenameDraft] = useState('')
 
-  const selected = campaigns?.find((c) => c.id === selectedId) ?? null
   const canManageInvites = Boolean(selected && (isAdmin || selected.dm_user_id === myId))
 
   // Mutation sarmalı: hata → toast, sessiz kalmaz.
@@ -79,31 +84,29 @@ export default function DMPanel() {
     }
   }
 
-  async function refreshCampaigns() {
+  async function refreshCampaign() {
     try {
       setCampaignsError(false)
       const all = await adminListCampaigns()
-      // Kurucu hariç: kullanıcı yalnız DM'i olduğu campaign'leri görür.
-      const list = isAdmin ? all : all.filter((c) => c.dm_user_id === myId)
-      setCampaigns(list)
-      if (!selectedId && list.length) setSelectedId(list[0].id)
+      setSelected(all.find((c) => c.id === campaignId) ?? null)
+      onCampaignChanged?.()
     } catch (e) {
       console.error('[dm] campaign yükleme hatası', e)
       setCampaignsError(true)
     }
   }
   useEffect(() => {
-    refreshCampaigns()
+    refreshCampaign()
     if (isAdmin) listUsers().then(setUsers).catch((e) => console.error('[dm] kullanıcı listesi', e))
     listMyUniverses().then(setUniverses).catch((e) => console.error('[dm] evren listesi', e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [campaignId])
 
   async function onAssignUniverse(universeId: string | null) {
     if (!selected) return
     await run(async () => {
       await assignUniverse(selected.id, universeId)
-      await refreshCampaigns()
+      await refreshCampaign()
     }, 'Evren atanamadı. Tekrar dene.')
   }
 
@@ -111,7 +114,7 @@ export default function DMPanel() {
     if (!selected) return
     await run(async () => {
       await setCampaignDm(selected.id, userId)
-      await refreshCampaigns()
+      await refreshCampaign()
     }, 'DM atanamadı. Tekrar dene.')
   }
 
@@ -133,13 +136,13 @@ export default function DMPanel() {
     }
   }
   useEffect(() => {
-    if (selectedId) refreshMembers(selectedId)
+    refreshMembers(campaignId)
     setInvites(null)
     setInviteResults(null)
     setInviteQuery('')
-    if (selectedId && canManageInvites) refreshInvites(selectedId)
+    if (canManageInvites) refreshInvites(campaignId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedId, canManageInvites])
+  }, [campaignId, canManageInvites])
 
   // Canlı arama: yazdıkça (debounce 300ms) kullanıcı önerileri getir.
   useEffect(() => {
@@ -202,24 +205,10 @@ export default function DMPanel() {
     await run(async () => {
       await transferDm(selected.id, newDmId)
       toast('DM devredildi.', 'success')
-      setSelectedId(null)
-      setMembers(null)
-      await refreshCampaigns()
-      // Son campaign'ini devrettiyse DM'liği biter; RequireDM onu /'a alır.
+      // Devrettikten sonra bu campaign'de yetkin kalmaz.
       await refreshRoles()
+      nav('/campaign')
     }, 'DM devredilemedi. Tekrar dene.')
-  }
-
-  async function onCreate() {
-    const name = newName.trim()
-    if (!name) return
-    await run(async () => {
-      const c = await createCampaign(name)
-      setNewName('')
-      setCreateOpen(false)
-      await refreshCampaigns()
-      setSelectedId(c.id)
-    }, 'Campaign oluşturulamadı. Tekrar dene.')
   }
 
   // Ad değişikliği ayarlar modalindeki input'tan gelir (tarayıcı prompt'u yok).
@@ -229,7 +218,7 @@ export default function DMPanel() {
     if (!name || name === selected.name) return
     await run(async () => {
       await renameCampaign(selected.id, name)
-      await refreshCampaigns()
+      await refreshCampaign()
       toast('Campaign adı güncellendi.', 'success')
     }, 'Ad değiştirilemedi. Tekrar dene.')
   }
@@ -257,11 +246,9 @@ export default function DMPanel() {
     await run(async () => {
       await deleteCampaign(selected.id)
       setSettingsOpen(false)
-      setSelectedId(null)
-      setMembers(null)
-      await refreshCampaigns()
-      // Son campaign'i silindiyse DM'lik düşer; bayat isDm ile panelde kalmasın.
+      // Son campaign'i silindiyse DM'lik düşer; bayat isDm ile kalmasın.
       await refreshRoles()
+      nav('/campaign')
     }, 'Campaign silinemedi. Tekrar dene.')
   }
 
@@ -278,11 +265,10 @@ export default function DMPanel() {
   }
 
   async function onAssign(row: AdminCharacterRow) {
-    if (!selectedId) return
     await run(async () => {
-      await assignCharacter(row.character.id, selectedId)
+      await assignCharacter(row.character.id, campaignId)
       setAssignOpen(false)
-      await refreshMembers(selectedId)
+      await refreshMembers(campaignId)
     }, 'Karakter eklenemedi. Tekrar dene.')
   }
 
@@ -299,7 +285,7 @@ export default function DMPanel() {
     if (!ok) return
     await run(async () => {
       await unassignCharacter(row.character.id)
-      if (selectedId) await refreshMembers(selectedId)
+      await refreshMembers(campaignId)
     }, 'Karakter çıkarılamadı. Tekrar dene.')
   }
 
@@ -322,100 +308,21 @@ export default function DMPanel() {
     nav(`/wizard/${row.character.id}?step=identity`)
   }
 
+  if (campaignsError) {
+    return (
+      <div className="panel" style={{ textAlign: 'center', padding: 20 }}>
+        <p className="muted" style={{ marginBottom: 10 }}>DM araçları yüklenemedi.</p>
+        <button className="btn btn-ghost" onClick={refreshCampaign}>Tekrar dene</button>
+      </div>
+    )
+  }
+
   return (
-    <div className="container">
-      <div className="page-head spread" style={{ flexWrap: 'wrap', gap: 10 }}>
-        <div className="row" style={{ gap: 14 }}>
-          <span className="page-icon">
-            <DmIcon size={24} />
-          </span>
-          <div>
-            <h1>DM Paneli</h1>
-            <p className="page-sub">Campaign'lerini yönet, oyuncuların karakterlerini gör ve düzenle.</p>
-          </div>
-        </div>
-        <button className="btn btn-ghost" onClick={() => nav('/')}>
-          ← Karakterlerim
-        </button>
-      </div>
-
-      {/* Campaign araç çubuğu — seçici + eylem ikonları.
-          Yeniden adlandır / sil / davet artık burada değil; ikonların
-          arkasındaki modallerde. Ekran sade kalır, yıkıcı eylem kazayla
-          tıklanmaz. */}
-      <div className="panel" style={{ marginBottom: 18 }}>
-        {campaignsError ? (
-          <div className="row" style={{ gap: 10, alignItems: 'center' }}>
-            <span className="muted">Campaign'ler yüklenemedi.</span>
-            <button className="btn btn-ghost" onClick={refreshCampaigns}>Tekrar dene</button>
-          </div>
-        ) : campaigns === null ? (
-          <p className="muted" style={{ margin: 0 }}>Yükleniyor…</p>
-        ) : (
-          <div className="toolbar">
-            {campaigns.length === 0 ? (
-              <span className="muted" style={{ flex: '1 1 auto' }}>
-                Henüz campaign yok. Sağdaki + ile ilkini oluştur.
-              </span>
-            ) : (
-              <select
-                className="toolbar-select"
-                aria-label="Campaign seç"
-                value={selectedId ?? ''}
-                onChange={(e) => setSelectedId(e.target.value || null)}
-              >
-                {campaigns.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            )}
-
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                setNewName('')
-                setCreateOpen(true)
-              }}
-            >
-              <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
-              Yeni Campaign
-            </button>
-
-            {selected && (
-              <>
-                <span className="toolbar-sep" aria-hidden="true" />
-                <button className="btn" onClick={openSettings}>
-                  <EditIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
-                  Ayarlar
-                </button>
-                {canManageInvites && (
-                  <button className="btn" onClick={() => setPlayersOpen(true)}>
-                    <PlayersIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
-                    Oyuncular
-                  </button>
-                )}
-              </>
-            )}
-          </div>
-        )}
-
-        {/* bağlam satırı: atanmış evren varsa tek satırda görünür */}
-        {selected?.universe_id && (
-          <p className="hint" style={{ margin: '10px 0 0' }}>
-            Evren: {universes.find((u) => u.id === selected.universe_id)?.name ?? '(başkasına ait)'}
-          </p>
-        )}
-      </div>
-
-      {/* Seçili campaign üyeleri */}
+    <>
       {selected && (
         <div style={{ marginBottom: 24 }}>
-          <div className="spread" style={{ marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
-            <h2>
-              <span className="campaign-name">{selected.name}</span> — Karakterler
-            </h2>
+          <div className="section-head" style={{ flexWrap: 'wrap', gap: 10 }}>
+            <h2>Karakterler</h2>
             <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
               {members && members.length > 0 && (
                 <div className="row" style={{ gap: 4 }}>
@@ -436,8 +343,19 @@ export default function DMPanel() {
                 </div>
               )}
               {isAdmin && (
-                <button className="btn btn-primary" onClick={openAssign}>
-                  + Karakter ekle
+                <button className="btn" onClick={openAssign}>
+                  <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+                  Karakter Ekle
+                </button>
+              )}
+              <button className="btn" onClick={openSettings}>
+                <EditIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+                Ayarlar
+              </button>
+              {canManageInvites && (
+                <button className="btn btn-primary" onClick={() => setPlayersOpen(true)}>
+                  <PlayersIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+                  Oyuncular
                 </button>
               )}
             </div>
@@ -446,7 +364,7 @@ export default function DMPanel() {
           {membersError ? (
             <div className="panel" style={{ textAlign: 'center', padding: 20 }}>
               <p className="muted" style={{ marginBottom: 10 }}>Karakterler yüklenemedi.</p>
-              <button className="btn btn-ghost" onClick={() => selectedId && refreshMembers(selectedId)}>Tekrar dene</button>
+              <button className="btn btn-ghost" onClick={() => refreshMembers(campaignId)}>Tekrar dene</button>
             </div>
           ) : members === null ? (
             <p className="muted">Yükleniyor…</p>
@@ -510,41 +428,6 @@ export default function DMPanel() {
           )}
         </div>
       )}
-
-      {/* Yeni campaign modalı */}
-      <Modal
-        open={createOpen}
-        onClose={() => setCreateOpen(false)}
-        title="Yeni campaign"
-        subtitle="Maceraya bir ad ver; sonradan değiştirebilirsin."
-        footer={
-          <>
-            <button className="btn btn-ghost" onClick={() => setCreateOpen(false)}>
-              Vazgeç
-            </button>
-            <button className="btn btn-primary" disabled={!newName.trim()} onClick={onCreate}>
-              Oluştur
-            </button>
-          </>
-        }
-      >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            onCreate()
-          }}
-        >
-          <label htmlFor="new-campaign">Campaign adı</label>
-          <input
-            id="new-campaign"
-            type="text"
-            autoFocus
-            placeholder="ör. Kayıp Madenlerin Laneti"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-          />
-        </form>
-      </Modal>
 
       {/* Campaign ayarları — ad, evren, DM; silme en altta ayrı bölmede */}
       {selected && (
@@ -819,9 +702,6 @@ export default function DMPanel() {
           <CharacterCard character={openRow.character} />
         </Modal>
       )}
-
-      {/* Kurucu ops — yalnız founder */}
-      {isAdmin && <FounderOps />}
-    </div>
+    </>
   )
 }

@@ -12,7 +12,7 @@ import Wizard from '@/pages/Wizard'
 import CharacterSheet from '@/pages/CharacterSheet'
 import Campaigns from '@/pages/Campaigns'
 import CampaignParty from '@/pages/CampaignParty'
-import DMPanel from '@/pages/DMPanel'
+import FounderPanel from '@/pages/FounderPanel'
 import Universes from '@/pages/Universes'
 import Settings from '@/pages/Settings'
 import Privacy from '@/pages/Privacy'
@@ -28,6 +28,15 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   const { user, ready } = useAuthStore()
   if (!ready) return <div className="container">Yükleniyor…</div>
   if (!user) return <Navigate to="/login" replace />
+  return children
+}
+
+/** Yalnız platform sahibi (kurucu). Kurucu Paneli bununla korunur. */
+function RequireAdmin({ children }: { children: JSX.Element }) {
+  const { user, ready } = useAuthStore()
+  if (!ready) return <div className="container">Yükleniyor…</div>
+  if (!user) return <Navigate to="/login" replace />
+  if (!user.isAdmin) return <Navigate to="/" replace />
   return children
 }
 
@@ -136,11 +145,11 @@ export default function App() {
           }
         />
         <Route
-          path="/dm"
+          path="/kurucu"
           element={
-            <RequireDM>
-              <DMPanel />
-            </RequireDM>
+            <RequireAdmin>
+              <FounderPanel />
+            </RequireAdmin>
           }
         />
         <Route

@@ -102,11 +102,12 @@ export default function Campaigns() {
     if (!name || creating) return
     setCreating(true)
     try {
-      await createCampaign(name)
+      const created = await createCampaign(name)
       setNewCampaign('')
       setCreateOpen(false)
-      await refreshRoles() // kuran DM oldu → /dm açılır
-      navigate('/dm')
+      // Kuran otomatik DM olur; rol tazelenmeden yeni sayfada DM araçları çıkmaz.
+      await refreshRoles()
+      navigate(`/campaign/${created.id}`)
     } catch (e) {
       console.error('[campaign] oluşturma hatası', e)
       toast('Campaign oluşturulamadı. Tekrar dene.', 'error')

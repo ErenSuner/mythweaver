@@ -2106,3 +2106,22 @@ button.badge:hover {
   outline: 2px solid var(--leaf);
   outline-offset: 2px;
 }
+
+/* --- campaign sayfasının evren bloğu ---
+   Katlanabilir değil: lore okunacak metin, saklanacak ayrıntı değil.
+   Sayfanın en altında, Evrenler sayfasındaki tezhipli kutunun aynısı. */
+.universe-block {
+  margin-top: 28px;
+}
+.universe-block > h2 {
+  margin-bottom: 0.5em;
+}
+.universe-block .lore {
+  color: var(--ink-dim);
+}
+.universe-block .lore > :first-child {
+  margin-top: 0;
+}
+.universe-block .lore > :last-child {
+  margin-bottom: 0;
+}

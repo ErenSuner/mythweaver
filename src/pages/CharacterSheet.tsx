@@ -28,7 +28,7 @@ export default function CharacterSheet() {
       // DM ise owner'ı öğrenmek için admin yolundan çek (bant + owner-safe kayıt için)
       if (user?.isAdmin) {
         const row = await adminGetCharacter(id!)
-        if (!row) return nav('/dm')
+        if (!row) return nav('/campaign')
         if (row.ownerId === user.id) {
           setDmOwnerEmail(null)
           if (character?.id !== id) load(row.character)
@@ -76,7 +76,7 @@ export default function CharacterSheet() {
         </div>
       )}
       <div className="spread" style={{ marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
-        <button className="btn btn-ghost" onClick={() => nav(isDmView ? '/dm' : '/')}>
+        <button className="btn btn-ghost" onClick={() => nav(isDmView ? '/campaign' : '/')}>
           ← {isDmView ? 'DM Paneli' : 'Karakterlerim'}
         </button>
         <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>

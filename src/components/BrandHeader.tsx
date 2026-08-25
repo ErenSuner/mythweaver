@@ -46,10 +46,12 @@ export default function BrandHeader() {
       </NavLink>
       {isDm && (
         <>
-          <NavLink to="/dm" className="nav-link">
-            <DmIcon size={21} />
-            DM Paneli
-          </NavLink>
+          {user?.isAdmin && (
+            <NavLink to="/kurucu" className="nav-link">
+              <DmIcon size={21} />
+              Kurucu Paneli
+            </NavLink>
+          )}
           <NavLink to="/evrenler" className="nav-link">
             <UniverseIcon size={21} />
             Evrenler

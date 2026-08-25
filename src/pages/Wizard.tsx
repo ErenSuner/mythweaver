@@ -119,7 +119,7 @@ export default function Wizard() {
         </button>
         <div className="row" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           {!canNext && <span style={{ color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>Bu adımdaki zorunlu seçimleri tamamla.</span>}
-          <button className="btn btn-ghost" onClick={() => nav(adminOwnerId ? '/dm' : '/')}>
+          <button className="btn btn-ghost" onClick={() => nav(adminOwnerId ? '/campaign' : '/')}>
             Kaydet & Çık
           </button>
           {editMode ? (

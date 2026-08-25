@@ -178,8 +178,8 @@ export default function Universes() {
           </div>
         </div>
         <div className="row" style={{ gap: 8, alignItems: 'center' }}>
-          <button className="btn btn-ghost" onClick={() => nav('/dm')}>
-            ← DM Paneli
+          <button className="btn btn-ghost" onClick={() => nav('/campaign')}>
+            ← Campaign&apos;ler
           </button>
           <button
             className="btn btn-primary"

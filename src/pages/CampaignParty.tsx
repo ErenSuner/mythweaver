@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
@@ -6,13 +6,16 @@ import { getUniverse, type Universe } from '@/lib/universe'
 import { sanitizeLore } from '@/lib/sanitize'
 import { Modal } from '@/components/Modal'
 import CharacterCard from '@/components/sheet/CharacterCard'
+import CampaignDmTools from '@/components/dm/CampaignDmTools'
+import { Corners } from '@/components/Ornament'
 import { CampaignIcon } from '@/components/icons'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 
-/* Tek bir campaign'in detayı. Liste /campaign'de (Campaigns.tsx); buraya
-   oradaki özet karta basınca gelinir. Davetler ve "Campaign Kur" listede
-   kalır — ikisi de tek bir campaign'e ait değil. */
+/* Tek bir campaign'in sayfası. Liste /campaign'de (Campaigns.tsx).
+   Kullanıcı bu campaign'in DM'i (ya da kurucu) ise yönetim araçları da
+   burada görünür — ayrı bir "DM Paneli" sekmesi yok, bir campaign'i
+   yönetmek onun kendi sayfasında olur. */
 
 export default function CampaignParty() {
   const { id } = useParams<{ id: string }>()
@@ -27,42 +30,38 @@ export default function CampaignParty() {
   const [error, setError] = useState(false)
   const [notFound, setNotFound] = useState(false)
 
-  useEffect(() => {
-    let cancelled = false
-    async function load() {
-      if (!id) return
-      try {
-        setError(false)
-        setNotFound(false)
-        // RLS zaten filtreliyor: listede yoksa bu campaign'e erişim yok.
-        const camps = await myCampaigns()
-        const found = camps.find((c) => c.id === id) ?? null
-        if (cancelled) return
-        if (!found) {
-          setNotFound(true)
-          return
-        }
-        setCampaign(found)
-        const [peers, mine, uni] = await Promise.all([
-          campaignPeers(found.id),
-          listCharacters(user?.id ?? null),
-          found.universeId ? getUniverse(found.universeId).catch(() => null) : Promise.resolve(null),
-        ])
-        if (cancelled) return
-        setMembers(peers)
-        setMyIds(new Set(mine.map((c) => c.id)))
-        setUniverse(uni)
-      } catch (e) {
-        console.error('[campaign] detay yükleme hatası', e)
-        if (!cancelled) setError(true)
+  const load = useCallback(async () => {
+    if (!id) return
+    try {
+      setError(false)
+      setNotFound(false)
+      // RLS zaten filtreliyor: listede yoksa bu campaign'e erişim yok.
+      const camps = await myCampaigns()
+      const found = camps.find((c) => c.id === id) ?? null
+      if (!found) {
+        setNotFound(true)
+        return
       }
-    }
-    load()
-    return () => {
-      cancelled = true
+      setCampaign(found)
+      const [peers, mine, uni] = await Promise.all([
+        campaignPeers(found.id),
+        listCharacters(user?.id ?? null),
+        found.universeId ? getUniverse(found.universeId).catch(() => null) : Promise.resolve(null),
+      ])
+      setMembers(peers)
+      setMyIds(new Set(mine.map((c) => c.id)))
+      setUniverse(uni)
+    } catch (e) {
+      console.error('[campaign] detay yükleme hatası', e)
+      setError(true)
     }
   }, [id, user])
 
+  useEffect(() => {
+    load()
+  }, [load])
+
+  const isDm = Boolean(user && campaign && (user.isAdmin || campaign.dmUserId === user.id))
   const openChar = members?.find((m) => m.id === openId) ?? null
 
   function BackButton() {
@@ -109,6 +108,7 @@ export default function CampaignParty() {
           <CampaignIcon size={24} />
         </span>
         <div className="page-head-text">
+          <span className="eyebrow">{isDm ? 'DM olduğun campaign' : 'Campaign'}</span>
           <h1>{campaign.name}</h1>
           <p className="page-sub">
             {members === null ? 'Yükleniyor…' : `${members.length} kahraman`}
@@ -118,22 +118,11 @@ export default function CampaignParty() {
         <BackButton />
       </div>
 
-      {universe && (
-        <details className="panel" style={{ marginBottom: 16 }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 600 }}>Evren: {universe.name}</summary>
-          {universe.description ? (
-            <div
-              className="lore"
-              style={{ marginTop: 10 }}
-              dangerouslySetInnerHTML={{ __html: sanitizeLore(universe.description) }}
-            />
-          ) : (
-            <p className="muted" style={{ marginTop: 10, marginBottom: 0 }}>Lore henüz yazılmamış.</p>
-          )}
-        </details>
-      )}
-
-      {members === null ? (
+      {isDm ? (
+        /* DM için yönetim araçları karakter listesini de kendisi çizer:
+           özet tablo / kart görünümü, atama, çıkarma, düzenleme. */
+        <CampaignDmTools campaignId={campaign.id} onCampaignChanged={load} />
+      ) : members === null ? (
         <p className="muted">Yükleniyor…</p>
       ) : members.length === 0 ? (
         <div className="panel empty-state">
@@ -164,6 +153,22 @@ export default function CampaignParty() {
             )
           })}
         </div>
+      )}
+
+      {/* Evren en altta, açık ve tezhipli — Evrenler sayfasındaki kutunun
+          aynısı. Katlanabilir başlık değildi: lore okunacak metin, saklanacak
+          ayrıntı değil. */}
+      {universe && (
+        <section className="panel artifact universe-block">
+          <Corners />
+          <span className="eyebrow">Evren</span>
+          <h2>{universe.name}</h2>
+          {universe.description ? (
+            <div className="lore" dangerouslySetInnerHTML={{ __html: sanitizeLore(universe.description) }} />
+          ) : (
+            <p className="muted" style={{ margin: 0 }}>Lore henüz yazılmamış.</p>
+          )}
+        </section>
       )}
 
       {/* Karakter detayı modalde — DM panelindeki davranışın aynısı.

@@ -21,12 +21,10 @@ type Tab = 'users' | 'campaigns' | 'stats' | 'audit'
 export default function FounderOps() {
   const [tab, setTab] = useState<Tab>('users')
   return (
-    <div style={{ marginTop: 28, paddingTop: 20, borderTop: '2px solid var(--line)' }}>
-      <div className="spread" style={{ marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
-        <div>
-          <h2 style={{ fontSize: 'var(--fs-lg)', marginBottom: 2 }}>Kurucu Paneli</h2>
-          <p className="muted">Kullanıcıları ve rolleri yönet, platformu izle. Yalnız sen görürsün.</p>
-        </div>
+    <div>
+      {/* Başlık ve açıklama sayfa başlığında (FounderPanel); burada yalnız sekmeler. */}
+      <div className="section-head" style={{ flexWrap: 'wrap', gap: 10 }}>
+        <h2>Platform</h2>
         <div className="row" style={{ gap: 4, flexWrap: 'wrap' }}>
           <TabBtn active={tab === 'users'} onClick={() => setTab('users')}>Kullanıcılar</TabBtn>
           <TabBtn active={tab === 'campaigns'} onClick={() => setTab('campaigns')}>Campaign'ler</TabBtn>
