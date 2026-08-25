@@ -37,23 +37,23 @@ export default function BrandHeader() {
   const navLinks = (
     <>
       <NavLink to="/" end className="nav-link">
-        <CharactersIcon size={21} />
+        <CharactersIcon size={18} />
         Karakterler
       </NavLink>
       <NavLink to="/campaign" className="nav-link">
-        <CampaignIcon size={21} />
+        <CampaignIcon size={18} />
         Campaign
       </NavLink>
       {isDm && (
         <>
           {user?.isAdmin && (
             <NavLink to="/kurucu" className="nav-link">
-              <DmIcon size={21} />
+              <DmIcon size={18} />
               Kurucu Paneli
             </NavLink>
           )}
           <NavLink to="/evrenler" className="nav-link">
-            <UniverseIcon size={21} />
+            <UniverseIcon size={18} />
             Evrenler
           </NavLink>
         </>
@@ -78,7 +78,7 @@ export default function BrandHeader() {
       >
         <Link className="brand-mark" to="/">
           <span className="brand-mark-icon">
-            <DiceIcon size={30} />
+            <DiceIcon size={25} />
           </span>
           <span className="brand-mark-text">Mythweaver</span>
         </Link>
@@ -141,11 +141,11 @@ export default function BrandHeader() {
           {navLinks}
           <span className="brand-drawer-sep" aria-hidden="true" />
           <NavLink to="/ayarlar" className="nav-link">
-            <SettingsIcon size={21} />
+            <SettingsIcon size={18} />
             {identity} · Ayarlar
           </NavLink>
           <button className="nav-link" style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={onSignOut}>
-            <LogoutIcon size={21} />
+            <LogoutIcon size={18} />
             Çıkış
           </button>
         </div>
