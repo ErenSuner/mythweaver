@@ -24,7 +24,7 @@ export default function FounderOps() {
     <div style={{ marginTop: 28, paddingTop: 20, borderTop: '2px solid var(--line)' }}>
       <div className="spread" style={{ marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
         <div>
-          <h2 style={{ fontSize: 22, marginBottom: 2 }}>Kurucu Paneli</h2>
+          <h2 style={{ fontSize: 'var(--fs-lg)', marginBottom: 2 }}>Kurucu Paneli</h2>
           <p className="muted">Kullanıcıları ve rolleri yönet, platformu izle. Yalnız sen görürsün.</p>
         </div>
         <div className="row" style={{ gap: 4, flexWrap: 'wrap' }}>
@@ -107,7 +107,7 @@ function UsersTab() {
 
   return (
     <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, whiteSpace: 'nowrap' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)', whiteSpace: 'nowrap' }}>
         <thead>
           <tr style={{ textAlign: 'left', color: 'var(--ink-dim)' }}>
             <th style={cellH}>E-posta</th>
@@ -181,7 +181,7 @@ function CampaignsTab() {
         Her campaign'e bir DM ata (opsiyonel). Atanan DM yalnız o campaign'in karakterlerini görür/düzenler.
       </p>
       <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, whiteSpace: 'nowrap' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)', whiteSpace: 'nowrap' }}>
           <thead>
             <tr style={{ textAlign: 'left', color: 'var(--ink-dim)' }}>
               <th style={cellH}>Campaign</th>
@@ -237,7 +237,7 @@ function StatsTab() {
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
     <div className="panel" style={{ textAlign: 'center', minWidth: 120, flex: '1 1 120px' }}>
-      <div style={{ fontFamily: 'var(--serif)', fontSize: 30, color: 'var(--gold-bright)' }}>{value}</div>
+      <div style={{ fontFamily: 'var(--serif)', fontSize: 'var(--fs-xl)', color: 'var(--gold-bright)' }}>{value}</div>
       <div className="hint">{label}</div>
     </div>
   )

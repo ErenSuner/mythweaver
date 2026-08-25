@@ -244,14 +244,28 @@ export default function CampaignParty() {
           <span className="empty-icon">
             <CampaignIcon size={44} />
           </span>
-          <p className="muted">Henüz dahil olduğun bir campaign yok. Bir davet gelince ya da kendi campaign'ini kurunca burada görünür.</p>
+          <p className="muted">
+            Henüz dahil olduğun bir campaign yok. Bir davet gelince burada görünür. Kendi campaign&apos;ini kurarsan
+            DM olursun ve DM Paneli açılır.
+          </p>
+          {supabaseEnabled && (
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                setNewCampaign('')
+                setCreateOpen(true)
+              }}
+            >
+              Kendi Campaign&apos;ini Kur
+            </button>
+          )}
         </div>
       ) : (
         groups.map((g) => (
           <section key={g.campaign.id} className="section-block">
             <span className="eyebrow">Kampanya</span>
             <div className="section-head">
-              <h2>{g.campaign.name}</h2>
+              <h2 className="campaign-name">{g.campaign.name}</h2>
               <span className="section-meta">{g.members.length} kahraman</span>
             </div>
             {g.campaign.universeId && universeById[g.campaign.universeId] && (

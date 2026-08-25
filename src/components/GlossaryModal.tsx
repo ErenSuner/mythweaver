@@ -6,7 +6,7 @@ export default function GlossaryModal({ term, onClose }: { term: GlossaryTerm | 
   if (!term) return null
   return (
     <Modal open onClose={onClose} title={term.term} subtitle={term.tr}>
-      <p style={{ color: 'var(--ink-dim)', fontSize: 15, margin: 0 }}>{term.description}</p>
+      <p style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-base)', margin: 0 }}>{term.description}</p>
     </Modal>
   )
 }

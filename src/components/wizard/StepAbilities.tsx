@@ -41,7 +41,7 @@ export default function StepAbilities() {
       </Info>
 
       <div className="spread" style={{ flexWrap: 'wrap' }}>
-        <span className="badge" style={{ fontSize: 14 }}>
+        <span className="badge" style={{ fontSize: 'var(--fs-sm)' }}>
           Kalan Puan: {remaining} / {totalPoints}
         </span>
         <span className="hint">8 = ucuz · 15 = pahalı</span>
@@ -95,7 +95,7 @@ export default function StepAbilities() {
                 <button className="btn" onClick={() => change(a, -1)} disabled={base <= min}>
                   −
                 </button>
-                <span style={{ minWidth: 28, textAlign: 'center', fontSize: 20, fontFamily: 'var(--serif)' }}>{base}</span>
+                <span style={{ minWidth: 28, textAlign: 'center', fontSize: 'var(--fs-md)', fontFamily: 'var(--serif)' }}>{base}</span>
                 <button
                   className="btn"
                   onClick={() => change(a, +1)}

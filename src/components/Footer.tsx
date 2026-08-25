@@ -6,14 +6,12 @@ export default function Footer() {
       style={{
         borderTop: '1px solid var(--line)',
         marginTop: 'auto',
-        padding: '12px 20px',
-        fontSize: 13,
+        fontSize: 'var(--fs-sm)',
       }}
     >
       <div
+        className="bleed-inner"
         style={{
-          maxWidth: 1080,
-          margin: '0 auto',
           display: 'flex',
           flexWrap: 'wrap',
           gap: '6px 16px',
@@ -32,7 +30,7 @@ export default function Footer() {
             Ayarlar
           </Link>
         </div>
-        <span className="muted" style={{ fontSize: 12, maxWidth: 520 }}>
+        <span className="muted" style={{ fontSize: 'var(--fs-micro)', maxWidth: 520 }}>
           Kural içeriği{' '}
           <a href="https://dnd.wizards.com/resources/systems-reference-document" target="_blank" rel="noreferrer">
             SRD 5.1

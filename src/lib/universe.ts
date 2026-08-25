@@ -7,6 +7,12 @@ function ensure() {
   return supabase
 }
 
+/** Bir evren lore'unun en fazla görünür karakter sayısı (markup sayılmaz).
+ *  Server tarafında 0009_universe_quota.sql aynı sınırı dayatır. */
+export const LORE_MAX_CHARS = 10_000
+/** Kullanıcı başına en fazla evren sayısı (server: 0009_universe_quota.sql). */
+export const MAX_UNIVERSES = 10
+
 export interface Universe {
   id: string
   ownerId: string

@@ -67,6 +67,19 @@
   --texture-opacity: 0.3;
 
   --radius: 3px;
+  /* --- tipografi olcegi: alti adim, ~1.25 orani ---
+     Onceden 22 farkli font-size degeri vardi; kucuk uclar (10-13px)
+     "kucucuk", basliklar (22-32px) orantisiz buyuk goruniyordu.
+     Aralik daraltildi: kucuk uclar yukseldi, buyuk uclar indi. */
+  --fs-micro: 12px; /* eyebrow, rubric, badge, label */
+  --fs-sm: 14px; /* hint, meta, tablo, buton */
+  --fs-base: 16px; /* govde, nav, input */
+  --fs-md: 19px; /* h3, kart basligi, okuma prozasi */
+  --fs-lg: 24px; /* h2 */
+  --fs-xl: 30px; /* h1 */
+
+  /* sayfa kenar boslugu — header, footer ve icerik ayni olcuyu paylasir */
+  --gutter: clamp(18px, 3.5vw, 56px);
   --corner-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 14 V5 Q1 1 5 1 H14' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Cpath d='M5.5 6 C10 5.5 13.5 8 15 12 C10.5 12.5 7 10 5.5 6 Z' fill='%23fff' opacity='.55'/%3E%3Ccircle cx='17' cy='15' r='1.1' fill='%23fff'/%3E%3C/svg%3E");
   --radius-btn: 2px;
   --shadow: 0 2px 3px rgba(90, 72, 40, 0.07), 0 10px 30px rgba(90, 72, 40, 0.12);
@@ -222,7 +235,7 @@ body {
 body {
   margin: 0;
   font-family: var(--body);
-  font-size: 16px;
+  font-size: var(--fs-base);
   line-height: 1.6;
   color: var(--ink);
   background: var(--light-source), var(--bg-0);
@@ -261,25 +274,49 @@ h4 {
 }
 /* net skala: h1 belirgin öne çıkar, h2/h3 arası kontrast artar */
 h1 {
-  font-size: 32px;
+  font-size: var(--fs-xl);
   font-weight: 600;
   line-height: 1.15;
 }
 h2 {
-  font-size: 22px;
+  font-size: var(--fs-lg);
   line-height: 1.25;
 }
 h3 {
-  font-size: 17px;
+  font-size: var(--fs-md);
 }
 a {
   color: var(--accent-bright);
 }
 
+/* İçerik genişliği: 1080 dardı, geniş ekranda site "büyümüyor" görünüyordu.
+   1600 üstü sınırsız da olmaz — metin satırları okunamayacak kadar uzar.
+   Kendi genişliğini inline veren sayfalar (Login 520, Settings 620,
+   Privacy/Terms 760, Universes 820) bu değeri ezer, değişmez. */
 .container {
-  max-width: 1080px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 24px 20px 80px;
+  padding: 24px var(--gutter) 80px;
+}
+
+/* Header ve footer tam genişlik: marka en sol kenara oturur.
+   İçerikle aynı --gutter'ı paylaştıkları için 1600'e kadar hizalı kalırlar. */
+.bleed-inner {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 14px var(--gutter);
+}
+
+/* Geniş ekranda okunabilirlik koruması: proza satırı ~68 karakteri geçmez. */
+.reading,
+.rule-text .rule-p,
+.rule-text .rule-list,
+.lore p,
+.lore li,
+.legal-doc > p:not(.muted),
+.legal-doc > ul {
+  max-width: 68ch;
 }
 
 /* ---------- hiyerarşi primitifleri ---------- */
@@ -287,7 +324,7 @@ a {
 .eyebrow {
   display: block;
   font-family: var(--body);
-  font-size: 12px;
+  font-size: var(--fs-micro);
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -306,7 +343,7 @@ a {
 }
 .page-head .page-sub {
   color: var(--ink-dim);
-  font-size: 15px;
+  font-size: var(--fs-base);
   margin: 0;
 }
 /* landmark ikonu: her sayfa için ayırt edici accent-tint amblem */
@@ -361,7 +398,7 @@ a {
 }
 .section-head .section-meta {
   flex: none;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--ink-faint);
   font-family: var(--body);
   letter-spacing: 0.01em;
@@ -390,7 +427,7 @@ a {
   align-items: center;
   gap: 7px;
   font-family: var(--body);
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--ink-dim);
   text-decoration: none;
@@ -439,7 +476,7 @@ a {
   gap: 9px;
   text-decoration: none;
   color: var(--ink-dim);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   padding: 3px 3px 3px 3px;
   border-radius: 999px;
   transition: color 0.15s ease;
@@ -469,7 +506,7 @@ a {
   border: 1px solid var(--line-strong);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   text-transform: uppercase;
   transition: border-color 0.15s ease, color 0.15s ease;
@@ -545,7 +582,7 @@ a {
   background: var(--seal);
   color: #fff;
   font-family: var(--body);
-  font-size: 10px;
+  font-size: var(--fs-micro);
   font-weight: 700;
   line-height: 1;
 }
@@ -573,14 +610,14 @@ a {
 }
 .notif-count {
   font-family: var(--body);
-  font-size: 11px;
+  font-size: var(--fs-micro);
   font-weight: 700;
   color: var(--seal-text);
 }
 .notif-empty {
   margin: 0;
   padding: 16px 14px;
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
 }
 .notif-list {
   list-style: none;
@@ -601,7 +638,7 @@ a {
   text-align: left;
   color: var(--ink);
   font-family: var(--body);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   cursor: pointer;
   transition: background 0.15s ease;
 }
@@ -664,7 +701,7 @@ a {
 /* butonlar */
 .btn {
   font-family: var(--body);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0;
   padding: 10px 18px;
@@ -726,7 +763,7 @@ textarea,
 select {
   width: 100%;
   font-family: var(--body);
-  font-size: 15.5px;
+  font-size: var(--fs-base);
   line-height: 1.5;
   color: var(--ink);
   background-color: var(--field);
@@ -765,7 +802,7 @@ input:-webkit-autofill:focus {
 }
 label {
   color: var(--ink-dim);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -808,7 +845,7 @@ select:focus {
 }
 .rte-toolbar button {
   font-family: var(--body);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   color: var(--ink-dim);
   background: transparent;
   border: 1px solid transparent;
@@ -828,7 +865,7 @@ select:focus {
   padding: 14px 16px;
   color: var(--ink);
   outline: none;
-  font-size: 15.5px;
+  font-size: var(--fs-base);
   line-height: 1.65;
 }
 .rte-editor:empty::before {
@@ -837,20 +874,40 @@ select:focus {
   pointer-events: none;
 }
 
+/* karakter sayacı — sınıra yaklaşınca vurgulanır, sınırda danger rengine geçer */
+.rte-count {
+  padding: 6px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-1);
+  font-family: var(--body);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--ink-faint);
+}
+.rte-count.is-warn {
+  color: var(--ink);
+  font-weight: 600;
+}
+.rte-count.is-over {
+  color: var(--danger);
+  font-weight: 600;
+}
+
 /* lore/zengin-metin gösterim (editör + salt-okur ortak) */
 .rte-editor h1,
 .lore h1 {
-  font-size: 24px;
+  font-size: var(--fs-lg);
   margin: 0.4em 0 0.3em;
 }
 .rte-editor h2,
 .lore h2 {
-  font-size: 20px;
+  font-size: var(--fs-md);
   margin: 0.4em 0 0.3em;
 }
 .rte-editor h3,
 .lore h3 {
-  font-size: 17px;
+  font-size: var(--fs-base);
   margin: 0.4em 0 0.3em;
 }
 .rte-editor p,
@@ -929,16 +986,16 @@ select:focus {
 }
 .choice-card h3 {
   margin-bottom: 6px;
-  font-size: 18px;
+  font-size: var(--fs-md);
   font-weight: 600;
 }
 .choice-card .tr {
   color: var(--ink-faint);
-  font-size: 13px;
+  font-size: var(--fs-micro);
 }
 .choice-card p {
   color: var(--ink-dim);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   margin: 8px 0 0;
 }
 
@@ -947,7 +1004,7 @@ select:focus {
   display: inline-block;
   font-family: var(--body);
   font-weight: 500;
-  font-size: 12px;
+  font-size: var(--fs-micro);
   letter-spacing: 0.02em;
   line-height: 1.5;
   padding: 4px 10px;
@@ -1000,13 +1057,13 @@ button.badge:hover {
   padding: 12px 15px;
   border-radius: 0 8px 8px 0;
   color: var(--ink-dim);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   line-height: 1.55;
   margin: 10px 0;
 }
 .hint {
   color: var(--ink-faint);
-  font-size: 13px;
+  font-size: var(--fs-sm);
 }
 
 .row {
@@ -1072,7 +1129,7 @@ button.badge:hover {
   border-bottom: 1px solid var(--line);
 }
 .modal-title {
-  font-size: 19px;
+  font-size: var(--fs-md);
   margin: 0 0 2px;
 }
 .modal-x {
@@ -1160,7 +1217,7 @@ button.badge:hover {
   display: flex;
   gap: 12px;
   padding: 10px 12px;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-dim);
   cursor: pointer;
   border-top: 1px solid var(--line);
@@ -1223,7 +1280,7 @@ button.badge:hover {
 /* point-buy maliyet tablosu (statik, bilgi amaçlı) */
 .pointbuy-table {
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--ink-dim);
 }
 .pointbuy-table th,
@@ -1247,7 +1304,7 @@ button.badge:hover {
 
 .item-name {
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--ink);
 }
@@ -1255,7 +1312,7 @@ button.badge:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  font-size: 12px;
+  font-size: var(--fs-micro);
   color: var(--ink-faint);
 }
 .item-tag {
@@ -1267,7 +1324,7 @@ button.badge:hover {
   color: var(--accent-bright);
   font-family: var(--body);
   font-weight: 600;
-  font-size: 13px;
+  font-size: var(--fs-sm);
 }
 
 /* altın sayacı — mağazada sabit kalır */
@@ -1288,7 +1345,7 @@ button.badge:hover {
 }
 .gold-amount {
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: var(--fs-md);
   color: var(--accent-bright);
 }
 .tabs {
@@ -1299,7 +1356,7 @@ button.badge:hover {
 .tab {
   font-family: var(--body);
   font-weight: 500;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   padding: 7px 14px;
   border-radius: 7px;
   border: 1px solid var(--line);
@@ -1326,7 +1383,7 @@ button.badge:hover {
   gap: 10px;
   padding: 8px 0;
   border-top: 1px solid var(--line);
-  font-size: 14px;
+  font-size: var(--fs-sm);
 }
 .inv-row:first-child {
   border-top: none;
@@ -1336,7 +1393,7 @@ button.badge:hover {
   min-height: 32px;
   padding: 0;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: var(--fs-base);
 }
 
 /* ---------- kural metni (markdown-lite) ---------- */
@@ -1345,16 +1402,16 @@ button.badge:hover {
    "bakılacak veri" diye ikiye ayrılıyor. */
 .rule-text {
   color: var(--ink-dim);
-  font-size: 14px;
+  font-size: var(--fs-sm);
 }
 .rule-text .rule-p {
   font-family: var(--reading);
-  font-size: 17px;
+  font-size: var(--fs-md);
   line-height: 1.58;
 }
 .rule-text .rule-list {
   font-family: var(--reading);
-  font-size: 17px;
+  font-size: var(--fs-md);
   line-height: 1.5;
 }
 .rule-table {
@@ -1384,7 +1441,7 @@ button.badge:hover {
 .rule-table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 13px;
+  font-size: var(--fs-sm);
 }
 .rule-table th,
 .rule-table td {
@@ -1422,8 +1479,13 @@ button.badge:hover {
   body {
     font-size: 16px;
   }
+  /* Dar ekranda kenar boşluğu daralır. Header/footer de aynı token'ı
+     kullandığı için marka ile içerik hizada kalır. */
+  :root {
+    --gutter: 14px;
+  }
   .container {
-    padding: 16px 12px 96px;
+    padding: 16px var(--gutter) 96px;
   }
   /* header: inline nav gizle, hamburger göster */
   .brand-nav {
@@ -1458,7 +1520,7 @@ button.badge:hover {
     width: 100%;
     padding: 12px 10px;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: var(--fs-base);
   }
   .brand-drawer .nav-link.active {
     color: var(--accent-bright);
@@ -1604,7 +1666,7 @@ button.badge:hover {
 /* rubrik: ortaçağ el yazmasında bölüm işaretleri kırmızıyla atılırdı */
 .rubric {
   font-family: var(--body);
-  font-size: 11px;
+  font-size: var(--fs-micro);
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1614,7 +1676,7 @@ button.badge:hover {
 /* uzun proza: kural metni, evren lore, hikaye. UI chrome'a girmez. */
 .reading {
   font-family: var(--reading);
-  font-size: 19px;
+  font-size: var(--fs-md);
   line-height: 1.62;
   color: var(--ink);
 }
@@ -1661,6 +1723,8 @@ button.badge:hover {
 .theme-toggle-btn {
   display: grid;
   place-items: center;
+  font-family: var(--body);
+  font-size: var(--fs-sm);
   width: 38px;
   min-height: 34px;
   border: 0;
@@ -1734,7 +1798,7 @@ button.badge:hover {
 }
 .login-tagline {
   color: var(--ink-dim);
-  font-size: 20px;
+  font-size: var(--fs-md);
   font-style: italic;
   margin: 0;
 }
@@ -1746,7 +1810,7 @@ button.badge:hover {
     font-size: 34px;
   }
   .login-tagline {
-    font-size: 17px;
+    font-size: var(--fs-base);
   }
   /* dar ekranda tezhip payı içeriği boğmasın */
   .artifact {
@@ -1765,7 +1829,7 @@ button.badge:hover {
 .legal-doc > p:not(.muted),
 .legal-doc > ul li {
   font-family: var(--reading);
-  font-size: 18px;
+  font-size: var(--fs-md);
   line-height: 1.62;
 }
 .legal-doc {
@@ -1793,7 +1857,7 @@ button.badge:hover {
 .char-card-level b {
   color: var(--leaf);
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: var(--fs-md);
 }
 
 /* ============================================================
@@ -1904,7 +1968,7 @@ button.badge:hover {
 .setting-label > span {
   display: block;
   font-family: var(--body);
-  font-size: 15px;
+  font-size: var(--fs-base);
   font-weight: 600;
   color: var(--ink);
 }
@@ -1930,4 +1994,28 @@ button.badge:hover {
   .setting-control {
     flex: 1 1 100%;
   }
+}
+
+/* Campaign adları yaldız — sayfadaki "her şey beyaz" hissini kırar ve
+   adın kendisini başlığın geri kalanından ayırır.
+   Not: bu başlıklar çıplak sayfa zemininde durur; 24px+ oldukları için
+   büyük-metin eşiği (3:1) geçerli. */
+.campaign-name {
+  color: var(--leaf);
+}
+
+/* Kaydedilmemiş taslak göstergesi — düğmenin üstünde küçük mühür noktası.
+   Yazdığın kaybolmadı, işte burada demenin en sessiz yolu. */
+.icon-btn[data-dot] {
+  position: relative;
+}
+.icon-btn[data-dot]::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--seal-text);
 }

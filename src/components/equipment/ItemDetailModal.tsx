@@ -27,7 +27,7 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
         <>
           <div className="divider" />
           <label>Silah Özellikleri</label>
-          <ul style={{ color: 'var(--ink-dim)', fontSize: 14, paddingLeft: 18, margin: '6px 0 0' }}>
+          <ul style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-sm)', paddingLeft: 18, margin: '6px 0 0' }}>
             {item.properties.map((p) => (
               <li key={p}>
                 <b style={{ color: 'var(--ink)' }}>{p}</b>
@@ -42,7 +42,7 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
         <>
           <div className="divider" />
           <label>Paketin içinde ne var?</label>
-          <ul style={{ color: 'var(--ink-dim)', fontSize: 14, paddingLeft: 18, margin: '6px 0 0' }}>
+          <ul style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-sm)', paddingLeft: 18, margin: '6px 0 0' }}>
             {item.contents.map((c) => {
               const sub = itemById(c.itemId)
               return (
@@ -63,7 +63,7 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
       {guide && (
         <>
           <div className="divider" />
-          <h3 style={{ fontSize: 17 }}>Bu alet ne işe yarar?</h3>
+          <h3 style={{ fontSize: 'var(--fs-md)' }}>Bu alet ne işe yarar?</h3>
           {guide.intro && <p style={{ color: 'var(--ink-dim)', marginTop: 0 }}>{guide.intro}</p>}
 
           {guide.components && (
@@ -76,7 +76,7 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
           {guide.skills.length > 0 && (
             <div style={{ marginTop: 12 }}>
               <label>Hangi becerilerle birlikte işe yarar</label>
-              <ul style={{ color: 'var(--ink-dim)', fontSize: 14, paddingLeft: 18, margin: '6px 0 0' }}>
+              <ul style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-sm)', paddingLeft: 18, margin: '6px 0 0' }}>
                 {guide.skills.map((s) => (
                   <li key={s.skill}>
                     <b style={{ color: 'var(--gold-bright)' }}>{s.skill}</b> — {s.text}
@@ -93,7 +93,7 @@ export default function ItemDetailModal({ item, onClose }: { item: Item | null; 
           {guide.special.length > 0 && (
             <div style={{ marginTop: 12 }}>
               <label>Özel kullanımlar</label>
-              <ul style={{ color: 'var(--ink-dim)', fontSize: 14, paddingLeft: 18, margin: '6px 0 0' }}>
+              <ul style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-sm)', paddingLeft: 18, margin: '6px 0 0' }}>
                 {guide.special.map((s) => (
                   <li key={s.name}>
                     <b style={{ color: 'var(--ink)' }}>{s.name}</b> — {s.text}

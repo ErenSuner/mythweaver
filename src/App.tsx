@@ -137,9 +137,9 @@ export default function App() {
         <Route
           path="/evrenler"
           element={
-            <RequireAuth>
+            <RequireDM>
               <Universes />
-            </RequireAuth>
+            </RequireDM>
           }
         />
         <Route

@@ -19,7 +19,7 @@ export default function GuidedChoices() {
   return (
     <div className="stack">
       <div className="divider" />
-      <h3 style={{ fontSize: 18 }}>Seçmeli Kazanımlar</h3>
+      <h3 style={{ fontSize: 'var(--fs-md)' }}>Seçmeli Kazanımlar</h3>
       <p className="hint">Irkın/geçmişin sana seçim hakkı verdi. Listeden seç — elle yazmana gerek yok.</p>
       {slots.map((slot) => (
         <SlotPicker key={slot.key} slot={slot} />

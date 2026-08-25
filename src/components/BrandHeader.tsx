@@ -71,14 +71,14 @@ export default function BrandHeader() {
       }}
     >
       <div
-        className="container"
-        style={{ padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}
+        className="bleed-inner"
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}
       >
         <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
           <span style={{ color: 'var(--accent-bright)', display: 'inline-flex' }}>
             <DiceIcon size={22} />
           </span>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: 21, fontWeight: 600, color: 'var(--ink)', letterSpacing: '-0.01em' }}>
+          <span style={{ fontFamily: 'var(--serif)', fontSize: 'var(--fs-lg)', fontWeight: 600, color: 'var(--ink)', letterSpacing: '-0.01em' }}>
             Mythweaver
           </span>
         </Link>

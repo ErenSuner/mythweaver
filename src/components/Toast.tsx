@@ -57,7 +57,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 background: 'var(--panel, #1b1a18)',
                 color: 'var(--ink)',
                 boxShadow: 'var(--shadow)',
-                fontSize: 14,
+                fontSize: 'var(--fs-sm)',
                 display: 'flex',
                 gap: 8,
                 alignItems: 'flex-start',

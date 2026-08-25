@@ -42,7 +42,7 @@ export default function StepClass() {
 
       {klass && (
         <div className="panel" style={{ background: 'var(--panel-solid)' }}>
-          <h2 style={{ fontSize: 20 }}>
+          <h2 style={{ fontSize: 'var(--fs-md)' }}>
             {klass.name} <span className="tr">({klass.nameTr})</span>
           </h2>
           <p className="muted">{klass.description}</p>
@@ -91,7 +91,7 @@ export default function StepClass() {
                     className={`choice-card ${character.subclassId === s.id ? 'selected' : ''}`}
                     onClick={() => update({ subclassId: s.id })}
                   >
-                    <h3 style={{ fontSize: 16 }}>{s.name}</h3>
+                    <h3 style={{ fontSize: 'var(--fs-base)' }}>{s.name}</h3>
                     {s.nameTr && <span className="tr">{s.nameTr}</span>}
                     <RuleText clamp={200}>{s.description}</RuleText>
                   </button>

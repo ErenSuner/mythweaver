@@ -41,7 +41,7 @@ export default function ResetPassword() {
   return (
     <div className="container" style={{ maxWidth: 460 }}>
       <div className="panel stack">
-        <h1 style={{ fontSize: 26 }}>Yeni Şifre Belirle</h1>
+        <h1 style={{ fontSize: 'var(--fs-xl)' }}>Yeni Şifre Belirle</h1>
 
         {done ? (
           <Info>Şifren güncellendi. Yönlendiriliyorsun…</Info>

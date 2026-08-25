@@ -41,6 +41,7 @@ export default function DMPanel() {
   const loadAsAdmin = useCharacterStore((s) => s.loadAsAdmin)
   const isAdmin = useAuthStore((s) => s.user?.isAdmin ?? false)
   const myId = useAuthStore((s) => s.user?.id ?? null)
+  const refreshRoles = useAuthStore((s) => s.refreshRoles)
 
   const [campaigns, setCampaigns] = useState<Campaign[] | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -204,6 +205,8 @@ export default function DMPanel() {
       setSelectedId(null)
       setMembers(null)
       await refreshCampaigns()
+      // Son campaign'ini devrettiyse DM'liği biter; RequireDM onu /'a alır.
+      await refreshRoles()
     }, 'DM devredilemedi. Tekrar dene.')
   }
 
@@ -257,6 +260,8 @@ export default function DMPanel() {
       setSelectedId(null)
       setMembers(null)
       await refreshCampaigns()
+      // Son campaign'i silindiyse DM'lik düşer; bayat isDm ile panelde kalmasın.
+      await refreshRoles()
     }, 'Campaign silinemedi. Tekrar dene.')
   }
 
@@ -413,7 +418,9 @@ export default function DMPanel() {
       {selected && (
         <div style={{ marginBottom: 24 }}>
           <div className="spread" style={{ marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
-            <h2 style={{ fontSize: 22 }}>{selected.name} — Karakterler</h2>
+            <h2>
+              <span className="campaign-name">{selected.name}</span> — Karakterler
+            </h2>
             <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
               {members && members.length > 0 && (
                 <div className="row" style={{ gap: 4 }}>
@@ -695,7 +702,7 @@ export default function DMPanel() {
           )}
 
           <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
-            <h3 style={{ fontSize: 16, marginBottom: 8 }}>Bekleyen davetler</h3>
+            <h3 style={{ fontSize: 'var(--fs-base)', marginBottom: 8 }}>Bekleyen davetler</h3>
             {invites === null ? (
               <p className="muted" style={{ margin: 0 }}>
                 Yükleniyor…

@@ -52,7 +52,7 @@ export function Tip({ label, children }: { label: string; children: ReactNode })
             border: '1px solid var(--line-strong)',
             borderRadius: 8,
             padding: '10px 12px',
-            fontSize: 13,
+            fontSize: 'var(--fs-sm)',
             color: 'var(--ink-dim)',
             boxShadow: 'var(--shadow)',
           }}

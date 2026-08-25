@@ -101,7 +101,7 @@ function Stat({ label, value }: { label: string; value: string }) {
       ) : (
         <label>{label}</label>
       )}
-      <div style={{ fontSize: 20, fontFamily: 'var(--serif)', color: 'var(--gold-bright)' }}>{value}</div>
+      <div style={{ fontSize: 'var(--fs-md)', fontFamily: 'var(--serif)', color: 'var(--gold-bright)' }}>{value}</div>
     </div>
   )
 }

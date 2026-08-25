@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="container" style={{ textAlign: 'center', padding: 60 }}>
-          <h1 style={{ fontSize: 26, marginBottom: 8 }}>Bir şeyler ters gitti</h1>
+          <h1 style={{ fontSize: 'var(--fs-xl)', marginBottom: 8 }}>Bir şeyler ters gitti</h1>
           <p className="muted" style={{ marginBottom: 16 }}>Beklenmedik bir hata oluştu. Sayfayı yenilemeyi dene.</p>
           <button className="btn btn-primary" onClick={() => window.location.reload()}>
             Yenile

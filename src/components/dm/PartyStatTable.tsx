@@ -15,7 +15,7 @@ export default function PartyStatTable({ rows }: { rows: AdminCharacterRow[] }) 
   if (rows.length === 0) return null
   return (
     <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
-      <table className="party-stat-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, whiteSpace: 'nowrap' }}>
+      <table className="party-stat-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)', whiteSpace: 'nowrap' }}>
         <thead>
           <tr style={{ textAlign: 'left', color: 'var(--ink-dim)' }}>
             <Th>Karakter</Th>

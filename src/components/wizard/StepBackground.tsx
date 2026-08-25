@@ -42,7 +42,7 @@ export default function StepBackground() {
 
       {bg && (
         <div className="panel" style={{ background: 'var(--panel-solid)' }}>
-          <h2 style={{ fontSize: 20 }}>{bg.name}</h2>
+          <h2 style={{ fontSize: 'var(--fs-md)' }}>{bg.name}</h2>
           <p className="muted">{bg.description}</p>
           <div className="divider" />
           <Field label="Beceri Yeterlilikleri" value={bg.skillProficiencies} />
@@ -57,7 +57,7 @@ export default function StepBackground() {
           )}
 
           <div className="divider" />
-          <h3 style={{ fontSize: 17 }}>Kişilik</h3>
+          <h3 style={{ fontSize: 'var(--fs-md)' }}>Kişilik</h3>
           <p className="hint">
             Her biri için zar at (kendi tablosundan rastgele) ya da kendi metnini yaz. Zar, kutudaki yazıyı
             değiştirir.

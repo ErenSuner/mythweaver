@@ -33,7 +33,7 @@ export default function StepRace() {
 
       {race && (
         <div className="panel" style={{ background: 'var(--panel-solid)' }}>
-          <h2 style={{ fontSize: 20 }}>
+          <h2 style={{ fontSize: 'var(--fs-md)' }}>
             {race.name} <span className="tr">({race.nameTr})</span>
           </h2>
           <p className="muted">{race.description}</p>
@@ -80,7 +80,7 @@ export default function StepRace() {
                     className={`choice-card ${character.subraceId === s.id ? 'selected' : ''}`}
                     onClick={() => update({ subraceId: s.id })}
                   >
-                    <h3 style={{ fontSize: 16 }}>{s.name}</h3>
+                    <h3 style={{ fontSize: 'var(--fs-base)' }}>{s.name}</h3>
                     <p>{s.description}</p>
                   </button>
                 ))}

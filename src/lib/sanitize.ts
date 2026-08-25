@@ -31,3 +31,9 @@ export function sanitizeLore(html: string): string {
   clean(doc.body, container, doc)
   return container.innerHTML
 }
+
+/** Lore HTML'inin görünür karakter sayısı (markup sayılmaz). */
+export function loreTextLength(html: string): number {
+  if (!html) return 0
+  return new DOMParser().parseFromString(html, 'text/html').body.textContent?.length ?? 0
+}

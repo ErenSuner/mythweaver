@@ -55,10 +55,10 @@ function SubclassCard({
     <div className={`choice-card ${selected ? 'selected' : ''}`} style={{ padding: 14, display: 'flex', flexDirection: 'column', gap: 8 }}>
       <button type="button" onClick={onSelect} style={{ all: 'unset', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 6 }}>
         <span>
-          <h3 style={{ fontSize: 16, margin: 0 }}>{subclass.name}</h3>
+          <h3 style={{ fontSize: 'var(--fs-base)', margin: 0 }}>{subclass.name}</h3>
           <span className="tr">{subclass.nameTr}</span>
         </span>
-        <span className="muted" style={{ fontSize: 14 }}>{intro}</span>
+        <span className="muted" style={{ fontSize: 'var(--fs-sm)' }}>{intro}</span>
         {features.length > 0 && (
           <span className="item-meta">
             {features.map((f) => (
@@ -177,7 +177,7 @@ export default function LevelUpPanel({ onClose }: { onClose: () => void }) {
   return (
     <div className="panel" style={{ marginBottom: 16, borderColor: 'var(--gold)' }}>
       <div className="spread">
-        <h2 style={{ fontSize: 22 }}>
+        <h2 style={{ fontSize: 'var(--fs-lg)' }}>
           Seviye {preview.fromLevel} → {preview.toLevel}
         </h2>
         <button className="btn btn-ghost" onClick={onClose}>

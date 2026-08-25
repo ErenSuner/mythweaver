@@ -92,7 +92,7 @@ export default function CharacterCard({
             <span className="eyebrow">
               {[race?.name, sub?.name].filter(Boolean).join(' · ') || 'Kahraman'}
             </span>
-            <h1 style={{ fontSize: 30, marginBottom: 2 }}>{character.characterName || 'İsimsiz Kahraman'}</h1>
+            <h1 style={{ fontSize: 'var(--fs-xl)', marginBottom: 2 }}>{character.characterName || 'İsimsiz Kahraman'}</h1>
             <p className="muted">
               {race?.name}
               {sub ? ` · ${sub.name}` : ''} {klass?.name} · Seviye {character.level}
@@ -177,7 +177,7 @@ export default function CharacterCard({
               const prof = isSkillProficient(character, s)
               const exp = hasExpertise(character, s)
               return (
-                <div key={s} className="spread" style={{ padding: '2px 0', fontSize: 15 }}>
+                <div key={s} className="spread" style={{ padding: '2px 0', fontSize: 'var(--fs-base)' }}>
                   <span className={prof ? '' : 'muted'}>
                     {exp ? '◆ ' : prof ? '● ' : '○ '}
                     {s}
@@ -423,7 +423,7 @@ export default function CharacterCard({
               <StoryField label="Müttefikler" value={[character.factionName, character.allies].filter(Boolean).join(' — ')} />
               <StoryField label="Ek Özellikler & Notlar" value={character.additionalFeatures} />
               <StoryField label="Hazine" value={character.treasure} />
-              <div className="row muted" style={{ gap: 12, flexWrap: 'wrap', fontSize: 14 }}>
+              <div className="row muted" style={{ gap: 12, flexWrap: 'wrap', fontSize: 'var(--fs-sm)' }}>
                 {character.age && <span>Yaş: {character.age}</span>}
                 {character.height && <span>Boy: {character.height}</span>}
                 {character.weight && <span>Ağırlık: {character.weight}</span>}
@@ -457,8 +457,8 @@ export default function CharacterCard({
 function Big({ label, value }: { label: string; value: string }) {
   return (
     <div style={{ textAlign: 'center' }}>
-      <div style={{ fontFamily: 'var(--serif)', fontSize: 24, color: 'var(--gold-bright)' }}>{value}</div>
-      <div className="hint" style={{ fontSize: 11 }}>{label}</div>
+      <div style={{ fontFamily: 'var(--serif)', fontSize: 'var(--fs-lg)', color: 'var(--gold-bright)' }}>{value}</div>
+      <div className="hint" style={{ fontSize: 'var(--fs-micro)' }}>{label}</div>
     </div>
   )
 }

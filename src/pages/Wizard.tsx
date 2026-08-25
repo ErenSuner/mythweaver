@@ -118,7 +118,7 @@ export default function Wizard() {
           ← Geri
         </button>
         <div className="row" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-          {!canNext && <span style={{ color: 'var(--danger)', fontSize: 13 }}>Bu adımdaki zorunlu seçimleri tamamla.</span>}
+          {!canNext && <span style={{ color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>Bu adımdaki zorunlu seçimleri tamamla.</span>}
           <button className="btn btn-ghost" onClick={() => nav(adminOwnerId ? '/dm' : '/')}>
             Kaydet & Çık
           </button>
@@ -164,13 +164,13 @@ export default function Wizard() {
             Adım {stepIndex + 1} / {steps.length}
           </span>
           {saving ? (
-            <span className="muted" style={{ fontSize: 13 }}>kaydediliyor…</span>
+            <span className="muted" style={{ fontSize: 'var(--fs-sm)' }}>kaydediliyor…</span>
           ) : saveError ? (
-            <span style={{ fontSize: 13, color: 'var(--danger)', cursor: 'pointer' }} onClick={() => save()} title="Tekrar dene">
+            <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--danger)', cursor: 'pointer' }} onClick={() => save()} title="Tekrar dene">
               ⚠ kaydedilemedi — tekrar dene
             </span>
           ) : (
-            <span className="muted" style={{ fontSize: 13 }}>kaydedildi ✓</span>
+            <span className="muted" style={{ fontSize: 'var(--fs-sm)' }}>kaydedildi ✓</span>
           )}
         </div>
         <div className="progress">
@@ -191,7 +191,7 @@ export default function Wizard() {
 
       <div className="panel">
         <div style={{ marginBottom: 12 }}>
-          <h1 style={{ fontSize: 26, marginBottom: 2 }}>{step.title}</h1>
+          <h1 style={{ fontSize: 'var(--fs-xl)', marginBottom: 2 }}>{step.title}</h1>
           {step.subtitle && <p className="hint">{step.subtitle}</p>}
         </div>
         <StepComp />

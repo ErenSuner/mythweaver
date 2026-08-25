@@ -105,7 +105,7 @@ export default function StepEquipment() {
       {character.startingKit.mode === 'package' && clsEq && (
         <div className="stack">
           <div className="spread">
-            <h3 style={{ fontSize: 18, margin: 0 }}>Sınıf Donanımı — {klass?.name}</h3>
+            <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Sınıf Donanımı — {klass?.name}</h3>
             <span className="badge">{clsEq.choices.length} seçim</span>
           </div>
 
@@ -141,7 +141,7 @@ export default function StepEquipment() {
       {character.startingKit.mode === 'gold' && (
         <div className="stack">
           <div className="spread">
-            <h3 style={{ fontSize: 18, margin: 0 }}>Başlangıç Altının</h3>
+            <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Başlangıç Altının</h3>
             {character.startingKit.goldRolled != null && (
               <span className="badge badge-new">
                 {character.startingKit.goldRolled} gp atıldı
@@ -182,7 +182,7 @@ export default function StepEquipment() {
         <>
           <div className="divider" />
           <div className="spread">
-            <h3 style={{ fontSize: 18, margin: 0 }}>Geçmiş Donanımı — {bg?.name}</h3>
+            <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Geçmiş Donanımı — {bg?.name}</h3>
             <span className="badge">Kesende {bgEq.gold} gp</span>
           </div>
           <p className="hint" style={{ margin: 0 }}>
@@ -446,7 +446,7 @@ function InventoryPanel({ onDetail }: { onDetail: (i: Item) => void }) {
   return (
     <div>
       <div className="spread">
-        <h3 style={{ fontSize: 18, margin: 0 }}>Envanterin</h3>
+        <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Envanterin</h3>
         <div className="row" style={{ gap: 8 }}>
           <span className="badge">{weight} lb</span>
           <span className="badge badge-new">{gpLabel(remainingGoldGp(character))}</span>
@@ -487,7 +487,7 @@ function InventoryPanel({ onDetail }: { onDetail: (i: Item) => void }) {
                   .map((pack) => (
                     <div key={pack.id} style={{ marginTop: 10 }}>
                       <label>{pack.name}</label>
-                      <div className="muted" style={{ fontSize: 14 }}>
+                      <div className="muted" style={{ fontSize: 'var(--fs-sm)' }}>
                         {(pack.contents ?? [])
                           .map((c) => `${itemById(c.itemId)?.name ?? c.itemId}${c.qty > 1 ? ` ×${c.qty}` : ''}`)
                           .join(', ')}
@@ -512,7 +512,7 @@ function ArmorPanel({ onDetail }: { onDetail: (i: Item) => void }) {
   return (
     <div>
       <div className="row" style={{ gap: 8 }}>
-        <h3 style={{ fontSize: 18, margin: 0 }}>Zırh & AC</h3>
+        <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Zırh & AC</h3>
         <Tip label="AC">
           Armor Class — sana isabet etmenin zorluğu. Giydiğin zırha göre otomatik hesaplanır; elle girmene gerek yok.
         </Tip>

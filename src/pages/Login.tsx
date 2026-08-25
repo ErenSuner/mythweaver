@@ -137,7 +137,7 @@ export default function Login() {
                 <button
                   type="button"
                   className="btn btn-ghost"
-                  style={{ alignSelf: 'flex-start', padding: '2px 0', fontSize: 13 }}
+                  style={{ alignSelf: 'flex-start', padding: '2px 0', fontSize: 'var(--fs-sm)' }}
                   onClick={() => setMode('forgot')}
                 >
                   Şifremi unuttum
@@ -145,7 +145,7 @@ export default function Login() {
               )}
 
               {mode === 'signup' && (
-                <label className="row" style={{ gap: 8, alignItems: 'flex-start', fontSize: 13 }}>
+                <label className="row" style={{ gap: 8, alignItems: 'flex-start', fontSize: 'var(--fs-sm)' }}>
                   <input
                     type="checkbox"
                     checked={agree}

@@ -12,7 +12,7 @@ export default function ConditionsReference() {
   return (
     <div className="panel" style={{ marginTop: 18 }}>
       <button type="button" className="spread" style={{ all: 'unset', cursor: 'pointer', width: '100%', display: 'flex' }} onClick={() => setOpen((v) => !v)}>
-        <h2 style={{ fontSize: 20, margin: 0 }}>Durumlar (Conditions)</h2>
+        <h2 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Durumlar (Conditions)</h2>
         <span className="badge">{open ? 'gizle ▲' : `${conditions.length} durum ▼`}</span>
       </button>
 
@@ -42,7 +42,7 @@ export function ConditionModal({ condition, onClose }: { condition: Condition | 
   return (
     <Modal open onClose={onClose} title={condition.name} subtitle={condition.nameTr}>
       {condition.effects.length > 0 && (
-        <ul style={{ color: 'var(--ink-dim)', fontSize: 15, paddingLeft: 18, margin: 0 }}>
+        <ul style={{ color: 'var(--ink-dim)', fontSize: 'var(--fs-base)', paddingLeft: 18, margin: 0 }}>
           {condition.effects.map((e, i) => (
             <li key={i} style={{ marginBottom: 6 }}>
               {e}
