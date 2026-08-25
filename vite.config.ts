@@ -30,7 +30,25 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff2}'],
-        navigateFallback: '/index.html',
+        // Sayfa açılışları AĞDAN gelir (NetworkFirst). Önceden navigateFallback
+        // ile önbellekteki index.html'e bağlanıyordu; deploy sonrası ilk açılış
+        // hep eski sürümü gösteriyor, güncel hali ancak ikinci açılışta
+        // geliyordu. Hash'li JS/CSS precache'te kalır — onlar zaten değişmez,
+        // yeni HTML yeni hash'leri isteyince doğru dosyalar iner.
+        navigateFallback: undefined,
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }: { request: Request }) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'html-navigation',
+              // ağ yavaşsa bekletmeden önbelleğe düş
+              networkTimeoutSeconds: 4,
+              expiration: { maxEntries: 8 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
         // büyük JSON veri bundle'ı için limit yükselt
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
