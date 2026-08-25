@@ -77,36 +77,45 @@ export const SPELL_PROGRESSION: Record<string, Progression> = {
 
 export interface SpellLimits {
   cantrips: number
-  /** seçilebilecek 1. seviye büyü sayısı (oluşturma odaklı üst sınır) */
-  level1Spells: number
+  /** Toplam seçilebilir büyü sayısı — bilinen / hazırlanan / spellbook. */
+  spellsTotal: number
+  /** Seçim yapılabilecek en yüksek büyü seviyesi (slot tablosundan). */
+  maxSpellLevel: number
+  /** Sınıfın büyü modeli; ekranda doğru terimi kullanmak için. */
+  model: CasterModel | 'none'
 }
 
-// Seçim ekranı için üst sınırlar. NOT (bilinen basitleştirme): yüksek seviyelerde
-// 'known'/'prepared' büyüler birden çok büyü seviyesine dağılır; oluşturma odaklı
-// bu uygulama 1. seviye picker'ını toplam sayıyla cap'ler.
+/**
+ * Seçim ekranı için üst sınırlar.
+ *
+ * 5e'de üç modelin de tek bir TOPLAM bütçesi vardır ve bu bütçe cast
+ * edilebilen tüm büyü seviyelerine dağılır — seviye başına ayrı kota yoktur.
+ * Önceki sürüm bu toplamı 1. seviye picker'ına cap olarak veriyordu; 1.
+ * seviyede doğru sonuç veriyordu ama yüksek seviyeden başlayan karakterlerde
+ * 2-3. seviye büyüler hiç seçilemiyordu.
+ */
 export function spellLimitsFor(char: Character): SpellLimits {
   const klass = classById(char.classId)
   const prog = klass ? SPELL_PROGRESSION[klass.id] : undefined
-  if (!prog) return { cantrips: 0, level1Spells: 0 }
+  if (!prog) return { cantrips: 0, spellsTotal: 0, maxSpellLevel: 0, model: 'none' }
 
   const lvl = char.level
   const start = prog.startLevel ?? 1
   const cantrips = prog.cantrips[lvl - 1] ?? 0
-  if (lvl < start) return { cantrips, level1Spells: 0 }
+  if (lvl < start) return { cantrips, spellsTotal: 0, maxSpellLevel: 0, model: prog.model }
 
-  let level1Spells = 0
+  let spellsTotal = 0
   if (prog.model === 'known') {
-    level1Spells = prog.spellsKnown?.[lvl - 1] ?? 0
+    spellsTotal = prog.spellsKnown?.[lvl - 1] ?? 0
   } else if (prog.model === 'wizard') {
-    // spellbook'un 1. seviye büyüleri: 1. seviyede 6 (yüksek seviyelerde eklenenler
-    // farklı büyü seviyelerine gidebilir; oluşturma için başlangıç kitabını cap alırız)
-    level1Spells = prog.wizardBookLevel1 ?? 0
+    // Spellbook: 1. seviyede 6, her seviye atlamada +2.
+    spellsTotal = (prog.wizardBookLevel1 ?? 0) + 2 * (lvl - 1)
   } else if (prog.model === 'prepared' && prog.preparedAbility) {
     const mod = abilityModifier(finalAbilityScores(char)[prog.preparedAbility])
     const base = prog.halfLevel ? Math.floor(lvl / 2) : lvl
-    level1Spells = Math.max(1, mod + base)
+    spellsTotal = Math.max(1, mod + base)
   }
-  return { cantrips, level1Spells }
+  return { cantrips, spellsTotal, maxSpellLevel: maxCastableSpellLevel(char), model: prog.model }
 }
 
 // ---- Spell slot tabloları (rehber sınıf tablolarından) ----

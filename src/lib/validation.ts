@@ -51,8 +51,10 @@ export function spellsComplete(c: Character): boolean {
   if (!klass?.isCaster || !c.spellcasting) return true
   const limits = spellLimitsFor(c)
   const cantripN = c.spellcasting.cantripIds.length
-  const lvl1N = c.spellcasting.levels[1]?.spellIds.length ?? 0
-  return cantripN === limits.cantrips && lvl1N === limits.level1Spells
+  // Bütçe tüm büyü seviyelerine dağılır; toplam üzerinden sayılır.
+  let spellN = 0
+  for (let lvl = 1; lvl <= 9; lvl++) spellN += c.spellcasting.levels[lvl]?.spellIds.length ?? 0
+  return cantripN === limits.cantrips && spellN === limits.spellsTotal
 }
 
 export function choicesComplete(c: Character): boolean {
