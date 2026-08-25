@@ -19,6 +19,7 @@ export function emptyCharacter(): Character {
     classId: '',
     subclassId: '',
     level: 1,
+    startingLevel: 1,
     raceId: '',
     subraceId: '',
     backgroundId: '',

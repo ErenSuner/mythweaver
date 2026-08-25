@@ -33,11 +33,17 @@ export default function Wizard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  // görünür adımlar (büyücü değilse Büyüler adımı atlanır)
+  // görünür adımlar: büyücü değilse Büyüler, 1. seviyede başlıyorsa
+  // Seviyeleri Yükselt adımı atlanır
   const steps = useMemo(() => {
     const isCaster = character ? Boolean(classById(character.classId)?.isCaster) : false
-    return WIZARD_STEPS.filter((s) => (s.key === 'spells' ? isCaster : true))
-  }, [character?.classId])
+    const startsHigher = (character?.startingLevel ?? 1) > 1
+    return WIZARD_STEPS.filter((s) => {
+      if (s.key === 'spells') return isCaster
+      if (s.key === 'levels') return startsHigher
+      return true
+    })
+  }, [character?.classId, character?.startingLevel])
 
   // sheet'ten "Düzenle" ile gelindiyse ilgili adıma atla, sonra parametreyi temizle
   useEffect(() => {

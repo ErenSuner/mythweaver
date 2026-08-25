@@ -76,7 +76,14 @@ function SubclassCard({
   )
 }
 
-export default function LevelUpPanel({ onClose }: { onClose: () => void }) {
+export default function LevelUpPanel({
+  onClose,
+  hideClose = false,
+}: {
+  onClose: () => void
+  /** Sihirbaza gömüldüğünde kapatmak anlamlı değil — ✕ gizlenir. */
+  hideClose?: boolean
+}) {
   const character = useCharacterStore((s) => s.character)!
   const replace = useCharacterStore((s) => s.replace)
   const klass = classById(character.classId)
@@ -180,9 +187,11 @@ export default function LevelUpPanel({ onClose }: { onClose: () => void }) {
         <h2 style={{ fontSize: 'var(--fs-lg)' }}>
           Seviye {preview.fromLevel} → {preview.toLevel}
         </h2>
-        <button className="btn btn-ghost" onClick={onClose}>
-          kapat ✕
-        </button>
+        {!hideClose && (
+          <button className="btn btn-ghost" onClick={onClose}>
+            kapat ✕
+          </button>
+        )}
       </div>
 
       <Info>

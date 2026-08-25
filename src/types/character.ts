@@ -112,6 +112,9 @@ export interface Character {
   classId: string
   subclassId: string
   level: number
+  /** Karakterin oluşturulurken başladığı seviye. Bazı hikâyeler 1'den değil
+      5-10 gibi seviyelerden başlar. Eski kayıtlarda yok; 1 varsayılır. */
+  startingLevel?: number
   raceId: string
   subraceId: string
   backgroundId: string
