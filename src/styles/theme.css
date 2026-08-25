@@ -2107,14 +2107,14 @@ button.badge:hover {
   outline-offset: 2px;
 }
 
-/* --- campaign sayfasının evren bloğu ---
+/* --- campaign sayfasının evren bölümü ---
    Katlanabilir değil: lore okunacak metin, saklanacak ayrıntı değil.
-   Sayfanın en altında, Evrenler sayfasındaki tezhipli kutunun aynısı. */
-.universe-block {
-  margin-top: 28px;
+   Ad bölüm başlığında; kart yalnız lore'u taşır. */
+.universe-section {
+  margin-top: 32px;
 }
-.universe-block > h2 {
-  margin-bottom: 0.5em;
+.universe-block .flourish {
+  margin: 0 auto 20px;
 }
 .universe-block .lore {
   color: var(--ink-dim);
@@ -2124,4 +2124,11 @@ button.badge:hover {
 }
 .universe-block .lore > :last-child {
   margin-bottom: 0;
+}
+/* Evren adı bölüm başlığı olarak lore'un kendi başlıklarının üstüne çıkar.
+   Önce lore başlıkları küçültülmüştü ama o zaman lore h1'i gövde metniyle
+   aynı boyuta düşüyordu; doğrusu bölüm başlığını yükseltmek. Kaskad:
+   30 (evren adı) > 24 (lore h1) > 19 (lore h2 ve gövde, farklı font) > 16. */
+.universe-section > .section-head h2 {
+  font-size: var(--fs-xl);
 }

@@ -57,7 +57,6 @@ export default function CampaignDmTools({
   const [assignOpen, setAssignOpen] = useState(false)
   const [pool, setPool] = useState<AdminCharacterRow[] | null>(null)
   const [openRow, setOpenRow] = useState<AdminCharacterRow | null>(null)
-  const [membersView, setMembersView] = useState<'summary' | 'cards'>('summary')
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [campaignsError, setCampaignsError] = useState(false)
   const [membersError, setMembersError] = useState(false)
@@ -324,24 +323,6 @@ export default function CampaignDmTools({
           <div className="section-head" style={{ flexWrap: 'wrap', gap: 10 }}>
             <h2>Karakterler</h2>
             <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
-              {members && members.length > 0 && (
-                <div className="row" style={{ gap: 4 }}>
-                  <button
-                    className={`tab${membersView === 'summary' ? ' active' : ''}`}
-                    aria-pressed={membersView === 'summary'}
-                    onClick={() => setMembersView('summary')}
-                  >
-                    Özet
-                  </button>
-                  <button
-                    className={`tab${membersView === 'cards' ? ' active' : ''}`}
-                    aria-pressed={membersView === 'cards'}
-                    onClick={() => setMembersView('cards')}
-                  >
-                    Kartlar
-                  </button>
-                </div>
-              )}
               {isAdmin && (
                 <button className="btn" onClick={openAssign}>
                   <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
@@ -374,10 +355,13 @@ export default function CampaignDmTools({
                 Bu campaign'de henüz karakter yok.{isAdmin ? ' "Karakter ekle" ile ata.' : ' Kurucu karakter atayınca burada görünür.'}
               </p>
             </div>
-          ) : membersView === 'summary' ? (
-            <PartyStatTable rows={members} />
           ) : (
-            <div className="choice-grid">
+            /* Iki gorunum de acik: ustte ozet tablo (karsilastirma icin),
+               altta kartlar (eylemler icin). Sekme yoktu; ikisi de ayni
+               anda lazim oluyordu. */
+            <>
+              <PartyStatTable rows={members} />
+              <div className="choice-grid" style={{ marginTop: 18 }}>
               {members.map((row) => {
                 const c = row.character
                 const race = raceById(c.raceId)
@@ -424,7 +408,8 @@ export default function CampaignDmTools({
                   </div>
                 )
               })}
-            </div>
+              </div>
+            </>
           )}
         </div>
       )}

@@ -7,7 +7,7 @@ import { sanitizeLore } from '@/lib/sanitize'
 import { Modal } from '@/components/Modal'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import CampaignDmTools from '@/components/dm/CampaignDmTools'
-import { Corners } from '@/components/Ornament'
+import { Corners, Flourish } from '@/components/Ornament'
 import { CampaignIcon } from '@/components/icons'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
@@ -110,10 +110,7 @@ export default function CampaignParty() {
         <div className="page-head-text">
           <span className="eyebrow">{isDm ? 'DM olduğun campaign' : 'Campaign'}</span>
           <h1>{campaign.name}</h1>
-          <p className="page-sub">
-            {members === null ? 'Yükleniyor…' : `${members.length} kahraman`}
-            {universe ? ` · Evren: ${universe.name}` : ''}
-          </p>
+          <p className="page-sub">{members === null ? 'Yükleniyor…' : `${members.length} kahraman`}</p>
         </div>
         <BackButton />
       </div>
@@ -155,19 +152,26 @@ export default function CampaignParty() {
         </div>
       )}
 
-      {/* Evren en altta, açık ve tezhipli — Evrenler sayfasındaki kutunun
-          aynısı. Katlanabilir başlık değildi: lore okunacak metin, saklanacak
-          ayrıntı değil. */}
+      {/* Evren sayfanın en altında, açık ve tezhipli. Katlanabilir başlık
+          değil: lore okunacak metin, saklanacak ayrıntı değil.
+          Ad bölüm başlığında yaldızla duruyor ki neyin adı olduğu belli olsun;
+          kart içinde tekrar edilmiyor. */}
       {universe && (
-        <section className="panel artifact universe-block">
-          <Corners />
-          <span className="eyebrow">Evren</span>
-          <h2>{universe.name}</h2>
-          {universe.description ? (
-            <div className="lore" dangerouslySetInnerHTML={{ __html: sanitizeLore(universe.description) }} />
-          ) : (
-            <p className="muted" style={{ margin: 0 }}>Lore henüz yazılmamış.</p>
-          )}
+        <section className="universe-section">
+          <div className="section-head">
+            <h2>
+              Evren: <span className="campaign-name">{universe.name}</span>
+            </h2>
+          </div>
+          <div className="panel artifact universe-block">
+            <Corners />
+            <Flourish />
+            {universe.description ? (
+              <div className="lore" dangerouslySetInnerHTML={{ __html: sanitizeLore(universe.description) }} />
+            ) : (
+              <p className="muted" style={{ margin: 0 }}>Lore henüz yazılmamış.</p>
+            )}
+          </div>
         </section>
       )}
 
