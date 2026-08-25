@@ -37,21 +37,21 @@ export default function BrandHeader() {
   const navLinks = (
     <>
       <NavLink to="/" end className="nav-link">
-        <CharactersIcon size={17} />
+        <CharactersIcon size={21} />
         Karakterler
       </NavLink>
       <NavLink to="/campaign" className="nav-link">
-        <CampaignIcon size={17} />
+        <CampaignIcon size={21} />
         Campaign
       </NavLink>
       {isDm && (
         <>
           <NavLink to="/dm" className="nav-link">
-            <DmIcon size={17} />
+            <DmIcon size={21} />
             DM Paneli
           </NavLink>
           <NavLink to="/evrenler" className="nav-link">
-            <UniverseIcon size={17} />
+            <UniverseIcon size={21} />
             Evrenler
           </NavLink>
         </>
@@ -71,16 +71,14 @@ export default function BrandHeader() {
       }}
     >
       <div
-        className="bleed-inner"
+        className="bleed-inner brand-inner"
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}
       >
-        <Link to="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
-          <span style={{ color: 'var(--accent-bright)', display: 'inline-flex' }}>
-            <DiceIcon size={22} />
+        <Link className="brand-mark" to="/">
+          <span className="brand-mark-icon">
+            <DiceIcon size={30} />
           </span>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: 'var(--fs-lg)', fontWeight: 600, color: 'var(--ink)', letterSpacing: '-0.01em' }}>
-            Mythweaver
-          </span>
+          <span className="brand-mark-text">Mythweaver</span>
         </Link>
         {user && (
           <>
@@ -138,11 +136,11 @@ export default function BrandHeader() {
           {navLinks}
           <span className="brand-drawer-sep" aria-hidden="true" />
           <NavLink to="/ayarlar" className="nav-link">
-            <SettingsIcon size={17} />
+            <SettingsIcon size={21} />
             {identity} · Ayarlar
           </NavLink>
           <button className="nav-link" style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={onSignOut}>
-            <LogoutIcon size={17} />
+            <LogoutIcon size={21} />
             Çıkış
           </button>
         </div>

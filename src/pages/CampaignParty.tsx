@@ -140,15 +140,14 @@ export default function CampaignParty() {
         </div>
         {supabaseEnabled && (
           <button
-            className="icon-btn icon-btn-primary"
-            title="Kendi campaign'ini kur"
+            className="btn btn-primary"
             onClick={() => {
               setNewCampaign('')
               setCreateOpen(true)
             }}
           >
-            <PlusIcon size={19} />
-            <span className="sr-only">Kendi campaign&apos;ini kur</span>
+            <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+            Campaign Kur
           </button>
         )}
       </div>
@@ -263,9 +262,8 @@ export default function CampaignParty() {
       ) : (
         groups.map((g) => (
           <section key={g.campaign.id} className="section-block">
-            <span className="eyebrow">Kampanya</span>
             <div className="section-head">
-              <h2 className="campaign-name">{g.campaign.name}</h2>
+              <h2>{g.campaign.name}</h2>
               <span className="section-meta">{g.members.length} kahraman</span>
             </div>
             {g.campaign.universeId && universeById[g.campaign.universeId] && (

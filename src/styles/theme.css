@@ -418,20 +418,20 @@ a {
 .brand-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 26px;
 }
 /* nav linki: okunur, aktif sayfa accent + alt çizgi */
 .nav-link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   font-family: var(--body);
-  font-size: var(--fs-base);
+  font-size: var(--fs-md);
   font-weight: 500;
   color: var(--ink-dim);
   text-decoration: none;
-  padding: 4px 0;
+  padding: 6px 0;
   transition: color 0.15s ease;
 }
 .nav-link svg {
@@ -466,17 +466,17 @@ a {
 .brand-sep {
   width: 1px;
   align-self: stretch;
-  min-height: 22px;
+  min-height: 30px;
   background: var(--line-strong);
 }
 /* kimlik: tıklanabilir hesap kontrolü (baş harf rozeti + username) */
 .identity {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 11px;
   text-decoration: none;
   color: var(--ink-dim);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   padding: 3px 3px 3px 3px;
   border-radius: 999px;
   transition: color 0.15s ease;
@@ -498,15 +498,15 @@ a {
 .identity-avatar {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   flex: none;
   border-radius: 999px;
   background: var(--field);
   border: 1px solid var(--line-strong);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 600;
   text-transform: uppercase;
   transition: border-color 0.15s ease, color 0.15s ease;
@@ -520,8 +520,8 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   flex: none;
   padding: 0;
   border-radius: 9px;
@@ -1725,8 +1725,8 @@ button.badge:hover {
   place-items: center;
   font-family: var(--body);
   font-size: var(--fs-sm);
-  width: 38px;
-  min-height: 34px;
+  width: 46px;
+  min-height: 42px;
   border: 0;
   background: transparent;
   color: var(--ink-faint);
@@ -2006,16 +2006,67 @@ button.badge:hover {
 
 /* Kaydedilmemiş taslak göstergesi — düğmenin üstünde küçük mühür noktası.
    Yazdığın kaybolmadı, işte burada demenin en sessiz yolu. */
-.icon-btn[data-dot] {
+.icon-btn[data-dot],
+.btn[data-dot] {
   position: relative;
 }
-.icon-btn[data-dot]::after {
+.icon-btn[data-dot]::after,
+.btn[data-dot]::after {
   content: '';
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 6px;
-  height: 6px;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--seal-text);
+}
+
+/* ============================================================
+   HEADER ÖLÇÜSÜ
+   Header uygulamanın sürekli görünen tek çerçevesi; küçük kalınca
+   sayfanın geri kalanıyla orantısız duruyordu. Dikey nefes, marka
+   ve nav bir üst ölçek adımına çıkarıldı.
+   ============================================================ */
+.brand-inner {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex: none;
+}
+.brand-mark-icon {
+  display: inline-flex;
+  color: var(--leaf);
+}
+.brand-mark-text {
+  font-family: var(--serif);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+/* header içindeki butonlar gövde ölçüsüne çıkar — nav ile aynı hizada okunur */
+.brand-nav .btn {
+  font-size: var(--fs-base);
+  padding: 11px 20px;
+}
+.brand-nav .theme-toggle-btn {
+  color: var(--ink-dim);
+}
+
+@media (max-width: 820px) {
+  /* dar ekranda marka tek başına kalır; bir adım küçülür ki taşmasın */
+  .brand-mark-text {
+    font-size: var(--fs-lg);
+  }
+  .brand-inner {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
 }

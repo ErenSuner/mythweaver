@@ -182,20 +182,20 @@ export default function Universes() {
             ← DM Paneli
           </button>
           <button
-            className="icon-btn icon-btn-primary"
+            className="btn btn-primary"
             data-dot={hasSavedDraft || undefined}
             disabled={atLimit}
             title={
               atLimit
                 ? `Evren limitine ulaştın (${MAX_UNIVERSES}/${MAX_UNIVERSES}). Yenisini açmak için birini sil.`
                 : hasSavedDraft
-                  ? 'Yeni evren — kaydedilmemiş taslağın var'
-                  : 'Yeni evren'
+                  ? 'Kaydedilmemiş taslağın var'
+                  : undefined
             }
             onClick={() => setCreateOpen(true)}
           >
-            <PlusIcon size={19} />
-            <span className="sr-only">Yeni evren</span>
+            <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+            Yeni Evren
           </button>
         </div>
       </div>

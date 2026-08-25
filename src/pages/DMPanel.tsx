@@ -373,32 +373,27 @@ export default function DMPanel() {
             )}
 
             <button
-              className="icon-btn icon-btn-primary"
-              title="Yeni campaign oluştur"
+              className="btn btn-primary"
               onClick={() => {
                 setNewName('')
                 setCreateOpen(true)
               }}
             >
-              <PlusIcon size={19} />
-              <span className="sr-only">Yeni campaign oluştur</span>
+              <PlusIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+              Yeni Campaign
             </button>
 
             {selected && (
               <>
                 <span className="toolbar-sep" aria-hidden="true" />
-                <button className="icon-btn" title="Campaign ayarları" onClick={openSettings}>
-                  <EditIcon size={19} />
-                  <span className="sr-only">Campaign ayarları</span>
+                <button className="btn" onClick={openSettings}>
+                  <EditIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+                  Ayarlar
                 </button>
                 {canManageInvites && (
-                  <button
-                    className="icon-btn"
-                    title="Oyuncular ve davetler"
-                    onClick={() => setPlayersOpen(true)}
-                  >
-                    <PlayersIcon size={19} />
-                    <span className="sr-only">Oyuncular ve davetler</span>
+                  <button className="btn" onClick={() => setPlayersOpen(true)}>
+                    <PlayersIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
+                    Oyuncular
                   </button>
                 )}
               </>
