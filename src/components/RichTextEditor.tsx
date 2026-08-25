@@ -36,6 +36,14 @@ export default function RichTextEditor({ value, onChange, placeholder, maxLength
   const [len, setLen] = useState(0)
 
   useEffect(() => {
+    // Enter'ın <div> yerine <p> üretmesini sağlar. Chrome varsayılanı 'div';
+    // div sanitize whitelist'inde olmadığı için satırlar kaydederken
+    // birbirine yapışıyordu. Kaynağında düzeltmek daha temiz.
+    try {
+      document.execCommand('defaultParagraphSeparator', false, 'p')
+    } catch {
+      // eski/kısıtlı tarayıcı: sanitize tarafındaki div→p dönüşümü yine yakalar
+    }
     if (ref.current && ref.current.innerHTML !== value) {
       ref.current.innerHTML = value
     }

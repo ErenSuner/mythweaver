@@ -4,6 +4,18 @@
 // tag çıkarılır. Kaydederken ve render ederken çağrılır (savunma derinliği).
 const ALLOWED = new Set(['H1', 'H2', 'H3', 'P', 'BR', 'STRONG', 'B', 'EM', 'I', 'U', 'UL', 'OL', 'LI'])
 
+// İzin verilenler arasında blok olanlar: bir DIV bunlardan birini içeriyorsa
+// paragrafa çevrilemez (p içinde p geçersizdir), sarmalayıcı olarak açılır.
+const BLOCKS = new Set(['H1', 'H2', 'H3', 'P', 'UL', 'OL', 'LI', 'DIV'])
+
+function hasBlockChild(el: Element): boolean {
+  for (const child of Array.from(el.children)) {
+    if (BLOCKS.has(child.tagName)) return true
+    if (hasBlockChild(child)) return true
+  }
+  return false
+}
+
 function clean(node: Node, out: Node, doc: Document) {
   node.childNodes.forEach((child) => {
     if (child.nodeType === Node.TEXT_NODE) {
@@ -15,6 +27,13 @@ function clean(node: Node, out: Node, doc: Document) {
     if (ALLOWED.has(el.tagName)) {
       // attribute'suz temiz kopya
       const fresh = doc.createElement(el.tagName.toLowerCase())
+      clean(el, fresh, doc)
+      out.appendChild(fresh)
+    } else if (el.tagName === 'DIV' && !hasBlockChild(el)) {
+      // contentEditable'da Enter (Chrome varsayılanı) <div> üretir. Eskiden div
+      // atılıp içeriği olduğu gibi bırakılıyordu; satırlar birbirine yapışıyordu.
+      // Blok içermeyen div = bir satır, paragrafa çevrilir.
+      const fresh = doc.createElement('p')
       clean(el, fresh, doc)
       out.appendChild(fresh)
     } else {
