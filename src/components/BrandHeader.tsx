@@ -4,6 +4,7 @@ import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import { CharactersIcon, CampaignIcon, DmIcon, UniverseIcon, DiceIcon, SettingsIcon, LogoutIcon } from '@/components/icons'
 import ThemeToggle from '@/components/ThemeToggle'
+import InviteMenu from '@/components/InviteMenu'
 
 export default function BrandHeader() {
   const { user, signOut } = useAuthStore()
@@ -94,6 +95,7 @@ export default function BrandHeader() {
                 </span>
                 <span>{identity}</span>
               </NavLink>
+              <InviteMenu />
               <ThemeToggle />
               <button className="btn btn-ghost" onClick={onSignOut}>
                 Çıkış
@@ -102,6 +104,7 @@ export default function BrandHeader() {
 
             {/* mobil: anahtar + hamburger */}
             <span className="brand-mobile-actions">
+              <InviteMenu />
               <ThemeToggle />
             </span>
             <button

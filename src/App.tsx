@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { useCharacterStore } from '@/state/characterStore'
 import { useThemeStore } from '@/state/themeStore'
+import { useInviteStore } from '@/state/inviteStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import Login from '@/pages/Login'
 import ResetPassword from '@/pages/ResetPassword'
@@ -48,6 +49,18 @@ export default function App() {
   useEffect(() => {
     setUserId(user?.id ?? null)
   }, [user, setUserId])
+
+  // Gelen davetler: oturum açıkken bir kez çekilir, sonrası realtime ile tazelenir.
+  // Çıkışta liste temizlenir ki bir sonraki kullanıcı eskisini görmesin.
+  useEffect(() => {
+    const { refresh, subscribe, reset } = useInviteStore.getState()
+    if (!user) {
+      reset()
+      return
+    }
+    void refresh()
+    return subscribe(user.id)
+  }, [user])
 
   // Sekme arka plana alınırken / kapanırken bekleyen kaydı diske indir (veri kaybı önleme).
   useEffect(() => {

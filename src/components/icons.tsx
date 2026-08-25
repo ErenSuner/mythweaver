@@ -153,6 +153,37 @@ export function TrashIcon(p: IconProps) {
   )
 }
 
+// Bildirim — çan
+export function BellIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M18 16.5V11a6 6 0 1 0-12 0v5.5L4.5 19h15z" />
+      <path d="M10 19a2 2 0 0 0 4 0" />
+    </svg>
+  )
+}
+
+// Şifreyi göster — göz
+export function EyeIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z" />
+      <circle cx="12" cy="12" r="2.9" />
+    </svg>
+  )
+}
+
+// Şifreyi gizle — üzeri çizili göz
+export function EyeOffIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <path d="M9.9 5.9A9.2 9.2 0 0 1 12 5.8c6 0 9.5 6.2 9.5 6.2a17 17 0 0 1-3.4 4.1M6.4 7.9A17 17 0 0 0 2.5 12S6 18.2 12 18.2a9.4 9.4 0 0 0 3.6-.7" />
+      <path d="M9.9 9.9a2.9 2.9 0 0 0 4.1 4.1" />
+      <path d="M4 4l16 16" />
+    </svg>
+  )
+}
+
 const REGISTRY = {
   characters: CharactersIcon,
   campaign: CampaignIcon,
@@ -167,6 +198,9 @@ const REGISTRY = {
   edit: EditIcon,
   players: PlayersIcon,
   trash: TrashIcon,
+  bell: BellIcon,
+  eye: EyeIcon,
+  eyeOff: EyeOffIcon,
 }
 
 export type IconName = keyof typeof REGISTRY

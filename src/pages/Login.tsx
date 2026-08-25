@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import Turnstile, { turnstileEnabled } from '@/components/Turnstile'
-import { Info } from '@/components/ui'
+import { Info, PasswordInput } from '@/components/ui'
 import { Corners, Flourish } from '@/components/Ornament'
 import ThemeToggle from '@/components/ThemeToggle'
 
@@ -111,16 +111,22 @@ export default function Login() {
             <form onSubmit={submit} className="stack">
               <div>
                 <label>E-posta</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete={mode === 'signup' ? 'email' : 'username'}
+                  required
+                />
               </div>
 
               {mode !== 'forgot' && (
                 <div>
                   <label>Şifre</label>
-                  <input
-                    type="password"
+                  <PasswordInput
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                     required
                     minLength={6}
                   />

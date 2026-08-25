@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
 import { createCampaign } from '@/lib/admin-storage'
-import { listMyInvites, acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
+import { acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
 import { getUniverse, type Universe } from '@/lib/universe'
 import { sanitizeLore } from '@/lib/sanitize'
 import { supabaseEnabled } from '@/lib/supabase'
@@ -11,6 +11,8 @@ import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import { CampaignIcon, PlusIcon } from '@/components/icons'
 import { Modal } from '@/components/Modal'
+import { INVITES_ANCHOR } from '@/components/InviteMenu'
+import { useInviteStore } from '@/state/inviteStore'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
 
@@ -22,18 +24,22 @@ interface PartyGroup {
 export default function CampaignParty() {
   const { user, refreshRoles } = useAuthStore()
   const navigate = useNavigate()
+  const location = useLocation()
   const toast = useToast()
   const [groups, setGroups] = useState<PartyGroup[] | null>(null)
   const [myIds, setMyIds] = useState<Set<string>>(new Set())
   const [myChars, setMyChars] = useState<Character[]>([])
   const [universeById, setUniverseById] = useState<Record<string, Universe>>({})
-  const [invites, setInvites] = useState<MyInvite[] | null>(null)
+  // Davetler header'daki bildirim kutusuyla ortak store'dan gelir; ikisi senkron kalır.
+  const invites = useInviteStore((s) => s.invites)
+  const refreshInvites = useInviteStore((s) => s.refresh)
   const [pick, setPick] = useState<Record<string, string>>({})
   const [openId, setOpenId] = useState<string | null>(null)
   const [error, setError] = useState(false)
   const [newCampaign, setNewCampaign] = useState('')
   const [creating, setCreating] = useState(false)
   const [createOpen, setCreateOpen] = useState(false)
+  const invitesRef = useRef<HTMLDivElement>(null)
 
   async function onAcceptInvite(inv: MyInvite) {
     const charId = pick[inv.inviteId] || myChars[0]?.id
@@ -45,6 +51,7 @@ export default function CampaignParty() {
       await acceptInvite(inv.inviteId, charId)
       toast(`${inv.campaignName} campaign'ine katıldın.`, 'success')
       await load()
+      await refreshInvites()
     } catch (e) {
       const msg = e as { message?: string }
       console.error('[invite] kabul hatası', e)
@@ -55,7 +62,7 @@ export default function CampaignParty() {
   async function onDeclineInvite(inv: MyInvite) {
     try {
       await declineInvite(inv.inviteId)
-      await load()
+      await refreshInvites()
     } catch (e) {
       console.error('[invite] reddetme hatası', e)
       toast('Davet reddedilemedi.', 'error')
@@ -83,14 +90,13 @@ export default function CampaignParty() {
   async function load() {
     try {
       setError(false)
-      const [camps, mine, inv] = await Promise.all([
+      const [camps, mine] = await Promise.all([
         myCampaigns(),
         listCharacters(user?.id ?? null),
-        supabaseEnabled ? listMyInvites().catch(() => []) : Promise.resolve([]),
+        refreshInvites(),
       ])
       setMyIds(new Set(mine.map((c) => c.id)))
       setMyChars(mine)
-      setInvites(inv)
       const withMembers = await Promise.all(
         camps.map(async (campaign) => ({ campaign, members: await campaignPeers(campaign.id) })),
       )
@@ -110,6 +116,14 @@ export default function CampaignParty() {
     load()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
+
+  // Bildirim kutusundan `#gelen-davetler` ile gelindiğinde panele kaydır.
+  // location.key bağımlılığı: aynı adrese tekrar tıklanınca da çalışsın.
+  useEffect(() => {
+    if (location.hash !== `#${INVITES_ANCHOR}`) return
+    if (invites.length === 0) return
+    invitesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [location.key, location.hash, invites.length])
 
   // Açık karakter tüm gruplarda aranır; modal tek yerde render edilir.
   const openChar = groups?.flatMap((g) => g.members).find((m) => m.id === openId) ?? null
@@ -141,8 +155,13 @@ export default function CampaignParty() {
 
       {/* Gelen davetler — eyleme çağıran tek uyarı, o yüzden ekranda kalır.
           İç içe panel yerine tek satırlık kayıtlar. */}
-      {invites && invites.length > 0 && (
-        <div className="panel stack" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
+      {invites.length > 0 && (
+        <div
+          id={INVITES_ANCHOR}
+          ref={invitesRef}
+          className="panel stack"
+          style={{ marginBottom: 22, borderColor: 'var(--seal)' }}
+        >
           <span className="rubric">Gelen davetler</span>
           {invites.map((inv) => (
             <div key={inv.inviteId} className="setting-row" style={{ padding: '12px 0' }}>

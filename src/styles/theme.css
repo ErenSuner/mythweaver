@@ -502,6 +502,156 @@ a {
   display: none;
 }
 
+/* bildirim kutusu — kullanıcı adının altına açılan küçük panel */
+.notif-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.bell-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  background: none;
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.bell-btn:hover,
+.bell-btn[aria-expanded='true'] {
+  color: var(--accent-bright);
+  border-color: var(--line);
+}
+.bell-btn:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+}
+/* rozet: mühür kırmızısı, zilin sağ üstünde */
+.bell-badge {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--seal);
+  color: #fff;
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+.notif-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 30; /* header 20, modal backdrop 100 */
+  width: min(300px, calc(100vw - 24px));
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+  background: var(--panel-solid);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fade-in 0.12s ease;
+}
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.notif-count {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--seal-text);
+}
+.notif-empty {
+  margin: 0;
+  padding: 16px 14px;
+  font-size: 13.5px;
+}
+.notif-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.notif-list li + li {
+  border-top: 1px solid var(--line);
+}
+.notif-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.notif-item:hover {
+  background: var(--btn-face-hover);
+}
+.notif-item:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: -2px;
+}
+.notif-item-title {
+  font-weight: 600;
+}
+.notif-item .hint {
+  margin: 0;
+}
+
+/* şifre alanı — sağ iç kenarda göster/gizle gözü */
+.pw-field {
+  position: relative;
+  display: block;
+}
+.pw-field input {
+  padding-right: 46px;
+}
+.pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-btn);
+  background: none;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.pw-toggle:hover {
+  color: var(--ink);
+}
+.pw-toggle:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 1px;
+}
+
 /* panel/kart */
 .panel {
   background: var(--panel-solid);
@@ -1282,6 +1432,14 @@ button.badge:hover {
   .brand-mobile-actions {
     display: inline-flex;
     margin-left: auto;
+  }
+  /* dar ekranda menü zilin altında değil, ekran genişliğine yayılır */
+  .notif-menu {
+    position: fixed;
+    top: 64px;
+    right: 12px;
+    left: 12px;
+    width: auto;
   }
   .brand-menu-btn {
     display: inline-flex;

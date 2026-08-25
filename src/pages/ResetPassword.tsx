@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
-import { Info } from '@/components/ui'
+import { Info, PasswordInput } from '@/components/ui'
 
 // Supabase recovery e-postasındaki bağlantı buraya döner. Bağlantı, geçici bir
 // "recovery" oturumu kurar (authStore init'teki onAuthStateChange yakalar), böylece
@@ -54,11 +54,23 @@ export default function ResetPassword() {
           <form onSubmit={submit} className="stack">
             <div>
               <label>Yeni şifre</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+              <PasswordInput
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="new-password"
+                required
+                minLength={6}
+              />
             </div>
             <div>
               <label>Yeni şifre (tekrar)</label>
-              <input type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} required minLength={6} />
+              <PasswordInput
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                autoComplete="new-password"
+                required
+                minLength={6}
+              />
             </div>
             <button className="btn btn-primary" disabled={busy}>
               Şifreyi Güncelle

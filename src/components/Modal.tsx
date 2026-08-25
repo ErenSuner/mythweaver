@@ -16,23 +16,30 @@ export interface ModalProps {
 
 export function Modal({ open, onClose, title, subtitle, children, footer, wide }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null)
+  // onClose çağrı yerlerinde inline arrow veriliyor — her render'da yeni referans.
+  // Effect'in bağımlılığı olsaydı her tuş vuruşunda cleanup + re-run olur, focus
+  // input'tan panele kaçardı. Ref ile güncel tutulur; effect yalnız open'a bağlı.
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose
 
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') closeRef.current()
     }
     document.addEventListener('keydown', onKey)
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     const prevFocus = document.activeElement as HTMLElement | null
-    panelRef.current?.focus()
+    // autoFocus verilmiş bir alan varsa onu ezme.
+    const panel = panelRef.current
+    if (panel && !panel.contains(document.activeElement)) panel.focus()
     return () => {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = prevOverflow
       prevFocus?.focus?.()
     }
-  }, [open, onClose])
+  }, [open])
 
   if (!open) return null
 

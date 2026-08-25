@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type InputHTMLAttributes, type ReactNode } from 'react'
+import { EyeIcon, EyeOffIcon } from '@/components/icons'
 
 // "Bu ne işe yarar?" info kutucuğu
 export function Info({ children }: { children: ReactNode }) {
@@ -65,4 +66,24 @@ export function Tip({ label, children }: { label: string; children: ReactNode })
 
 export function LevelBadge({ level, isNew }: { level: number; isNew?: boolean }) {
   return <span className={isNew ? 'badge badge-new' : 'badge badge-level'}>{isNew ? `YENİ · Lv. ${level}` : `Lv. ${level}`}</span>
+}
+
+// Şifre alanı + göster/gizle gözü. type dışındaki tüm input prop'ları aynen geçer.
+export function PasswordInput({ className, ...rest }: InputHTMLAttributes<HTMLInputElement>) {
+  const [show, setShow] = useState(false)
+  return (
+    <span className={className ? `pw-field ${className}` : 'pw-field'}>
+      <input {...rest} type={show ? 'text' : 'password'} />
+      <button
+        type="button"
+        className="pw-toggle"
+        onClick={() => setShow((v) => !v)}
+        aria-label={show ? 'Şifreyi gizle' : 'Şifreyi göster'}
+        aria-pressed={show}
+        title={show ? 'Şifreyi gizle' : 'Şifreyi göster'}
+      >
+        {show ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+      </button>
+    </span>
+  )
 }
