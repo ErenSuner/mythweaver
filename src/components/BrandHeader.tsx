@@ -83,16 +83,19 @@ export default function BrandHeader() {
         {user && (
           <>
             {/* masaüstü: inline nav */}
-            <div className="brand-nav">
+            {/* Sekmeler markanın hemen yanında solda; hesap/tema/çıkış sağ kenarda. */}
+            <nav className="brand-links">
               {!supabaseEnabled && <span className="badge">yerel mod</span>}
               {navLinks}
-              <span className="brand-sep" aria-hidden="true" />
+            </nav>
+            <div className="brand-tools">
               <NavLink to="/ayarlar" className="identity" title="Hesap ayarları">
                 <span className="identity-avatar" aria-hidden="true">
                   {initial}
                 </span>
                 <span>{identity}</span>
               </NavLink>
+              <span className="brand-sep" aria-hidden="true" />
               <InviteMenu />
               <ThemeToggle />
               <button className="btn btn-ghost" onClick={onSignOut}>

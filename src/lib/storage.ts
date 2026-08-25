@@ -97,6 +97,8 @@ export interface CampaignRef {
   id: string
   name: string
   universeId: string | null
+  /** Campaign'in DM'i. Kuran kişi otomatik DM olur, yani "sahibi" budur. */
+  dmUserId: string | null
 }
 
 /** Çağıranın karakterlerinin dahil olduğu campaign'ler (RLS ile filtrelenir). */
@@ -104,13 +106,14 @@ export async function myCampaigns(): Promise<CampaignRef[]> {
   if (!(supabaseEnabled && supabase)) return []
   const { data, error } = await supabase
     .from('campaigns')
-    .select('id, name, universe_id')
+    .select('id, name, universe_id, dm_user_id')
     .order('created_at', { ascending: true })
   if (error) throw error
   return (data || []).map((c) => ({
     id: c.id as string,
     name: c.name as string,
     universeId: (c.universe_id as string | null) ?? null,
+    dmUserId: (c.dm_user_id as string | null) ?? null,
   }))
 }
 

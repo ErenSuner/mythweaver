@@ -10,6 +10,7 @@ import ResetPassword from '@/pages/ResetPassword'
 import MyCharacters from '@/pages/MyCharacters'
 import Wizard from '@/pages/Wizard'
 import CharacterSheet from '@/pages/CharacterSheet'
+import Campaigns from '@/pages/Campaigns'
 import CampaignParty from '@/pages/CampaignParty'
 import DMPanel from '@/pages/DMPanel'
 import Universes from '@/pages/Universes'
@@ -120,6 +121,14 @@ export default function App() {
         />
         <Route
           path="/campaign"
+          element={
+            <RequireAuth>
+              <Campaigns />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/campaign/:id"
           element={
             <RequireAuth>
               <CampaignParty />

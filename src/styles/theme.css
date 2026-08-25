@@ -415,10 +415,23 @@ a {
 }
 
 /* ---------- header ---------- */
-.brand-nav {
+/* Header iki gruba ayrılır: solda gezinme sekmeleri (markanın hemen yanında),
+   sağda hesap/tema/çıkış. Ortadaki boşluğu .brand-links'in auto marjı yer. */
+.brand-links,
+.brand-tools {
   display: flex;
   align-items: center;
+}
+.brand-links {
   gap: 26px;
+  margin-right: auto;
+  margin-left: 34px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.brand-tools {
+  gap: 16px;
+  flex: none;
 }
 /* nav linki: okunur, aktif sayfa accent + alt çizgi */
 .nav-link {
@@ -1488,7 +1501,8 @@ button.badge:hover {
     padding: 16px var(--gutter) 96px;
   }
   /* header: inline nav gizle, hamburger göster */
-  .brand-nav {
+  .brand-links,
+  .brand-tools {
     display: none;
   }
   .brand-mobile-actions {
@@ -2052,11 +2066,11 @@ button.badge:hover {
   line-height: 1;
 }
 /* header içindeki butonlar gövde ölçüsüne çıkar — nav ile aynı hizada okunur */
-.brand-nav .btn {
+.brand-tools .btn {
   font-size: var(--fs-base);
   padding: 11px 20px;
 }
-.brand-nav .theme-toggle-btn {
+.brand-tools .theme-toggle-btn {
   color: var(--ink-dim);
 }
 
@@ -2069,4 +2083,26 @@ button.badge:hover {
     padding-top: 14px;
     padding-bottom: 14px;
   }
+}
+
+/* --- campaign özet kartı --- */
+.campaign-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.campaign-card h3 {
+  margin: 0;
+}
+/* Karakter adları tek satır: kart yükseklikleri ızgarada eşit kalsın diye
+   taşan kısım kırpılır — tam liste zaten detay sayfasında. */
+.campaign-card-members {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.campaign-card:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 2px;
 }
