@@ -1568,16 +1568,10 @@ button.badge:hover {
   .panel {
     padding: 16px 14px;
   }
-  /* wizard alt navigasyonu ekrana sabitle */
+  /* dar ekranda nav kenarlara yapışsın ve butonlar eşit bölünsün */
   .wizard-nav {
-    position: sticky;
-    bottom: 0;
-    z-index: 15;
-    margin: 18px -12px 0;
-    padding: 12px;
-    background: var(--bar-bg);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--line);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
   }
   .wizard-nav .btn {
     flex: 1;
@@ -2153,4 +2147,45 @@ button.badge:hover {
    "eser" başlıkları orada. */
 .page-head h1 {
   font-size: var(--fs-lg);
+}
+
+/* --- wizard iskeleti ---
+   Nav eskiden panelin hem üstünde hem altında iki kez basılıyordu; üsttekinin
+   sebebi "aşağı inmeden ilerle"ydi. Tek nav bırakıp her ekran boyutunda
+   sabitleyince o ihtiyaç zaten karşılanıyor. */
+.wizard-nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
+  margin-top: 18px;
+  padding: 12px var(--gutter);
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+  background: var(--bar-bg);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+}
+
+/* durum şeridi: sayaç + ilerleme + kaydetme durumu tek satır */
+.wizard-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.wizard-status .progress {
+  flex: 1 1 160px;
+  min-width: 120px;
+}
+.wizard-save {
+  font-size: var(--fs-sm);
+  flex: none;
+}
+@media (max-width: 640px) {
+  /* dar ekranda ilerleme çubuğu kendi satırına insin */
+  .wizard-status .progress {
+    flex-basis: 100%;
+    order: 3;
+  }
 }

@@ -117,7 +117,7 @@ export default function CampaignParty() {
 
       {isDm ? (
         /* DM için yönetim araçları karakter listesini de kendisi çizer:
-           özet tablo / kart görünümü, atama, çıkarma, düzenleme. */
+           özet tablo + kartlar, atama, çıkarma, düzenleme. */
         <CampaignDmTools campaignId={campaign.id} onCampaignChanged={load} />
       ) : members === null ? (
         <p className="muted">Yükleniyor…</p>

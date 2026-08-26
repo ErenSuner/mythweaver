@@ -163,25 +163,24 @@ export default function Wizard() {
           ⚠ <b>DM modu:</b> Bir oyuncunun karakterini düzenliyorsun. Değişiklikler doğrudan oyuncuya yansır.
         </div>
       )}
-      {/* progress */}
-      <div style={{ marginBottom: 18 }}>
-        <div className="spread" style={{ marginBottom: 8 }}>
-          <span className="badge">
-            Adım {stepIndex + 1} / {steps.length}
-          </span>
-          {saving ? (
-            <span className="muted" style={{ fontSize: 'var(--fs-sm)' }}>kaydediliyor…</span>
-          ) : saveError ? (
-            <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--danger)', cursor: 'pointer' }} onClick={() => save()} title="Tekrar dene">
-              ⚠ kaydedilemedi — tekrar dene
-            </span>
-          ) : (
-            <span className="muted" style={{ fontSize: 'var(--fs-sm)' }}>kaydedildi ✓</span>
-          )}
-        </div>
+      {/* Durum şeridi: adım sayacı, ilerleme ve kaydetme durumu tek satırda.
+          Önceden üç ayrı blok üst üsteydi. */}
+      <div className="wizard-status">
+        <span className="badge">
+          Adım {stepIndex + 1} / {steps.length}
+        </span>
         <div className="progress">
           <span style={{ width: `${pct}%` }} />
         </div>
+        {saving ? (
+          <span className="muted wizard-save">kaydediliyor…</span>
+        ) : saveError ? (
+          <span className="wizard-save" style={{ color: 'var(--danger)', cursor: 'pointer' }} onClick={() => save()} title="Tekrar dene">
+            ⚠ kaydedilemedi
+          </span>
+        ) : (
+          <span className="muted wizard-save">kaydedildi ✓</span>
+        )}
       </div>
 
       {editMode && needFix && (
@@ -190,14 +189,9 @@ export default function Wizard() {
         </div>
       )}
 
-      {/* üst navigasyon — alta inmeden ilerle/kaydet */}
-      <div style={{ marginBottom: 14 }}>
-        <Nav />
-      </div>
-
       <div className="panel">
         <div style={{ marginBottom: 12 }}>
-          <h1 style={{ fontSize: 'var(--fs-xl)', marginBottom: 2 }}>{step.title}</h1>
+          <h1 style={{ fontSize: 'var(--fs-lg)', marginBottom: 2 }}>{step.title}</h1>
           {step.subtitle && <p className="hint">{step.subtitle}</p>}
         </div>
         <StepComp />
