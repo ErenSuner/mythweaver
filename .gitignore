@@ -6,3 +6,6 @@ dist
 .DS_Store
 
 .early.coverage
+
+# Claude Code yerel ayarlari (dev server launch config vb.)
+.claude/

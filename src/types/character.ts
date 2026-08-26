@@ -66,6 +66,12 @@ export interface StartingKit {
   goldRolled: number | null
   /** tek tek zar yüzleri — şeffaflık için saklanır */
   goldRollDice: number[] | null
+  /**
+   * 1'den yüksek seviyede başlayan karakterlere DM'in verdiği ek altın (gp).
+   * Miktar SRD'de yok, masaya göre değişir; bu yüzden hesaplanmaz, elle girilir.
+   * Eski kayıtlarda yok; 0 varsayılır.
+   */
+  bonusGoldGp?: number
 }
 
 // büyü sayfası: seviye başına slot + seçilen büyüler

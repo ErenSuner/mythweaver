@@ -177,6 +177,41 @@ export default function StepEquipment() {
         </div>
       )}
 
+      {/* --- yüksek seviye başlangıcı: DM'in verdiği ek altın ---
+          Miktar SRD'de yok, masaya göre değişir; hesaplamak yerine soruyoruz.
+          Paket modunda da geçerli: DM ek teçhizat parası vermiş olabilir. */}
+      {(character.startingLevel ?? 1) > 1 && (
+        <div className="panel stack" style={{ padding: 14 }}>
+          <div className="spread" style={{ alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+            <h3 style={{ fontSize: 'var(--fs-md)', margin: 0 }}>Ek Başlangıç Altını</h3>
+            <span className="badge">seviye {character.startingLevel}</span>
+          </div>
+          <p className="hint" style={{ margin: 0 }}>
+            1. seviyeden yüksek başlayan karakterlere DM genelde fazladan teçhizat ya da altın verir. Miktarı masana
+            göre değişir — DM&apos;in söylediği rakamı buraya gir, alışverişte kullanılabilir olsun. Bilmiyorsan boş
+            bırak, sonradan da eklenebilir.
+          </p>
+          <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+            <input
+              type="number"
+              min={0}
+              step={1}
+              inputMode="numeric"
+              aria-label="Ek başlangıç altını (gp)"
+              value={character.startingKit.bonusGoldGp ?? 0}
+              onChange={(e) => {
+                const n = Math.max(0, Math.floor(Number(e.target.value) || 0))
+                updateFn((c) => {
+                  c.startingKit.bonusGoldGp = n
+                })
+              }}
+              style={{ maxWidth: 160 }}
+            />
+            <span className="muted">gp</span>
+          </div>
+        </div>
+      )}
+
       {/* --- geçmiş donanımı (her iki modda) --- */}
       {bgEq && (
         <>

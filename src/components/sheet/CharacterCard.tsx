@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { config, classById, raceById, backgroundById, spellById, itemById, spells } from '@/data'
 import { raceCantripEntries } from '@/data/grants'
-import { isPactCaster, subclassSpells } from '@/data/spell-progression'
+import { isPactCaster, subclassSpells, spellLimitsFor } from '@/data/spell-progression'
 import { classResources, type ClassResource } from '@/data/class-resources'
 import { inventoryWeight, weaponItemsIn } from '@/lib/inventory'
 import { characterLanguages } from '@/lib/derive'
@@ -41,6 +41,41 @@ import { Corners } from '@/components/Ornament'
 import { featGrantedSpells } from '@/data/feats'
 
 const SKILL_KEYS = Object.keys(config.skills)
+
+/**
+ * Seviye atlayınca büyü bütçesi büyür ama seçimler olduğu yerde kalır.
+ * Karakter sayfası bunu sessizce yutmasın: eksik varsa söyle ve seçim
+ * adımına giden yolu göster.
+ */
+function SpellShortfall({ character, onEdit }: { character: Character; onEdit?: (stepKey: string) => void }) {
+  const sc = character.spellcasting
+  if (!sc) return null
+  const limits = spellLimitsFor(character)
+  const cantripEksik = limits.cantrips - sc.cantripIds.length
+  let secili = 0
+  for (let lvl = 1; lvl <= 9; lvl++) secili += sc.levels[lvl]?.spellIds.length ?? 0
+  const buyuEksik = limits.spellsTotal - secili
+  if (cantripEksik <= 0 && buyuEksik <= 0) return null
+
+  const parcalar = [
+    cantripEksik > 0 ? `${cantripEksik} cantrip` : null,
+    buyuEksik > 0 ? `${buyuEksik} büyü` : null,
+  ].filter(Boolean)
+
+  return (
+    <div className="panel" style={{ padding: 12, marginBottom: 10, borderColor: 'var(--seal)' }}>
+      <span className="rubric">Seçilmemiş</span>
+      <p style={{ margin: '6px 0 0' }}>
+        Seviyene göre <b>{parcalar.join(' ve ')}</b> daha seçebilirsin.
+      </p>
+      {onEdit && (
+        <button className="btn btn-primary" style={{ marginTop: 10 }} onClick={() => onEdit('spells')}>
+          Büyüleri seç
+        </button>
+      )}
+    </div>
+  )
+}
 
 export default function CharacterCard({
   character,
@@ -371,6 +406,7 @@ export default function CharacterCard({
                 <Big label="Saldırı" value={formatMod(character.spellcasting.spellAttackBonus)} />
               </div>
               <SpellSlots character={character} />
+              <SpellShortfall character={character} onEdit={onEdit} />
               <SpellList label="Cantrip'ler" ids={character.spellcasting.cantripIds} onInfo={setOpenSpell} />
               {Array.from({ length: 9 }, (_, i) => i + 1).map((lvl) => (
                 <SpellList

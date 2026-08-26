@@ -90,7 +90,9 @@ export function purchasesTotalGp(c: Character): number {
 export function startingGoldGp(c: Character): number {
   const bg = backgroundEquipmentFor(c.backgroundId)?.gold ?? 0
   const rolled = c.startingKit.mode === 'gold' ? (c.startingKit.goldRolled ?? 0) : 0
-  return bg + rolled
+  // Yüksek seviyeden başlayanlara DM'in verdiği ek altın; paket modunda da geçerli.
+  const bonus = c.startingKit.bonusGoldGp ?? 0
+  return bg + rolled + bonus
 }
 
 export function remainingGoldGp(c: Character): number {
