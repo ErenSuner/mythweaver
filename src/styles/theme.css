@@ -2113,6 +2113,33 @@ button.badge:hover {
 .universe-block .lore {
   color: var(--ink-dim);
 }
+/* Genel proza kuralı satırı 68ch'te kesiyor; evren kartı 1600'lük kabın
+   tamamını kapladığı için metin solda toplanıp sağ yarı boş kalıyordu.
+   Burada ölçüyü kutuya bırakıyoruz: kart kendi padding'iyle zaten sınır.
+   Geniş ekranda satır uzamasın diye metin iki sütuna dizilir. */
+.universe-block .lore p,
+.universe-block .lore li {
+  max-width: none;
+}
+@media (min-width: 1100px) {
+  .universe-block .lore {
+    column-count: 2;
+    column-gap: 48px;
+    column-rule: 1px solid var(--line);
+  }
+  /* Başlıklar sütun sonunda tek başına kalmasın, sütun içi ilk öğe de
+     üstten boşluk almasın. */
+  .universe-block .lore h1,
+  .universe-block .lore h2,
+  .universe-block .lore h3 {
+    break-after: avoid;
+    break-inside: avoid;
+  }
+  .universe-block .lore p,
+  .universe-block .lore li {
+    break-inside: avoid-column;
+  }
+}
 .universe-block .lore > :first-child {
   margin-top: 0;
 }
