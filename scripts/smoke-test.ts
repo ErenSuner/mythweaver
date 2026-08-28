@@ -137,9 +137,39 @@ hp.classId = 'fighter'
 hp.raceId = 'elf'
 hp = recomputeDerived(hp)
 check('HP ilk hesapta full', hp.currentHp === hp.maxHp && hp.currentHp > 0)
+hp.completed = true // downed koruması yalnız oynanan (tamamlanmış) karakterde
 hp.currentHp = 0 // düşmüş
 hp = recomputeDerived({ ...hp, characterName: 'X' }) // alakasız düzenleme
 check('0 HP korunur (full olmaz)', hp.currentHp === 0, `got ${hp.currentHp}`)
+
+// Sihirbaz sürerken tavan büyürse current de büyür — kimse vurmadan 5/7 olmaz.
+// (Eskiden HP sınıf seçilince kilitleniyor, sonraki adımda CON artınca fark kalıyordu.)
+let wip = emptyCharacter()
+wip.classId = 'wizard'
+wip.raceId = 'human'
+wip = recomputeDerived(wip) // CON henüz atanmamış
+const wipFirstMax = wip.maxHp
+wip.baseAbilityScores = { ...wip.baseAbilityScores, Constitution: 16 }
+wip = recomputeDerived(wip)
+check('sihirbazda tavan büyüdü', wip.maxHp > wipFirstMax, `${wipFirstMax} -> ${wip.maxHp}`)
+check('sihirbazda current full kalır', wip.currentHp === wip.maxHp, `got ${wip.currentHp}/${wip.maxHp}`)
+
+// Tamamlanmış karakter: tavan artışı cana yansır, alınan hasar korunur.
+let lvl = emptyCharacter()
+lvl.classId = 'fighter'
+lvl.raceId = 'human'
+lvl.baseAbilityScores = { ...lvl.baseAbilityScores, Constitution: 14 }
+lvl = recomputeDerived(lvl)
+lvl.completed = true
+lvl.currentHp = lvl.maxHp - 3 // 3 hasar almış
+const beforeMax = lvl.maxHp
+lvl = recomputeDerived({ ...lvl, level: 2 })
+check('seviye atlayınca tavan arttı', lvl.maxHp > beforeMax, `${beforeMax} -> ${lvl.maxHp}`)
+check(
+  'kazanılan HP cana yansır, hasar korunur',
+  lvl.currentHp === lvl.maxHp - 3,
+  `got ${lvl.currentHp}/${lvl.maxHp}`,
+)
 
 // ---- 3) Veri bütünlüğü (parser) ----
 console.log('\n[Veri bütünlüğü]')

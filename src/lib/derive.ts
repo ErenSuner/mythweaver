@@ -248,15 +248,27 @@ export function recomputeDerived(input: Character): Character {
     // feat HP bonusu (Tough: her seviyede +2)
     const featHpBonus = featNumeric(c.feats ?? [], 'hpPerLevel') * c.level
     const derivedMax = first + (c.level - 1) * perLevel + subraceHpBonus + subclassHpBonus + featHpBonus
+    // Bir önceki türetilmiş tavan: maxHp'yi yalnız burası yazdığı için güvenilir.
+    const prevMax = c.maxHp
     c.maxHp = derivedMax
     c.hitDiceTotal = `${c.level}d${klass.hitDie}`
-    // İlk hesapta full başlat; sonra yalnız üst sınırı kıs (0 HP = downed korunur,
-    // her düzenlemede full'a dönmez).
     if (!c.hpInitialized) {
+      // İlk hesapta full başlat.
       c.currentHp = c.maxHp
       c.hitDiceRemaining = c.level
       c.hpInitialized = true
+    } else if (!c.completed) {
+      // Sihirbaz sürerken karakter henüz "oynanmıyor": hasar kavramı yok.
+      // Eskiden HP ilk kez sınıf seçilince hesaplanıp kilitleniyordu; sonraki
+      // adımlarda CON yükselince tavan büyüyor ama current sabit kalıyordu —
+      // kimse vurmadan 5/7 ile başlayan karakterler böyle çıkıyordu.
+      c.currentHp = c.maxHp
+      c.hitDiceRemaining = c.level
     } else {
+      // Tamamlanmış karakter: current korunur (0 HP = downed bozulmaz), ama
+      // tavan büyüdüyse (seviye, CON, feat) artış cana da yansır — D&D'de
+      // seviye atlayan karakter kazandığı HP'yi anında alır.
+      if (derivedMax > prevMax && c.currentHp > 0) c.currentHp += derivedMax - prevMax
       if (c.currentHp > c.maxHp) c.currentHp = c.maxHp
       if (c.hitDiceRemaining > c.level) c.hitDiceRemaining = c.level
     }

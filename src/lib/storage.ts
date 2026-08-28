@@ -31,6 +31,12 @@ export function migrateCharacter(raw: Character): Character {
   for (const k of Object.keys(c.choiceSelections)) if (k.startsWith('equip-')) delete c.choiceSelections[k]
   // eski elle girilen AC artık türetiliyor
   c.acManual = false
+  // v3 onarımı: HP eskiden ilk hesapta kilitleniyordu; sonradan CON/seviye
+  // artınca tavan büyüyor, current sabit kalıyordu — kimse vurmadan 5/7 ile
+  // dolaşan karakterler böyle oluştu. Uygulamada hasar girme özelliği yok,
+  // yani eksik can yalnız bu hatadan gelebilir; tam cana çekilir.
+  // HP takibi eklendiğinde BU BLOK SİLİNMELİ (gerçek hasarı silmesin).
+  if (c.hpInitialized && c.currentHp > 0 && c.currentHp < c.maxHp) c.currentHp = c.maxHp
   return c
 }
 
