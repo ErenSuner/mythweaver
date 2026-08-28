@@ -74,8 +74,11 @@ export default function CampaignDmTools({
       setCampaignsError(true)
     }
   }
+  // Campaign bilgisi ve karakter listesi birbirinden bağımsız çekilir:
+  // biri gecikse/hata verse diğeri yine de gelsin.
   useEffect(() => {
     refreshCampaign()
+    refreshMembers(campaignId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [campaignId])
 
