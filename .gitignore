@@ -9,3 +9,6 @@ dist
 
 # Claude Code yerel ayarlari (dev server launch config vb.)
 .claude/
+
+# Supabase CLI gecici dosyalari
+supabase/.temp/
