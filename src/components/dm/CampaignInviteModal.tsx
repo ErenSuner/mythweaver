@@ -1,42 +1,31 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Modal, useConfirm } from '@/components/Modal'
+import { Modal } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
-import { useAuthStore } from '@/state/authStore'
 import {
   searchUsers,
   sendInvite,
   cancelInvite,
   listCampaignInvites,
-  transferDm,
   type UserSearchResult,
   type CampaignInvite,
 } from '@/lib/social'
-import type { AdminCharacterRow } from '@/lib/admin-storage'
 
-/* Oyuncu daveti, bekleyen davetler ve DM devri.
-   Arama/davet state'i yalnız burada kullanılıyordu; üst bileşenden prop
-   olarak taşımak yerine kendi sahipliğine alındı. */
+/* Oyuncu daveti ve bekleyen davetler. DM devri buradan Campaign ayarlarına
+   taşındı — davet göndermekle aynı yerde durması kafa karıştırıyordu.
+   Arama/davet state'i yalnız burada kullanılıyor, kendi sahipliğinde. */
 
-export default function CampaignPlayersModal({
+export default function CampaignInviteModal({
   open,
   onClose,
   campaignId,
   campaignName,
-  members,
 }: {
   open: boolean
   onClose: () => void
   campaignId: string
   campaignName: string
-  /** DM devri listesi üye sahiplerinden türetilir. */
-  members: AdminCharacterRow[] | null
 }) {
-  const nav = useNavigate()
   const toast = useToast()
-  const confirm = useConfirm()
-  const myId = useAuthStore((s) => s.user?.id ?? null)
-  const refreshRoles = useAuthStore((s) => s.refreshRoles)
 
   const [inviteQuery, setInviteQuery] = useState('')
   const [inviteResults, setInviteResults] = useState<UserSearchResult[] | null>(null)
@@ -108,40 +97,8 @@ export default function CampaignPlayersModal({
     }
   }
 
-  async function onTransferDm(newDmId: string, label: string) {
-    const ok = await confirm({
-      title: "DM'liği devret",
-      message: (
-        <>
-          <b>{campaignName}</b> campaign&apos;inin DM&apos;liği <b>{label}</b> kişisine devredilecek. Sonrasında bu
-          campaign üzerindeki yetkin sona erer, normal oyuncuya dönersin. Emin misin?
-        </>
-      ),
-      confirmLabel: 'Evet, devret',
-      danger: true,
-    })
-    if (!ok) return
-    try {
-      await transferDm(campaignId, newDmId)
-      toast('DM devredildi.', 'success')
-      // Devrettikten sonra bu campaign'de yetkin kalmaz.
-      await refreshRoles()
-      nav('/campaign')
-    } catch (e) {
-      console.error('DM devredilemedi. Tekrar dene.', e)
-      toast('DM devredilemedi. Tekrar dene.', 'error')
-    }
-  }
-
-  // DM devri adayları: kendi dışındaki üye sahipleri
-  const owners = new Map<string, string>()
-  for (const r of members ?? []) {
-    if (r.ownerId !== myId) owners.set(r.ownerId, r.ownerEmail ?? r.ownerId)
-  }
-  const transferList = Array.from(owners.entries())
-
   return (
-    <Modal open={open} onClose={onClose} title="Oyuncular" subtitle={campaignName}>
+    <Modal open={open} onClose={onClose} title="Davet Et" subtitle={campaignName}>
       <label htmlFor="invite-search">Kullanıcı ara</label>
       <div style={{ position: 'relative' }}>
         <input
@@ -203,32 +160,6 @@ export default function CampaignPlayersModal({
         )}
       </div>
 
-      <div className="danger-zone">
-        <span className="rubric">DM&apos;liği devret</span>
-        <p className="hint" style={{ margin: '0 0 10px' }}>
-          Devrettikten sonra bu campaign üzerindeki yetkin sona erer, normal oyuncuya dönersin.
-        </p>
-        {transferList.length === 0 ? (
-          <p className="muted" style={{ margin: 0 }}>
-            Devredilecek başka üye yok — önce oyuncu davet et.
-          </p>
-        ) : (
-          <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
-            {transferList.map(([id, label]) => (
-              <button
-                key={id}
-                className="btn btn-ghost"
-                onClick={() => {
-                  onClose()
-                  onTransferDm(id, label)
-                }}
-              >
-                {label} → DM yap
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
     </Modal>
   )
 }

@@ -57,7 +57,7 @@ export default function UsernameGate() {
       <div className="panel" style={{ maxWidth: 420, width: '100%' }}>
         <h2 style={{ fontSize: 'var(--fs-md)', marginBottom: 4 }}>Bir kullanıcı adı seç</h2>
         <p className="muted" style={{ marginBottom: 14 }}>
-          Diğer oyuncular seni bu adla arayıp campaign'e davet edebilir. Sonra Ayarlar'dan değiştirebilirsin.
+          Diğer oyuncular seni bu adla arayıp campaign'e davet edebilir. Sonra Hesap sayfasından değiştirebilirsin.
         </p>
         <form className="stack" style={{ gap: 10 }} onSubmit={onSubmit}>
           <input

@@ -4,7 +4,7 @@ import { useCharacterStore } from '@/state/characterStore'
 import { useAuthStore } from '@/state/authStore'
 import { useConfirm, Modal } from '@/components/Modal'
 import CampaignSettingsModal from '@/components/dm/CampaignSettingsModal'
-import CampaignPlayersModal from '@/components/dm/CampaignPlayersModal'
+import CampaignInviteModal from '@/components/dm/CampaignInviteModal'
 import AssignCharacterModal from '@/components/dm/AssignCharacterModal'
 import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
@@ -157,7 +157,7 @@ export default function CampaignDmTools({
               {canManageInvites && (
                 <button className="btn btn-primary" onClick={() => setPlayersOpen(true)}>
                   <PlayersIcon size={17} style={{ verticalAlign: '-3px', marginRight: 7 }} />
-                  Oyuncular
+                  Davet Et
                 </button>
               )}
             </div>
@@ -241,17 +241,17 @@ export default function CampaignDmTools({
           onClose={() => setSettingsOpen(false)}
           campaign={selected}
           canManage={canManageInvites}
+          members={members}
           onChanged={refreshCampaign}
         />
       )}
 
       {selected && canManageInvites && (
-        <CampaignPlayersModal
+        <CampaignInviteModal
           open={playersOpen}
           onClose={() => setPlayersOpen(false)}
           campaignId={campaignId}
           campaignName={selected.name}
-          members={members}
         />
       )}
 

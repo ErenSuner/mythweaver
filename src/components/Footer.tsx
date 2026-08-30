@@ -26,8 +26,8 @@ export default function Footer() {
           <Link to="/kosullar" className="muted" style={{ textDecoration: 'none' }}>
             Kullanım Koşulları
           </Link>
-          <Link to="/ayarlar" className="muted" style={{ textDecoration: 'none' }}>
-            Ayarlar
+          <Link to="/hesap" className="muted" style={{ textDecoration: 'none' }}>
+            Hesap
           </Link>
         </div>
         <span className="muted" style={{ fontSize: 'var(--fs-micro)', maxWidth: 520 }}>

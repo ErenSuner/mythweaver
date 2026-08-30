@@ -1,14 +1,12 @@
 // Kullanıcı adının altına açılan bildirim kutusu. Şimdilik tek bildirim türü var:
-// campaign daveti. Kutu yalnız listeler — kabul/red /campaign sayfasındaki panelde
-// yapılır, çünkü katılırken hangi karakterle katılınacağı seçilmeli.
+// campaign daveti. Kutu yalnız listeler — kabul/red /davetler sayfasında yapılır,
+// çünkü katılırken hangi karakterle katılınacağı seçilmeli.
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useInviteStore } from '@/state/inviteStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import { BellIcon } from '@/components/icons'
 
-/** /campaign sayfasındaki davet panelinin çapası. */
-export const INVITES_ANCHOR = 'gelen-davetler'
 
 export default function InviteMenu() {
   const invites = useInviteStore((s) => s.invites)
@@ -79,7 +77,7 @@ export default function InviteMenu() {
                     className="notif-item"
                     onClick={() => {
                       setOpen(false)
-                      nav(`/campaign#${INVITES_ANCHOR}`)
+                      nav('/davetler')
                     }}
                   >
                     <span className="notif-item-title">{inv.campaignName}</span>

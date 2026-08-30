@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
-import { CharactersIcon, CampaignIcon, DmIcon, UniverseIcon, DiceIcon, SettingsIcon, LogoutIcon } from '@/components/icons'
+import { CharactersIcon, CampaignIcon, DmIcon, UniverseIcon, DiceIcon, AccountIcon, LogoutIcon } from '@/components/icons'
 import ThemeToggle from '@/components/ThemeToggle'
 import InviteMenu from '@/components/InviteMenu'
 
@@ -13,7 +13,6 @@ export default function BrandHeader() {
   const [open, setOpen] = useState(false)
   const identity = user?.username ?? user?.email ?? ''
   const initial = identity.trim().charAt(0) || '?'
-  const isDm = Boolean(user?.isAdmin || user?.isDm)
 
   // route değişince menüyü kapat
   useEffect(() => {
@@ -44,20 +43,17 @@ export default function BrandHeader() {
         <CampaignIcon size={18} />
         Campaign
       </NavLink>
-      {isDm && (
-        <>
-          {user?.isAdmin && (
-            <NavLink to="/kurucu" className="nav-link">
-              <DmIcon size={18} />
-              Kurucu Paneli
-            </NavLink>
-          )}
-          <NavLink to="/evrenler" className="nav-link">
-            <UniverseIcon size={18} />
-            Evrenler
-          </NavLink>
-        </>
+      {user?.isAdmin && (
+        <NavLink to="/kurucu" className="nav-link">
+          <DmIcon size={18} />
+          Kurucu Paneli
+        </NavLink>
       )}
+      {/* Evrenler herkeste görünür: campaign kurmadan da evren hazırlanabilsin. */}
+      <NavLink to="/evrenler" className="nav-link">
+        <UniverseIcon size={18} />
+        Evrenler
+      </NavLink>
     </>
   )
 
@@ -91,11 +87,14 @@ export default function BrandHeader() {
               {navLinks}
             </nav>
             <div className="brand-tools">
-              <NavLink to="/ayarlar" className="identity" title="Hesap ayarları">
+              {/* Sadece kullanıcı adı yazınca burasının "Hesap" olduğu
+                  anlaşılmıyordu; adın yanına açık etiket kondu. */}
+              <NavLink to="/hesap" className="identity" title="Hesabım">
                 <span className="identity-avatar" aria-hidden="true">
                   {initial}
                 </span>
-                <span>{identity}</span>
+                <span className="identity-name">{identity}</span>
+                <span className="identity-tag">Hesap</span>
               </NavLink>
               <span className="brand-sep" aria-hidden="true" />
               <InviteMenu />
@@ -140,9 +139,9 @@ export default function BrandHeader() {
           )}
           {navLinks}
           <span className="brand-drawer-sep" aria-hidden="true" />
-          <NavLink to="/ayarlar" className="nav-link">
-            <SettingsIcon size={18} />
-            {identity} · Ayarlar
+          <NavLink to="/hesap" className="nav-link">
+            <AccountIcon size={18} />
+            {identity} · Hesap
           </NavLink>
           <button className="nav-link" style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={onSignOut}>
             <LogoutIcon size={18} />

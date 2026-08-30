@@ -14,6 +14,7 @@ import Campaigns from '@/pages/Campaigns'
 import CampaignParty from '@/pages/CampaignParty'
 import FounderPanel from '@/pages/FounderPanel'
 import Universes from '@/pages/Universes'
+import Invites from '@/pages/Invites'
 import Settings from '@/pages/Settings'
 import Privacy from '@/pages/Privacy'
 import Terms from '@/pages/Terms'
@@ -37,14 +38,6 @@ function RequireAdmin({ children }: { children: JSX.Element }) {
   if (!ready) return <div className="container">Yükleniyor…</div>
   if (!user) return <Navigate to="/login" replace />
   if (!user.isAdmin) return <Navigate to="/" replace />
-  return children
-}
-
-function RequireDM({ children }: { children: JSX.Element }) {
-  const { user, ready } = useAuthStore()
-  if (!ready) return <div className="container">Yükleniyor…</div>
-  if (!user) return <Navigate to="/login" replace />
-  if (!user.isAdmin && !user.isDm) return <Navigate to="/" replace />
   return children
 }
 
@@ -152,22 +145,35 @@ export default function App() {
             </RequireAdmin>
           }
         />
+        {/* Evren herkese açık: yeni kullanıcı henüz DM değil (isDm campaign
+            sahipliğinden türüyor), ama campaign kurarken evren seçebilmeli.
+            RLS zaten sahip bazlı, kota trigger'ı herkese işliyor. */}
         <Route
           path="/evrenler"
           element={
-            <RequireDM>
+            <RequireAuth>
               <Universes />
-            </RequireDM>
+            </RequireAuth>
           }
         />
         <Route
-          path="/ayarlar"
+          path="/davetler"
+          element={
+            <RequireAuth>
+              <Invites />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/hesap"
           element={
             <RequireAuth>
               <Settings />
             </RequireAuth>
           }
         />
+        {/* Eski adres; yer imleri bozulmasın. */}
+        <Route path="/ayarlar" element={<Navigate to="/hesap" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           </main>

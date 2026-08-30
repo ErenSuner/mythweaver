@@ -36,16 +36,18 @@ export async function adminListCampaigns(): Promise<Campaign[]> {
   return (data || []) as Campaign[]
 }
 
-export async function createCampaign(name: string): Promise<Campaign> {
+export async function createCampaign(name: string, universeId?: string | null): Promise<Campaign> {
   const sb = ensure()
   // Campaign'i kuran otomatik o campaign'in DM'i olur (dm_user_id = kendisi).
   // RLS insert policy'si (0005) with-check dm_user_id = auth.uid() bunu zorunlu kılar.
+  // Evren aynı insert'te yazılır: kur + assignUniverse iki adımı olsaydı ikincisi
+  // patladığında campaign evrensiz kalırdı ve kullanıcı çoktan yönlenmiş olurdu.
   const { data: auth, error: uerr } = await sb.auth.getUser()
   if (uerr) throw uerr
   if (!auth.user) throw new Error('Oturum bulunamadı')
   const { data, error } = await sb
     .from('campaigns')
-    .insert({ name, dm_user_id: auth.user.id })
+    .insert({ name, dm_user_id: auth.user.id, universe_id: universeId ?? null })
     .select('id, name, created_at, dm_user_id, universe_id')
     .single()
   if (error) throw error

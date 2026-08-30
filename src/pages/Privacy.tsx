@@ -42,7 +42,7 @@ export default function Privacy() {
 
         <h2 style={{ fontSize: 'var(--fs-md)' }}>Haklarını kullanma</h2>
         <p>
-          KVKK md. 11 kapsamında verilerine erişme, düzeltme ve silme haklarına sahipsin. <b>Ayarlar</b> sayfasından
+          KVKK md. 11 kapsamında verilerine erişme, düzeltme ve silme haklarına sahipsin. <b>Hesap</b> sayfasından
           verilerini JSON olarak indirebilir veya hesabını (tüm verilerinle) silebilirsin. Ek talepler için erenn.suner@gmail.com.
         </p>
 

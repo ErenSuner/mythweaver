@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
-import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
+import { myCampaigns, campaignPeers, listCharacters, leaveCampaign, type CampaignRef } from '@/lib/storage'
 import { getUniverse, type Universe } from '@/lib/universe'
 import { sanitizeLore } from '@/lib/sanitize'
-import { Modal } from '@/components/Modal'
+import { Modal, useConfirm } from '@/components/Modal'
+import { useToast } from '@/components/Toast'
 import CharacterCard from '@/components/sheet/CharacterCard'
 import CampaignDmTools from '@/components/dm/CampaignDmTools'
 import { Corners, Flourish } from '@/components/Ornament'
@@ -21,6 +22,8 @@ export default function CampaignParty() {
   const { id } = useParams<{ id: string }>()
   const { user } = useAuthStore()
   const navigate = useNavigate()
+  const confirm = useConfirm()
+  const toast = useToast()
 
   const [campaign, setCampaign] = useState<CampaignRef | null>(null)
   const [members, setMembers] = useState<Character[] | null>(null)
@@ -29,6 +32,7 @@ export default function CampaignParty() {
   const [openId, setOpenId] = useState<string | null>(null)
   const [error, setError] = useState(false)
   const [notFound, setNotFound] = useState(false)
+  const [leaving, setLeaving] = useState(false)
 
   const load = useCallback(async () => {
     if (!id) return
@@ -63,6 +67,32 @@ export default function CampaignParty() {
 
   const isDm = Boolean(user && campaign && (user.isAdmin || campaign.dmUserId === user.id))
   const openChar = members?.find((m) => m.id === openId) ?? null
+  /** Bu campaign'de duran KENDİ karakterim — ayrılma butonu bunu çıkarır. */
+  const myMemberId = members?.find((m) => myIds.has(m.id))?.id ?? null
+
+  async function onLeave() {
+    if (!myMemberId || !campaign) return
+    const name = members?.find((m) => m.id === myMemberId)?.characterName || 'Karakterin'
+    const ok = await confirm({
+      title: "Campaign'den ayrıl",
+      message: `${name} bu campaign'den çıkarılacak. Karakter silinmez; sonrasında başka bir davete katılabilirsin.`,
+      confirmLabel: 'Ayrıl',
+      danger: true,
+    })
+    if (!ok) return
+    setLeaving(true)
+    try {
+      await leaveCampaign(myMemberId)
+      toast("Campaign'den ayrıldın.", 'success')
+      // Yerinde load() çağırma: myCampaigns() artık bu campaign'i döndürmez,
+      // sayfa "bulunamadı" durumuna düşer. Listeye in.
+      navigate('/campaign')
+    } catch (e) {
+      console.error('[campaign] ayrılma hatası', e)
+      toast('Ayrılınamadı.', 'error')
+      setLeaving(false)
+    }
+  }
 
   function BackButton() {
     return (
@@ -149,6 +179,22 @@ export default function CampaignParty() {
               </div>
             )
           })}
+        </div>
+      )}
+
+      {/* Oyuncu kendi ayrılabilir: RLS campaign_members_delete_own izin veriyor.
+          DM için ayrı yol var (DM araçlarındaki "Çıkar"), o yüzden burada gizli. */}
+      {!isDm && myMemberId && (
+        <div className="panel" style={{ marginTop: 18 }}>
+          <div className="danger-zone" style={{ marginTop: 0, paddingTop: 0, borderTop: 0 }}>
+            <span className="rubric">Ayrılma</span>
+            <p className="hint" style={{ margin: '0 0 12px' }}>
+              Karakterin bu campaign&apos;den çıkar. Karakter silinmez, sonra başka bir davete katılabilir.
+            </p>
+            <button className="btn btn-danger" onClick={onLeave} disabled={leaving}>
+              {leaving ? 'Ayrılıyor…' : "Campaign'den ayrıl"}
+            </button>
+          </div>
         </div>
       )}
 

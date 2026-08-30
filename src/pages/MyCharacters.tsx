@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
 import { useCharacterStore } from '@/state/characterStore'
-import { listCharacters, deleteCharacter, saveCharacter } from '@/lib/storage'
+import { listCharacters, deleteCharacter, saveCharacter, myMemberships } from '@/lib/storage'
 import { emptyCharacter } from '@/lib/character-factory'
 import { classById, raceById } from '@/data'
 import type { Character } from '@/types/character'
@@ -16,13 +16,19 @@ export default function MyCharacters() {
   const startNew = useCharacterStore((s) => s.startNew)
   const [chars, setChars] = useState<Character[] | null>(null)
   const [error, setError] = useState(false)
+  const [campaignOf, setCampaignOf] = useState<Map<string, string>>(new Map())
   const confirm = useConfirm()
   const toast = useToast()
 
   async function refresh() {
     try {
       setError(false)
-      setChars(await listCharacters(user?.id ?? null))
+      const [list, mems] = await Promise.all([listCharacters(user?.id ?? null), myMemberships().catch(() => [])])
+      setChars(list)
+      // myMemberships DM/kurucu için başkalarının satırlarını da döndürür;
+      // yalnız kendi karakterlerimle kesiştir.
+      const mine = new Set(list.map((c) => c.id))
+      setCampaignOf(new Map(mems.filter((m) => mine.has(m.characterId)).map((m) => [m.characterId, m.campaignName])))
     } catch (e) {
       console.error('[karakterler] yükleme hatası', e)
       setError(true)
@@ -120,6 +126,7 @@ export default function MyCharacters() {
                 <p className="char-card-level">
                   Seviye <b>{c.level}</b>
                 </p>
+                {campaignOf.has(c.id) && <p className="hint">Campaign: {campaignOf.get(c.id)}</p>}
                 <div className="row" style={{ marginTop: 12, gap: 8 }}>
                   <button
                     className="btn btn-ghost"

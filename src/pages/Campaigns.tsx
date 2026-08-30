@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
+import { useInviteStore } from '@/state/inviteStore'
 import { myCampaigns, campaignPeers, listCharacters, type CampaignRef } from '@/lib/storage'
 import { createCampaign } from '@/lib/admin-storage'
-import { listMyInvites, acceptInvite, declineInvite, type MyInvite } from '@/lib/social'
-import { getUniverse, type Universe } from '@/lib/universe'
+import { getUniverse, listMyUniverses, type Universe } from '@/lib/universe'
 import { supabaseEnabled } from '@/lib/supabase'
 import { useToast } from '@/components/Toast'
 import { Modal } from '@/components/Modal'
-import { CampaignIcon, PlusIcon } from '@/components/icons'
+import { CampaignIcon, PlusIcon, UniverseIcon } from '@/components/icons'
 import type { Character } from '@/types/character'
 
 /* Campaign listesi: her campaign bir özet kart. Detay ayrı bir rotada
@@ -28,24 +28,20 @@ export default function Campaigns() {
   const [rows, setRows] = useState<CampaignSummary[] | null>(null)
   const [myIds, setMyIds] = useState<Set<string>>(new Set())
   const [myChars, setMyChars] = useState<Character[]>([])
-  const [invites, setInvites] = useState<MyInvite[] | null>(null)
-  const [pick, setPick] = useState<Record<string, string>>({})
+  const inviteCount = useInviteStore((s) => s.invites.length)
   const [error, setError] = useState(false)
   const [newCampaign, setNewCampaign] = useState('')
   const [creating, setCreating] = useState(false)
   const [createOpen, setCreateOpen] = useState(false)
+  const [newUniverseId, setNewUniverseId] = useState('')
+  const [myUniverses, setMyUniverses] = useState<Universe[] | null>(null)
 
   async function load() {
     try {
       setError(false)
-      const [camps, mine, inv] = await Promise.all([
-        myCampaigns(),
-        listCharacters(user?.id ?? null),
-        supabaseEnabled ? listMyInvites().catch(() => []) : Promise.resolve([]),
-      ])
+      const [camps, mine] = await Promise.all([myCampaigns(), listCharacters(user?.id ?? null)])
       setMyIds(new Set(mine.map((c) => c.id)))
       setMyChars(mine)
-      setInvites(inv)
 
       const uniIds = Array.from(new Set(camps.map((c) => c.universeId).filter(Boolean))) as string[]
       const unis = await Promise.all(uniIds.map((id) => getUniverse(id).catch(() => null)))
@@ -70,40 +66,14 @@ export default function Campaigns() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
-  async function onAcceptInvite(inv: MyInvite) {
-    const charId = pick[inv.inviteId] || myChars[0]?.id
-    if (!charId) {
-      toast('Önce bir karakter oluştur.', 'error')
-      return
-    }
-    try {
-      await acceptInvite(inv.inviteId, charId)
-      toast(`${inv.campaignName} campaign'ine katıldın.`, 'success')
-      await load()
-    } catch (e) {
-      const msg = e as { message?: string }
-      console.error('[invite] kabul hatası', e)
-      toast(msg.message ?? 'Davet kabul edilemedi.', 'error')
-    }
-  }
-
-  async function onDeclineInvite(inv: MyInvite) {
-    try {
-      await declineInvite(inv.inviteId)
-      await load()
-    } catch (e) {
-      console.error('[invite] reddetme hatası', e)
-      toast('Davet reddedilemedi.', 'error')
-    }
-  }
-
   async function onCreateCampaign() {
     const name = newCampaign.trim()
     if (!name || creating) return
     setCreating(true)
     try {
-      const created = await createCampaign(name)
+      const created = await createCampaign(name, newUniverseId || null)
       setNewCampaign('')
+      setNewUniverseId('')
       setCreateOpen(false)
       // Kuran otomatik DM olur; rol tazelenmeden yeni sayfada DM araçları çıkmaz.
       await refreshRoles()
@@ -115,6 +85,18 @@ export default function Campaigns() {
       setCreating(false)
     }
   }
+
+  // Kur modalı açılınca evren listesini çek — modal kapalıyken gereksiz sorgu olmasın.
+  useEffect(() => {
+    if (!createOpen || !supabaseEnabled) return
+    setMyUniverses(null)
+    listMyUniverses()
+      .then(setMyUniverses)
+      .catch((e) => {
+        console.error('[campaign] evren listesi', e)
+        setMyUniverses([])
+      })
+  }, [createOpen])
 
   // Sahiplik ayrımı: kuran kişi DM olur. dm_user_id okunamazsa (kolon kısıtı)
   // ayrım yapılamaz — o zaman hepsi tek liste olarak gösterilir.
@@ -196,42 +178,17 @@ export default function Campaigns() {
         )}
       </div>
 
-      {/* Gelen davetler hesap düzeyinde bir uyarı; tek campaign'e ait değil,
-          o yüzden detayda değil listede durur. */}
-      {invites && invites.length > 0 && (
-        <div className="panel stack" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
-          <span className="rubric">Gelen davetler</span>
-          {invites.map((inv) => (
-            <div key={inv.inviteId} className="setting-row" style={{ padding: '12px 0' }}>
-              <div className="setting-label">
-                <span>{inv.campaignName}</span>
-                {inv.inviterUsername && <p className="hint">{inv.inviterUsername} davet etti</p>}
-              </div>
-              <div className="row setting-control" style={{ gap: 8, alignItems: 'center' }}>
-                {myChars.length === 0 ? (
-                  <span className="muted">Katılmak için önce bir karakter oluştur.</span>
-                ) : (
-                  <select
-                    aria-label="Katılacak karakter"
-                    value={pick[inv.inviteId] ?? myChars[0]?.id ?? ''}
-                    onChange={(e) => setPick((p) => ({ ...p, [inv.inviteId]: e.target.value }))}
-                  >
-                    {myChars.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.characterName || 'İsimsiz Kahraman'}
-                      </option>
-                    ))}
-                  </select>
-                )}
-                <button className="btn btn-primary" onClick={() => onAcceptInvite(inv)} disabled={myChars.length === 0}>
-                  Kabul et
-                </button>
-                <button className="btn btn-ghost" onClick={() => onDeclineInvite(inv)}>
-                  Reddet
-                </button>
-              </div>
-            </div>
-          ))}
+      {/* Davetler kendi sayfasında (/davetler): katılırken karakter seçimi
+          gerekiyor ve davet campaign'e değil hesaba ait. Burada yalnız işaretçi. */}
+      {inviteCount > 0 && (
+        <div className="panel spread" style={{ marginBottom: 22, borderColor: 'var(--seal)' }}>
+          <div className="setting-label">
+            <span>{inviteCount} bekleyen davetin var.</span>
+            <p className="hint">Katılacak karakteri seçmek için davetler sayfasına git.</p>
+          </div>
+          <button className="btn btn-primary" onClick={() => navigate('/davetler')}>
+            Davetlere git
+          </button>
         </div>
       )}
 
@@ -267,8 +224,8 @@ export default function Campaigns() {
         </div>
       ) : (
         <>
-          <Group title="Senin oluşturduğun campaign'ler" list={owned} />
-          <Group title={canGroup ? "Katıldığın campaign'ler" : "Campaign'lerin"} list={joined} />
+          <Group title="Senin Campaign'lerin" list={owned} />
+          <Group title={canGroup ? "Katıldığın Campaign'ler" : "Campaign'lerin"} list={joined} />
         </>
       )}
 
@@ -303,6 +260,48 @@ export default function Campaigns() {
             placeholder="ör. Kayıp Madenlerin Laneti"
             maxLength={80}
           />
+
+          {/* Evren isteğe bağlı: kuruluşu tıkamasın, sonradan Campaign
+              ayarlarından da atanabiliyor. */}
+          <div style={{ marginTop: 16 }}>
+            <label htmlFor="new-campaign-universe">Evren (isteğe bağlı)</label>
+            {myUniverses === null ? (
+              <p className="muted" style={{ margin: 0 }}>
+                Evrenler yükleniyor…
+              </p>
+            ) : myUniverses.length === 0 ? (
+              <>
+                <p className="hint" style={{ margin: '0 0 10px' }}>
+                  Henüz bir evrenin yok. Campaign&apos;i şimdi kurup evreni sonra Campaign ayarlarından
+                  atayabilirsin.
+                </p>
+                <button
+                  type="button"
+                  className="btn btn-ghost"
+                  onClick={() => {
+                    setCreateOpen(false)
+                    navigate('/evrenler')
+                  }}
+                >
+                  <UniverseIcon size={16} style={{ verticalAlign: '-3px', marginRight: 6 }} />
+                  Evren oluştur
+                </button>
+              </>
+            ) : (
+              <select
+                id="new-campaign-universe"
+                value={newUniverseId}
+                onChange={(e) => setNewUniverseId(e.target.value)}
+              >
+                <option value="">— evren yok —</option>
+                {myUniverses.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
         </form>
       </Modal>
     </div>

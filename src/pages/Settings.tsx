@@ -1,18 +1,20 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
+import { useInviteStore } from '@/state/inviteStore'
 import { supabase, supabaseEnabled } from '@/lib/supabase'
 import { listCharacters } from '@/lib/storage'
 import { setUsername, USERNAME_RE } from '@/lib/social'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
-import { SettingsIcon } from '@/components/icons'
+import { AccountIcon } from '@/components/icons'
 
 export default function Settings() {
   const { user, signOut, refreshRoles } = useAuthStore()
   const confirm = useConfirm()
   const toast = useToast()
   const nav = useNavigate()
+  const inviteCount = useInviteStore((s) => s.invites.length)
   const [busy, setBusy] = useState(false)
   const [uname, setUname] = useState(user?.username ?? '')
   const [savingName, setSavingName] = useState(false)
@@ -97,10 +99,10 @@ export default function Settings() {
     <div className="container" style={{ maxWidth: 620 }}>
       <div className="page-head with-icon">
         <span className="page-icon">
-          <SettingsIcon size={24} />
+          <AccountIcon size={24} />
         </span>
         <div className="page-head-text">
-          <h1>Ayarlar</h1>
+          <h1>Hesap</h1>
           <p className="page-sub">Hesabını ve verilerini yönet.</p>
         </div>
       </div>
@@ -136,6 +138,21 @@ export default function Settings() {
                 disabled={savingName || !uname.trim() || uname.trim() === user.username}
               >
                 {savingName ? 'Kaydediliyor…' : 'Kaydet'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {supabaseEnabled && (
+          <div className="setting-row">
+            <div className="setting-label">
+              <span>Davetler</span>
+              <p className="hint">Bekleyen campaign davetlerin.</p>
+            </div>
+            <div className="row setting-control" style={{ gap: 8, alignItems: 'center' }}>
+              {inviteCount > 0 && <span className="badge">{inviteCount}</span>}
+              <button className="btn" onClick={() => nav('/davetler')}>
+                {inviteCount > 0 ? 'Davetlere git' : 'Görüntüle'}
               </button>
             </div>
           </div>

@@ -223,6 +223,35 @@ body {
   overflow-x: hidden;
 }
 
+/* Kullanıcı metni sarma. Taban: her metin gerektiğinde kırılabilsin. */
+body {
+  overflow-wrap: break-word;
+}
+/* Metin taşıyıcıları esnek kutu içinde de küçülebilsin. `anywhere`, `break-word`den
+   farklı olarak min-content genişliğini de düşürür — uzun bir kelime yanındaki
+   butonu dışarı itmesin diye şart. Butonlar/rozetler listede yok, bilerek:
+   onların min-content'i düşerse dar ekranda etiketleri ortadan bölünür. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+dd,
+td,
+th,
+.hint,
+.muted,
+.eyebrow,
+.lore,
+.rte-editor,
+.modal-title,
+.notif-item-title {
+  overflow-wrap: anywhere;
+}
+
 /* App shell: içerik kısa olsa da footer'ı hep viewport dibine iter */
 .app-shell {
   display: flex;
@@ -497,7 +526,29 @@ a {
 .identity:hover {
   color: var(--ink);
 }
-.identity:hover .identity-avatar {
+.identity:hover .identity-name {
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* "Hesap" etiketi: çipin ne olduğunu adın yanında açıkça söyler. */
+.identity-tag {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--field);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.identity:hover .identity-tag,
+.identity.active .identity-tag {
+  color: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+.identity-avatar {
   border-color: var(--accent-bright);
   color: var(--accent-bright);
 }

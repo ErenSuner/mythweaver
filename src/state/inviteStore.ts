@@ -1,5 +1,6 @@
-// Gelen campaign davetleri — header'daki bildirim kutusu ile /campaign sayfasının
-// ortak kaynağı. İkisi aynı listeyi okur, bir yerde kabul/red edilince ikisi de düşer.
+// Gelen campaign davetleri — TEK kaynak. Zil (InviteMenu), /davetler sayfası,
+// /campaign işaretçi paneli ve /hesap satırı hepsi buradan okur; bir yerde
+// kabul/red edilince hepsi birden düşer.
 // Tazeleme Supabase realtime ile: campaign_invites tablosunda kendi satırlarımız
 // değişince liste yeniden çekilir (0008_invites_realtime.sql).
 import { create } from 'zustand'

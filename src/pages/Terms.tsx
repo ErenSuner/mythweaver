@@ -32,7 +32,7 @@ export default function Terms() {
         <h2 style={{ fontSize: 'var(--fs-md)' }}>Hizmetin sunumu</h2>
         <p>
           Hizmet “olduğu gibi” sunulur; kesintisizlik veya hatasızlık garanti edilmez. Verilerinin yedeğini düzenli
-          almanı öneririz (Ayarlar → Verilerimi İndir). Yürürlükteki hukukun izin verdiği ölçüde, dolaylı zararlardan
+          almanı öneririz (Hesap → Verilerimi İndir). Yürürlükteki hukukun izin verdiği ölçüde, dolaylı zararlardan
           sorumluluk kabul edilmez.
         </p>
 

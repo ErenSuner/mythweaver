@@ -142,6 +142,46 @@ export async function campaignPeers(campaignId: string): Promise<Character[]> {
     .map(migrateCharacter)
 }
 
+export interface Membership {
+  characterId: string
+  campaignId: string
+  campaignName: string
+}
+
+/**
+ * Görünür campaign üyelikleri. DİKKAT: RLS başkalarının satırlarını da döndürür —
+ * DM kendi campaign'lerinin tüm üyelerini, kurucu hepsini görür. Çağıran kendi
+ * karakter id'leriyle kesişim almalı, yoksa başkasının karakterini etiketler.
+ */
+export async function myMemberships(): Promise<Membership[]> {
+  if (!(supabaseEnabled && supabase)) return []
+  const { data, error } = await supabase
+    .from('campaign_members')
+    .select('character_id, campaign_id, campaigns ( name )')
+  if (error) throw error
+  return (data || []).map((r) => {
+    const row = r as { character_id: string; campaign_id: string; campaigns: unknown }
+    // embed nesne ya da dizi gelebilir (bkz. campaignPeers)
+    const c = Array.isArray(row.campaigns) ? row.campaigns[0] : row.campaigns
+    return {
+      characterId: row.character_id,
+      campaignId: row.campaign_id,
+      campaignName: (c as { name?: string } | null)?.name ?? 'Campaign',
+    }
+  })
+}
+
+/**
+ * Oyuncunun kendi karakterini campaign'den çıkarması. RPC yok; RLS politikası
+ * campaign_members_delete_own (0005_open_campaigns.sql) sahibi olduğun karaktere
+ * DELETE izni veriyor. Karakter silinmez, yalnız üyelik satırı gider.
+ */
+export async function leaveCampaign(characterId: string): Promise<void> {
+  if (!(supabaseEnabled && supabase)) throw new Error('Bu işlem yalnız Supabase modunda çalışır.')
+  const { error } = await supabase.from('campaign_members').delete().eq('character_id', characterId)
+  if (error) throw error
+}
+
 export async function getCharacter(id: string, userId: string | null): Promise<Character | null> {
   if (supabaseEnabled && supabase) {
     const { data, error } = await supabase.from('characters').select('data').eq('id', id).maybeSingle()

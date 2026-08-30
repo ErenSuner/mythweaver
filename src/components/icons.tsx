@@ -69,6 +69,17 @@ export function SettingsIcon(p: IconProps) {
   )
 }
 
+// Hesap — kişi silüeti. Ayarlar dişlisi (SettingsIcon) burada kullanılmıyor:
+// ince çizgide dişli çarkın dişleri ışın gibi okunuyor, güneşe benziyordu.
+export function AccountIcon(p: IconProps) {
+  return (
+    <svg {...base(p)}>
+      <circle cx="12" cy="8.2" r="3.6" />
+      <path d="M4.8 20c.7-3.9 3.6-5.9 7.2-5.9s6.5 2 7.2 5.9" />
+    </svg>
+  )
+}
+
 // Çıkış
 export function LogoutIcon(p: IconProps) {
   return (
@@ -190,6 +201,7 @@ const REGISTRY = {
   dm: DmIcon,
   universe: UniverseIcon,
   settings: SettingsIcon,
+  account: AccountIcon,
   logout: LogoutIcon,
   plus: PlusIcon,
   dice: DiceIcon,
