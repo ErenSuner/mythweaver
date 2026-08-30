@@ -3,6 +3,7 @@
 import { supabase, supabaseEnabled } from './supabase'
 import { migrateCharacter } from './storage'
 import type { Character } from '@/types/character'
+import { adminListUniverses, type Universe } from '@/lib/universe'
 
 export interface Campaign {
   id: string
@@ -324,4 +325,64 @@ export async function listActivity(search?: string, action?: string, limit = 100
     meta: (r.meta as Record<string, unknown> | null) ?? null,
     createdAt: r.created_at as string,
   }))
+}
+
+// ---- Kurucu: kişi tam-görünürlük özeti ----
+
+export interface UserOverview {
+  characters: AdminCharacterRow[]
+  universes: Universe[]
+  /** Kişinin DM olduğu campaign'ler. */
+  campaignsAsDm: Campaign[]
+  /** Kişinin bir karakteriyle üye olduğu campaign'ler. */
+  memberships: { campaignId: string; campaignName: string; characterName: string }[]
+}
+
+/**
+ * Bir kullanıcının tüm verisi (salt-okunur, kurucu paneli). RLS her tabloda
+ * is_admin'e izin verdiği için başkasının verisini de okur. Migration yok.
+ */
+export async function adminUserOverview(userId: string): Promise<UserOverview> {
+  const sb = ensure()
+  const email = (await sb.from('profiles').select('email').eq('id', userId).maybeSingle()).data?.email ?? null
+
+  const [chRes, uniRes, dmRes] = await Promise.all([
+    sb.from('characters').select('id, user_id, data').eq('user_id', userId),
+    adminListUniverses(userId),
+    sb.from('campaigns').select('id, name, created_at, dm_user_id, universe_id').eq('dm_user_id', userId),
+  ])
+  if (chRes.error) throw chRes.error
+  if (dmRes.error) throw dmRes.error
+
+  const characters: AdminCharacterRow[] = (chRes.data || []).map((r) => ({
+    character: migrateCharacter(r.data as Character),
+    ownerId: r.user_id as string,
+    ownerEmail: email,
+    campaignId: null,
+  }))
+
+  // Üyelikler: kişinin karakter id'leri -> campaign_members -> campaign adları
+  const charIds = (chRes.data || []).map((r) => r.id as string)
+  const nameOfChar = new Map<string, string>()
+  for (const r of chRes.data || []) {
+    nameOfChar.set(r.id as string, ((r.data as Character)?.characterName as string) || 'İsimsiz Kahraman')
+  }
+  let memberships: UserOverview['memberships'] = []
+  if (charIds.length) {
+    const memRes = await sb.from('campaign_members').select('character_id, campaign_id').in('character_id', charIds)
+    if (memRes.error) throw memRes.error
+    const campIds = Array.from(new Set((memRes.data || []).map((m) => m.campaign_id as string)))
+    const campNames = new Map<string, string>()
+    if (campIds.length) {
+      const cRes = await sb.from('campaigns').select('id, name').in('id', campIds)
+      for (const c of cRes.data || []) campNames.set(c.id as string, c.name as string)
+    }
+    memberships = (memRes.data || []).map((m) => ({
+      campaignId: m.campaign_id as string,
+      campaignName: campNames.get(m.campaign_id as string) ?? 'Campaign',
+      characterName: nameOfChar.get(m.character_id as string) ?? 'İsimsiz Kahraman',
+    }))
+  }
+
+  return { characters, universes: uniRes, campaignsAsDm: (dmRes.data || []) as Campaign[], memberships }
 }

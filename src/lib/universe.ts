@@ -43,6 +43,19 @@ export async function listMyUniverses(): Promise<Universe[]> {
   return (data || []).map(mapRow)
 }
 
+/** Kurucu: belirli bir kullanıcının evrenleri. RLS (universes_admin_all) izin
+ *  verdiği için başkasının evrenlerini de döndürür — yalnız is_admin çalıştırır. */
+export async function adminListUniverses(ownerId: string): Promise<Universe[]> {
+  const sb = ensure()
+  const { data, error } = await sb
+    .from('universes')
+    .select('id, owner_id, name, description, updated_at')
+    .eq('owner_id', ownerId)
+    .order('created_at', { ascending: true })
+  if (error) throw error
+  return (data || []).map(mapRow)
+}
+
 export async function getUniverse(id: string): Promise<Universe | null> {
   const sb = ensure()
   const { data, error } = await sb

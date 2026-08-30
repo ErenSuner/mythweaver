@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/state/authStore'
-import { useConfirm } from '@/components/Modal'
+import { Modal, useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
+import CharacterCard from '@/components/sheet/CharacterCard'
+import { sanitizeLore } from '@/lib/sanitize'
+import { classById, raceById } from '@/data'
 import {
   listUsers,
   setUserRole,
@@ -9,10 +13,12 @@ import {
   listActivity,
   listCampaignsWithDm,
   setCampaignDm,
+  adminUserOverview,
   type UserRow,
   type PlatformStats,
   type ActivityRow,
   type CampaignWithDm,
+  type UserOverview,
 } from '@/lib/admin-storage'
 
 type Tab = 'users' | 'campaigns' | 'stats' | 'activity'
@@ -101,12 +107,16 @@ function UsersTab() {
     }
   }
 
+  const [selected, setSelected] = useState<UserRow | null>(null)
+
   const shown = useMemo(() => {
     if (!users) return []
     const term = q.trim().toLowerCase()
     if (!term) return users
     return users.filter((u) => (u.email ?? '').toLowerCase().includes(term))
   }, [users, q])
+
+  if (selected) return <UserDetail user={selected} onBack={() => setSelected(null)} />
 
   if (users === null) return <p className="muted">Yükleniyor…</p>
   if (users.length === 0) return <p className="muted">Kullanıcı yok.</p>
@@ -134,7 +144,12 @@ function UsersTab() {
         </thead>
         <tbody>
           {shown.map((u) => (
-            <tr key={u.id} style={{ borderTop: '1px solid var(--line)' }}>
+            <tr
+              key={u.id}
+              style={{ borderTop: '1px solid var(--line)', cursor: 'pointer' }}
+              onClick={() => setSelected(u)}
+              title="Kullanıcının tüm verisini gör"
+            >
               <td style={cell}>
                 {u.email ?? '—'}
                 {u.id === myId && <span className="hint"> (sen)</span>}
@@ -144,7 +159,14 @@ function UsersTab() {
                 {u.isAdmin ? <span className="badge badge-new">Kurucu</span> : <span className="muted">Oyuncu</span>}
               </td>
               <td style={{ ...cell, textAlign: 'right' }}>
-                <button className="btn btn-ghost" disabled={busy === u.id} onClick={() => toggleAdmin(u)}>
+                <button
+                  className="btn btn-ghost"
+                  disabled={busy === u.id}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleAdmin(u)
+                  }}
+                >
                   {u.isAdmin ? 'Kurucu yetkisini al' : 'Kurucu yap'}
                 </button>
               </td>
@@ -154,6 +176,155 @@ function UsersTab() {
       </table>
       </div>
       )}
+    </div>
+  )
+}
+
+// Kurucu: bir kullanıcının TÜM verisi (salt-okunur). RLS her tabloda is_admin'e
+// izin verdiği için başkasının karakter/evren/campaign'i de okunur.
+function UserDetail({ user, onBack }: { user: UserRow; onBack: () => void }) {
+  const nav = useNavigate()
+  const [data, setData] = useState<UserOverview | null>(null)
+  const [error, setError] = useState(false)
+  const [openChar, setOpenChar] = useState<UserOverview['characters'][number] | null>(null)
+
+  useEffect(() => {
+    setError(false)
+    adminUserOverview(user.id)
+      .then(setData)
+      .catch((e) => {
+        console.error('[founder] kullanıcı özeti', e)
+        setError(true)
+      })
+  }, [user.id])
+
+  return (
+    <div className="stack" style={{ gap: 16 }}>
+      <div className="spread" style={{ flexWrap: 'wrap', gap: 8 }}>
+        <div>
+          <button className="btn btn-ghost" onClick={onBack} style={{ marginBottom: 8 }}>
+            ← Kullanıcılar
+          </button>
+          <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+            <h3 style={{ margin: 0 }}>{user.email ?? '—'}</h3>
+            {user.isAdmin ? <span className="badge badge-new">Kurucu</span> : <span className="muted">Oyuncu</span>}
+          </div>
+        </div>
+      </div>
+
+      {error ? (
+        <p className="muted">Veri yüklenemedi.</p>
+      ) : data === null ? (
+        <p className="muted">Yükleniyor…</p>
+      ) : (
+        <>
+          {/* Karakterler */}
+          <div className="stack" style={{ gap: 8 }}>
+            <span className="rubric">Karakterler ({data.characters.length})</span>
+            {data.characters.length === 0 ? (
+              <p className="muted" style={{ margin: 0 }}>
+                Karakteri yok.
+              </p>
+            ) : (
+              <div className="choice-grid">
+                {data.characters.map((row) => {
+                  const c = row.character
+                  const race = raceById(c.raceId)
+                  const klass = classById(c.classId)
+                  return (
+                    <div key={c.id} className="choice-card illuminated" onClick={() => setOpenChar(row)}>
+                      <div className="spread">
+                        <div>
+                          <span className="eyebrow">
+                            {[race?.name, klass?.name].filter(Boolean).join(' · ') || 'Kahraman'}
+                          </span>
+                          <h3>{c.characterName || 'İsimsiz Kahraman'}</h3>
+                        </div>
+                      </div>
+                      <p className="char-card-level">
+                        Seviye <b>{c.level}</b>
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Evrenler */}
+          <div className="stack" style={{ gap: 8 }}>
+            <span className="rubric">Evrenler ({data.universes.length})</span>
+            {data.universes.length === 0 ? (
+              <p className="muted" style={{ margin: 0 }}>
+                Evreni yok.
+              </p>
+            ) : (
+              data.universes.map((u) => (
+                <div key={u.id} className="panel stack" style={{ gap: 8 }}>
+                  <h3 style={{ margin: 0, fontSize: 'var(--fs-md)' }}>{u.name}</h3>
+                  {u.description ? (
+                    <div className="lore" dangerouslySetInnerHTML={{ __html: sanitizeLore(u.description) }} />
+                  ) : (
+                    <p className="muted" style={{ margin: 0 }}>
+                      Açıklama yok.
+                    </p>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* DM olduğu campaign'ler */}
+          <div className="stack" style={{ gap: 8 }}>
+            <span className="rubric">DM olduğu campaign'ler ({data.campaignsAsDm.length})</span>
+            {data.campaignsAsDm.length === 0 ? (
+              <p className="muted" style={{ margin: 0 }}>
+                Yok.
+              </p>
+            ) : (
+              <div className="stack" style={{ gap: 6 }}>
+                {data.campaignsAsDm.map((c) => (
+                  <div key={c.id} className="setting-row" style={{ padding: '8px 0' }}>
+                    <span>{c.name}</span>
+                    <button className="btn btn-ghost" onClick={() => nav(`/campaign/${c.id}`)}>
+                      Aç
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Katıldığı campaign'ler */}
+          <div className="stack" style={{ gap: 8 }}>
+            <span className="rubric">Katıldığı campaign'ler ({data.memberships.length})</span>
+            {data.memberships.length === 0 ? (
+              <p className="muted" style={{ margin: 0 }}>
+                Yok.
+              </p>
+            ) : (
+              <div className="stack" style={{ gap: 6 }}>
+                {data.memberships.map((m) => (
+                  <div key={m.campaignId + m.characterName} className="setting-row" style={{ padding: '8px 0' }}>
+                    <div className="setting-label">
+                      <span>{m.campaignName}</span>
+                      <p className="hint">Karakter: {m.characterName}</p>
+                    </div>
+                    <button className="btn btn-ghost" onClick={() => nav(`/campaign/${m.campaignId}`)}>
+                      Aç
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* Salt-okunur karakter kartı — onEdit verilmez. */}
+      <Modal open={Boolean(openChar)} onClose={() => setOpenChar(null)} title="Karakter" wide>
+        {openChar && <CharacterCard character={openChar.character} />}
+      </Modal>
     </div>
   )
 }
