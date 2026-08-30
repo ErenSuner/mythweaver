@@ -1,7 +1,7 @@
 # Yayına Alma — MythWeaver
 
-Cloudflare Pages (ücretsiz) + GitHub auto-deploy + Supabase. Adres şimdilik bedava
-`*.pages.dev`; özel domain sonra eklenir.
+Cloudflare Pages (ücretsiz) + GitHub auto-deploy + Supabase. Canlı adres:
+**https://mythweaver.com.tr** (`*.pages.dev` adresi hâlâ çalışır, ana adres değil).
 
 ## 0. Ön koşul
 - `.env` dosyası **repoya girmez** (`.gitignore`'da). Supabase değerleri host paneline elle
@@ -35,7 +35,7 @@ git push -u origin main
    - `VITE_SUPABASE_URL` = (yerel `.env` değeri)
    - `VITE_SUPABASE_ANON_KEY` = (yerel `.env` değeri)
    - `NODE_VERSION` = `20`
-5. Deploy → adres: `https://<proje-adı>.pages.dev`.
+5. Deploy → geçici adres: `https://<proje-adı>.pages.dev`. Özel domain için bkz. §6.
 
 SPA yönlendirmesi `public/_redirects` ile hazır (`/* /index.html 200`).
 
@@ -55,23 +55,66 @@ create index if not exists characters_user_idx on public.characters(user_id);
 ```
 
 ### 3b. Auth redirect (Authentication > URL Configuration)
-- Site URL: `https://<proje-adı>.pages.dev`
-- Redirect URLs: `https://<proje-adı>.pages.dev/**` ve `http://localhost:5173/**`
+- Site URL: `https://mythweaver.com.tr`
+- Redirect URLs: `https://mythweaver.com.tr/**`, `https://www.mythweaver.com.tr/**`,
+  `https://<proje-adı>.pages.dev/**` (preview/eski adres) ve `http://localhost:5173/**`
 
 ### 3c. Google OAuth (Google Cloud Console)
-- Authorized JavaScript origins: `https://<proje-adı>.pages.dev` ekle.
+- Authorized JavaScript origins: `https://mythweaver.com.tr` (+ `https://www.mythweaver.com.tr`) ekle.
 - Authorized redirect URIs: `https://<ref>.supabase.co/auth/v1/callback` (zaten var, sabit).
 
 ## 4. Doğrula
-- pages.dev açılır (HTTPS, PWA install).
+- `https://mythweaver.com.tr` açılır (HTTPS, PWA install); `www.` ve pages.dev apex'e yönlenir.
 - Google ile giriş → OAuth tamamlanır.
 - Karakter kaydet → Supabase `characters` tablosunda satır.
 - Başka cihazda aynı hesap → karakter görünür.
 - Her `git push` → otomatik yeni deploy.
 
-## Sonra: özel domain
-Pages > Custom domains'ten ekle. Ardından Supabase Site URL + Google origins'i yeni domaine
-güncelle.
+## 6. Özel domain — mythweaver.com.tr
+
+### 6a. DNS'i Cloudflare'a al
+1. Cloudflare > **Add a site** > `mythweaver.com.tr` > Free plan.
+2. Cloudflare iki nameserver verir (`xxx.ns.cloudflare.com`).
+3. Domain'i aldığın Türk kayıt firmasının panelinde (TRABIS bayisi) **nameserver /
+   ad sunucu** alanını bu ikisiyle değiştir. Yayılma genelde 15 dk - 24 saat.
+4. Cloudflare'da zone **Active** olunca devam et.
+
+> Apex (`mythweaver.com.tr`) için kayıt firmasının DNS'inde kalmak istersen CNAME
+> flattening gerekir; çoğu .tr paneli desteklemez. Nameserver'ı Cloudflare'a almak
+> en temiz yol.
+
+### 6b. Pages'e domain bağla
+1. Workers & Pages > `mythweaver` > **Custom domains** > Set up a custom domain.
+2. `mythweaver.com.tr` ekle → Cloudflare DNS kaydını (CNAME → `<proje>.pages.dev`,
+   proxied) kendi açar. Sertifika birkaç dakikada **Active** olur.
+3. Aynı ekranda `www.mythweaver.com.tr` de ekle.
+4. www → apex tekleştirme: Rules > **Redirect Rules** > yeni kural
+   - If: `Hostname equals www.mythweaver.com.tr`
+   - Then: Dynamic redirect, `concat("https://mythweaver.com.tr", http.request.uri.path)`,
+     **301**, query string koru.
+   (SEO ve OAuth için tek kanonik origin şart — iki origin = iki ayrı oturum/PWA.)
+5. SSL/TLS > Overview > mod **Full (strict)**; Edge Certificates > **Always Use HTTPS** açık.
+
+### 6c. Domain değişince güncellenecek yerler
+- Supabase > Authentication > URL Configuration: Site URL + Redirect URLs (§3b).
+- Google Cloud Console > OAuth client > Authorized JavaScript origins (§3c).
+- Cloudflare Turnstile > site ayarları > **Domains** listesine `mythweaver.com.tr`
+  ve `www.mythweaver.com.tr` ekle (yoksa CAPTCHA widget hata verir).
+- Sentry > project settings > Allowed Domains (kullanıyorsan).
+- Repo içi sabitler: `README.md`, `index.html` canonical/og etiketleri,
+  `public/robots.txt`, `public/sitemap.xml` — hepsi yeni domaine göre güncellendi.
+- Kod tarafında domain **sabit değil**: auth redirect'leri `window.location.origin`
+  kullanır (`src/state/authStore.ts`), yeni domainde otomatik doğru çalışır.
+
+### 6d. Eski pages.dev adresi
+Kırma, çalışsın (eski linkler, preview build'ler). Kanonik adres meta etiketiyle
+apex'e işaret ediyor. İstersen Redirect Rule ile pages.dev'i de apex'e yönlendir —
+ama preview deploy'ları da vuracağı için önerilmez.
+
+### 6e. E-posta (opsiyonel)
+`iletisim@mythweaver.com.tr` istiyorsan MX kayıtları gerekir (Zoho Mail ücretsiz,
+Google Workspace ücretli). Kurduktan sonra `src/pages/Privacy.tsx` ve
+`src/pages/Terms.tsx` içindeki gmail adresini değiştir.
 
 ---
 
