@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAuthStore } from '@/state/authStore'
 import { useConfirm } from '@/components/Modal'
 import { useToast } from '@/components/Toast'
@@ -54,6 +54,7 @@ function UsersTab() {
   const myId = useAuthStore((s) => s.user?.id ?? null)
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const [q, setQ] = useState('')
 
   async function refresh() {
     try {
@@ -100,11 +101,28 @@ function UsersTab() {
     }
   }
 
+  const shown = useMemo(() => {
+    if (!users) return []
+    const term = q.trim().toLowerCase()
+    if (!term) return users
+    return users.filter((u) => (u.email ?? '').toLowerCase().includes(term))
+  }, [users, q])
+
   if (users === null) return <p className="muted">Yükleniyor…</p>
   if (users.length === 0) return <p className="muted">Kullanıcı yok.</p>
 
   return (
-    <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
+    <div className="stack" style={{ gap: 8 }}>
+      <input
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        placeholder="E-postaya göre ara…"
+        aria-label="Kullanıcı ara"
+      />
+      {shown.length === 0 ? (
+        <p className="muted">Bu arama için kullanıcı yok.</p>
+      ) : (
+      <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)', whiteSpace: 'nowrap' }}>
         <thead>
           <tr style={{ textAlign: 'left', color: 'var(--ink-dim)' }}>
@@ -115,7 +133,7 @@ function UsersTab() {
           </tr>
         </thead>
         <tbody>
-          {users.map((u) => (
+          {shown.map((u) => (
             <tr key={u.id} style={{ borderTop: '1px solid var(--line)' }}>
               <td style={cell}>
                 {u.email ?? '—'}
@@ -134,6 +152,8 @@ function UsersTab() {
           ))}
         </tbody>
       </table>
+      </div>
+      )}
     </div>
   )
 }
@@ -143,6 +163,7 @@ function CampaignsTab() {
   const [camps, setCamps] = useState<CampaignWithDm[] | null>(null)
   const [users, setUsers] = useState<UserRow[] | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const [q, setQ] = useState('')
 
   async function refresh() {
     const [c, u] = await Promise.all([listCampaignsWithDm(), listUsers()])
@@ -170,6 +191,11 @@ function CampaignsTab() {
     }
   }
 
+  const shown = (camps ?? []).filter((c) => {
+    const term = q.trim().toLowerCase()
+    return !term || c.name.toLowerCase().includes(term)
+  })
+
   if (camps === null || users === null) return <p className="muted">Yükleniyor…</p>
   if (camps.length === 0) return <p className="muted">Henüz campaign yok.</p>
 
@@ -178,6 +204,15 @@ function CampaignsTab() {
       <p className="hint" style={{ marginTop: 0 }}>
         Her campaign'e bir DM ata (opsiyonel). Atanan DM yalnız o campaign'in karakterlerini görür/düzenler.
       </p>
+      <input
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        placeholder="Campaign adına göre ara…"
+        aria-label="Campaign ara"
+      />
+      {shown.length === 0 ? (
+        <p className="muted">Bu arama için campaign yok.</p>
+      ) : (
       <div className="panel" style={{ overflowX: 'auto', padding: 0 }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)', whiteSpace: 'nowrap' }}>
           <thead>
@@ -187,7 +222,7 @@ function CampaignsTab() {
             </tr>
           </thead>
           <tbody>
-            {camps.map((c) => (
+            {shown.map((c) => (
               <tr key={c.id} style={{ borderTop: '1px solid var(--line)' }}>
                 <td style={cell}><b>{c.name}</b></td>
                 <td style={cell}>
@@ -211,6 +246,7 @@ function CampaignsTab() {
           </tbody>
         </table>
       </div>
+      )}
     </div>
   )
 }
