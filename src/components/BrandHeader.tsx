@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import GuardedNavLink from '@/components/GuardedNavLink'
 import { useAuthStore } from '@/state/authStore'
 import { supabaseEnabled } from '@/lib/supabase'
 import { CharactersIcon, CampaignIcon, DmIcon, UniverseIcon, DiceIcon, AccountIcon, LogoutIcon } from '@/components/icons'
@@ -35,25 +36,25 @@ export default function BrandHeader() {
 
   const navLinks = (
     <>
-      <NavLink to="/" end className="nav-link">
+      <GuardedNavLink to="/" end className="nav-link">
         <CharactersIcon size={18} />
         Karakterler
-      </NavLink>
-      <NavLink to="/campaign" className="nav-link">
+      </GuardedNavLink>
+      <GuardedNavLink to="/campaign" className="nav-link">
         <CampaignIcon size={18} />
         Campaign
-      </NavLink>
+      </GuardedNavLink>
       {user?.isAdmin && (
-        <NavLink to="/kurucu" className="nav-link">
+        <GuardedNavLink to="/kurucu" className="nav-link">
           <DmIcon size={18} />
           Kurucu Paneli
-        </NavLink>
+        </GuardedNavLink>
       )}
       {/* Evrenler herkeste görünür: campaign kurmadan da evren hazırlanabilsin. */}
-      <NavLink to="/evrenler" className="nav-link">
+      <GuardedNavLink to="/evrenler" className="nav-link">
         <UniverseIcon size={18} />
         Evrenler
-      </NavLink>
+      </GuardedNavLink>
     </>
   )
 
@@ -89,13 +90,13 @@ export default function BrandHeader() {
             <div className="brand-tools">
               {/* Sadece kullanıcı adı yazınca burasının "Hesap" olduğu
                   anlaşılmıyordu; adın yanına açık etiket kondu. */}
-              <NavLink to="/hesap" className="identity" title="Hesabım">
+              <GuardedNavLink to="/hesap" className="identity" title="Hesabım">
                 <span className="identity-avatar" aria-hidden="true">
                   {initial}
                 </span>
                 <span className="identity-name">{identity}</span>
                 <span className="identity-tag">Hesap</span>
-              </NavLink>
+              </GuardedNavLink>
               <span className="brand-sep" aria-hidden="true" />
               <InviteMenu />
               <ThemeToggle />
@@ -139,10 +140,10 @@ export default function BrandHeader() {
           )}
           {navLinks}
           <span className="brand-drawer-sep" aria-hidden="true" />
-          <NavLink to="/hesap" className="nav-link">
+          <GuardedNavLink to="/hesap" className="nav-link">
             <AccountIcon size={18} />
             {identity} · Hesap
-          </NavLink>
+          </GuardedNavLink>
           <button className="nav-link" style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={onSignOut}>
             <LogoutIcon size={18} />
             Çıkış

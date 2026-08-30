@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useNavGuard } from '@/state/navGuard'
 import { useToast } from '@/components/Toast'
 import { Modal, useConfirm } from '@/components/Modal'
 import RichTextEditor from '@/components/RichTextEditor'
@@ -32,6 +33,7 @@ export default function Universes() {
   const nav = useNavigate()
   const toast = useToast()
   const confirm = useConfirm()
+  const setConfirmLeave = useNavGuard((s) => s.setConfirmLeave)
   const [list, setList] = useState<Universe[] | null>(null)
   const [error, setError] = useState(false)
   const [newName, setNewName] = useState('')
@@ -160,6 +162,50 @@ export default function Universes() {
     setDraft((p) => ({ ...p, [u.id]: { name: u.name, description: u.description ?? '' } }))
   }
 
+  // Kaydedilmemiş değişiklik: bir evren düzenleme modunda açıksa. (Yeni-evren
+  // modalı zaten localStorage taslağında korunuyor, kaybolmaz — o dirty sayılmaz.)
+  const isDirty = Object.keys(draft).length > 0
+
+  const askLeave = useCallback(
+    () =>
+      confirm({
+        title: 'Kaydedilmemiş değişiklikler',
+        message: (
+          <>
+            Bu evrende <b>kaydetmediğin değişiklikler</b> var. Çıkarsan bu değişiklikler kaybolur. Yine de çıkmak
+            istiyor musun?
+          </>
+        ),
+        confirmLabel: 'Çık, kaydetme',
+        cancelLabel: 'Sayfada kal',
+        danger: true,
+      }),
+    [confirm],
+  )
+
+  // Üst menü / footer linkleri bu onaydan geçsin (GuardedNavLink).
+  useEffect(() => {
+    setConfirmLeave(isDirty ? askLeave : null)
+    return () => setConfirmLeave(null)
+  }, [isDirty, askLeave, setConfirmLeave])
+
+  // Tarayıcı sekmesini kapatma / yenileme: native uyarı (tema uygulanamaz).
+  useEffect(() => {
+    if (!isDirty) return
+    const h = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', h)
+    return () => window.removeEventListener('beforeunload', h)
+  }, [isDirty])
+
+  // Sayfa-içi çıkış butonu (← Campaign'ler) da aynı onaydan geçer.
+  async function guardedNav(to: string) {
+    if (isDirty && !(await askLeave())) return
+    nav(to)
+  }
+
   const atLimit = (list?.length ?? 0) >= MAX_UNIVERSES
 
   return (
@@ -178,7 +224,7 @@ export default function Universes() {
           </div>
         </div>
         <div className="row" style={{ gap: 8, alignItems: 'center' }}>
-          <button className="btn btn-ghost" onClick={() => nav('/campaign')}>
+          <button className="btn btn-ghost" onClick={() => guardedNav('/campaign')}>
             ← Campaign&apos;ler
           </button>
           <button
