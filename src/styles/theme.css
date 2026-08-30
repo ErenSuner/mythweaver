@@ -924,6 +924,13 @@ select:focus {
   background: var(--bg-2);
   border-color: var(--line);
 }
+/* Evren editörü + lore gösterimi: gövde de serif (Fraunces). Düz sans (Inter)
+   kullanıcının 'vibe'ını bozuyordu; artık normal metin de başlıklarla aynı
+   aileden — H butonuna basınca font "değişmiş" hissi vermez. */
+.rte-editor,
+.lore {
+  font-family: var(--serif);
+}
 .rte-editor {
   min-height: 220px;
   padding: 14px 16px;
