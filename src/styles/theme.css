@@ -71,12 +71,12 @@
      Onceden 22 farkli font-size degeri vardi; kucuk uclar (10-13px)
      "kucucuk", basliklar (22-32px) orantisiz buyuk goruniyordu.
      Aralik daraltildi: kucuk uclar yukseldi, buyuk uclar indi. */
-  --fs-micro: 12px; /* eyebrow, rubric, badge, label */
-  --fs-sm: 14px; /* hint, meta, tablo, buton */
-  --fs-base: 16px; /* govde, nav, input */
-  --fs-md: 19px; /* h3, kart basligi, okuma prozasi */
-  --fs-lg: 24px; /* h2 */
-  --fs-xl: 30px; /* h1 */
+  --fs-micro: 11px; /* eyebrow, rubric, badge, label */
+  --fs-sm: 13px; /* hint, meta, tablo, buton */
+  --fs-base: 15px; /* govde, nav, input */
+  --fs-md: 17px; /* h3, kart basligi, okuma prozasi */
+  --fs-lg: 21px; /* h2 */
+  --fs-xl: 26px; /* h1 */
 
   /* sayfa kenar boslugu — header, footer ve icerik ayni olcuyu paylasir */
   --gutter: clamp(18px, 3.5vw, 56px);
@@ -325,7 +325,7 @@ a {
 .container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 24px var(--gutter) 80px;
+  padding: 20px var(--gutter) 80px;
 }
 
 /* Header ve footer tam genişlik: marka en sol kenara oturur.
@@ -363,8 +363,8 @@ a {
 
 /* sayfa başlığı bloğu — h1 + subtitle, altında ince ayraç */
 .page-head {
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 13px;
   border-bottom: 1px solid var(--line);
 }
 .page-head > h1 {
@@ -379,8 +379,8 @@ a {
 .page-icon {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   flex: none;
   border-radius: 12px;
   background: var(--accent-tint);
@@ -452,14 +452,14 @@ a {
   align-items: center;
 }
 .brand-links {
-  gap: 22px;
+  gap: 18px;
   margin-right: auto;
-  margin-left: 28px;
+  margin-left: 22px;
   flex-wrap: wrap;
   min-width: 0;
 }
 .brand-tools {
-  gap: 14px;
+  gap: 11px;
   flex: none;
 }
 /* nav linki: okunur, aktif sayfa accent + alt çizgi */
@@ -515,7 +515,7 @@ a {
 .identity {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   text-decoration: none;
   color: var(--ink-dim);
   font-size: var(--fs-sm);
@@ -562,8 +562,8 @@ a {
 .identity-avatar {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   flex: none;
   border-radius: 999px;
   background: var(--field);
@@ -759,7 +759,7 @@ a {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 22px;
+  padding: 18px;
 }
 
 /* butonlar */
@@ -768,7 +768,7 @@ a {
   font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0;
-  padding: 10px 18px;
+  padding: 8px 15px;
   border-radius: var(--radius-btn);
   border: 1px solid var(--line-strong);
   background: var(--btn-face);
@@ -777,7 +777,7 @@ a {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .btn {
-  min-height: 44px; /* dokunma hedefi */
+  min-height: 38px; /* dokunma hedefi */
 }
 .btn:hover:not(:disabled) {
   border-color: var(--leaf);
@@ -833,7 +833,7 @@ select {
   background-color: var(--field);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  padding: 12px 14px;
+  padding: 9px 12px;
   caret-color: var(--accent-bright);
   /* yalnız kenar/halka animasyonu — arka plan hiçbir durumda değişmez */
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -872,12 +872,12 @@ label {
 }
 textarea {
   resize: vertical;
-  min-height: 84px;
+  min-height: 72px;
 }
 
 /* select: appearance:none native oku siler → custom chevron ekle */
 select {
-  padding-right: 40px;
+  padding-right: 34px;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a8a29a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
@@ -1002,7 +1002,7 @@ select:focus {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel-solid);
-  padding: 16px;
+  padding: 14px;
   transition: all 0.15s ease;
 }
 .choice-card:hover {
@@ -1071,7 +1071,7 @@ select:focus {
   font-size: var(--fs-micro);
   letter-spacing: 0.02em;
   line-height: 1.5;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 6px;
   border: 1px solid var(--line-strong);
   color: var(--ink-dim);
@@ -1163,7 +1163,7 @@ button.badge:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
   background: var(--scrim);
   backdrop-filter: blur(3px);
   animation: fade-in 0.15s ease;
@@ -1189,7 +1189,7 @@ button.badge:hover {
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
-  padding: 18px 20px 12px;
+  padding: 15px 17px 10px;
   border-bottom: 1px solid var(--line);
 }
 .modal-title {
@@ -1249,7 +1249,7 @@ button.badge:hover {
   display: grid;
   place-items: center;
   font-family: var(--serif);
-  font-size: 30px;
+  font-size: 26px;
   color: var(--ink);
   background: var(--bg-2);
   border: 1px solid var(--accent);
@@ -1421,7 +1421,7 @@ button.badge:hover {
   font-family: var(--body);
   font-weight: 500;
   font-size: var(--fs-sm);
-  padding: 7px 14px;
+  padding: 6px 12px;
   border-radius: 7px;
   border: 1px solid var(--line);
   background: transparent;
@@ -1541,7 +1541,7 @@ button.badge:hover {
 
 @media (max-width: 640px) {
   body {
-    font-size: 16px;
+    font-size: 15px;
   }
   /* Dar ekranda kenar boşluğu daralır. Header/footer de aynı token'ı
      kullandığı için marka ile içerik hizada kalır. */
@@ -1549,7 +1549,7 @@ button.badge:hover {
     --gutter: 14px;
   }
   .container {
-    padding: 16px var(--gutter) 96px;
+    padding: 14px var(--gutter) 96px;
   }
   /* header: inline nav gizle, hamburger göster */
   .brand-links,
@@ -1610,14 +1610,14 @@ button.badge:hover {
     flex: 1 1 100%;
   }
   .page-icon {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
   }
   .choice-grid {
     grid-template-columns: 1fr;
   }
   .panel {
-    padding: 16px 14px;
+    padding: 14px 12px;
   }
   /* dar ekranda nav kenarlara yapışsın ve butonlar eşit bölünsün */
   .wizard-nav {
@@ -1744,7 +1744,7 @@ button.badge:hover {
   font-variation-settings: 'opsz' 144;
   font-weight: 600;
   float: left;
-  font-size: 62px;
+  font-size: 54px;
   line-height: 0.82;
   padding: 6px 12px 0 0;
   color: var(--leaf);
@@ -1850,7 +1850,7 @@ button.badge:hover {
   z-index: 3;
 }
 .login-wordmark {
-  font-size: 46px;
+  font-size: 40px;
   font-variation-settings: 'opsz' 144;
   line-height: 1.05;
   margin: 0 0 10px;
@@ -1866,7 +1866,7 @@ button.badge:hover {
     padding-top: 28px;
   }
   .login-wordmark {
-    font-size: 34px;
+    font-size: 30px;
   }
   .login-tagline {
     font-size: var(--fs-base);
@@ -1901,7 +1901,7 @@ button.badge:hover {
   font-variation-settings: 'opsz' 144;
   font-weight: 600;
   float: left;
-  font-size: 56px;
+  font-size: 50px;
   line-height: 0.82;
   padding: 6px 11px 0 0;
   color: var(--leaf);
@@ -2006,13 +2006,13 @@ button.badge:hover {
 
 /* --- ayar listesi: her ayar tek satır, kart yığını değil --- */
 .settings-list {
-  padding: 4px 22px;
+  padding: 4px 18px;
 }
 .setting-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 13px;
   flex-wrap: wrap;
   padding: 16px 0;
   border-bottom: 1px solid var(--line);
@@ -2088,13 +2088,13 @@ button.badge:hover {
    ve nav bir üst ölçek adımına çıkarıldı.
    ============================================================ */
 .brand-inner {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   text-decoration: none;
   flex: none;
 }
@@ -2116,8 +2116,8 @@ button.badge:hover {
    drawer'a düşüyor, orada 44px korunuyor. */
 .brand-tools .btn {
   font-size: var(--fs-sm);
-  padding: 7px 15px;
-  min-height: 34px;
+  padding: 6px 13px;
+  min-height: 32px;
 }
 .brand-tools .theme-toggle-btn {
   color: var(--ink-dim);
@@ -2125,8 +2125,8 @@ button.badge:hover {
 
 @media (max-width: 820px) {
   .brand-inner {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
 }
 
