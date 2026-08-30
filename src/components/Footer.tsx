@@ -1,4 +1,4 @@
-import GuardedNavLink from '@/components/GuardedNavLink'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
@@ -20,15 +20,15 @@ export default function Footer() {
         }}
       >
         <div className="row" style={{ gap: 14, flexWrap: 'wrap' }}>
-          <GuardedNavLink to="/gizlilik" className="muted" style={{ textDecoration: 'none' }}>
+          <Link to="/gizlilik" className="muted" style={{ textDecoration: 'none' }}>
             Gizlilik
-          </GuardedNavLink>
-          <GuardedNavLink to="/kosullar" className="muted" style={{ textDecoration: 'none' }}>
+          </Link>
+          <Link to="/kosullar" className="muted" style={{ textDecoration: 'none' }}>
             Kullanım Koşulları
-          </GuardedNavLink>
-          <GuardedNavLink to="/hesap" className="muted" style={{ textDecoration: 'none' }}>
+          </Link>
+          <Link to="/hesap" className="muted" style={{ textDecoration: 'none' }}>
             Hesap
-          </GuardedNavLink>
+          </Link>
         </div>
         <span className="muted" style={{ fontSize: 'var(--fs-micro)', maxWidth: 520 }}>
           Kural içeriği{' '}

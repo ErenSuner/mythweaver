@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useNavGuard } from '@/state/navGuard'
 import { useToast } from '@/components/Toast'
 import { Modal, useConfirm } from '@/components/Modal'
 import RichTextEditor from '@/components/RichTextEditor'
@@ -33,7 +32,6 @@ export default function Universes() {
   const nav = useNavigate()
   const toast = useToast()
   const confirm = useConfirm()
-  const setConfirmLeave = useNavGuard((s) => s.setConfirmLeave)
   const [list, setList] = useState<Universe[] | null>(null)
   const [error, setError] = useState(false)
   const [newName, setNewName] = useState('')
@@ -49,7 +47,16 @@ export default function Universes() {
   async function load() {
     try {
       setError(false)
-      setList(await listMyUniverses())
+      const universes = await listMyUniverses()
+      setList(universes)
+      // Kaydedilmemiş taslağı olan evrenleri otomatik düzenleme moduna al —
+      // kullanıcı çıkıp gelse de kaldığı yerden devam eder.
+      const restored: Record<string, { name: string; description: string }> = {}
+      for (const u of universes) {
+        const d = loadDraft(u.id)
+        if (d) restored[u.id] = { name: d.name, description: d.description }
+      }
+      if (Object.keys(restored).length) setDraft((prev) => ({ ...restored, ...prev }))
     } catch (e) {
       console.error('[universe] yükleme hatası', e)
       setError(true)
@@ -74,6 +81,15 @@ export default function Universes() {
     }, 400)
     return () => clearTimeout(t)
   }, [newName, newDesc])
+
+  // Düzenleme taslaklarını da otomatik sakla — açık her evren için ayrı slot
+  // (slot = evren id). saveDraft boş içeriği kendi siler.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      for (const [id, d] of Object.entries(draft)) saveDraft(id, d)
+    }, 400)
+    return () => clearTimeout(t)
+  }, [draft])
 
   async function onCreate(e?: React.FormEvent) {
     e?.preventDefault()
@@ -114,6 +130,7 @@ export default function Universes() {
         return
       }
       await updateUniverse(u.id, { name, description })
+      clearDraft(u.id)
       toast('Kaydedildi.', 'success')
       setDraft((p) => {
         const n = { ...p }
@@ -159,51 +176,11 @@ export default function Universes() {
   }
 
   function edit(u: Universe) {
-    setDraft((p) => ({ ...p, [u.id]: { name: u.name, description: u.description ?? '' } }))
-  }
-
-  // Kaydedilmemiş değişiklik: bir evren düzenleme modunda açıksa. (Yeni-evren
-  // modalı zaten localStorage taslağında korunuyor, kaybolmaz — o dirty sayılmaz.)
-  const isDirty = Object.keys(draft).length > 0
-
-  const askLeave = useCallback(
-    () =>
-      confirm({
-        title: 'Kaydedilmemiş değişiklikler',
-        message: (
-          <>
-            Bu evrende <b>kaydetmediğin değişiklikler</b> var. Çıkarsan bu değişiklikler kaybolur. Yine de çıkmak
-            istiyor musun?
-          </>
-        ),
-        confirmLabel: 'Çık, kaydetme',
-        cancelLabel: 'Sayfada kal',
-        danger: true,
-      }),
-    [confirm],
-  )
-
-  // Üst menü / footer linkleri bu onaydan geçsin (GuardedNavLink).
-  useEffect(() => {
-    setConfirmLeave(isDirty ? askLeave : null)
-    return () => setConfirmLeave(null)
-  }, [isDirty, askLeave, setConfirmLeave])
-
-  // Tarayıcı sekmesini kapatma / yenileme: native uyarı (tema uygulanamaz).
-  useEffect(() => {
-    if (!isDirty) return
-    const h = (e: BeforeUnloadEvent) => {
-      e.preventDefault()
-      e.returnValue = ''
-    }
-    window.addEventListener('beforeunload', h)
-    return () => window.removeEventListener('beforeunload', h)
-  }, [isDirty])
-
-  // Sayfa-içi çıkış butonu (← Campaign'ler) da aynı onaydan geçer.
-  async function guardedNav(to: string) {
-    if (isDirty && !(await askLeave())) return
-    nav(to)
+    const d = loadDraft(u.id)
+    setDraft((p) => ({
+      ...p,
+      [u.id]: d ? { name: d.name, description: d.description } : { name: u.name, description: u.description ?? '' },
+    }))
   }
 
   const atLimit = (list?.length ?? 0) >= MAX_UNIVERSES
@@ -224,7 +201,7 @@ export default function Universes() {
           </div>
         </div>
         <div className="row" style={{ gap: 8, alignItems: 'center' }}>
-          <button className="btn btn-ghost" onClick={() => guardedNav('/campaign')}>
+          <button className="btn btn-ghost" onClick={() => nav('/campaign')}>
             ← Campaign&apos;ler
           </button>
           <button
@@ -331,22 +308,40 @@ export default function Universes() {
                       placeholder="Dünya hakkında oyuncuların bilmesi gerekenler…"
                       maxLength={LORE_MAX_CHARS}
                     />
-                    <div className="row" style={{ gap: 8 }}>
-                      <button className="btn btn-primary" onClick={() => onSave(u)}>
-                        Kaydet
-                      </button>
-                      <button
-                        className="btn btn-ghost"
-                        onClick={() =>
-                          setDraft((p) => {
-                            const n = { ...p }
-                            delete n[u.id]
-                            return n
-                          })
-                        }
-                      >
-                        Vazgeç
-                      </button>
+                    <div className="spread" style={{ flexWrap: 'wrap', gap: 8 }}>
+                      <div className="row" style={{ gap: 8 }}>
+                        <button className="btn btn-primary" onClick={() => onSave(u)}>
+                          Kaydet
+                        </button>
+                        <button
+                          className="btn btn-ghost"
+                          onClick={async () => {
+                            const ok = await confirm({
+                              title: 'Değişiklikleri at',
+                              message: (
+                                <>
+                                  <b>{u.name}</b> üzerindeki kaydedilmemiş değişiklikler silinsin mi? Otomatik taslak da
+                                  temizlenir.
+                                </>
+                              ),
+                              confirmLabel: 'Evet, at',
+                              danger: true,
+                            })
+                            if (!ok) return
+                            clearDraft(u.id)
+                            setDraft((p) => {
+                              const n = { ...p }
+                              delete n[u.id]
+                              return n
+                            })
+                          }}
+                        >
+                          Vazgeç
+                        </button>
+                      </div>
+                      <span className="hint" style={{ alignSelf: 'center' }}>
+                        Değişiklikler otomatik taslak olarak saklanıyor.
+                      </span>
                     </div>
                   </>
                 ) : (
