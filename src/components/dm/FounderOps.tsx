@@ -6,18 +6,18 @@ import {
   listUsers,
   setUserRole,
   platformStats,
-  listAuditLog,
+  listActivity,
   listCampaignsWithDm,
   setCampaignDm,
   type UserRow,
   type PlatformStats,
-  type AuditRow,
+  type ActivityRow,
   type CampaignWithDm,
 } from '@/lib/admin-storage'
 
-type Tab = 'users' | 'campaigns' | 'stats' | 'audit'
+type Tab = 'users' | 'campaigns' | 'stats' | 'activity'
 
-// Kurucu (founder) paneli: kullanıcı/rol yönetimi, platform istatistiği, denetim log'u.
+// Kurucu (founder) paneli: kullanıcı/rol yönetimi, platform istatistiği, aktivite log'u.
 export default function FounderOps() {
   const [tab, setTab] = useState<Tab>('users')
   return (
@@ -29,13 +29,13 @@ export default function FounderOps() {
           <TabBtn active={tab === 'users'} onClick={() => setTab('users')}>Kullanıcılar</TabBtn>
           <TabBtn active={tab === 'campaigns'} onClick={() => setTab('campaigns')}>Campaign'ler</TabBtn>
           <TabBtn active={tab === 'stats'} onClick={() => setTab('stats')}>İstatistik</TabBtn>
-          <TabBtn active={tab === 'audit'} onClick={() => setTab('audit')}>Denetim</TabBtn>
+          <TabBtn active={tab === 'activity'} onClick={() => setTab('activity')}>Aktivite</TabBtn>
         </div>
       </div>
       {tab === 'users' && <UsersTab />}
       {tab === 'campaigns' && <CampaignsTab />}
       {tab === 'stats' && <StatsTab />}
-      {tab === 'audit' && <AuditTab />}
+      {tab === 'activity' && <ActivityTab />}
     </div>
   )
 }
@@ -241,32 +241,116 @@ function StatCard({ label, value }: { label: string; value: number }) {
   )
 }
 
-function AuditTab() {
-  const [rows, setRows] = useState<AuditRow[] | null>(null)
+// Eylem türü -> Türkçe etiket + hedef tipi. Bilinmeyen action düşmez, ham gösterilir.
+const ACTION_LABEL: Record<string, string> = {
+  signup: 'üye oldu',
+  character_created: 'karakter oluşturdu',
+  character_deleted: 'karakter sildi',
+  character_edited: 'karakter düzenledi (DM)',
+  campaign_created: 'campaign oluşturdu',
+  campaign_deleted: 'campaign sildi',
+  dm_transferred: "DM'liği devretti",
+  universe_created: 'evren oluşturdu',
+  universe_deleted: 'evren sildi',
+  joined_campaign: "campaign'e katıldı",
+  left_campaign: "campaign'den ayrıldı",
+}
+
+// Tür filtresi: etiket -> action listesi. Bir grup birden çok action'ı kapsayabilir,
+// ama RPC tek action alıyor; grupları tekil action'a indiriyoruz (çoğu zaten tekil).
+const ACTION_FILTERS: { label: string; value: string }[] = [
+  { label: 'Hepsi', value: '' },
+  { label: 'Üyelik', value: 'signup' },
+  { label: 'Karakter oluşturma', value: 'character_created' },
+  { label: 'Karakter silme', value: 'character_deleted' },
+  { label: 'Campaign oluşturma', value: 'campaign_created' },
+  { label: 'Campaign silme', value: 'campaign_deleted' },
+  { label: 'DM devri', value: 'dm_transferred' },
+  { label: 'Evren oluşturma', value: 'universe_created' },
+  { label: 'Evren silme', value: 'universe_deleted' },
+  { label: "Campaign'e katılma", value: 'joined_campaign' },
+  { label: "Campaign'den ayrılma", value: 'left_campaign' },
+]
+
+function actionColor(action: string): string {
+  if (action.endsWith('_created') || action === 'signup' || action === 'joined_campaign') return 'var(--new)'
+  if (action.endsWith('_deleted') || action === 'left_campaign') return 'var(--seal)'
+  return 'var(--ink-dim)'
+}
+
+function ActivityTab() {
+  const [rows, setRows] = useState<ActivityRow[] | null>(null)
+  const [search, setSearch] = useState('')
+  const [action, setAction] = useState('')
+
+  // Arama + filtre değişince (debounce 300ms) yeniden yükle. CampaignInviteModal deseni.
   useEffect(() => {
-    listAuditLog(50).then(setRows).catch((e) => console.error('[founder] denetim log', e))
-  }, [])
-  if (rows === null) return <p className="muted">Yükleniyor…</p>
-  if (rows.length === 0)
-    return (
-      <div className="panel" style={{ textAlign: 'center', padding: 24 }}>
-        <p className="muted">Henüz denetim kaydı yok. Bir DM başka oyuncunun karakterini düzenleyince burada görünür.</p>
-      </div>
-    )
+    let cancelled = false
+    const t = setTimeout(async () => {
+      try {
+        const r = await listActivity(search, action, 200)
+        if (!cancelled) setRows(r)
+      } catch (e) {
+        if (!cancelled) console.error('[founder] aktivite log', e)
+      }
+    }, search ? 300 : 0)
+    return () => {
+      cancelled = true
+      clearTimeout(t)
+    }
+  }, [search, action])
+
   return (
-    <div className="stack" style={{ gap: 6 }}>
-      <p className="hint" style={{ marginTop: 0 }}>Son {rows.length} kayıt — DM'in başka oyuncunun karakterini düzenlemesi.</p>
-      {rows.map((r) => (
-        <div key={r.id} className="panel" style={{ padding: 10 }}>
-          <div className="spread" style={{ flexWrap: 'wrap', gap: 6 }}>
-            <span>
-              <b>{r.editorEmail ?? '—'}</b> <span className="muted">düzenledi →</span> <b>{r.ownerEmail ?? '—'}</b>
-            </span>
-            <span className="hint">{new Date(r.editedAt).toLocaleString('tr-TR')}</span>
-          </div>
-          <div className="hint">Karakter: {r.characterId}</div>
+    <div className="stack" style={{ gap: 10 }}>
+      <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="E-posta ya da ada göre ara…"
+          aria-label="Aktivite ara"
+          style={{ flex: '1 1 220px' }}
+        />
+        <select value={action} onChange={(e) => setAction(e.target.value)} aria-label="Tür filtresi">
+          {ACTION_FILTERS.map((f) => (
+            <option key={f.value} value={f.value}>
+              {f.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {rows === null ? (
+        <p className="muted">Yükleniyor…</p>
+      ) : rows.length === 0 ? (
+        <div className="panel" style={{ textAlign: 'center', padding: 24 }}>
+          <p className="muted">
+            {search || action ? 'Bu arama için kayıt yok.' : 'Henüz aktivite yok. Olaylar gerçekleştikçe burada birikir.'}
+          </p>
         </div>
-      ))}
+      ) : (
+        <div className="stack" style={{ gap: 6 }}>
+          <p className="hint" style={{ marginTop: 0 }}>
+            {rows.length} kayıt{rows.length === 200 ? ' (en yeni 200)' : ''}.
+          </p>
+          {rows.map((r) => (
+            <div key={r.id} className="panel" style={{ padding: 10 }}>
+              <div className="spread" style={{ flexWrap: 'wrap', gap: 6 }}>
+                <span>
+                  <b>{r.actorEmail ?? '—'}</b>{' '}
+                  <span style={{ color: actionColor(r.action) }}>{ACTION_LABEL[r.action] ?? r.action}</span>
+                  {r.targetLabel && r.action !== 'signup' && (
+                    <>
+                      {' '}
+                      <span className="muted">→</span> <b>{r.targetLabel}</b>
+                    </>
+                  )}
+                </span>
+                <span className="hint">{new Date(r.createdAt).toLocaleString('tr-TR')}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

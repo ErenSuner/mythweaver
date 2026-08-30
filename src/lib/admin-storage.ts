@@ -285,3 +285,43 @@ export async function listAuditLog(limit = 50): Promise<AuditRow[]> {
     editedAt: r.edited_at as string,
   }))
 }
+
+// ---- Aktivite log'u (kurucu) ----
+
+export interface ActivityRow {
+  id: string
+  actorId: string | null
+  actorEmail: string | null
+  action: string
+  targetType: string | null
+  targetId: string | null
+  targetLabel: string | null
+  meta: Record<string, unknown> | null
+  createdAt: string
+}
+
+/**
+ * Platform aktivite kaydı. Arama (email/hedef adı) ve tür filtresi sunucu
+ * tarafında (list_activity RPC) — is_admin guard'ı içeride, admin değilse boş
+ * küme döner. Email zaten satırda snapshot, ayrı profiles sorgusu gerekmez.
+ */
+export async function listActivity(search?: string, action?: string, limit = 100): Promise<ActivityRow[]> {
+  const sb = ensure()
+  const { data, error } = await sb.rpc('list_activity', {
+    p_search: search?.trim() || null,
+    p_action: action || null,
+    p_limit: limit,
+  })
+  if (error) throw error
+  return (data || []).map((r: Record<string, unknown>) => ({
+    id: r.id as string,
+    actorId: (r.actor_id as string | null) ?? null,
+    actorEmail: (r.actor_email as string | null) ?? null,
+    action: r.action as string,
+    targetType: (r.target_type as string | null) ?? null,
+    targetId: (r.target_id as string | null) ?? null,
+    targetLabel: (r.target_label as string | null) ?? null,
+    meta: (r.meta as Record<string, unknown> | null) ?? null,
+    createdAt: r.created_at as string,
+  }))
+}
